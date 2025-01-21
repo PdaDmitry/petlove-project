@@ -1,0 +1,127 @@
+.contHome {
+  padding: 10px 20px;
+}
+
+.homeDescription {
+  width: 335px;
+  padding: 18px 20px 50px;
+  background: #f6b83d;
+  border-radius: 30px;
+}
+
+.contLogo {
+  display: flex;
+  align-items: end;
+  /* justify-content: center; */
+  width: 76px;
+  cursor: pointer;
+}
+
+.logoText {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.logoSvg {
+  display: block;
+  min-width: 17px;
+  height: 17px;
+}
+
+.contHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.burgerMenuSvg {
+  display: block;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 96%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.titleSpan {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.imgHome {
+  border-radius: 30px;
+  width: 335px;
+  height: 402px;
+  background: url('../../../public/images/imagesHome/image-home-mob-1x.jpg');
+}
+
+/* ============================================= */
+
+.burgerMenu {
+  position: fixed;
+  top: 0;
+  right: -218px;
+  width: 218px;
+  height: 100%;
+  background-color: #fff; /* Цвет фона */
+
+  transition: right 0.3s ease-in-out; /* Плавный эффект появления */
+  z-index: 1000;
+}
+
+.burgerMenu.open {
+  right: 0; /* Показываем меню, сдвигая его вправо */
+}
+
+.burgerMenuUl {
+  list-style: none;
+  padding: 40px 20px;
+  margin: 0;
+}
+
+.burgerLiHome {
+  margin-bottom: 20px;
+}
+
+.burgerLiHome {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+
+  transition: color 0.3s ease;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  /* color: green; */
+  transition: color 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: #ff6b01;
+}
+
+/* ============================================= */
