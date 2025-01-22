@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import css from './Home.module.css';
 import { useState } from 'react';
+import { IoMdClose } from 'react-icons/io';
 
 export const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,6 +45,10 @@ export const Home = () => {
       <div className={css.imgHome}></div>
 
       <nav className={`${css.burgerMenu} ${menuOpen ? css.open : ''}`}>
+        <button type="button" className={css.closeButton} onClick={closeBurgerMenu}>
+          <IoMdClose style={{ width: '32px', height: '32px' }} />
+        </button>
+
         <ul className={css.burgerMenuUl}>
           <li className={css.burgerLiHome}>
             <NavLink to="/news" className={css.link} onClick={closeBurgerMenu}>
@@ -55,9 +60,21 @@ export const Home = () => {
               Find pet
             </NavLink>
           </li>
-          <li className={css.burgerLiHome}>
+          <li className={css.burgerLiHomeLast}>
             <NavLink to="/friends" className={css.link} onClick={closeBurgerMenu}>
               Our friends
+            </NavLink>
+          </li>
+        </ul>
+        <ul className={css.authNavBurger}>
+          <li className={css.burgerLiNavlog}>
+            <NavLink to="/login" className={css.linkAuth} onClick={closeBurgerMenu}>
+              LOG IN
+            </NavLink>
+          </li>
+          <li className={css.burgerLiNav}>
+            <NavLink to="/register" className={css.linkAuth} onClick={closeBurgerMenu}>
+              REGISTRATION
             </NavLink>
           </li>
         </ul>
