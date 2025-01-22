@@ -4,7 +4,8 @@ import { selectUser } from '../../redux/auth/selectorsAuth';
 import { MainPage } from '../../pages/MainPage/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from '../../pages/Home/Home';
-import { LoginPage } from '../../pages/LogInPage/LogInPage';
+import { LoginPage } from '../../pages/LoginPage/LoginPage';
+// import { LoginPage } from '../../pages/LogInPage/LogInPage';
 import { RegistrationPage } from '../../pages/RegistrationPage/RegistrationPage';
 
 // import { useState } from 'react';
