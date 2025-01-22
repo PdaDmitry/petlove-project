@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser } from './operationsAuth';
+import { loginUser, logoutUser, registerUser } from './operationsAuth';
 
 const initialState = {
   user: {
@@ -17,6 +17,7 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      //registerUser
       .addCase(registerUser.pending, (state, action) => {
         state.loader = true;
         state.error = null;
@@ -29,7 +30,38 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loader = false;
-        state.error = action.payload;
+        state.error = action.payload || 'Something went wrong...';
+      })
+
+      //logoutUser
+      .addCase(logoutUser.pending, (state, action) => {
+        state.loader = true;
+        state.error = null;
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+        state.loader = false;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.loader = false;
+        state.error = action.payload || 'Something went wrong...';
+      })
+      // loginUser
+      .addCase(loginUser.pending, (state, action) => {
+        state.loader = true;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+        state.loader = false;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loader = false;
+        state.error = action.payload || 'Something went wrong...';
       });
   },
 });

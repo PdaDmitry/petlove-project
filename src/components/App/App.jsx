@@ -13,7 +13,7 @@ import { Toaster } from 'react-hot-toast';
 function App() {
   // const [view, setView] = useState(false);
   const user = useSelector(selectUser);
-  console.log('user: ', user);
+  // console.log('user: ', user);
 
   return (
     <div className={css.contApp}>
