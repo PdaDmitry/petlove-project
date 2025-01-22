@@ -13,7 +13,6 @@
 .contLogo {
   display: flex;
   align-items: end;
-  /* justify-content: center; */
   width: 76px;
   cursor: pointer;
 }
@@ -93,53 +92,51 @@
   top: 0;
   right: -218px;
   width: 218px;
-  height: 100%;
+  /* height: 792px;  error in layout*/
+  height: 812px;
   background-color: #fff;
-  /* padding: 28px 20px 40px; */
   transition: right 0.3s ease-in-out;
   z-index: 1000;
 }
 
 .burgerMenu.open {
-  right: 0; /* Показываем меню, сдвигая его вправо */
+  right: 0;
 }
 
 .burgerMenuUl {
   list-style: none;
-  padding: 236px 49px 0 50px;
+  padding: 230px 49px 0 50px;
   text-align: center;
   margin: 0;
-  margin-bottom: 280px;
+  margin-bottom: 286px;
 }
 
-.burgerLiHome {
-  margin-bottom: 20px;
+.liItem {
+  margin-bottom: 10px;
 }
 
-.burgerLiHome,
-.burgerLiHomeLast {
+.liItemLast {
+  margin-bottom: 0;
+}
+
+.burgerNavHome,
+.burgerNavHomeLast {
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  margin-bottom: 10px;
   transition: color 0.3s ease;
-
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   padding: 15px 31px;
 }
 
-.burgerLiHomeLast {
+.burgerNavHomeLast {
   padding: 15px 20px;
-  margin-bottom: 0;
 }
 
-.burgerLiHome:hover {
-  border: 1px solid#f6b83d;
-}
-
-.burgerLiHomeLast:hover {
+.burgerNavHome:hover,
+.burgerNavHomeLast:hover {
   border: 1px solid#f6b83d;
 }
 
@@ -153,13 +150,13 @@
   transition: color 0.3s ease-in-out;
 }
 
-/* .link:hover {
-  color: #ff6b01;
-} */
-
 .authNavBurger {
   padding: 0 20px 40px;
   text-align: center;
+}
+
+.liItemLog {
+  margin-bottom: 8px;
 }
 
 .burgerLiNavlog,
@@ -169,7 +166,7 @@
   padding: 12px;
   width: 178px;
   height: 42px;
-  margin-bottom: 8px;
+
   cursor: pointer;
   color: #f6b83d;
 }
@@ -177,10 +174,6 @@
 .burgerLiNavlog:hover,
 .burgerLiNav:hover {
   background: #f6b83d;
-}
-
-.burgerLiNav {
-  margin-bottom: 0;
 }
 
 .linkAuth {

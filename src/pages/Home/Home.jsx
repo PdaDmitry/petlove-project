@@ -50,31 +50,41 @@ export const Home = () => {
         </button>
 
         <ul className={css.burgerMenuUl}>
-          <li className={css.burgerLiHome}>
-            <NavLink to="/news" className={css.link} onClick={closeBurgerMenu}>
-              News
+          <li className={css.liItem}>
+            <NavLink to="/news" onClick={closeBurgerMenu}>
+              <div className={css.burgerNavHome}>
+                <p className={css.link}>News</p>
+              </div>
             </NavLink>
           </li>
-          <li className={css.burgerLiHome}>
-            <NavLink to="/notices" className={css.link} onClick={closeBurgerMenu}>
-              Find pet
+          <li className={css.liItem}>
+            <NavLink to="/notices" onClick={closeBurgerMenu}>
+              <div className={css.burgerNavHome}>
+                <p className={css.link}>Find pet</p>
+              </div>
             </NavLink>
           </li>
-          <li className={css.burgerLiHomeLast}>
-            <NavLink to="/friends" className={css.link} onClick={closeBurgerMenu}>
-              Our friends
+          <li className={css.liItemLast}>
+            <NavLink to="/friends" onClick={closeBurgerMenu}>
+              <div className={css.burgerNavHomeLast}>
+                <p className={css.link}>Our friends</p>
+              </div>
             </NavLink>
           </li>
         </ul>
         <ul className={css.authNavBurger}>
-          <li className={css.burgerLiNavlog}>
-            <NavLink to="/login" className={css.linkAuth} onClick={closeBurgerMenu}>
-              LOG IN
+          <li className={css.liItemLog}>
+            <NavLink to="/login" onClick={closeBurgerMenu}>
+              <div className={css.burgerLiNavlog}>
+                <p className={css.linkAuth}>LOG IN</p>
+              </div>
             </NavLink>
           </li>
-          <li className={css.burgerLiNav}>
-            <NavLink to="/register" className={css.linkAuth} onClick={closeBurgerMenu}>
-              REGISTRATION
+          <li>
+            <NavLink to="/register" onClick={closeBurgerMenu}>
+              <div className={css.burgerLiNav}>
+                <p className={css.linkAuth}>REGISTRATION</p>
+              </div>
             </NavLink>
           </li>
         </ul>
