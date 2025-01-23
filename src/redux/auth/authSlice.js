@@ -23,7 +23,11 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = {
+          name: action.payload.name, // Прямое присвоение данных
+          email: action.payload.email,
+        };
+        // state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.loader = false;
@@ -54,7 +58,11 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = {
+          name: action.payload.name, // Прямое присвоение данных
+          email: action.payload.email,
+        };
+        // state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.loader = false;

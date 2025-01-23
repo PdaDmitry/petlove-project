@@ -2,10 +2,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import css from './Home.module.css';
 import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectorsAuth';
 
 export const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const user = useSelector(selectUser);
+  console.log('user Home: ', user);
 
   const handleClick = () => {
     navigate('/home');

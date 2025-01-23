@@ -31,11 +31,11 @@ export const RegistrationPage = () => {
   });
 
   const onSubmit = async data => {
-    console.log(data);
+    // console.log(data);
 
     try {
       const resultAction = await dispatch(registerUser(data)).unwrap();
-      console.log('resultAction: ', resultAction);
+      // console.log('resultAction: ', resultAction);
       reset();
       toast.success(`User ${data.name} successfully registered!`, {
         duration: 5000,

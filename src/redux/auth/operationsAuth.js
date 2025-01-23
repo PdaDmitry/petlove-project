@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://petlove.b.goit.study/api/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  localStorage.setItem('token', res.data.token);
+  localStorage.setItem('token', token);
 };
 
 const clearAuthHeader = () => {
@@ -45,10 +46,20 @@ export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) =>
 export const loginUser = createAsyncThunk('auth/login', async ({ email, password }, thunkAPI) => {
   try {
     const res = await axios.post('/users/signin', { email, password });
-    console.log('res: ', res);
+    // console.log('res: ', res);
     setAuthHeader(res.data.token);
+    toast.success(`Welcome back, ${email}!`, {
+      duration: 4000,
+      position: 'top-center',
+      style: { background: 'green', color: 'white' },
+    });
     return res.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    toast.error(`Invalid credentials, please try again.`, {
+      duration: 4000,
+      position: 'bottom-center',
+      style: { background: 'red', color: 'white' },
+    });
+    // return thunkAPI.rejectWithValue(error.message);
   }
 });
