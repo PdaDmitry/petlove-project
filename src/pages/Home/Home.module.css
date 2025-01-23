@@ -1,9 +1,10 @@
 .contHome {
+  width: 375px;
   padding: 10px 20px;
 }
 
 .homeDescription {
-  width: 335px;
+  /* width: 335px; */
   height: 390px;
   padding: 18px 20px 50px;
   background: #f6b83d;

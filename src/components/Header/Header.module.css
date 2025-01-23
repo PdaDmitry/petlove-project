@@ -1,10 +1,8 @@
-.contHeader {
+.conteinerHeader {
   display: flex;
-  width: 335px;
-  /* justify-content: space-between; */
+  width: 375px;
   align-items: center;
-  padding: 24px 20px 0;
-  background: gray;
+  padding: 28px 20px 0 20px;
 }
 
 .contLogo {
@@ -16,7 +14,6 @@
 }
 
 .logoText {
-  font-family: var(--font-family);
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
@@ -32,9 +29,9 @@
 
 /* ================icon user================ */
 
-/* .hidden {
+.hidden {
   visibility: hidden;
-} */
+}
 
 .backgrSvg {
   display: flex;

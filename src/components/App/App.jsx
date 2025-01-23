@@ -15,7 +15,8 @@ function App() {
   const isHomePage = location.pathname === '/home';
 
   return (
-    <div className={`${css.contApp} ${isHomePage ? css.homePage : ''}`}>
+    <div className={css.contApp}>
+      {/* <div className={`${css.contApp} ${isHomePage ? css.homePage : ''}`}> */}
       {!isMainPage && !isHomePage && <Header isHome={isHomePage} />}
 
       <Toaster />
