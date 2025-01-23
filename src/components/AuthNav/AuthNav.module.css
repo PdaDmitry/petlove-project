@@ -1,0 +1,40 @@
+.authNavBurger {
+  padding: 0 20px 40px;
+  text-align: center;
+}
+
+.liItemLog {
+  margin-bottom: 8px;
+}
+
+.burgerLiNavlog,
+.burgerLiNav {
+  border-radius: 30px;
+  background: #fff4df;
+  padding: 12px;
+  width: 178px;
+  height: 42px;
+
+  cursor: pointer;
+  color: #f6b83d;
+}
+
+.burgerLiNavlog:hover,
+.burgerLiNav:hover {
+  background: #f6b83d;
+}
+
+.linkAuth {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f6b83d;
+}
+
+.burgerLiNavlog:hover .linkAuth,
+.burgerLiNav:hover .linkAuth {
+  color: #fff;
+}

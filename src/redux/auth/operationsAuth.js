@@ -36,6 +36,11 @@ export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) =>
   try {
     await axios.post('/users/signout');
     clearAuthHeader();
+    toast.success('Sign out success', {
+      duration: 2000,
+      position: 'top-center',
+      style: { background: 'white', color: ' orange' },
+    });
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -49,14 +54,14 @@ export const loginUser = createAsyncThunk('auth/login', async ({ email, password
     // console.log('res: ', res);
     setAuthHeader(res.data.token);
     toast.success(`Welcome back, ${email}!`, {
-      duration: 4000,
+      duration: 2000,
       position: 'top-center',
       style: { background: 'green', color: 'white' },
     });
     return res.data;
   } catch (error) {
     toast.error(`Invalid credentials, please try again.`, {
-      duration: 4000,
+      duration: 2000,
       position: 'bottom-center',
       style: { background: 'red', color: 'white' },
     });

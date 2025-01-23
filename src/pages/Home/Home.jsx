@@ -3,16 +3,22 @@ import css from './Home.module.css';
 import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectorsAuth';
+import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectorsAuth';
+import { AuthNav } from '../../components/AuthNav/AuthNav';
+import { UserNav } from '../../components/UserNav/UserNav';
 
 export const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const user = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   console.log('user Home: ', user);
 
   const handleClick = () => {
     navigate('/home');
+  };
+  const handleUserClick = () => {
+    navigate('/profile');
   };
 
   const openBurgerMenu = () => {
@@ -34,6 +40,16 @@ export const Home = () => {
             </svg>
             <p className={css.logoText}>ve</p>
           </div>
+
+          <div
+            className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
+            onClick={handleUserClick}
+          >
+            <svg className={css.userSvg}>
+              <use href="/symbol-defs-mob.svg#icon-user-02"></use>
+            </svg>
+          </div>
+
           <svg className={css.burgerMenuSvg} onClick={openBurgerMenu}>
             <use href="/symbol-defs-mob.svg#icon-menu-01-1"></use>
           </svg>
@@ -76,22 +92,11 @@ export const Home = () => {
             </NavLink>
           </li>
         </ul>
-        <ul className={css.authNavBurger}>
-          <li className={css.liItemLog}>
-            <NavLink to="/login" onClick={closeBurgerMenu}>
-              <div className={css.burgerLiNavlog}>
-                <p className={css.linkAuth}>LOG IN</p>
-              </div>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/register" onClick={closeBurgerMenu}>
-              <div className={css.burgerLiNav}>
-                <p className={css.linkAuth}>REGISTRATION</p>
-              </div>
-            </NavLink>
-          </li>
-        </ul>
+        {isLoggedIn ? (
+          <UserNav closeBurgerMenu={closeBurgerMenu} />
+        ) : (
+          <AuthNav closeBurgerMenu={closeBurgerMenu} />
+        )}
       </nav>
     </div>
   );

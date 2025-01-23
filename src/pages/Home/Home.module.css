@@ -10,11 +10,19 @@
   border-radius: 30px;
 }
 
+.contHeader {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-bottom: 60px;
+}
+
 .contLogo {
   display: flex;
   align-items: end;
   width: 76px;
   cursor: pointer;
+  margin-right: 135px;
 }
 
 .logoText {
@@ -32,13 +40,30 @@
   height: 17px;
 }
 
-.contHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 60px;
+/* ================icon user================ */
+
+.hidden {
+  visibility: hidden;
 }
 
+.backgrSvg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff4df;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.userSvg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+/* ================================ */
 .burgerMenuSvg {
   display: block;
   width: 32px;
@@ -150,7 +175,9 @@
   transition: color 0.3s ease-in-out;
 }
 
-.authNavBurger {
+/* ===========================AuthNav=============================  */
+
+/* .authNavBurger {
   padding: 0 20px 40px;
   text-align: center;
 }
@@ -189,6 +216,6 @@
 .burgerLiNavlog:hover .linkAuth,
 .burgerLiNav:hover .linkAuth {
   color: #fff;
-}
+} */
 
 /* ============================================= */

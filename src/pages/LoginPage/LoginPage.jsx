@@ -40,12 +40,6 @@ export const LoginPage = () => {
       // console.error('Error logging in:', error);
     }
   };
-  // const user = useSelector(selectUser);
-  // console.log('user after: ', user);
-  // ==========================================
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
 
   return (
     <div>
@@ -77,9 +71,6 @@ export const LoginPage = () => {
           LOGIN
         </button>
       </form>
-      <button type="button" onClick={handleLogout}>
-        Log Out
-      </button>
     </div>
   );
 };
