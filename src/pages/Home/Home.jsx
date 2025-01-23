@@ -32,6 +32,7 @@ export const Home = () => {
   return (
     <div className={css.contHome}>
       <div className={css.homeDescription}>
+        {/* ========================================== */}
         <div className={css.contHeader}>
           <div className={css.contLogo} onClick={handleClick}>
             <p className={css.logoText}>petl</p>
@@ -54,6 +55,7 @@ export const Home = () => {
             <use href="/symbol-defs-mob.svg#icon-menu-01-1"></use>
           </svg>
         </div>
+        {/* ======================================================= */}
         <h1 className={css.title}>
           Take good <span className={css.titleSpan}>care</span> of your small pets
         </h1>
