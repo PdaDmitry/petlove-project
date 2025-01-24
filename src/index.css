@@ -1,6 +1,8 @@
 body {
   font-family: 'Manrope', sans-serif;
   /* color: #121417; */
+  background-color: rgba(38, 38, 38, 0.15);
+  user-select: none;
 }
 
 a {

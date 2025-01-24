@@ -1,7 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/auth/operationsAuth';
 import css from './LogoutUser.module.css';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { LogoutModal } from '../LogoutModal/LogoutModal';
 import ModalWindow from '../ModalWindow/ModalWindow';

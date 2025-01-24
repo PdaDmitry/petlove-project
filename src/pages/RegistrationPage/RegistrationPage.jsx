@@ -6,6 +6,7 @@ import { userSchema } from '../../validationSchemas';
 import css from './RegistrationPage.module.css';
 import { registerUser } from '../../redux/auth/operationsAuth';
 import toast from 'react-hot-toast';
+import Title from '../../components/Title/Title';
 
 export const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -52,58 +53,83 @@ export const RegistrationPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={css.contRegistrationForm}>
-      <div className={css.inputElem}>
-        <input {...register('name')} placeholder="Name" className={css.input} />
-        {errors.name && <p className={css.textError}>{errors.name.message}</p>}
-      </div>
-      <div className={css.inputElem}>
-        <input {...register('email')} placeholder="Email" className={css.input} />
-        {errors.email && <p className={css.textError}>{errors.email.message}</p>}
-      </div>
-      <div className={css.inputLastElem}>
-        <div className={css.passwordWrapper}>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            {...register('password')}
-            placeholder="Password"
-            className={css.input}
-          />
-          <button
-            type="button"
-            className={css.passwordToggle}
-            onClick={togglePasswordVisibility}
-            aria-label={showPassword ? 'Hide password' : 'Show password'}
-          >
-            {/* Добавить иконки глаза для показа/скрытия пароля */}
+    <div className={css.contRegistration}>
+      <div className={css.imgCat}></div>
+      <div className={css.contForm}>
+        <Title>
+          <div className={css.title}>Registration</div>
+        </Title>
+        <p className={css.text}>Thank you for your interest in our platform.</p>
+        <form onSubmit={handleSubmit(onSubmit)} className={css.contRegistrationForm}>
+          <div className={css.inputElem}>
+            <input {...register('name')} placeholder="Name" className={css.input} />
+            {errors.name && <p className={css.textError}>{errors.name.message}</p>}
+          </div>
+          <div className={css.inputElem}>
+            <input {...register('email')} placeholder="Email" className={css.input} />
+            {errors.email && <p className={css.textError}>{errors.email.message}</p>}
+          </div>
+          <div className={css.inputElem}>
+            <div className={css.passwordWrapper}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                {...register('password')}
+                placeholder="Password"
+                className={css.input}
+              />
+              <button
+                type="button"
+                className={css.passwordToggle}
+                onClick={togglePasswordVisibility}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                <svg className={css.eyeSvg}>
+                  <use
+                    href={
+                      showPassword
+                        ? '/symbol-defs-mob.svg#icon-eye'
+                        : '/symbol-defs-mob.svg#icon-eye-off'
+                    }
+                  ></use>
+                </svg>
+              </button>
+            </div>
+            {errors.password && <p className={css.textError}>{errors.password.message}</p>}
+          </div>
+          <div className={css.inputLastElem}>
+            <div className={css.passwordWrapper}>
+              <input
+                type={showConfirmPassword ? 'text' : 'password'}
+                {...register('confirmPassword')}
+                placeholder="Confirm Password"
+                className={css.input}
+              />
+              <button
+                type="button"
+                className={css.passwordToggle}
+                onClick={toggleConfirmPasswordVisibility}
+                aria-label={showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'}
+              >
+                <svg className={css.eyeSvg}>
+                  <use
+                    href={
+                      showConfirmPassword
+                        ? '/symbol-defs-mob.svg#icon-eye'
+                        : '/symbol-defs-mob.svg#icon-eye-off'
+                    }
+                  ></use>
+                </svg>
+              </button>
+            </div>
+            {errors.confirmPassword && (
+              <p className={css.textError}>{errors.confirmPassword.message}</p>
+            )}
+          </div>
+          <button type="submit" className={css.btnRegistrationForm}>
+            REGISTRATION
           </button>
-        </div>
-        {errors.password && <p className={css.textError}>{errors.password.message}</p>}
+        </form>
       </div>
-      <div className={css.inputLastElem}>
-        <div className={css.passwordWrapper}>
-          <input
-            type={showConfirmPassword ? 'text' : 'password'}
-            {...register('confirmPassword')}
-            placeholder="Confirm Password"
-            className={css.input}
-          />
-          <button
-            type="button"
-            className={css.passwordToggle}
-            onClick={toggleConfirmPasswordVisibility}
-            aria-label={showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'}
-          >
-            {/* Добавить иконки глаза для показа/скрытия пароля */}
-          </button>
-        </div>
-        {errors.confirmPassword && (
-          <p className={css.textError}>{errors.confirmPassword.message}</p>
-        )}
-      </div>
-      <button type="submit" className={css.btnRegistrationForm}>
-        REGISTRATION
-      </button>
-    </form>
+    </div>
   );
 };
