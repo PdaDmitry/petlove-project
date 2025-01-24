@@ -7,20 +7,27 @@
   margin-bottom: 8px;
 }
 
+.burgerLiNav,
 .burgerLiNavlog,
-.burgerLiNav {
+.burgerLiNavHome,
+.burgerLiNavlogHome {
   border-radius: 30px;
   background: #fff4df;
   padding: 12px;
   width: 178px;
   height: 42px;
-
   cursor: pointer;
   color: #f6b83d;
 }
 
-.burgerLiNavlog:hover,
-.burgerLiNav:hover {
+.burgerLiNav:hover,
+.burgerLiNavlog:hover {
+  border: 1px solid #fff;
+  background: #f6b83d;
+}
+
+.burgerLiNavHome:hover,
+.burgerLiNavlogHome:hover {
   background: #f6b83d;
 }
 
@@ -36,5 +43,10 @@
 
 .burgerLiNavlog:hover .linkAuth,
 .burgerLiNav:hover .linkAuth {
+  color: #fff;
+}
+
+.burgerLiNavlogHome:hover .linkAuth,
+.burgerLiNavHome:hover .linkAuth {
   color: #fff;
 }

@@ -1,15 +1,20 @@
-.btnLogout {
+.btnLogout,
+.btnLogoutHome {
   border-radius: 30px;
   background: #fff4df;
   border: none;
   width: 178px;
   height: 42px;
-
   cursor: pointer;
   color: #f6b83d;
 }
 
 .btnLogout:hover {
+  border: 1px solid #fff;
+}
+
+.btnLogout:hover,
+.btnLogoutHome:hover {
   background: #f6b83d;
   color: #fff;
 }

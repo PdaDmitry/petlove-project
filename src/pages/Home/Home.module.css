@@ -10,10 +10,9 @@
   background: #f6b83d;
   border-radius: 30px;
 }
-
-.contHeader {
+/* ================================================== */
+/* .contHeader {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 60px;
 }
@@ -39,7 +38,7 @@
   display: block;
   min-width: 17px;
   height: 17px;
-}
+} */
 
 /* ================icon user================ */
 
@@ -118,8 +117,7 @@
   top: 0;
   right: -218px;
   width: 218px;
-  /* height: 812px; */
-  /* height: 100vh; */
+
   height: 100%;
   background-color: #fff;
   transition: right 0.3s ease-in-out;
@@ -138,7 +136,7 @@
   padding: 230px 49px 0 50px;
   text-align: center;
   margin: 0;
-  /* margin-bottom: 286px; */
+
   margin-bottom: 20px;
 }
 
@@ -180,48 +178,3 @@
   color: #262626;
   transition: color 0.3s ease-in-out;
 }
-
-/* ===========================AuthNav=============================  */
-
-/* .authNavBurger {
-  padding: 0 20px 40px;
-  text-align: center;
-}
-
-.liItemLog {
-  margin-bottom: 8px;
-}
-
-.burgerLiNavlog,
-.burgerLiNav {
-  border-radius: 30px;
-  background: #fff4df;
-  padding: 12px;
-  width: 178px;
-  height: 42px;
-
-  cursor: pointer;
-  color: #f6b83d;
-}
-
-.burgerLiNavlog:hover,
-.burgerLiNav:hover {
-  background: #f6b83d;
-}
-
-.linkAuth {
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 129%;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: #f6b83d;
-}
-
-.burgerLiNavlog:hover .linkAuth,
-.burgerLiNav:hover .linkAuth {
-  color: #fff;
-} */
-
-/* ============================================= */

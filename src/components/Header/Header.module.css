@@ -14,12 +14,17 @@
   padding: 28px 40px 0 40px;
 }
 
+.contLogoHome,
 .contLogo {
   display: flex;
   align-items: end;
   width: 76px;
   cursor: pointer;
   margin-right: 175px;
+}
+
+.contLogoHome {
+  margin-right: 135px;
 }
 
 .logoText {
@@ -82,9 +87,6 @@
   top: 0;
   right: -218px;
   width: 218px;
-  /* height: 812px; */
-  /* height: 100vh; */
-
   height: 100%;
   transition: right 0.3s ease-in-out;
   z-index: 1000;

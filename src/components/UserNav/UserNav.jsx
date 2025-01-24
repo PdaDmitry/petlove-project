@@ -3,7 +3,7 @@ import { LogoutUser } from '../LogoutUser/LogoutUser';
 import css from './UserNav.module.css';
 import { useState } from 'react';
 
-export const UserNav = ({ closeBurgerMenu }) => {
+export const UserNav = ({ isHome, closeBurgerMenu }) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => {
@@ -12,7 +12,7 @@ export const UserNav = ({ closeBurgerMenu }) => {
   return (
     <div className={css.contUserNav}>
       <div
-        className={css.backgrSvg}
+        className={isHome ? css.backgrSvgHome : css.backgrSvg}
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -28,7 +28,7 @@ export const UserNav = ({ closeBurgerMenu }) => {
         </svg>
       </div>
 
-      <LogoutUser closeBurgerMenu={closeBurgerMenu} />
+      <LogoutUser isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
     </div>
   );
 };

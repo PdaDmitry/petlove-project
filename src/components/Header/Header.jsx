@@ -31,11 +31,7 @@ export const Header = ({ isHome }) => {
 
   return (
     <div className={`${css.conteinerHeader} ${isHome ? css.homeHeader : ''}`}>
-      <div
-        className={css.contLogo}
-        style={isHome ? { marginRight: '135px' } : {}}
-        onClick={handleClick}
-      >
+      <div className={isHome ? css.contLogoHome : css.contLogo} onClick={handleClick}>
         <p className={css.logoText} style={isHome ? { color: '#fff' } : {}}>
           petl
         </p>
@@ -107,9 +103,9 @@ export const Header = ({ isHome }) => {
         </ul>
 
         {isLoggedIn ? (
-          <UserNav closeBurgerMenu={closeBurgerMenu} />
+          <UserNav isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
         ) : (
-          <AuthNav closeBurgerMenu={closeBurgerMenu} />
+          <AuthNav isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
         )}
       </nav>
     </div>

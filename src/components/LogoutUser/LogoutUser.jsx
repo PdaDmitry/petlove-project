@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/auth/operationsAuth';
 import css from './LogoutUser.module.css';
 
-export const LogoutUser = ({ closeBurgerMenu }) => {
+export const LogoutUser = ({ isHome, closeBurgerMenu }) => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -11,7 +11,11 @@ export const LogoutUser = ({ closeBurgerMenu }) => {
   };
 
   return (
-    <button type="button" className={css.btnLogout} onClick={handleLogout}>
+    <button
+      type="button"
+      className={isHome ? css.btnLogoutHome : css.btnLogout}
+      onClick={handleLogout}
+    >
       LOG OUT
     </button>
   );
