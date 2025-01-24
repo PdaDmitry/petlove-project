@@ -17,7 +17,7 @@ function App() {
   return (
     <div className={css.contApp}>
       {/* <div className={`${css.contApp} ${isHomePage ? css.homePage : ''}`}> */}
-      {!isMainPage && !isHomePage && <Header isHome={isHomePage} />}
+      {!isMainPage && <Header isHome={isHomePage} />}
 
       <Toaster />
       <Routes>

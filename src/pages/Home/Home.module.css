@@ -6,7 +6,7 @@
 .homeDescription {
   /* width: 335px; */
   height: 390px;
-  padding: 18px 20px 50px;
+  padding: 118px 20px 50px;
   background: #f6b83d;
   border-radius: 30px;
 }
@@ -119,7 +119,8 @@
   right: -218px;
   width: 218px;
   /* height: 812px; */
-  height: 100vh;
+  /* height: 100vh; */
+  height: 100%;
   background-color: #fff;
   transition: right 0.3s ease-in-out;
   z-index: 1000;

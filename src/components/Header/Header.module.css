@@ -5,6 +5,15 @@
   padding: 28px 20px 0 20px;
 }
 
+.homeHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 28px 40px 0 40px;
+}
+
 .contLogo {
   display: flex;
   align-items: end;
@@ -50,10 +59,106 @@
   width: 20px;
   height: 20px;
 }
-/* ================================ */
+
+/* ======================burgerMenu======================= */
 
 .burgerMenuSvg {
   display: block;
-  width: 32px;
-  height: 32px;
+}
+
+.closeButton {
+  position: absolute;
+  display: block;
+  top: 28px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.burgerMenu {
+  position: fixed;
+  top: 0;
+  right: -218px;
+  width: 218px;
+  /* height: 812px; */
+  /* height: 100vh; */
+
+  height: 100%;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burgerMenu.open {
+  right: 0;
+}
+
+.burgerMenuUl {
+  list-style: none;
+  padding: 230px 49px 0 50px;
+  text-align: center;
+  margin: 0;
+  /* margin-bottom: 286px; */
+  margin-bottom: 20px;
+}
+
+.liItem {
+  margin-bottom: 10px;
+}
+
+.liItemLast {
+  margin-bottom: 0;
+}
+
+.burgerNav,
+.burgerNavLast,
+.burgerNavHome,
+.burgerNavHomeLast {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 15px 31px;
+}
+
+.burgerNavLast,
+.burgerNavHomeLast {
+  padding: 15px 20px;
+}
+
+.burgerNav,
+.burgerNavLast {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.burgerNav:hover,
+.burgerNavLast:hover {
+  border: 1px solid #fff;
+}
+
+.burgerNavHome:hover,
+.burgerNavHomeLast:hover {
+  border: 1px solid#f6b83d;
+}
+
+.link,
+.linkHome {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  transition: color 0.3s ease-in-out;
+}
+
+.link {
+  color: #fff;
 }

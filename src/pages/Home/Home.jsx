@@ -33,7 +33,7 @@ export const Home = () => {
     <div className={css.contHome}>
       <div className={css.homeDescription}>
         {/* ========================================== */}
-        <div className={css.contHeader}>
+        {/* <div className={css.contHeader}>
           <div className={css.contLogo} onClick={handleClick}>
             <p className={css.logoText}>petl</p>
             <svg className={css.logoSvg}>
@@ -54,7 +54,7 @@ export const Home = () => {
           <svg className={css.burgerMenuSvg} onClick={openBurgerMenu}>
             <use href="/symbol-defs-mob.svg#icon-menu-01-1"></use>
           </svg>
-        </div>
+        </div> */}
         {/* ======================================================= */}
         <h1 className={css.title}>
           Take good <span className={css.titleSpan}>care</span> of your small pets
