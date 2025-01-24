@@ -1,0 +1,79 @@
+.contLogoutModal {
+  position: relative;
+  width: 335px;
+  /* height: 270px; */
+  padding: 40px 28px;
+  border-radius: 30px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.closeButton {
+  position: absolute;
+  display: block;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  /* width: 24px;
+  height: 24px; */
+  cursor: pointer;
+  padding: 0;
+}
+
+.backgrImeg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #fff4df;
+  margin-bottom: 20px;
+}
+
+.imegeCat {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+
+.text {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  margin-bottom: 28px;
+}
+
+.conButtons {
+  display: flex;
+  /* gap: 8px; */
+  justify-content: space-between;
+}
+
+.btnYes,
+.btnCancel {
+  display: block;
+  width: 137px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  border: none;
+  border-radius: 30px;
+  /* padding: 12px 44px; */
+  width: 134px;
+  height: 42px;
+  background: rgba(38, 38, 38, 0.05);
+  cursor: pointer;
+}
+
+.btnYes:hover,
+.btnCancel:hover {
+  color: #fff;
+  background: #f6b83d;
+}

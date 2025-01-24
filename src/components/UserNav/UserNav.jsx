@@ -6,7 +6,9 @@ import { useState } from 'react';
 export const UserNav = ({ isHome, closeBurgerMenu }) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+
   const handleClick = () => {
+    closeBurgerMenu();
     navigate('/profile');
   };
   return (
