@@ -240,6 +240,17 @@ export const RegistrationPage = () => {
             REGISTRATION
           </button>
         </form>
+        <p className={css.lastText}>
+          Already have an account?{' '}
+          <span
+            className={css.lastTexSpan}
+            onClick={() => {
+              navigate('/login');
+            }}
+          >
+            Login
+          </span>
+        </p>
       </div>
     </div>
   );

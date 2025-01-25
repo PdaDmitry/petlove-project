@@ -1,0 +1,185 @@
+.contLogin {
+  padding: 20px;
+}
+
+.imgDog {
+  width: 335px;
+  height: 280px;
+  border-radius: 30px;
+  background: url('../../../public/images/dog-login/login-dog-mob-1x.jpg');
+  background-size: cover;
+  margin-bottom: 10px;
+}
+
+.contForm {
+  border-radius: 30px;
+  width: 335px;
+  /* height: 422px; */
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.title {
+  margin-bottom: 12px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.contLoginForm {
+  margin-bottom: 12px;
+}
+
+.inputElem {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.textSuccess,
+.textError {
+  padding-left: 12px;
+  padding-top: 2px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+}
+
+.textSuccess {
+  color: #08aa83;
+}
+
+.inputLastElem {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.input {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px 0 12px 12px;
+  width: 295px;
+  height: 42px;
+}
+
+.input::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.input:focus {
+  outline: none;
+  background-color: inherit;
+  border: 1px solid #f6b83d;
+}
+
+.inputError {
+  border: 1px solid #ef2447;
+}
+
+.inputSuccess {
+  border: 1px solid #08aa83;
+}
+
+.btnShapeConfPwd,
+.btnShapePwd,
+.btnShapeName,
+.btnShapeEmail,
+.btnRedEmail {
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background-color: inherit;
+}
+
+.btnRedEmail {
+  cursor: pointer;
+}
+
+.btnShapeConfPwd,
+.btnShapePwd {
+  right: 42px;
+}
+
+/* ================================reset browser settings==================================== */
+
+.input:-webkit-autofill {
+  background-color: white !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  transition: background-color 0s;
+}
+
+.input:-webkit-autofill:focus {
+  background-color: white !important;
+}
+
+/* ===================================================================== */
+
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordToggle {
+  display: block;
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+}
+
+.eyeSvg {
+  width: 18px;
+  height: 18px;
+}
+
+.btnLoginForm {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f6b83d;
+  border: none;
+  border-radius: 30px;
+  width: 295px;
+  height: 42px;
+  background: #fff4df;
+  cursor: pointer;
+}
+
+.btnLoginForm:hover {
+  color: #fff;
+  background: #f6b83d;
+}
+
+.lastText {
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.lastTexSpan {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  cursor: pointer;
+  color: #f6b83d;
+}

@@ -28,8 +28,11 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.02em;
-  color: #262626;
   margin-bottom: 20px;
+}
+
+.contRegistrationForm {
+  margin-bottom: 12px;
 }
 
 .inputElem {
@@ -100,12 +103,16 @@
   background-color: inherit;
 }
 
+.btnRedEmail {
+  cursor: pointer;
+}
+
 .btnShapeConfPwd,
 .btnShapePwd {
   right: 42px;
 }
 
-/* ==================================================================== */
+/* ============================reset browser settings======================================== */
 
 .input:-webkit-autofill {
   background-color: white !important;
@@ -158,4 +165,21 @@
 .btnRegistrationForm:hover {
   color: #fff;
   background: #f6b83d;
+}
+
+.lastText {
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.lastTexSpan {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  cursor: pointer;
+  color: #f6b83d;
 }
