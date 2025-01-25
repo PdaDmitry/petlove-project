@@ -33,7 +33,7 @@ export const LoginPage = () => {
   const onSubmit = async data => {
     try {
       const resultAction = await dispatch(loginUser(data)).unwrap();
-      navigate('/home');
+      navigate('/profile');
       reset();
     } catch (error) {
       return;

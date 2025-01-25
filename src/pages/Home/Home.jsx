@@ -5,14 +5,10 @@ export const Home = () => {
   return (
     <div className={css.contHome}>
       <div className={css.homeDescription}>
-        <Title>
-          <div className={css.title}>
-            Take good <span className={css.titleSpan}>care</span> of your small pets
-          </div>
-        </Title>
-        {/* <h1 className={css.title}>
+        <Title className={css.titleHome}>
           Take good <span className={css.titleSpan}>care</span> of your small pets
-        </h1> */}
+        </Title>
+
         <p className={css.text}>
           Choosing a pet for your home is a choice that is meant to enrich your life with
           immeasurable joy and tenderness.

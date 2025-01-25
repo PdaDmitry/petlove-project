@@ -20,11 +20,6 @@
 }
 
 .title {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 100%;
-  letter-spacing: -0.04em;
-  color: #262626;
   margin-bottom: 12px;
 }
 
@@ -38,9 +33,11 @@
 }
 
 .inputElem {
+  position: relative;
   margin-bottom: 10px;
 }
 
+.textSuccess,
 .textError {
   padding-left: 12px;
   padding-top: 2px;
@@ -51,7 +48,12 @@
   color: #ef2447;
 }
 
+.textSuccess {
+  color: #08aa83;
+}
+
 .inputLastElem {
+  position: relative;
   margin-bottom: 24px;
 }
 
@@ -70,6 +72,53 @@
   letter-spacing: -0.03em;
   color: rgba(38, 38, 38, 0.5);
 }
+
+.input:focus {
+  outline: none;
+  background-color: inherit;
+  border: 1px solid #f6b83d;
+}
+
+.inputError {
+  border: 1px solid #ef2447;
+}
+
+.inputSuccess {
+  border: 1px solid #08aa83;
+}
+
+.btnShapeConfPwd,
+.btnShapePwd,
+.btnShapeName,
+.btnShapeEmail,
+.btnRedEmail {
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background-color: inherit;
+}
+
+.btnShapeConfPwd,
+.btnShapePwd {
+  right: 42px;
+}
+
+/* ==================================================================== */
+
+.input:-webkit-autofill {
+  background-color: white !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  transition: background-color 0s;
+}
+
+.input:-webkit-autofill:focus {
+  background-color: white !important;
+}
+
+/* ===================================================================== */
 
 .passwordWrapper {
   position: relative;
@@ -100,7 +149,6 @@
   color: #f6b83d;
   border: none;
   border-radius: 30px;
-  /* padding: 12px 99px; */
   width: 295px;
   height: 42px;
   background: #fff4df;
