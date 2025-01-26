@@ -11,6 +11,7 @@ import {
   persistStore,
 } from 'redux-persist';
 import { authReducer } from './auth/authSlice';
+import { friendsReducer } from './friends/friendsSlice';
 
 const persistAuthConfig = {
   key: 'auth',
@@ -18,12 +19,19 @@ const persistAuthConfig = {
   whitelist: ['user', 'token'],
 };
 
+const persistFriendsConfig = {
+  key: 'friends',
+  storage,
+  whitelist: ['items'],
+};
+
 const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer);
+const persistedFriendsReducer = persistReducer(persistFriendsConfig, friendsReducer);
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    // teachers: persistedReducer,
+    friends: persistedFriendsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

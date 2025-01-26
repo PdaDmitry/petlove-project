@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
 import { NotFound } from '../../pages/NotFound/NotFound';
 import { Header } from '../Header/Header';
+import { OurFriends } from '../../pages/OurFriends/OurFriends';
 
 function App() {
   const location = useLocation();
@@ -23,7 +24,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/news" element={<p>News</p>} />
         <Route path="/notices" element={<p>Find pet</p>} />
-        <Route path="/friends" element={<p>Our friends</p>} />
+        <Route path="/friends" element={<OurFriends />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/profile" element={<ProfilePage />} />

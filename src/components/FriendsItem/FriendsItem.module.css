@@ -1,0 +1,36 @@
+.contFriend {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 40px 0 40px 20px;
+  border-radius: 15px;
+  width: 335px;
+  height: 184px;
+  background: #fff;
+}
+
+.workDays {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border-radius: 30px;
+  padding: 8px;
+  width: 90px;
+  height: 32px;
+  background: #fff4df;
+}
+
+.logoFriend {
+  /* display: block; */
+  width: 80px;
+  height: 80px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+}
