@@ -19,6 +19,13 @@
   width: 90px;
   height: 32px;
   background: #fff4df;
+
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: #f6b83d;
 }
 
 .logoFriend {
