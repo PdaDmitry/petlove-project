@@ -5,6 +5,8 @@ const initialState = {
   items: [],
   isLoading: false,
   isError: null,
+  perPage: 0,
+  totalPages: 0,
 };
 
 const newsSlice = createSlice({
@@ -15,11 +17,14 @@ const newsSlice = createSlice({
       .addCase(fetchNewsThunk.pending, (state, action) => {
         state.isLoading = true;
         state.isError = null;
+        state.total = 0;
       })
       .addCase(fetchNewsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = null;
-        state.items = action.payload;
+        state.items = action.payload.results;
+        state.perPage = action.payload.perPage;
+        state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchNewsThunk.rejected, (state, action) => {
         state.isLoading = false;
