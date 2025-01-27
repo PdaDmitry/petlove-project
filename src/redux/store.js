@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import { authReducer } from './auth/authSlice';
 import { friendsReducer } from './friends/friendsSlice';
+import { newsReducer } from './news/newsSlice';
 
 const persistAuthConfig = {
   key: 'auth',
@@ -25,13 +26,21 @@ const persistFriendsConfig = {
   whitelist: ['items'],
 };
 
+const persistNewsConfig = {
+  key: 'news',
+  storage,
+  whitelist: ['items'],
+};
+
 const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer);
 const persistedFriendsReducer = persistReducer(persistFriendsConfig, friendsReducer);
+const persistedNewsReducer = persistReducer(persistNewsConfig, newsReducer);
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     friends: persistedFriendsReducer,
+    news: persistedNewsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
