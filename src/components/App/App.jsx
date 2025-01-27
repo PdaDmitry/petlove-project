@@ -9,6 +9,7 @@ import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
 import { NotFound } from '../../pages/NotFound/NotFound';
 import { Header } from '../Header/Header';
 import { OurFriends } from '../../pages/OurFriends/OurFriends';
+import { NewsPage } from '../../pages/NewsPage/NewsPage';
 
 function App() {
   const location = useLocation();
@@ -22,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/news" element={<p>News</p>} />
+        <Route path="/news" element={<NewsPage />} />
         <Route path="/notices" element={<p>Find pet</p>} />
         <Route path="/friends" element={<OurFriends />} />
         <Route path="/login" element={<LoginPage />} />

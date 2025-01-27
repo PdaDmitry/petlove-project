@@ -1,0 +1,115 @@
+.contNews {
+  padding: 54px 20px 80px;
+}
+
+.titleNews {
+  margin-bottom: 20px;
+}
+
+.contForm {
+  margin-bottom: 24px;
+}
+
+.contSearch {
+  position: relative;
+  align-items: center;
+  width: 335px;
+  height: 42px;
+}
+
+.input {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  background-color: transparent;
+  padding: 12px;
+  width: 335px;
+  height: 42px;
+}
+
+.input::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.input:focus {
+  outline: none;
+}
+
+/* ================================reset browser settings==================================== */
+
+.input:-webkit-autofill {
+  background-color: white !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  transition: background-color 0s;
+}
+
+.input:-webkit-autofill:focus {
+  background-color: white !important;
+}
+
+/* ========================================================================================= */
+
+.btnSearch {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  top: 12px;
+  right: 12px;
+  padding: 0;
+}
+
+.iconSearch {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+/* import { createSlice } from '@reduxjs/toolkit';
+import { fetchNewsThunk } from './operationsNews';
+
+const initialState = {
+  items: [],
+  isLoading: false,
+  isError: null,
+};
+
+const newsSlice = createSlice({
+  name: 'news',
+  initialState,
+  extraReducers: builder => {
+    builder
+      .addCase(fetchNewsThunk.pending, (state, action) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(fetchNewsThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchNewsThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = action.payload || 'Something went wrong';
+      });
+  },
+});
+
+export const newsReducer = newsSlice.reducer; */
+
+/* import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+export const fetchNewsThunk = createAsyncThunk('fetchNews', async (_, { rejectWithValue }) => {
+  try {
+    const response = await axios.get('/news');
+    console.log('friends: ', response.data);
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error.response?.data?.message || error.message);
+  }
+}); */

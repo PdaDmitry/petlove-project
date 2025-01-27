@@ -11,37 +11,27 @@ export const FriendsItem = ({ id }) => {
 
   const { address, email, phone, title, imageUrl, addressUrl } = friend;
 
-  // let workDays;
-  // let from;
-  // let to;
-  // if (friend.workDays == null) workDays = 'Day and night';
-  // if (Array.isArray(friend.workDays)) {
-  //   for (let i = 0; i < friend.workDays.length; i++) {
-  //     if (friend.workDays[i].from === '') {
-  //       continue;
-  //     } else {
-  //       from = friend.workDays[i].from;
-  //     }
-  //     if (friend.workDays[i].to === '') {
-  //       continue;
-  //     } else {
-  //       to = friend.workDays[i].to;
-  //     }
-  //   }
-  // }
-
-  // let from, to;
+  let from, to;
   let workDaysText = 'Day and night'; // Значение по умолчанию
 
-  // if (Array.isArray(friend.workDays) && friend.workDays.length > 0) {
-  //   from = friend.workDays.find(day => day.from)?.from || '';
+  if (Array.isArray(friend.workDays)) {
+    for (let i = 0; i < friend.workDays.length; i++) {
+      if (friend.workDays[i].from === '') {
+        continue;
+      } else {
+        from = friend.workDays[i].from;
+      }
+      if (friend.workDays[i].to === '') {
+        continue;
+      } else {
+        to = friend.workDays[i].to;
+      }
+    }
+  }
 
-  //   to = friend.workDays.reverse().find(day => day.to)?.to || '';
-
-  //   if (from && to) {
-  //     workDaysText = `${from} - ${to}`;
-  //   }
-  // }
+  if (from && to) {
+    workDaysText = `${from} - ${to}`;
+  }
 
   return (
     <div className={css.contFriend}>
@@ -53,21 +43,32 @@ export const FriendsItem = ({ id }) => {
 
         <address>
           <ul className={css.menuAddress}>
-            <li>
-              <a href={`mailto:${email}`}>Email: {email ? ` ${email}` : 'Website only'}</a>
+            <li className={css.menuEmail}>
+              <p className={css.menuText}>Email: </p>
+              <a className={css.linkText} href={`mailto:${' '}${email}`}>
+                {email ? ` ${email}` : 'Website only'}
+              </a>
             </li>
-            <li>
-              <a href={addressUrl} target="_blank" rel="noopener noreferrer">
-                Address:{' '}
+            <li className={css.menuAddressItem}>
+              <p className={css.menuText}>Address: </p>
+              <a
+                className={css.linkText}
+                href={addressUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {address
                   ? address.length > 19
                     ? `${address.slice(0, 19)}...`
                     : address
-                  : 'Website only'}
+                  : 'Website only'}{' '}
               </a>
             </li>
-            <li>
-              <a href={`tel:${phone}`}>Phone: {phone ? ` ${phone}` : 'Email only'}</a>
+            <li className={css.menuPhone}>
+              <p className={css.menuText}>Phone: </p>
+              <a className={css.linkText} href={`tel:${phone}`}>
+                {phone ? ` ${phone}` : 'Email only'}
+              </a>
             </li>
           </ul>
         </address>

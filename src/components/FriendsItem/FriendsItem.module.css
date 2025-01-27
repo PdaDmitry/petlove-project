@@ -20,7 +20,6 @@
   height: 32px;
   background: #fff4df;
 
-
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33333;
@@ -32,6 +31,7 @@
   /* display: block; */
   width: 80px;
   height: 80px;
+  text-align: center;
 }
 
 .title {
@@ -40,4 +40,30 @@
   line-height: 125%;
   letter-spacing: -0.04em;
   margin-bottom: 14px;
+}
+
+.menuEmail,
+.menuAddressItem,
+.menuPhone {
+  display: flex;
+  gap: 2px;
+  font-style: normal;
+  margin-bottom: 8px;
+}
+
+.menuPhone {
+  margin-bottom: 0;
+}
+
+.menuText,
+.linkText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+.menuText {
+  color: rgba(38, 38, 38, 0.5);
 }
