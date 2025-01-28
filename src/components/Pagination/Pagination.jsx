@@ -3,9 +3,9 @@ import { selectPage, selectPerPage, selectTotalPages } from '../../redux/news/se
 import css from './Pagination.module.css';
 import { useEffect, useState } from 'react';
 
-export const Pagination = () => {
-  const page = useSelector(selectPage);
-  const [currentPage, setCurrentPage] = useState(page);
+export const Pagination = ({ setPage }) => {
+  const currentPage = useSelector(selectPage);
+  // const [currentPage, setCurrentPage] = useState(curPage);
   const totalPages = useSelector(selectTotalPages);
   const perPage = useSelector(selectPerPage);
   const maxPage = Math.ceil(totalPages / perPage);
@@ -57,23 +57,23 @@ export const Pagination = () => {
   // Функция для обработки кликов по кнопкам
   const handlePageClick = value => {
     if (value === '...') return; // Игнорируем клики по многоточию
-    setCurrentPage(value);
+    setPage(value);
   };
 
   const handleDecrease = () => {
-    setCurrentPage(prev => Math.max(1, prev - 1)); // Уменьшаем страницу, не ниже 1
+    setPage(prev => Math.max(1, prev - 1)); // Уменьшаем страницу, не ниже 1
   };
 
   const handleIncrease = () => {
-    setCurrentPage(prev => Math.min(maxPage, prev + 1)); // Увеличиваем страницу, не выше maxPage
+    setPage(prev => Math.min(maxPage, prev + 1)); // Увеличиваем страницу, не выше maxPage
   };
 
-  const handleFirstPageClick = () => setCurrentPage(1);
-  const handleLastPageClick = () => setCurrentPage(maxPage);
-
+  const handleFirstPageClick = () => setPage(1);
+  const handleLastPageClick = () => setPage(maxPage);
+  // setPage(currentPage);
   // Если страниц меньше, чем количество элементов на странице, пагинация не отображается
   if (totalPages <= perPage) return null;
-  console.log(currentPage);
+  // console.log(currentPage);
 
   return (
     <div className={css.contPagination}>

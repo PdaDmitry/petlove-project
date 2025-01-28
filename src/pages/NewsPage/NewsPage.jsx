@@ -2,14 +2,15 @@ import css from './NewsPage.module.css';
 import Title from '../../components/Title/Title';
 import { LuSearch } from 'react-icons/lu';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchNewsThunk } from '../../redux/news/operationsNews';
 import { selectPage } from '../../redux/news/selectorsNews';
 import { NewsList } from '../../components/NewsList/NewsList';
 import { Pagination } from '../../components/Pagination/Pagination';
 
 export const NewsPage = () => {
-  const page = useSelector(selectPage);
+  // const page = useSelector(selectPage);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export const NewsPage = () => {
         </div>
       </form>
       <NewsList />
-      <Pagination />
+      <Pagination setPage={setPage} />
     </div>
   );
 };
