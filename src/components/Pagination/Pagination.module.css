@@ -1,12 +1,12 @@
 .contPagination {
-    display: flex;
-    gap: 11px;
+  display: flex;
+  gap: 11px;
 }
 
 .left,
 .right {
-    display: flex;
-    gap: 6px;
+  display: flex;
+  gap: 6px;
 }
 
 .contDoubleLeft,
@@ -16,24 +16,23 @@
 .theFirstElem,
 .theSecondtElem,
 .ellipsis {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid rgba(38, 38, 38, 0.02);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(38, 38, 38, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
+.freeze,
 .disabled {
-    opacity: 0.5;
-
-    pointer-events: none;
-
-    cursor: not-allowed;
-    /* border: 1px solid rgba(38, 38, 38, 0.02); */
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  /* border: 1px solid rgba(38, 38, 38, 0.02); */
 }
 
 .contDoubleLeft:hover,
@@ -43,44 +42,48 @@
 .theFirstElem:hover,
 .theSecondtElem:hover,
 .ellipsis:hover {
-    border: 1px solid rgba(38, 38, 38, 0.05);
+  border: 1px solid rgba(38, 38, 38, 0.5);
 }
 
 .leftSvg1 {
-    position: absolute;
-    left: 6px;
-    width: 20px;
-    height: 20px;
+  position: absolute;
+  left: 6px;
+  width: 20px;
+  height: 20px;
 }
 
 .leftSvg2 {
-    position: absolute;
-    left: 12px;
-    width: 20px;
-    height: 20px;
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 20px;
 }
 
 .leftSvg,
 .rightSvg {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .center {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.theThirdElem {
+  display: none;
 }
 
 .rightSvg1 {
-    position: absolute;
-    left: 6px;
-    width: 20px;
-    height: 20px;
+  position: absolute;
+  left: 6px;
+  width: 20px;
+  height: 20px;
 }
 
 .rightSvg2 {
-    position: absolute;
-    left: 12px;
-    width: 20px;
-    height: 20px;
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 20px;
 }
