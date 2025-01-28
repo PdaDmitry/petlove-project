@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFriendsThunk } from '../../redux/friends/operationsFriends';
 import Title from '../../components/Title/Title';
 import css from './OurFriends.module.css';
-import { selectFriends } from '../../redux/friends/selectorFriends';
+// import { selectFriends } from '../../redux/friends/selectorFriends';
 import { FriendsList } from '../../components/FriendsList/FriendsList';
 
 export const OurFriends = () => {

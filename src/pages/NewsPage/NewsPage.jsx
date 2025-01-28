@@ -4,17 +4,17 @@ import { LuSearch } from 'react-icons/lu';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchNewsThunk } from '../../redux/news/operationsNews';
-import { selectPerPage, selectTotalPages } from '../../redux/news/selectorsNews';
+import { selectPage } from '../../redux/news/selectorsNews';
+import { NewsList } from '../../components/NewsList/NewsList';
+import { Pagination } from '../../components/Pagination/Pagination';
 
 export const NewsPage = () => {
+  const page = useSelector(selectPage);
   const dispatch = useDispatch();
-  const perPage = useSelector(selectPerPage);
-  const totalPages = useSelector(selectTotalPages);
-  // console.log(perPage, totalPages);
 
   useEffect(() => {
-    dispatch(fetchNewsThunk());
-  }, [dispatch]);
+    dispatch(fetchNewsThunk({ page }));
+  }, [dispatch, page]);
 
   return (
     <div className={css.contNews}>
@@ -27,6 +27,8 @@ export const NewsPage = () => {
           </button>
         </div>
       </form>
+      <NewsList />
+      <Pagination />
     </div>
   );
 };

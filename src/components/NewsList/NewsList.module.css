@@ -1,0 +1,7 @@
+.contNewsList {
+    margin-bottom: 44px;
+}
+
+.listNews .itemLi:not(:last-child) {
+    margin-bottom: 24px;
+}

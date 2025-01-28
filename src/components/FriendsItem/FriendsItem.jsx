@@ -12,7 +12,7 @@ export const FriendsItem = ({ id }) => {
   const { address, email, phone, title, imageUrl, addressUrl } = friend;
 
   let from, to;
-  let workDaysText = 'Day and night'; // Значение по умолчанию
+  let workDaysText = 'Day and night';
 
   if (Array.isArray(friend.workDays)) {
     for (let i = 0; i < friend.workDays.length; i++) {

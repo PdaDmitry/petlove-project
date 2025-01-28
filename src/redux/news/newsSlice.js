@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   isLoading: false,
   isError: null,
+  page: 1,
   perPage: 0,
   totalPages: 0,
 };
@@ -23,6 +24,7 @@ const newsSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
         state.items = action.payload.results;
+        state.page = action.payload.page;
         state.perPage = action.payload.perPage;
         state.totalPages = action.payload.totalPages;
       })
