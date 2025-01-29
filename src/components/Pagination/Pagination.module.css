@@ -12,10 +12,10 @@
 .contDoubleLeft,
 .contLeft,
 .contDoubRight,
-.contLeft,
-.theFirstElem,
-.theSecondtElem,
-.ellipsis,
+/* .contLeft, */
+/* .theFirstElem, */
+/* .theSecondtElem, */
+/* .ellipsis, */
 .pageItem {
   position: relative;
   width: 40px;
@@ -38,7 +38,7 @@
   border: none;
 }
 
-.freeze,
+/* .freeze, */
 .disabled {
   opacity: 0.5;
   pointer-events: none;
@@ -50,9 +50,9 @@
 .contLeft:hover,
 .contDoubRight:hover,
 .contLeft:hover,
-.theFirstElem:hover,
-.theSecondtElem:hover,
-.ellipsis:hover,
+/* .theFirstElem:hover, */
+/* .theSecondtElem:hover, */
+/* .ellipsis:hover, */
 .pageItem:hover {
   border: 1px solid rgba(38, 38, 38, 0.5);
 }
