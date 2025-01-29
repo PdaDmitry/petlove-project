@@ -15,7 +15,8 @@
 .contLeft,
 .theFirstElem,
 .theSecondtElem,
-.ellipsis {
+.ellipsis,
+.pageItem {
   position: relative;
   width: 40px;
   height: 40px;
@@ -25,6 +26,16 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.pageItem.active {
+  background-color: #f6b83d;
+  border: none;
+  color: #fff;
+}
+
+.pageItem.active:hover {
+  border: none;
 }
 
 .freeze,
@@ -41,7 +52,8 @@
 .contLeft:hover,
 .theFirstElem:hover,
 .theSecondtElem:hover,
-.ellipsis:hover {
+.ellipsis:hover,
+.pageItem:hover {
   border: 1px solid rgba(38, 38, 38, 0.5);
 }
 

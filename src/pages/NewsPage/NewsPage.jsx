@@ -17,6 +17,8 @@ export const NewsPage = () => {
     dispatch(fetchNewsThunk({ page }));
   }, [dispatch, page]);
 
+  console.log('page; ', page);
+
   return (
     <div className={css.contNews}>
       <Title className={css.titleNews}>News</Title>

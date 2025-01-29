@@ -25,19 +25,17 @@ export const Pagination = ({ setPage }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Логика обновления пагинации
   useEffect(() => {
     if (windowWidth < 768) {
-      // Мобильная версия (до 767px)
       if (currentPage === 1) {
-        setPaginationItems([1, 2]);
-        setEllipsis('...');
+        setPaginationItems([1, 2, '...']);
+        // setEllipsis('...');
       } else if (currentPage === maxPage) {
-        setPaginationItems([maxPage - 1, maxPage]);
-        setEllipsis('');
+        setPaginationItems(['...', maxPage - 1, maxPage]);
+        // setEllipsis('');
       } else {
-        setPaginationItems([currentPage - 1, currentPage]);
-        setEllipsis('...');
+        // setPaginationItems([currentPage - 1, currentPage, '...']);
+        // setEllipsis('...');
       }
     } else {
       // Версия для экранов от 768px
@@ -60,13 +58,36 @@ export const Pagination = ({ setPage }) => {
     setPage(value);
   };
 
+  // ==========================================================================
+  // const handleDecrease = () => {
+  //   setPage(prev => Math.max(1, prev - 1)); // Уменьшаем страницу, не ниже 1
+  // };
+
+  // const handleIncrease = () => {
+  //   setPage(prev => Math.min(maxPage, prev + 1)); // Увеличиваем страницу, не выше maxPage
+  // };
+
   const handleDecrease = () => {
-    setPage(prev => Math.max(1, prev - 1)); // Уменьшаем страницу, не ниже 1
+    setPage(prev => {
+      const newPage = Math.max(1, prev - 1);
+      if (windowWidth < 768) {
+        setPaginationItems(['...', newPage, newPage + 1]);
+      }
+      return newPage;
+    });
   };
 
   const handleIncrease = () => {
-    setPage(prev => Math.min(maxPage, prev + 1)); // Увеличиваем страницу, не выше maxPage
+    setPage(prev => {
+      const newPage = Math.min(maxPage, prev + 1);
+      if (windowWidth < 768) {
+        setPaginationItems([newPage - 1, newPage, '...']);
+      }
+      return newPage;
+    });
   };
+
+  // ===========================================================================
 
   const handleFirstPageClick = () => setPage(1);
   const handleLastPageClick = () => setPage(maxPage);
