@@ -13,6 +13,7 @@ import {
 import { authReducer } from './auth/authSlice';
 import { friendsReducer } from './friends/friendsSlice';
 import { newsReducer } from './news/newsSlice';
+import { petsReducer } from './pets/petsSlice';
 
 const persistAuthConfig = {
   key: 'auth',
@@ -32,15 +33,23 @@ const persistNewsConfig = {
   whitelist: ['items'],
 };
 
+const persistPetsConfig = {
+  key: 'pets',
+  storage,
+  whitelist: ['items'],
+};
+
 const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer);
 const persistedFriendsReducer = persistReducer(persistFriendsConfig, friendsReducer);
 const persistedNewsReducer = persistReducer(persistNewsConfig, newsReducer);
+const persistedPetsReducer = persistReducer(persistPetsConfig, petsReducer);
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     friends: persistedFriendsReducer,
     news: persistedNewsReducer,
+    pets: persistedPetsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

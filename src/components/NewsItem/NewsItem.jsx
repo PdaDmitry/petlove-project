@@ -7,7 +7,7 @@ export const NewsItem = ({ id }) => {
   const newItem = useSelector(selectNewById(id));
 
   if (!newItem) {
-    return <p>Friend not found</p>;
+    return <p>New not found</p>;
   }
 
   const { date, imgUrl, text, title, url } = newItem;

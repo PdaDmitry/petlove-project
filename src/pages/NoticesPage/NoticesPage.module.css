@@ -1,0 +1,15 @@
+.contNotices {
+    padding: 50px 20px 88px;
+}
+
+.titleNotices {
+    margin-bottom: 40px;
+}
+
+.contFilters {
+    border-radius: 30px;
+    width: 335px;
+    height: 378px;
+    background: #fff4df;
+    margin-bottom: 40px;
+}

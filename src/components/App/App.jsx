@@ -10,6 +10,7 @@ import { NotFound } from '../../pages/NotFound/NotFound';
 import { Header } from '../Header/Header';
 import { OurFriends } from '../../pages/OurFriends/OurFriends';
 import { NewsPage } from '../../pages/NewsPage/NewsPage';
+import { NoticesPage } from '../../pages/NoticesPage/NoticesPage';
 
 function App() {
   const location = useLocation();
@@ -24,7 +25,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/notices" element={<p>Find pet</p>} />
+        <Route path="/notices" element={<NoticesPage />} />
         <Route path="/friends" element={<OurFriends />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
