@@ -2,10 +2,17 @@ import { useSelector } from 'react-redux';
 import { selectPage, selectPerPage, selectTotalPages } from '../../redux/news/selectorsNews';
 import css from './Pagination.module.css';
 import { useEffect, useState } from 'react';
+import { selectPetsTotalPages } from '../../redux/pets/selectorsPets';
+import { useLocation } from 'react-router-dom';
 
 export const Pagination = ({ setPage }) => {
+  const location = useLocation();
+  const isNewsPage = location.pathname.includes('/news');
+  const totalPages = isNewsPage ? useSelector(selectTotalPages) : useSelector(selectPetsTotalPages);
+  console.log('totalPages: ', totalPages);
   const currentPage = useSelector(selectPage);
-  const totalPages = useSelector(selectTotalPages);
+  // const totalPages = useSelector(selectTotalPages);
+  // const totalPetsPages = useSelector(selectPetsTotalPages);
   const perPage = useSelector(selectPerPage);
   const maxPage = Math.ceil(totalPages / perPage);
   const [paginationItems, setPaginationItems] = useState([]);

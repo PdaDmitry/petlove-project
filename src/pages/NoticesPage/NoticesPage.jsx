@@ -19,7 +19,7 @@ export const NoticesPage = () => {
       <Title className={css.titleNotices}>Find your favorite pet</Title>
       <div className={css.contFilters}></div>
       <NoticesList />
-      <Pagination />
+      <Pagination setPage={setPage} />
     </div>
   );
 };
