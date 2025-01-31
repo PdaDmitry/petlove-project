@@ -3,7 +3,7 @@
   border-radius: 16px;
   /* padding: 32px; */
   width: 335px;
-  height: 454px;
+  /* height: 454px; */
   background: #fff;
 }
 
@@ -28,6 +28,18 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
+}
+
+.contStar {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.popularity {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
 }
 
 .iconStarYellow {
@@ -99,6 +111,7 @@
   line-height: 129%;
   letter-spacing: -0.03em;
   color: #fff;
+  outline: none;
 }
 
 .btnLearn:hover {

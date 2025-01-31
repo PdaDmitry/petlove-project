@@ -1,0 +1,199 @@
+.contModalNotice {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  width: 335px;
+  /* height: 476px; */
+  background: #fff;
+  padding: 40px 28px;
+}
+
+.closeButton {
+  position: absolute;
+  display: block;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  /* width: 24px;
+  height: 24px; */
+  cursor: pointer;
+  padding: 0;
+}
+
+.contImg {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.spanCategory {
+  position: absolute;
+  border-radius: 30px;
+  padding: 8px 14px;
+  /* width: 48px; */
+  height: 32px;
+  background: #fff4df;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  color: #f6b83d;
+}
+
+.petImg {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  margin-bottom: 10px;
+}
+
+.contReting {
+  margin-bottom: 24px;
+}
+
+.contReting,
+.ratingStar {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.iconStarYellow {
+  display: block;
+  fill: #ffc531;
+}
+
+.iconStarGray {
+  display: block;
+  fill: rgba(38, 38, 38, 0.05);
+}
+
+.popularity {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+}
+
+.petInfo {
+  display: flex;
+  gap: 27px;
+  margin-bottom: 16px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.categoryName {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.categoryValue {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  margin-bottom: 20px;
+}
+
+.conButtons {
+  display: flex;
+  gap: 10px;
+  /* justify-content: space-between; */
+}
+
+.btnAdd {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 31px;
+  width: 135px;
+  height: 44px;
+  background: #fff4df;
+  color: #f6b83d;
+  cursor: pointer;
+}
+
+.btnAdd:hover {
+  color: #fff;
+  background: #f6b83d;
+}
+
+.btnAdd:hover .iconHeart {
+  display: none; /* Скрываем обычную иконку */
+}
+
+.btnAdd:hover .iconHeartHover {
+  display: block; /* Показываем иконку для ховера */
+}
+
+.textAdd {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+}
+
+.iconHeartHover,
+.iconHeart {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.iconHeartHover {
+  display: none;
+}
+
+.btnContact {
+  display: block;
+  border-radius: 30px;
+  /* padding: 12px 37px; */
+  width: 134px;
+  height: 44px;
+  background: #fff4df;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+  cursor: pointer;
+}
+
+.btnContact:hover {
+  color: #fff;
+  background: #f6b83d;
+}

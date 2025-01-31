@@ -1,11 +1,10 @@
-.contLogoutModal {
+.contModalAttention {
   position: relative;
-  width: 335px;
-  /* height: 270px; */
-  padding: 40px 28px;
   border-radius: 30px;
-  background-color: #fff;
-  text-align: center;
+  width: 335px;
+  /* height: 394px; */
+  background: #fff;
+  padding: 40px 20px;
 }
 
 .closeButton {
@@ -33,46 +32,55 @@
   margin-bottom: 20px;
 }
 
-.imageCat {
+.imageDog {
   display: block;
   width: 44px;
   height: 44px;
 }
 
-.text {
+.title {
+  text-align: center;
   font-weight: 700;
   font-size: 20px;
   line-height: 100%;
   letter-spacing: -0.03em;
-  color: #262626;
-  margin-bottom: 28px;
+  color: #f6b83d;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .conButtons {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
+  justify-content: center;
 }
 
-.btnYes,
-.btnCancel {
-  display: block;
-  width: 137px;
+.btnLogIn,
+.btnRegister {
+  border-radius: 30px;
+  border: none;
+  /* padding: 12px 24px; */
+  width: 129px;
+  height: 42px;
+  background: #fff4df;
   font-weight: 700;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: #262626;
-  border: none;
-  border-radius: 30px;
-  /* padding: 12px 44px; */
-  width: 134px;
-  height: 42px;
-  background: rgba(38, 38, 38, 0.05);
+  color: #f6b83d;
   cursor: pointer;
 }
 
-.btnYes:hover,
-.btnCancel:hover {
+.btnLogIn:hover,
+.btnRegister:hover {
   color: #fff;
   background: #f6b83d;
 }

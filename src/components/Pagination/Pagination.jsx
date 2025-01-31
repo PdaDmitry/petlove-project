@@ -91,7 +91,7 @@ export const Pagination = ({ setPage }) => {
   const handleFirstPageClick = () => setPage(1);
   const handleLastPageClick = () => setPage(maxPage);
 
-  if (totalPages <= perPage) return null;
+  if (totalPages === 1) return null;
 
   return (
     <div className={css.contPagination}>

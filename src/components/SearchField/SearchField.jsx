@@ -1,7 +1,7 @@
 import css from './SearchField.module.css';
 import { LuSearch } from 'react-icons/lu';
 
-export const SearchField = ({ onSubmit, className = '' }) => {
+export const SearchField = ({ onSubmit, className = '', inputClassName = '' }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const entryField = e.target.elements.query.value.trim();
@@ -13,7 +13,12 @@ export const SearchField = ({ onSubmit, className = '' }) => {
   return (
     <form className={`${css.contForm} ${className}`} onSubmit={handleSubmit}>
       <div className={css.contSearch}>
-        <input className={css.input} type="text" name="query" placeholder="Search" />
+        <input
+          className={`${css.input} ${inputClassName}`}
+          type="text"
+          name="query"
+          placeholder="Search"
+        />
         <button className={css.btnSearch} type="submit">
           <LuSearch className={css.iconSearch} />
         </button>

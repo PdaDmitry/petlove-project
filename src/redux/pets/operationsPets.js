@@ -3,10 +3,10 @@ import axios from 'axios';
 
 export const fetchPetsThunk = createAsyncThunk(
   'fetchPets',
-  async ({ page, query }, { rejectWithValue }) => {
+  async ({ page, keyword }, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/notices?page=${page}&query=${query}`);
-      // console.log('pets: ', response);
+      const response = await axios.get(`/notices?page=${page}&keyword=${keyword}`);
+      // console.log('pets: ', response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);

@@ -16,6 +16,7 @@ export const NewsPage = () => {
 
   const searchWord = async newKeyword => {
     setKeyword(newKeyword);
+    setPage(1);
   };
 
   useEffect(() => {
