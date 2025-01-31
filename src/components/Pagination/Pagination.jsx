@@ -2,19 +2,25 @@ import { useSelector } from 'react-redux';
 import { selectPage, selectPerPage, selectTotalPages } from '../../redux/news/selectorsNews';
 import css from './Pagination.module.css';
 import { useEffect, useState } from 'react';
-import { selectPetsTotalPages } from '../../redux/pets/selectorsPets';
+import { selectPetsPage, selectPetsTotalPages } from '../../redux/pets/selectorsPets';
 import { useLocation } from 'react-router-dom';
 
 export const Pagination = ({ setPage }) => {
   const location = useLocation();
   const isNewsPage = location.pathname.includes('/news');
-  const totalPages = isNewsPage ? useSelector(selectTotalPages) : useSelector(selectPetsTotalPages);
-  console.log('totalPages: ', totalPages);
-  const currentPage = useSelector(selectPage);
-  // const totalPages = useSelector(selectTotalPages);
-  // const totalPetsPages = useSelector(selectPetsTotalPages);
+
+  const totalNewsPages = useSelector(selectTotalPages);
+  const totalPetsPages = useSelector(selectPetsTotalPages);
+  const totalPages = isNewsPage ? totalNewsPages : totalPetsPages;
+  // console.log('totalPages: ', totalPages);
+
+  const currentNewsPage = useSelector(selectPage);
+  const currentPetsPage = useSelector(selectPetsPage);
+  const currentPage = isNewsPage ? currentNewsPage : currentPetsPage;
+
   const perPage = useSelector(selectPerPage);
-  const maxPage = Math.ceil(totalPages / perPage);
+  // const maxPage = Math.ceil(totalPages / perPage);
+  const maxPage = totalPages;
   const [paginationItems, setPaginationItems] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

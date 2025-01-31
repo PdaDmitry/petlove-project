@@ -6,7 +6,7 @@ export const fetchPetsThunk = createAsyncThunk(
   async ({ page, query }, { rejectWithValue }) => {
     try {
       const response = await axios.get(`/notices?page=${page}&query=${query}`);
-      console.log('pets: ', response);
+      // console.log('pets: ', response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);

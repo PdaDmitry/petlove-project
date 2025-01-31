@@ -5,7 +5,7 @@ import { NoticesItem } from '../NoticesItem/NoticesItem';
 
 export const NoticesList = () => {
   const pets = useSelector(selectPets);
-  console.log('pets: ', pets);
+  // console.log('pets: ', pets);
 
   return (
     <div className={css.contPetsList}>
