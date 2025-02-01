@@ -11,6 +11,9 @@ import {
   // customStyles,
   getCustomStyles,
 } from '../../options';
+import { IoMdClose } from 'react-icons/io';
+import { LuSearch } from 'react-icons/lu';
+import { components } from 'react-select';
 
 export const NoticesFilters = () => {
   const [logOutFilters, setLogOutFilters] = useState({ category: '', byGender: '', byType: '' });
@@ -18,7 +21,27 @@ export const NoticesFilters = () => {
   const [byGender, setByGender] = useState('');
   const [byType, setByType] = useState('');
 
+  // Состояния для сортировки
+  const [popularity, setPopularity] = useState('');
+  const [price, setPrice] = useState('');
+
   const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const resetFilters = () => {
+    setPopularity('');
+    setPrice('');
+    setCategory('');
+    setByGender('');
+    setByType('');
+  };
+
+  const customComponents = {
+    DropdownIndicator: props => (
+      <components.DropdownIndicator {...props}>
+        <LuSearch style={{ width: '18px', height: '18px', stroke: '#262626' }} />
+      </components.DropdownIndicator>
+    ),
+  };
 
   return (
     <form className={css.contFilter}>
@@ -90,9 +113,8 @@ export const NoticesFilters = () => {
           isSearchable={false}
         />
       </div>
-      {/* ================================================================================ */}
+      {/* =======================================Location========================================= */}
 
-      {/* Поле для выбора города */}
       <div className={css.contLocation}>
         <Select
           placeholder="Location"
@@ -100,9 +122,124 @@ export const NoticesFilters = () => {
           // isLoading={loading}
           // options={locationOptions}
           // onInputChange={fetchLocations}
+          components={customComponents}
           styles={getCustomStyles()}
           className={css.locationField}
         />
+      </div>
+
+      <svg className={css.lineSvg}>
+        <use href="/symbol-defs.svg#icon-Vector-mob"></use>
+      </svg>
+
+      {/* =====================================RadioButtons=========================================== */}
+
+      <div className={css.sortOptions}>
+        <div className={css.radioGroupPopular}>
+          <div
+            className={`${css.radioButton} ${popularity === 'popular' ? css.active : ''}`}
+            onClick={() => setPopularity('popular')}
+          >
+            <p>Popular</p>
+            {popularity === 'popular' && (
+              <button
+                type="button"
+                className={css.closeButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  setPopularity('');
+                }}
+              >
+                <IoMdClose
+                  style={{
+                    width: '18px',
+                    height: '18px',
+                    fill: '#fff',
+                  }}
+                />
+              </button>
+            )}
+          </div>
+          <div
+            className={`${css.radioButton} ${popularity === 'unpopular' ? css.active : ''}`}
+            onClick={() => setPopularity('unpopular')}
+          >
+            <p>Unpopular</p>
+            {popularity === 'unpopular' && (
+              <button
+                type="button"
+                className={css.closeButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  setPopularity('');
+                }}
+              >
+                <IoMdClose
+                  style={{
+                    width: '18px',
+                    height: '18px',
+                    fill: '#fff',
+                  }}
+                />
+              </button>
+            )}
+          </div>
+
+          <div
+            className={`${css.radioButton} ${price === 'cheap' ? css.active : ''}`}
+            onClick={() => setPrice('cheap')}
+          >
+            <p>Cheap</p>
+            {price === 'cheap' && (
+              <button
+                type="button"
+                className={css.closeButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  setPrice('');
+                }}
+              >
+                <IoMdClose
+                  style={{
+                    width: '18px',
+                    height: '18px',
+                    fill: '#fff',
+                  }}
+                />
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div className={css.radioGroupPrice}>
+          <div
+            className={`${css.radioButton} ${price === 'expensive' ? css.active : ''}`}
+            onClick={() => setPrice('expensive')}
+          >
+            <p>Expensive</p>
+            {price === 'expensive' && (
+              <button
+                type="button"
+                className={css.closeButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  setPrice('');
+                }}
+              >
+                <IoMdClose
+                  style={{
+                    width: '18px',
+                    height: '18px',
+                    fill: '#fff',
+                  }}
+                />
+              </button>
+            )}
+          </div>
+          <button type="button" className={css.resetButton} onClick={resetFilters}>
+            Reset
+          </button>
+        </div>
       </div>
     </form>
   );

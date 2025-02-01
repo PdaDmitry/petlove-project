@@ -18,3 +18,76 @@
 .contLocation {
   margin-bottom: 20px;
 }
+
+.lineSvg {
+  display: block;
+  width: 295px;
+  height: 1vh;
+  stroke: rgba(38, 38, 38, 0.1);
+  margin-bottom: 20px;
+}
+
+/* ============================================== */
+
+.sortOptions {
+  /* display: flex; */
+}
+
+.radioGroupPopular {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.radioButton {
+  display: flex;
+  gap: 6px;
+  align-items: normal;
+  border-radius: 30px;
+  padding: 12px;
+  /* width: 72px; */
+  height: 42px;
+  background: #fff;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.radioButton.active {
+  color: white;
+  background: #f6b83d;
+}
+
+.closeButton {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.radioGroupPrice {
+  display: flex;
+  gap: 10px;
+}
+
+.resetButton {
+  border-radius: 30px;
+  border: none;
+  padding: 12px;
+  width: 88px;
+  height: 42px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.4s;
+}
+
+.resetButton:hover {
+  color: white;
+  background: #f6b83d;
+}
