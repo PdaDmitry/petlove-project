@@ -11,11 +11,20 @@ import { Header } from '../Header/Header';
 import { OurFriends } from '../../pages/OurFriends/OurFriends';
 import { NewsPage } from '../../pages/NewsPage/NewsPage';
 import { NoticesPage } from '../../pages/NoticesPage/NoticesPage';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../../redux/auth/operationsAuth';
+import { useEffect } from 'react';
 
 function App() {
   const location = useLocation();
   const isMainPage = location.pathname === '/';
   const isHomePage = location.pathname === '/home';
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser()); // Запрашиваем данные пользователя при загрузке
+  }, [dispatch]);
 
   return (
     <div className={css.contApp}>

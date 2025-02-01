@@ -6,12 +6,12 @@ axios.defaults.baseURL = 'https://petlove.b.goit.study/api/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  localStorage.setItem('token', token);
+  // localStorage.setItem('token', token);
 };
 
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
-  localStorage.removeItem('token');
+  // localStorage.removeItem('token');
 };
 
 // =========================================registerUser===============================
@@ -66,5 +66,23 @@ export const loginUser = createAsyncThunk('auth/login', async ({ email, password
       style: { background: 'red', color: 'white' },
     });
     // return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+// =====================================refreshUser======================================
+
+export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const token = state.auth.token;
+
+  if (!token) return thunkAPI.rejectWithValue('No token');
+
+  try {
+    setAuthHeader(token);
+    const res = await axios.get('/users/current');
+    return res.data;
+  } catch (error) {
+    clearAuthHeader();
+    return thunkAPI.rejectWithValue(error.message);
   }
 });

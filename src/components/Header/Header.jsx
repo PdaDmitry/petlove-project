@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import css from './Header.module.css';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
+import { selectIsLoggedIn, selectToken, selectUser } from '../../redux/auth/selectorsAuth';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
@@ -12,6 +12,9 @@ export const Header = ({ isHome }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const token = useSelector(selectToken);
+  // const user = useSelector(selectUser);
+  // console.log(user.email);
 
   const handleClick = () => {
     navigate('/home');
