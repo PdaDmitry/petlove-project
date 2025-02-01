@@ -1,0 +1,20 @@
+.contFilter {
+}
+
+.contCategoryGender {
+  display: flex;
+  /* gap: 8px; */
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.contCategory {
+}
+
+.contType {
+  margin-bottom: 12px;
+}
+
+.contLocation {
+  margin-bottom: 20px;
+}

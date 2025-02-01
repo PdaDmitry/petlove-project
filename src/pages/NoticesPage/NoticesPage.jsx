@@ -6,6 +6,7 @@ import css from './NoticesPage.module.css';
 import { useEffect, useMemo, useState } from 'react';
 import { fetchPetsThunk } from '../../redux/pets/operationsPets';
 import { SearchField } from '../../components/SearchField/SearchField';
+import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 
 export const NoticesPage = () => {
   const [page, setPage] = useState(1);
@@ -32,6 +33,7 @@ export const NoticesPage = () => {
           className={css.searchPet}
           inputClassName={css.inputPets}
         />
+        <NoticesFilters />
       </div>
       <NoticesList />
       <Pagination setPage={setPage} />
