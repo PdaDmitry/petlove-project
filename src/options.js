@@ -1,9 +1,9 @@
 export const categoryOptions = [
-  { value: '', label: 'Show all' },
-  { value: 'found', label: 'Found' },
-  { value: 'free', label: 'Free' },
-  { value: 'lost', label: 'Lost' },
-  { value: 'sell', label: 'Sell' },
+  { value: 'Show all', label: 'Show all' },
+  { value: 'Found', label: 'Found' },
+  { value: 'Free', label: 'Free' },
+  { value: 'Lost', label: 'Lost' },
+  { value: 'Sell', label: 'Sell' },
 ];
 
 export const byGenderOptions = [

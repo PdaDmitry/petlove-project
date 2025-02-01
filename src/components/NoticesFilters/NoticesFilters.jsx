@@ -16,10 +16,19 @@ import { LuSearch } from 'react-icons/lu';
 import { components } from 'react-select';
 
 export const NoticesFilters = () => {
-  const [logOutFilters, setLogOutFilters] = useState({ category: '', byGender: '', byType: '' });
+  const [logOutFilters, setLogOutFilters] = useState({
+    category: '',
+    byGender: '',
+    byType: '',
+    popularity: '',
+    price: '',
+  });
   const [category, setCategory] = useState('');
   const [byGender, setByGender] = useState('');
   const [byType, setByType] = useState('');
+
+  // console.log('logOutFilters.category: ', logOutFilters.category);
+  // console.log('category: ', category);
 
   // Состояния для сортировки
   const [popularity, setPopularity] = useState('');
@@ -33,6 +42,7 @@ export const NoticesFilters = () => {
     setCategory('');
     setByGender('');
     setByType('');
+    setLogOutFilters({ category: '', byGender: '', byType: '' });
   };
 
   const customComponents = {
@@ -47,32 +57,34 @@ export const NoticesFilters = () => {
     <form className={css.contFilter}>
       <div className={css.contCategoryGender}>
         <div className={css.contCategory}>
-          {/* <label htmlFor="category" className={css.filterTitle}>
-          Category
-        </label> */}
-
           <Select
             options={categoryOptions}
             value={
               isLoggedIn
-                ? { value: category, label: category || 'Category' }
-                : {
-                    value: logOutFilters.category || '',
-                    label: logOutFilters.category || 'Category',
+                ? categoryOptions.find(option => option.value === category) || {
+                    value: '',
+                    label: 'Category',
+                  }
+                : categoryOptions.find(option => option.value === logOutFilters.category) || {
+                    value: '',
+                    label: 'Category',
                   }
             }
-            // onChange={option => handleFilterChange('category', option?.value || '')}
+            onChange={option => {
+              if (isLoggedIn) {
+                setCategory(option?.value || '');
+              } else {
+                setLogOutFilters(prev => ({ ...prev, category: option?.value || '' }));
+              }
+            }}
             styles={getCustomStyles('143px')}
             className={css.categoryField}
             isSearchable={false}
+            placeholder="Category"
           />
         </div>
         {/* ================================================================================ */}
         <div className={css.contGender}>
-          {/* <label htmlFor="category" className={css.filterTitle}>
-          Category
-        </label> */}
-
           <Select
             options={byGenderOptions}
             value={
@@ -93,10 +105,6 @@ export const NoticesFilters = () => {
 
       {/* ================================================================================ */}
       <div className={css.contType}>
-        {/* <label htmlFor="category" className={css.filterTitle}>
-          Category
-        </label> */}
-
         <Select
           options={byTypeOptions}
           value={
