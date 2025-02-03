@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './NoticesFilters.module.css';
 // import Select from 'react-select/dist/declarations/src/Select';
 import Select from 'react-select';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
 import {
   byGenderOptions,
@@ -14,15 +14,17 @@ import {
 import { IoMdClose } from 'react-icons/io';
 import { LuSearch } from 'react-icons/lu';
 import { components } from 'react-select';
+import { fetchCategoriesThunk } from '../../redux/pets/operationsPets';
+import { selectCategories } from '../../redux/pets/selectorsPets';
 
-export const NoticesFilters = () => {
-  const [logOutFilters, setLogOutFilters] = useState({
-    category: '',
-    byGender: '',
-    byType: '',
-    popularity: '',
-    price: '',
-  });
+export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
+  // const [logOutFilters, setLogOutFilters] = useState({
+  //   category: '',
+  //   byGender: '',
+  //   byType: '',
+  //   popularity: '',
+  //   price: '',
+  // });
   const [category, setCategory] = useState('');
   const [byGender, setByGender] = useState('');
   const [byType, setByType] = useState('');
@@ -35,6 +37,10 @@ export const NoticesFilters = () => {
   const [price, setPrice] = useState('');
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const categories = useSelector(selectCategories);
+  console.log('categories: ', categories);
+
+  const dispatch = useDispatch();
 
   const resetFilters = () => {
     setPopularity('');
@@ -52,6 +58,10 @@ export const NoticesFilters = () => {
       </components.DropdownIndicator>
     ),
   };
+
+  useEffect(() => {
+    dispatch(fetchCategoriesThunk());
+  }, [category, dispatch]);
 
   return (
     <form className={css.contFilter}>
@@ -95,7 +105,13 @@ export const NoticesFilters = () => {
                     label: logOutFilters.byGender || 'By gender',
                   }
             }
-            // onChange={option => handleFilterChange('category', option?.value || '')}
+            onChange={option => {
+              if (isLoggedIn) {
+                setByGender(option?.value || '');
+              } else {
+                setLogOutFilters(prev => ({ ...prev, byGender: option?.value || '' }));
+              }
+            }}
             styles={getCustomStyles('143px')}
             className={css.genderField}
             isSearchable={false}
@@ -115,7 +131,13 @@ export const NoticesFilters = () => {
                   label: logOutFilters.byType || 'By type',
                 }
           }
-          // onChange={option => handleFilterChange('category', option?.value || '')}
+          onChange={option => {
+            if (isLoggedIn) {
+              setByType(option?.value || '');
+            } else {
+              setLogOutFilters(prev => ({ ...prev, byType: option?.value || '' }));
+            }
+          }}
           styles={getCustomStyles()}
           className={css.typeField}
           isSearchable={false}

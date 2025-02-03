@@ -11,9 +11,25 @@ import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 export const NoticesPage = () => {
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState('');
+  const [logOutFilters, setLogOutFilters] = useState({
+    category: '',
+    byGender: '',
+    byType: '',
+    popularity: '',
+    price: '',
+  });
   const dispatch = useDispatch();
 
-  const query = useMemo(() => ({ page, keyword }), [page, keyword]);
+  const query = useMemo(
+    () => ({
+      page,
+      keyword,
+      category: logOutFilters.category,
+      byGender: logOutFilters.byGender,
+      byType: logOutFilters.byType,
+    }),
+    [page, keyword, logOutFilters]
+  );
 
   const searchPet = async newKeyword => {
     setKeyword(newKeyword);
@@ -33,7 +49,7 @@ export const NoticesPage = () => {
           className={css.searchPet}
           inputClassName={css.inputPets}
         />
-        <NoticesFilters />
+        <NoticesFilters logOutFilters={logOutFilters} setLogOutFilters={setLogOutFilters} />
       </div>
       <NoticesList />
       <Pagination setPage={setPage} />

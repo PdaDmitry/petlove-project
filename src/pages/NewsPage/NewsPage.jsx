@@ -1,7 +1,7 @@
 import css from './NewsPage.module.css';
 import Title from '../../components/Title/Title';
 import { useDispatch } from 'react-redux';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fetchNewsThunk } from '../../redux/news/operationsNews';
 import { NewsList } from '../../components/NewsList/NewsList';
 import { Pagination } from '../../components/Pagination/Pagination';

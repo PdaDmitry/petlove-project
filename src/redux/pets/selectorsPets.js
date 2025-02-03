@@ -6,3 +6,5 @@ export const selectPetsPerPage = state => state.pets.perPage;
 export const selectPetsTotalPages = state => state.pets.totalPages;
 export const selectPetById = id =>
   createSelector([selectPets], pets => pets.find(pet => pet._id === id));
+
+export const selectCategories = state => state.pets.categories;

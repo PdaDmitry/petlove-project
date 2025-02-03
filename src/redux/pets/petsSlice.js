@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPetsThunk } from './operationsPets';
+import { fetchCategoriesThunk, fetchPetsThunk } from './operationsPets';
 
 const initialState = {
   items: [],
@@ -8,6 +8,7 @@ const initialState = {
   page: 1,
   perPage: 0,
   totalPages: 0,
+  categories: [],
 };
 
 const petsSlice = createSlice({
@@ -29,6 +30,22 @@ const petsSlice = createSlice({
         state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchPetsThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = action.payload || 'Something went wrong';
+      })
+
+      //categories
+      .addCase(fetchCategoriesThunk.pending, (state, action) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(fetchCategoriesThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = null;
+        state.categories = action.payload.results;
+        // state.categories = action.payload;
+      })
+      .addCase(fetchCategoriesThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = action.payload || 'Something went wrong';
       });
