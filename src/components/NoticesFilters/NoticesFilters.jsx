@@ -99,10 +99,13 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
             options={byGenderOptions}
             value={
               isLoggedIn
-                ? { value: byGender, label: byGender || ' By gender' }
-                : {
-                    value: logOutFilters.byGender || '',
-                    label: logOutFilters.byGender || 'By gender',
+                ? byGenderOptions.find(option => option.value === byGender) || {
+                    value: '',
+                    label: 'By gender',
+                  }
+                : byGenderOptions.find(option => option.value === logOutFilters.byGender) || {
+                    value: '',
+                    label: 'By gender',
                   }
             }
             onChange={option => {
@@ -125,10 +128,13 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
           options={byTypeOptions}
           value={
             isLoggedIn
-              ? { value: byType, label: byType || ' By type' }
-              : {
-                  value: logOutFilters.byType || '',
-                  label: logOutFilters.byType || 'By type',
+              ? byTypeOptions.find(option => option.value === byType) || {
+                  value: '',
+                  label: 'By type',
+                }
+              : byTypeOptions.find(option => option.value === logOutFilters.byType) || {
+                  value: '',
+                  label: 'By type',
                 }
           }
           onChange={option => {
@@ -167,9 +173,46 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
       <div className={css.sortOptions}>
         <div className={css.radioGroupPopular}>
           <div
+            className={`${css.radioButton} ${
+              (isLoggedIn ? popularity : logOutFilters.popularity) === 'popular' ? css.active : ''
+            }`}
+            onClick={() => {
+              if (isLoggedIn) {
+                setPopularity('popular');
+              } else {
+                setLogOutFilters(prev => ({ ...prev, popularity: 'popular' }));
+              }
+            }}
+          >
+            <p>Popular</p>
+            {(isLoggedIn ? popularity : logOutFilters.popularity) === 'popular' && (
+              <button
+                type="button"
+                className={css.closeButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  if (isLoggedIn) {
+                    setPopularity('');
+                  } else {
+                    setLogOutFilters(prev => ({ ...prev, popularity: '' }));
+                  }
+                }}
+              >
+                <IoMdClose
+                  style={{
+                    width: '18px',
+                    height: '18px',
+                    fill: '#fff',
+                  }}
+                />
+              </button>
+            )}
+          </div>
+
+          {/* <div
             className={`${css.radioButton} ${popularity === 'popular' ? css.active : ''}`}
             onClick={() => setPopularity('popular')}
-          >
+           >
             <p>Popular</p>
             {popularity === 'popular' && (
               <button
@@ -189,8 +232,46 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
                 />
               </button>
             )}
-          </div>
+          </div> */}
+
           <div
+            className={`${css.radioButton} ${
+              (isLoggedIn ? popularity : logOutFilters.popularity) === 'unpopular' ? css.active : ''
+            }`}
+            onClick={() => {
+              if (isLoggedIn) {
+                setPopularity('unpopular');
+              } else {
+                setLogOutFilters(prev => ({ ...prev, popularity: 'unpopular' }));
+              }
+            }}
+          >
+            <p>Unpopular</p>
+            {(isLoggedIn ? popularity : logOutFilters.popularity) === 'unpopular' && (
+              <button
+                type="button"
+                className={css.closeButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  if (isLoggedIn) {
+                    setPopularity('');
+                  } else {
+                    setLogOutFilters(prev => ({ ...prev, popularity: '' }));
+                  }
+                }}
+              >
+                <IoMdClose
+                  style={{
+                    width: '18px',
+                    height: '18px',
+                    fill: '#fff',
+                  }}
+                />
+              </button>
+            )}
+          </div>
+
+          {/* <div
             className={`${css.radioButton} ${popularity === 'unpopular' ? css.active : ''}`}
             onClick={() => setPopularity('unpopular')}
           >
@@ -213,7 +294,7 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
                 />
               </button>
             )}
-          </div>
+          </div> */}
 
           <div
             className={`${css.radioButton} ${price === 'cheap' ? css.active : ''}`}

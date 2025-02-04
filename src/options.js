@@ -7,7 +7,7 @@ export const categoryOptions = [
 ];
 
 export const byGenderOptions = [
-  { value: '', label: 'Show all' },
+  { value: 'show all', label: 'Show all' },
   { value: 'female', label: 'Female' },
   { value: 'male', label: 'Male' },
   { value: 'multiple', label: 'Multiple' },
@@ -15,7 +15,7 @@ export const byGenderOptions = [
 ];
 
 export const byTypeOptions = [
-  { value: '', label: 'Show all' },
+  { value: 'show all', label: 'Show all' },
   { value: 'dog', label: 'Dog' },
   { value: 'cat', label: 'Cat' },
   { value: 'monkey', label: 'Monkey' },
