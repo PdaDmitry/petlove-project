@@ -45,6 +45,16 @@
 
 /* ========================================================================================= */
 
+.closeBtn {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  top: 10px;
+  right: 32px;
+  padding: 0;
+}
+
 .btnSearch {
   position: absolute;
   background: none;

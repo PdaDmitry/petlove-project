@@ -5,13 +5,18 @@ export const fetchPetsThunk = createAsyncThunk(
   'fetchPets',
   async ({ page, keyword, category, byGender, byType, popularity, price }, { rejectWithValue }) => {
     try {
-      const params = new URLSearchParams({
-        page,
-        keyword,
-      });
+      const params = new URLSearchParams();
+
+      params.append('page', page);
+
+      if (keyword) {
+        params.append('keyword', keyword);
+      } else if (byType && byType !== 'show all') {
+        params.append('species', byType);
+      }
+
       if (category && category !== 'show all') params.append('category', category);
       if (byGender && byGender !== 'show all') params.append('sex', byGender);
-      if (byType && byType !== 'show all') params.append('species', byType);
       if (popularity) params.append('popularity', popularity);
       if (price) params.append('price', price);
 
@@ -31,7 +36,7 @@ export const fetchCategoriesThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get('/notices/categories');
-      console.log('Categories: ', response.data);
+      // console.log('Categories: ', response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);

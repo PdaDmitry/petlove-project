@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import css from './NoticesFilters.module.css';
-// import Select from 'react-select/dist/declarations/src/Select';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
@@ -15,30 +14,17 @@ import { IoMdClose } from 'react-icons/io';
 import { LuSearch } from 'react-icons/lu';
 import { components } from 'react-select';
 import { fetchCategoriesThunk } from '../../redux/pets/operationsPets';
-import { selectCategories } from '../../redux/pets/selectorsPets';
+// import { selectCategories } from '../../redux/pets/selectorsPets';
 
-export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
-  // const [logOutFilters, setLogOutFilters] = useState({
-  //   category: '',
-  //   byGender: '',
-  //   byType: '',
-  //   popularity: '',
-  //   price: '',
-  // });
+export const NoticesFilters = ({ logOutFilters, setLogOutFilters, setResetInput }) => {
   const [category, setCategory] = useState('');
   const [byGender, setByGender] = useState('');
   const [byType, setByType] = useState('');
 
-  // console.log('logOutFilters.category: ', logOutFilters.category);
-  // console.log('category: ', category);
-
-  // Состояния для сортировки
   const [popularity, setPopularity] = useState('');
   const [price, setPrice] = useState('');
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const categories = useSelector(selectCategories);
-  console.log('categories: ', categories);
 
   const dispatch = useDispatch();
 
@@ -49,6 +35,7 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
     setByGender('');
     setByType('');
     setLogOutFilters({ category: '', byGender: '', byType: '' });
+    setResetInput(true);
   };
 
   const customComponents = {
@@ -138,6 +125,7 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters }) => {
                 }
           }
           onChange={option => {
+            setResetInput(true); ////////////
             if (isLoggedIn) {
               setByType(option?.value || '');
             } else {

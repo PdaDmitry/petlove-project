@@ -11,6 +11,7 @@ import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 export const NoticesPage = () => {
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState('');
+  const [resetInput, setResetInput] = useState(false);
   const [logOutFilters, setLogOutFilters] = useState({
     category: '',
     byGender: '',
@@ -33,8 +34,24 @@ export const NoticesPage = () => {
 
   const searchPet = async newKeyword => {
     setKeyword(newKeyword);
-    setPage(1);
+    setResetInput(false);
+    if (newKeyword) {
+      setLogOutFilters(prevFilters => ({
+        ...prevFilters,
+        byType: '',
+      }));
+    }
   };
+
+  useEffect(() => {
+    if (logOutFilters.byType) {
+      setKeyword('');
+    }
+  }, [logOutFilters.byType]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [logOutFilters, keyword]);
 
   useEffect(() => {
     dispatch(fetchPetsThunk(query));
@@ -48,8 +65,14 @@ export const NoticesPage = () => {
           onSubmit={searchPet}
           className={css.searchPet}
           inputClassName={css.inputPets}
+          resetInput={resetInput}
         />
-        <NoticesFilters logOutFilters={logOutFilters} setLogOutFilters={setLogOutFilters} />
+        <NoticesFilters
+          logOutFilters={logOutFilters}
+          setLogOutFilters={setLogOutFilters}
+          setResetInput={setResetInput}
+          setKeyword={setKeyword}
+        />
       </div>
       <NoticesList />
       <Pagination setPage={setPage} />
