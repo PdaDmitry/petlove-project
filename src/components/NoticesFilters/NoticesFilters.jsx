@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import css from './NoticesFilters.module.css';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,38 +17,22 @@ import { fetchCategoriesThunk } from '../../redux/pets/operationsPets';
 // import { selectCategories } from '../../redux/pets/selectorsPets';
 
 export const NoticesFilters = ({
-  category,
-  setCategory,
-  byGender,
-  setByGender,
-  byType,
-  setByType,
-  popularity,
-  setPopularity,
-  price,
-  setPrice,
+  logInFilters,
+  setLogInFilters,
+
   logOutFilters,
   setLogOutFilters,
   setResetInput,
 }) => {
-  // const [category, setCategory] = useState('');
-  // const [byGender, setByGender] = useState('');
-  // const [byType, setByType] = useState('');
-
-  // const [popularity, setPopularity] = useState('');
-  // const [price, setPrice] = useState('');
-
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const dispatch = useDispatch();
 
   const resetFilters = () => {
-    setPopularity('');
-    setPrice('');
-    setCategory('');
-    setByGender('');
-    setByType('');
-    setLogOutFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
+    setLogInFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
+    setLogOutFilters({ category: '', byGender: '', byType: '' });
+    // setLogOutFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
+    // setLogOutFilters({ category: '', byGender: '', byType: '', byPopularity: '', byPrice: '' });
     setResetInput(true);
   };
 
@@ -62,7 +46,7 @@ export const NoticesFilters = ({
 
   useEffect(() => {
     dispatch(fetchCategoriesThunk());
-  }, [category, dispatch]);
+  }, [dispatch]); //category,
 
   return (
     <form className={css.contFilter}>
@@ -72,7 +56,7 @@ export const NoticesFilters = ({
             options={categoryOptions}
             value={
               isLoggedIn
-                ? categoryOptions.find(option => option.value === category) || {
+                ? categoryOptions.find(option => option.value === logInFilters.category) || {
                     value: '',
                     label: 'Category',
                   }
@@ -83,7 +67,7 @@ export const NoticesFilters = ({
             }
             onChange={option => {
               if (isLoggedIn) {
-                setCategory(option?.value || '');
+                setLogInFilters(prev => ({ ...prev, category: option?.value || '' }));
               } else {
                 setLogOutFilters(prev => ({ ...prev, category: option?.value || '' }));
               }
@@ -100,7 +84,7 @@ export const NoticesFilters = ({
             options={byGenderOptions}
             value={
               isLoggedIn
-                ? byGenderOptions.find(option => option.value === byGender) || {
+                ? byGenderOptions.find(option => option.value === logInFilters.byGender) || {
                     value: '',
                     label: 'By gender',
                   }
@@ -111,7 +95,7 @@ export const NoticesFilters = ({
             }
             onChange={option => {
               if (isLoggedIn) {
-                setByGender(option?.value || '');
+                setLogInFilters(prev => ({ ...prev, byGender: option?.value || '' }));
               } else {
                 setLogOutFilters(prev => ({ ...prev, byGender: option?.value || '' }));
               }
@@ -129,7 +113,7 @@ export const NoticesFilters = ({
           options={byTypeOptions}
           value={
             isLoggedIn
-              ? byTypeOptions.find(option => option.value === byType) || {
+              ? byTypeOptions.find(option => option.value === logInFilters.byType) || {
                   value: '',
                   label: 'By type',
                 }
@@ -141,7 +125,7 @@ export const NoticesFilters = ({
           onChange={option => {
             setResetInput(true); ////////////
             if (isLoggedIn) {
-              setByType(option?.value || '');
+              setLogInFilters(prev => ({ ...prev, byType: option?.value || '' }));
             } else {
               setLogOutFilters(prev => ({ ...prev, byType: option?.value || '' }));
             }
@@ -176,25 +160,30 @@ export const NoticesFilters = ({
         <div className={css.radioGroupPopular}>
           <div
             className={`${css.radioButton} ${
-              (isLoggedIn ? popularity : logOutFilters.popularity) === 'popular' ? css.active : ''
+              (isLoggedIn ? logInFilters.popularity : logOutFilters.popularity) === false
+                ? css.active
+                : ''
             }`}
             onClick={() => {
               if (isLoggedIn) {
-                setPopularity('popular');
+                // setLogInFilters(prev => ({ ...prev, popularity: false }));
+                setLogInFilters(prev => ({ ...prev, popularity: false, price: '' }));
               } else {
-                setLogOutFilters(prev => ({ ...prev, popularity: 'popular' }));
+                // setLogOutFilters(prev => ({ ...prev, popularity: false }));
+                setLogOutFilters(prev => ({ ...prev, popularity: false, price: '' }));
               }
             }}
           >
             <p>Popular</p>
-            {(isLoggedIn ? popularity : logOutFilters.popularity) === 'popular' && (
+
+            {(isLoggedIn ? logInFilters.popularity : logOutFilters.popularity) === false && (
               <button
                 type="button"
                 className={css.closeButton}
                 onClick={e => {
                   e.stopPropagation();
                   if (isLoggedIn) {
-                    setPopularity('');
+                    setLogInFilters(prev => ({ ...prev, popularity: '' }));
                   } else {
                     setLogOutFilters(prev => ({ ...prev, popularity: '' }));
                   }
@@ -213,25 +202,30 @@ export const NoticesFilters = ({
 
           <div
             className={`${css.radioButton} ${
-              (isLoggedIn ? popularity : logOutFilters.popularity) === 'unpopular' ? css.active : ''
+              (isLoggedIn ? logInFilters.popularity : logOutFilters.popularity) === true
+                ? css.active
+                : ''
             }`}
             onClick={() => {
               if (isLoggedIn) {
-                setPopularity('unpopular');
+                // setLogInFilters(prev => ({ ...prev, popularity: true }));
+                setLogInFilters(prev => ({ ...prev, popularity: true, price: '' }));
               } else {
-                setLogOutFilters(prev => ({ ...prev, popularity: 'unpopular' }));
+                // setLogOutFilters(prev => ({ ...prev, popularity: true }));
+                setLogOutFilters(prev => ({ ...prev, popularity: true, price: '' }));
               }
             }}
           >
             <p>Unpopular</p>
-            {(isLoggedIn ? popularity : logOutFilters.popularity) === 'unpopular' && (
+
+            {(isLoggedIn ? logInFilters.popularity : logOutFilters.popularity) === true && (
               <button
                 type="button"
                 className={css.closeButton}
                 onClick={e => {
                   e.stopPropagation();
                   if (isLoggedIn) {
-                    setPopularity('');
+                    setLogInFilters(prev => ({ ...prev, popularity: '' }));
                   } else {
                     setLogOutFilters(prev => ({ ...prev, popularity: '' }));
                   }
@@ -250,26 +244,28 @@ export const NoticesFilters = ({
 
           <div
             className={`${css.radioButton} ${
-              (isLoggedIn ? price : logOutFilters.price) === 'cheap' ? css.active : ''
+              (isLoggedIn ? logInFilters.price : logOutFilters.price) === true ? css.active : ''
             }`}
-            // onClick={() => setPrice('cheap')}
             onClick={() => {
               if (isLoggedIn) {
-                setPrice('cheap');
+                // setLogInFilters(prev => ({ ...prev, price: true }));
+                setLogInFilters(prev => ({ ...prev, price: true, popularity: '' }));
               } else {
-                setLogOutFilters(prev => ({ ...prev, price: 'cheap' }));
+                // setLogOutFilters(prev => ({ ...prev, price: true }));
+                setLogOutFilters(prev => ({ ...prev, price: true, popularity: '' }));
               }
             }}
           >
             <p>Cheap</p>
-            {(isLoggedIn ? price : logOutFilters.price) === 'cheap' && (
+
+            {(isLoggedIn ? logInFilters.price : logOutFilters.price) === true && (
               <button
                 type="button"
                 className={css.closeButton}
                 onClick={e => {
                   e.stopPropagation();
                   if (isLoggedIn) {
-                    setPrice('');
+                    setLogInFilters(prev => ({ ...prev, price: '' }));
                   } else {
                     setLogOutFilters(prev => ({ ...prev, price: '' }));
                   }
@@ -290,25 +286,28 @@ export const NoticesFilters = ({
         <div className={css.radioGroupPrice}>
           <div
             className={`${css.radioButton} ${
-              (isLoggedIn ? price : logOutFilters.price) === 'expensive' ? css.active : ''
+              (isLoggedIn ? logInFilters.price : logOutFilters.price) === false ? css.active : ''
             }`}
             onClick={() => {
               if (isLoggedIn) {
-                setPrice('expensive');
+                // setLogInFilters(prev => ({ ...prev, price: false }));
+                setLogInFilters(prev => ({ ...prev, price: false, popularity: '' }));
               } else {
-                setLogOutFilters(prev => ({ ...prev, price: 'expensive' }));
+                // setLogOutFilters(prev => ({ ...prev, price: false }));
+                setLogOutFilters(prev => ({ ...prev, price: false, popularity: '' }));
               }
             }}
           >
             <p>Expensive</p>
-            {(isLoggedIn ? price : logOutFilters.price) === 'expensive' && (
+
+            {(isLoggedIn ? logInFilters.price : logOutFilters.price) === false && (
               <button
                 type="button"
                 className={css.closeButton}
                 onClick={e => {
                   e.stopPropagation();
                   if (isLoggedIn) {
-                    setPrice('');
+                    setLogInFilters(prev => ({ ...prev, price: '' }));
                   } else {
                     setLogOutFilters(prev => ({ ...prev, price: '' }));
                   }

@@ -12,21 +12,22 @@ import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
 export const NoticesPage = () => {
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState('');
-
-  const [category, setCategory] = useState('');
-  const [byGender, setByGender] = useState('');
-  const [byType, setByType] = useState('');
-
-  const [popularity, setPopularity] = useState('');
-  const [price, setPrice] = useState('');
-
   const [resetInput, setResetInput] = useState(false);
-  const [logOutFilters, setLogOutFilters] = useState({
+  const [logInFilters, setLogInFilters] = useState({
     category: '',
     byGender: '',
     byType: '',
     popularity: '',
     price: '',
+  });
+  const [logOutFilters, setLogOutFilters] = useState({
+    category: '',
+    byGender: '',
+    byType: '',
+    // popularity: '',
+    // price: '',
+    byPopularity: '',
+    byPrice: '',
   });
   const dispatch = useDispatch();
 
@@ -36,13 +37,15 @@ export const NoticesPage = () => {
     () => ({
       page,
       keyword,
-      category: isLoggedIn ? category : logOutFilters.category,
-      byGender: isLoggedIn ? byGender : logOutFilters.byGender,
-      byType: isLoggedIn ? byType : logOutFilters.byType,
-      popularity: isLoggedIn ? popularity : logOutFilters.popularity,
-      price: isLoggedIn ? price : logOutFilters.price,
+      category: isLoggedIn ? logInFilters.category : logOutFilters.category,
+      byGender: isLoggedIn ? logInFilters.byGender : logOutFilters.byGender,
+      byType: isLoggedIn ? logInFilters.byType : logOutFilters.byType,
+      // popularity: isLoggedIn ? logInFilters.popularity : logOutFilters.popularity,
+      // price: isLoggedIn ? logInFilters.price : logOutFilters.price,
+      // byPopularity: isLoggedIn ? logInFilters.popularity : logOutFilters.popularity,
+      // byPrice: isLoggedIn ? logInFilters.price : logOutFilters.price,
     }),
-    [page, keyword, isLoggedIn, category, byGender, byType, popularity, price, logOutFilters]
+    [page, keyword, isLoggedIn, logInFilters, logOutFilters]
   );
 
   const searchPet = async newKeyword => {
@@ -50,7 +53,10 @@ export const NoticesPage = () => {
     setResetInput(false);
     if (newKeyword) {
       if (isLoggedIn) {
-        setByType('');
+        setLogInFilters(prevFilters => ({
+          ...prevFilters,
+          byType: '',
+        }));
       } else {
         setLogOutFilters(prevFilters => ({
           ...prevFilters,
@@ -61,10 +67,10 @@ export const NoticesPage = () => {
   };
 
   useEffect(() => {
-    if (logOutFilters.byType || byType) {
+    if (logOutFilters.byType || logInFilters.byType) {
       setKeyword('');
     }
-  }, [logOutFilters.byType, byType]);
+  }, [logOutFilters.byType, logInFilters.byType]);
 
   useEffect(() => {
     setPage(1);
@@ -85,16 +91,8 @@ export const NoticesPage = () => {
           resetInput={resetInput}
         />
         <NoticesFilters
-          category={category}
-          setCategory={setCategory}
-          byGender={byGender}
-          setByGender={setByGender}
-          byType={byType}
-          setByType={setByType}
-          popularity={popularity}
-          setPopularity={setPopularity}
-          price={price}
-          setPrice={setPrice}
+          logInFilters={logInFilters}
+          setLogInFilters={setLogInFilters}
           logOutFilters={logOutFilters}
           setLogOutFilters={setLogOutFilters}
           setResetInput={setResetInput}

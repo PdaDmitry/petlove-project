@@ -3,7 +3,10 @@ import axios from 'axios';
 
 export const fetchPetsThunk = createAsyncThunk(
   'fetchPets',
-  async ({ page, keyword, category, byGender, byType, popularity, price }, { rejectWithValue }) => {
+  async (
+    { page, keyword, category, byGender, byType, byPopularity, byPrice }, //popularity, price,
+    { rejectWithValue }
+  ) => {
     try {
       const params = new URLSearchParams();
 
@@ -17,8 +20,12 @@ export const fetchPetsThunk = createAsyncThunk(
 
       if (category && category !== 'show all') params.append('category', category);
       if (byGender && byGender !== 'show all') params.append('sex', byGender);
-      if (popularity) params.append('popularity', popularity);
-      if (price) params.append('price', price);
+      // if (popularity) params.append('popularity', popularity);
+      // if (price) params.append('price', price);
+
+      // Добавляем сортировку
+      if (byPopularity !== undefined) params.append('byPopularity', byPopularity);
+      if (byPrice !== undefined) params.append('byPrice', byPrice);
 
       const response = await axios.get(`/notices?${params.toString()}`);
 
