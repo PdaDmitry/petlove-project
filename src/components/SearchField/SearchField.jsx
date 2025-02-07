@@ -1,7 +1,7 @@
 import css from './SearchField.module.css';
 import { LuSearch } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const SearchField = ({ onSubmit, className = '', inputClassName = '', resetInput }) => {
   const inputRef = useRef(null);
@@ -14,21 +14,29 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
     onSubmit(entryField);
   };
 
-  const handleResetAndSubmit = () => {
-    // e.preventDefault();
+  const handleResetAndSubmit = useCallback(() => {
     if (inputRef.current) {
       inputRef.current.value = '';
       setHasText(false);
     }
-
     onSubmit('');
-  };
+  }, [onSubmit]);
+
+  // const handleResetAndSubmit = () => {
+  //   // e.preventDefault();
+  //   if (inputRef.current) {
+  //     inputRef.current.value = '';
+  //     setHasText(false);
+  //   }
+
+  //   onSubmit('');
+  // };
 
   useEffect(() => {
     if (resetInput) {
       handleResetAndSubmit();
     }
-  }, [resetInput]);
+  }, [handleResetAndSubmit, resetInput]);
 
   const handleChange = () => {
     setHasText(inputRef.current?.value.length > 0);

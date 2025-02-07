@@ -16,13 +16,27 @@ import { components } from 'react-select';
 import { fetchCategoriesThunk } from '../../redux/pets/operationsPets';
 // import { selectCategories } from '../../redux/pets/selectorsPets';
 
-export const NoticesFilters = ({ logOutFilters, setLogOutFilters, setResetInput }) => {
-  const [category, setCategory] = useState('');
-  const [byGender, setByGender] = useState('');
-  const [byType, setByType] = useState('');
+export const NoticesFilters = ({
+  category,
+  setCategory,
+  byGender,
+  setByGender,
+  byType,
+  setByType,
+  popularity,
+  setPopularity,
+  price,
+  setPrice,
+  logOutFilters,
+  setLogOutFilters,
+  setResetInput,
+}) => {
+  // const [category, setCategory] = useState('');
+  // const [byGender, setByGender] = useState('');
+  // const [byType, setByType] = useState('');
 
-  const [popularity, setPopularity] = useState('');
-  const [price, setPrice] = useState('');
+  // const [popularity, setPopularity] = useState('');
+  // const [price, setPrice] = useState('');
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
@@ -34,7 +48,7 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters, setResetInput 
     setCategory('');
     setByGender('');
     setByType('');
-    setLogOutFilters({ category: '', byGender: '', byType: '' });
+    setLogOutFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
     setResetInput(true);
   };
 
@@ -197,31 +211,6 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters, setResetInput 
             )}
           </div>
 
-          {/* <div
-            className={`${css.radioButton} ${popularity === 'popular' ? css.active : ''}`}
-            onClick={() => setPopularity('popular')}
-           >
-            <p>Popular</p>
-            {popularity === 'popular' && (
-              <button
-                type="button"
-                className={css.closeButton}
-                onClick={e => {
-                  e.stopPropagation();
-                  setPopularity('');
-                }}
-              >
-                <IoMdClose
-                  style={{
-                    width: '18px',
-                    height: '18px',
-                    fill: '#fff',
-                  }}
-                />
-              </button>
-            )}
-          </div> */}
-
           <div
             className={`${css.radioButton} ${
               (isLoggedIn ? popularity : logOutFilters.popularity) === 'unpopular' ? css.active : ''
@@ -259,43 +248,31 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters, setResetInput 
             )}
           </div>
 
-          {/* <div
-            className={`${css.radioButton} ${popularity === 'unpopular' ? css.active : ''}`}
-            onClick={() => setPopularity('unpopular')}
-          >
-            <p>Unpopular</p>
-            {popularity === 'unpopular' && (
-              <button
-                type="button"
-                className={css.closeButton}
-                onClick={e => {
-                  e.stopPropagation();
-                  setPopularity('');
-                }}
-              >
-                <IoMdClose
-                  style={{
-                    width: '18px',
-                    height: '18px',
-                    fill: '#fff',
-                  }}
-                />
-              </button>
-            )}
-          </div> */}
-
           <div
-            className={`${css.radioButton} ${price === 'cheap' ? css.active : ''}`}
-            onClick={() => setPrice('cheap')}
+            className={`${css.radioButton} ${
+              (isLoggedIn ? price : logOutFilters.price) === 'cheap' ? css.active : ''
+            }`}
+            // onClick={() => setPrice('cheap')}
+            onClick={() => {
+              if (isLoggedIn) {
+                setPrice('cheap');
+              } else {
+                setLogOutFilters(prev => ({ ...prev, price: 'cheap' }));
+              }
+            }}
           >
             <p>Cheap</p>
-            {price === 'cheap' && (
+            {(isLoggedIn ? price : logOutFilters.price) === 'cheap' && (
               <button
                 type="button"
                 className={css.closeButton}
                 onClick={e => {
                   e.stopPropagation();
-                  setPrice('');
+                  if (isLoggedIn) {
+                    setPrice('');
+                  } else {
+                    setLogOutFilters(prev => ({ ...prev, price: '' }));
+                  }
                 }}
               >
                 <IoMdClose
@@ -312,17 +289,29 @@ export const NoticesFilters = ({ logOutFilters, setLogOutFilters, setResetInput 
 
         <div className={css.radioGroupPrice}>
           <div
-            className={`${css.radioButton} ${price === 'expensive' ? css.active : ''}`}
-            onClick={() => setPrice('expensive')}
+            className={`${css.radioButton} ${
+              (isLoggedIn ? price : logOutFilters.price) === 'expensive' ? css.active : ''
+            }`}
+            onClick={() => {
+              if (isLoggedIn) {
+                setPrice('expensive');
+              } else {
+                setLogOutFilters(prev => ({ ...prev, price: 'expensive' }));
+              }
+            }}
           >
             <p>Expensive</p>
-            {price === 'expensive' && (
+            {(isLoggedIn ? price : logOutFilters.price) === 'expensive' && (
               <button
                 type="button"
                 className={css.closeButton}
                 onClick={e => {
                   e.stopPropagation();
-                  setPrice('');
+                  if (isLoggedIn) {
+                    setPrice('');
+                  } else {
+                    setLogOutFilters(prev => ({ ...prev, price: '' }));
+                  }
                 }}
               >
                 <IoMdClose
