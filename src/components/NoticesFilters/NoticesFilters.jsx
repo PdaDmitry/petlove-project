@@ -13,18 +13,20 @@ import {
 import { IoMdClose } from 'react-icons/io';
 import { LuSearch } from 'react-icons/lu';
 import { components } from 'react-select';
-import { fetchCategoriesThunk } from '../../redux/pets/operationsPets';
+import { fetchCategoriesThunk, fetchCitiesThunk } from '../../redux/pets/operationsPets';
+import { selectCities } from '../../redux/pets/selectorsPets';
 // import { selectCategories } from '../../redux/pets/selectorsPets';
 
 export const NoticesFilters = ({
   logInFilters,
   setLogInFilters,
-
   logOutFilters,
   setLogOutFilters,
   setResetInput,
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const cities = useSelector(selectCities);
+  console.log('cities: ', cities);
 
   const dispatch = useDispatch();
 
@@ -46,8 +48,9 @@ export const NoticesFilters = ({
   };
 
   useEffect(() => {
-    dispatch(fetchCategoriesThunk());
-  }, [dispatch]); //category,
+    // dispatch(fetchCategoriesThunk());
+    if (cities.length === 0) dispatch(fetchCitiesThunk());
+  }, [dispatch, cities]); //category,
 
   return (
     <form className={css.contFilter}>

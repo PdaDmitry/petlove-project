@@ -28,7 +28,7 @@ export const NoticesPage = () => {
     price: '',
   });
 
-  console.log('logOutFilters: ', logOutFilters);
+  // console.log('logOutFilters: ', logOutFilters);
 
   const dispatch = useDispatch();
 

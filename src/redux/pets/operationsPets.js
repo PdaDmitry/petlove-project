@@ -57,24 +57,15 @@ export const fetchCategoriesThunk = createAsyncThunk(
   }
 );
 
-// export const fetchPetsThunk = createAsyncThunk(
-//   'fetchPets',
-//   async ({ page, keyword, category, byGender, byType }, { rejectWithValue }) => {
-//     try {
-//       const params = new URLSearchParams({
-//         page,
-//         keyword,
-//         category,
-//         sex: byGender,
-//         species: byType,
-//       }).toString();
+// ======================================Location=========================================
 
-//       const response = await axios.get(`/notices?${params}`);
+export const fetchCitiesThunk = createAsyncThunk('fetchCities', async (_, { rejectWithValue }) => {
+  try {
+    const response = await axios.get('/cities/locations');
 
-//       // console.log('pets: ', response.data);
-//       return response.data;
-//     } catch (error) {
-//       return rejectWithValue(error.response?.data?.message || error.message);
-//     }
-//   }
-// );
+    // console.log('Cities: ', response.data);
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error.response?.data?.message || error.message);
+  }
+});

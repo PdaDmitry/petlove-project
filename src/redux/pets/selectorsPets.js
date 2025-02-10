@@ -8,3 +8,4 @@ export const selectPetById = id =>
   createSelector([selectPets], pets => pets.find(pet => pet._id === id));
 
 export const selectCategories = state => state.pets.categories;
+export const selectCities = state => state.pets.cities;
