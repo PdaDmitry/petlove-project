@@ -24,11 +24,12 @@ export const NoticesPage = () => {
     category: '',
     byGender: '',
     byType: '',
-    // popularity: '',
-    // price: '',
-    byPopularity: '',
-    byPrice: '',
+    popularity: '',
+    price: '',
   });
+
+  console.log('logOutFilters: ', logOutFilters);
+
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -40,10 +41,9 @@ export const NoticesPage = () => {
       category: isLoggedIn ? logInFilters.category : logOutFilters.category,
       byGender: isLoggedIn ? logInFilters.byGender : logOutFilters.byGender,
       byType: isLoggedIn ? logInFilters.byType : logOutFilters.byType,
-      // popularity: isLoggedIn ? logInFilters.popularity : logOutFilters.popularity,
-      // price: isLoggedIn ? logInFilters.price : logOutFilters.price,
-      // byPopularity: isLoggedIn ? logInFilters.popularity : logOutFilters.popularity,
-      // byPrice: isLoggedIn ? logInFilters.price : logOutFilters.price,
+
+      byPopularity: isLoggedIn ? logInFilters.popularity : logOutFilters.popularity,
+      byPrice: isLoggedIn ? logInFilters.price : logOutFilters.price,
     }),
     [page, keyword, isLoggedIn, logInFilters, logOutFilters]
   );

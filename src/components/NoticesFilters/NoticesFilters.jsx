@@ -29,10 +29,11 @@ export const NoticesFilters = ({
   const dispatch = useDispatch();
 
   const resetFilters = () => {
-    setLogInFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
-    setLogOutFilters({ category: '', byGender: '', byType: '' });
-    // setLogOutFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
-    // setLogOutFilters({ category: '', byGender: '', byType: '', byPopularity: '', byPrice: '' });
+    if (isLoggedIn) {
+      setLogInFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
+    } else {
+      setLogOutFilters({ category: '', byGender: '', byType: '', popularity: '', price: '' });
+    }
     setResetInput(true);
   };
 
@@ -290,10 +291,8 @@ export const NoticesFilters = ({
             }`}
             onClick={() => {
               if (isLoggedIn) {
-                // setLogInFilters(prev => ({ ...prev, price: false }));
                 setLogInFilters(prev => ({ ...prev, price: false, popularity: '' }));
               } else {
-                // setLogOutFilters(prev => ({ ...prev, price: false }));
                 setLogOutFilters(prev => ({ ...prev, price: false, popularity: '' }));
               }
             }}

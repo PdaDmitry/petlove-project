@@ -20,12 +20,18 @@ export const fetchPetsThunk = createAsyncThunk(
 
       if (category && category !== 'show all') params.append('category', category);
       if (byGender && byGender !== 'show all') params.append('sex', byGender);
-      // if (popularity) params.append('popularity', popularity);
-      // if (price) params.append('price', price);
 
-      // Добавляем сортировку
-      if (byPopularity !== undefined) params.append('byPopularity', byPopularity);
-      if (byPrice !== undefined) params.append('byPrice', byPrice);
+      if (byPopularity && byPopularity !== undefined && byPopularity !== null) {
+        params.append('byPopularity', byPopularity);
+      } else if (byPopularity === false) {
+        params.append('byPopularity', byPopularity);
+      }
+
+      if (byPrice && byPrice !== undefined && byPrice !== null) {
+        params.append('byPrice', byPrice);
+      } else if (byPrice === false) {
+        params.append('byPrice', byPrice);
+      }
 
       const response = await axios.get(`/notices?${params.toString()}`);
 

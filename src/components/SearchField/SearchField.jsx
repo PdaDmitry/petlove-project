@@ -22,16 +22,6 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
     onSubmit('');
   }, [onSubmit]);
 
-  // const handleResetAndSubmit = () => {
-  //   // e.preventDefault();
-  //   if (inputRef.current) {
-  //     inputRef.current.value = '';
-  //     setHasText(false);
-  //   }
-
-  //   onSubmit('');
-  // };
-
   useEffect(() => {
     if (resetInput) {
       handleResetAndSubmit();
