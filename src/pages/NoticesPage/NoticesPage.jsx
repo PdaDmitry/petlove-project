@@ -17,6 +17,7 @@ export const NoticesPage = () => {
     category: '',
     byGender: '',
     byType: '',
+    location: '',
     popularity: '',
     price: '',
   });
@@ -24,6 +25,7 @@ export const NoticesPage = () => {
     category: '',
     byGender: '',
     byType: '',
+    location: '',
     popularity: '',
     price: '',
   });

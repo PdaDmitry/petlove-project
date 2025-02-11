@@ -1,0 +1,14 @@
+.contLocation {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.closeBtn {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  top: 10px;
+  right: 32px;
+  padding: 0;
+}
