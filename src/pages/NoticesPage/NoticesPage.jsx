@@ -43,7 +43,7 @@ export const NoticesPage = () => {
       category: isLoggedIn ? logInFilters.category : logOutFilters.category,
       byGender: isLoggedIn ? logInFilters.byGender : logOutFilters.byGender,
       byType: isLoggedIn ? logInFilters.byType : logOutFilters.byType,
-
+      locationId: isLoggedIn ? logInFilters.location : logOutFilters.location,
       byPopularity: isLoggedIn ? logInFilters.popularity : logOutFilters.popularity,
       byPrice: isLoggedIn ? logInFilters.price : logOutFilters.price,
     }),

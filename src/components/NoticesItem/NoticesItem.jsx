@@ -38,6 +38,8 @@ export const NoticesItem = ({ id }) => {
     price,
   } = pet;
 
+  // console.log('location: ', location);
+
   const cost = price ? price : 'Uncertain';
   const formattedDate = format(new Date(birthday), 'dd.MM.yyyy');
   const born = birthday ? formattedDate : 'Unknown';

@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetchPetsThunk = createAsyncThunk(
   'fetchPets',
   async (
-    { page, keyword, category, byGender, byType, byPopularity, byPrice }, //popularity, price,
+    { page, keyword, category, byGender, byType, locationId, byPopularity, byPrice },
     { rejectWithValue }
   ) => {
     try {
@@ -26,6 +26,8 @@ export const fetchPetsThunk = createAsyncThunk(
       } else if (byPopularity === false) {
         params.append('byPopularity', byPopularity);
       }
+
+      params.append('locationId', locationId);
 
       if (byPrice && byPrice !== undefined && byPrice !== null) {
         params.append('byPrice', byPrice);
