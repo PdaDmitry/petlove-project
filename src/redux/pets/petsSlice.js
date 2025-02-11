@@ -32,7 +32,8 @@ const petsSlice = createSlice({
       })
       .addCase(fetchPetsThunk.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = action.payload || 'Something went wrong';
+        // state.isError = action.payload || 'Something went wrong';
+        state.isError = action.error.message;
       })
 
       //categories

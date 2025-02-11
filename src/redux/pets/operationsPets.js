@@ -39,6 +39,7 @@ export const fetchPetsThunk = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      // console.log(error);
       return rejectWithValue(error.response?.data?.message || error.message);
     }
   }

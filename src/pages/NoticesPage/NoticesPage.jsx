@@ -8,6 +8,8 @@ import { fetchPetsThunk } from '../../redux/pets/operationsPets';
 import { SearchField } from '../../components/SearchField/SearchField';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
+import { useNavigate } from 'react-router-dom';
+import { selectError, selectLoader } from '../../redux/pets/selectorsPets';
 
 export const NoticesPage = () => {
   const [page, setPage] = useState(1);
@@ -31,10 +33,12 @@ export const NoticesPage = () => {
   });
 
   // console.log('logOutFilters: ', logOutFilters);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const error = useSelector(selectError);
+  const loader = useSelector(selectLoader);
 
   const query = useMemo(
     () => ({
@@ -79,30 +83,42 @@ export const NoticesPage = () => {
   }, [logOutFilters, keyword]);
 
   useEffect(() => {
+    if (error) {
+      navigate('/*');
+    }
+  }, [navigate, error]);
+
+  useEffect(() => {
     dispatch(fetchPetsThunk(query));
   }, [dispatch, query]);
 
+  if (loader) {
+    return <p>Please wait...</p>;
+  }
+
   return (
-    <div className={css.contNotices}>
-      <Title className={css.titleNotices}>Find your favorite pet</Title>
-      <div className={css.contFilters}>
-        <SearchField
-          onSubmit={searchPet}
-          className={css.searchPet}
-          inputClassName={css.inputPets}
-          resetInput={resetInput}
-        />
-        <NoticesFilters
-          logInFilters={logInFilters}
-          setLogInFilters={setLogInFilters}
-          logOutFilters={logOutFilters}
-          setLogOutFilters={setLogOutFilters}
-          setResetInput={setResetInput}
-          setKeyword={setKeyword}
-        />
+    !error && (
+      <div className={css.contNotices}>
+        <Title className={css.titleNotices}>Find your favorite pet</Title>
+        <div className={css.contFilters}>
+          <SearchField
+            onSubmit={searchPet}
+            className={css.searchPet}
+            inputClassName={css.inputPets}
+            resetInput={resetInput}
+          />
+          <NoticesFilters
+            logInFilters={logInFilters}
+            setLogInFilters={setLogInFilters}
+            logOutFilters={logOutFilters}
+            setLogOutFilters={setLogOutFilters}
+            setResetInput={setResetInput}
+            setKeyword={setKeyword}
+          />
+        </div>
+        <NoticesList />
+        <Pagination setPage={setPage} />
       </div>
-      <NoticesList />
-      <Pagination setPage={setPage} />
-    </div>
+    )
   );
 };
