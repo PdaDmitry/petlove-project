@@ -4,16 +4,19 @@ import { IoMdClose } from 'react-icons/io';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const SEARCH_KEY = location.pathname.includes('/notices')
-  ? 'SEARCH_PET_KEY'
-  : location.pathname.includes('/news')
-  ? 'SEARCH_NEWS_KEY'
-  : 'SEARCH_DEFAULT_KEY';
-
 export const SearchField = ({ onSubmit, className = '', inputClassName = '', resetInput }) => {
+  const location = useLocation(); // Получаем текущий URL
+  const SEARCH_KEY = location.pathname.includes('/notices')
+    ? 'SEARCH_PET_KEY'
+    : location.pathname.includes('/news')
+    ? 'SEARCH_NEWS_KEY'
+    : 'SEARCH_DEFAULT_KEY';
+
   const inputRef = useRef(null);
   const [query, setQuery] = useState(() => localStorage.getItem(SEARCH_KEY) || '');
-  const [hasText, setHasText] = useState(false);
+  // const [hasText, setHasText] = useState(false);
+  // console.log('hasText: ', hasText);
+  // console.log('query: ', query);
 
   useEffect(() => {
     localStorage.setItem(SEARCH_KEY, query);
@@ -24,13 +27,13 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
     const entryField = e.target.elements.query.value.trim();
 
     onSubmit(entryField);
-    setHasText(true); /////////////////
+    // setHasText(true); /////////////////
   };
 
   const handleResetAndSubmit = useCallback(() => {
     if (inputRef.current) {
       inputRef.current.value = '';
-      setHasText(false);
+      // setHasText(false);
       setQuery('');
       localStorage.removeItem(SEARCH_KEY);
     }
@@ -52,7 +55,7 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
     const value = e.target.value;
     setQuery(value);
     // setHasText(value.length > 0);
-    setHasText(true);
+    // setHasText(true);
   };
 
   return (
@@ -67,7 +70,7 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
           value={query} ///////////////////////////
           onChange={handleChange}
         />
-        {hasText && (
+        {query && (
           <button className={css.closeBtn} type="button" onClick={handleResetAndSubmit}>
             <IoMdClose style={{ width: '22px', height: '22px' }} />
           </button>

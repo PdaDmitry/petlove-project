@@ -23,6 +23,7 @@ export const Pagination = ({ setPage }) => {
   const maxPage = totalPages;
   const [paginationItems, setPaginationItems] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  console.log('paginationItems: ', paginationItems);
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,12 +41,18 @@ export const Pagination = ({ setPage }) => {
       } else if (currentPage === maxPage) {
         setPaginationItems(['...', maxPage - 1, maxPage]);
       }
+      // else {
+      //   setPaginationItems(['...', currentPage, currentPage + 1]); /////////////
+      // }
     } else {
       if (currentPage === 1) {
         setPaginationItems([1, 2, 3, '...']);
       } else if (currentPage === maxPage) {
         setPaginationItems(['...', maxPage - 2, maxPage - 1, maxPage]);
       }
+      // else {
+      //   setPaginationItems(['...', currentPage - 1, currentPage, currentPage + 1, '...']); //////////
+      // }
     }
   }, [currentPage, maxPage, windowWidth]);
 
@@ -53,6 +60,14 @@ export const Pagination = ({ setPage }) => {
     if (value === '...') return;
     setPage(value);
   };
+
+  // const handleDecrease = () => {
+  //   setPage(prev => Math.max(1, prev - 1));
+  // };
+
+  // const handleIncrease = () => {
+  //   setPage(prev => Math.min(maxPage, prev + 1));
+  // };
 
   const handleDecrease = () => {
     setPage(prev => {

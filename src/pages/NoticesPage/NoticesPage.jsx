@@ -133,26 +133,5 @@ export const NoticesPage = () => {
         <Pagination setPage={setPage} />
       </div>
     )
-    // <div className={css.contNotices}>
-    //   <Title className={css.titleNotices}>Find your favorite pet</Title>
-    //   <div className={css.contFilters}>
-    //     <SearchField
-    //       onSubmit={searchPet}
-    //       className={css.searchPet}
-    //       inputClassName={css.inputPets}
-    //       resetInput={resetInput}
-    //     />
-    //     <NoticesFilters
-    //       logInFilters={logInFilters}
-    //       setLogInFilters={setLogInFilters}
-    //       logOutFilters={logOutFilters}
-    //       setLogOutFilters={setLogOutFilters}
-    //       setResetInput={setResetInput}
-    //       setKeyword={setKeyword}
-    //     />
-    //   </div>
-    //   <NoticesList />
-    //   <Pagination setPage={setPage} />
-    // </div>
   );
 };
