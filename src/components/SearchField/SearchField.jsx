@@ -2,22 +2,37 @@ import css from './SearchField.module.css';
 import { LuSearch } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const SEARCH_KEY = location.pathname.includes('/notices')
+  ? 'SEARCH_PET_KEY'
+  : location.pathname.includes('/news')
+  ? 'SEARCH_NEWS_KEY'
+  : 'SEARCH_DEFAULT_KEY';
 
 export const SearchField = ({ onSubmit, className = '', inputClassName = '', resetInput }) => {
   const inputRef = useRef(null);
+  const [query, setQuery] = useState(() => localStorage.getItem(SEARCH_KEY) || '');
   const [hasText, setHasText] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem(SEARCH_KEY, query);
+  }, [query]);
 
   const handleSubmit = e => {
     e.preventDefault();
     const entryField = e.target.elements.query.value.trim();
 
     onSubmit(entryField);
+    setHasText(true); /////////////////
   };
 
   const handleResetAndSubmit = useCallback(() => {
     if (inputRef.current) {
       inputRef.current.value = '';
       setHasText(false);
+      setQuery('');
+      localStorage.removeItem(SEARCH_KEY);
     }
     onSubmit('');
   }, [onSubmit]);
@@ -28,8 +43,16 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
     }
   }, [handleResetAndSubmit, resetInput]);
 
-  const handleChange = () => {
-    setHasText(inputRef.current?.value.length > 0);
+  // const handleChange = e => {
+  //   setQuery(e.target.value); //////////////////////////////
+  //   setHasText(inputRef.current?.value.length > 0);
+  // };
+
+  const handleChange = e => {
+    const value = e.target.value;
+    setQuery(value);
+    // setHasText(value.length > 0);
+    setHasText(true);
   };
 
   return (
@@ -41,6 +64,7 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
           type="text"
           name="query"
           placeholder="Search"
+          value={query} ///////////////////////////
           onChange={handleChange}
         />
         {hasText && (

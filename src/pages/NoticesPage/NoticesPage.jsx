@@ -75,6 +75,7 @@ export const NoticesPage = () => {
   useEffect(() => {
     if (logOutFilters.byType || logInFilters.byType) {
       setKeyword('');
+      // setResetInput(false); /////////////////////////
     }
   }, [logOutFilters.byType, logInFilters.byType]);
 
@@ -92,54 +93,66 @@ export const NoticesPage = () => {
     dispatch(fetchPetsThunk(query));
   }, [dispatch, query]);
 
-  // if (loader) {
-  //   return <p>Please wait...</p>;
-  // }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const resultAction = await dispatch(fetchPetsThunk(query));
+
+  //     if (fetchPetsThunk.rejected.match(resultAction)) {
+  //       navigate('/*');
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [dispatch, query, navigate]);
+
+  if (loader) {
+    return <p>Please wait...</p>;
+  }
 
   return (
-    // !error && (
-    //   <div className={css.contNotices}>
-    //     <Title className={css.titleNotices}>Find your favorite pet</Title>
-    //     <div className={css.contFilters}>
-    //       <SearchField
-    //         onSubmit={searchPet}
-    //         className={css.searchPet}
-    //         inputClassName={css.inputPets}
-    //         resetInput={resetInput}
-    //       />
-    //       <NoticesFilters
-    //         logInFilters={logInFilters}
-    //         setLogInFilters={setLogInFilters}
-    //         logOutFilters={logOutFilters}
-    //         setLogOutFilters={setLogOutFilters}
-    //         setResetInput={setResetInput}
-    //         setKeyword={setKeyword}
-    //       />
-    //     </div>
-    //     <NoticesList />
-    //     <Pagination setPage={setPage} />
-    //   </div>
-    // )
-    <div className={css.contNotices}>
-      <Title className={css.titleNotices}>Find your favorite pet</Title>
-      <div className={css.contFilters}>
-        <SearchField
-          onSubmit={searchPet}
-          className={css.searchPet}
-          inputClassName={css.inputPets}
-          resetInput={resetInput}
-        />
-        <NoticesFilters
-          logInFilters={logInFilters}
-          setLogInFilters={setLogInFilters}
-          logOutFilters={logOutFilters}
-          setLogOutFilters={setLogOutFilters}
-          setResetInput={setResetInput}
-          setKeyword={setKeyword}
-        />
+    !error && (
+      <div className={css.contNotices}>
+        <Title className={css.titleNotices}>Find your favorite pet</Title>
+        <div className={css.contFilters}>
+          <SearchField
+            onSubmit={searchPet}
+            className={css.searchPet}
+            inputClassName={css.inputPets}
+            resetInput={resetInput}
+          />
+          <NoticesFilters
+            logInFilters={logInFilters}
+            setLogInFilters={setLogInFilters}
+            logOutFilters={logOutFilters}
+            setLogOutFilters={setLogOutFilters}
+            setResetInput={setResetInput}
+            setKeyword={setKeyword}
+          />
+        </div>
+        <NoticesList />
+        <Pagination setPage={setPage} />
       </div>
-      <NoticesList />
-      <Pagination setPage={setPage} />
-    </div>
+    )
+    // <div className={css.contNotices}>
+    //   <Title className={css.titleNotices}>Find your favorite pet</Title>
+    //   <div className={css.contFilters}>
+    //     <SearchField
+    //       onSubmit={searchPet}
+    //       className={css.searchPet}
+    //       inputClassName={css.inputPets}
+    //       resetInput={resetInput}
+    //     />
+    //     <NoticesFilters
+    //       logInFilters={logInFilters}
+    //       setLogInFilters={setLogInFilters}
+    //       logOutFilters={logOutFilters}
+    //       setLogOutFilters={setLogOutFilters}
+    //       setResetInput={setResetInput}
+    //       setKeyword={setKeyword}
+    //     />
+    //   </div>
+    //   <NoticesList />
+    //   <Pagination setPage={setPage} />
+    // </div>
   );
 };
