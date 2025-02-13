@@ -17,13 +17,14 @@ export const Pagination = ({ setPage }) => {
   const currentNewsPage = useSelector(selectPage);
   const currentPetsPage = useSelector(selectPetsPage);
   const currentPage = isNewsPage ? currentNewsPage : currentPetsPage;
+  console.log('currentPage: ', currentPage);
 
-  const perPage = useSelector(selectPerPage);
+  // const perPage = useSelector(selectPerPage);
   // const maxPage = Math.ceil(totalPages / perPage);
   const maxPage = totalPages;
   const [paginationItems, setPaginationItems] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  console.log('paginationItems: ', paginationItems);
+  // console.log('paginationItems: ', paginationItems);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,18 +42,12 @@ export const Pagination = ({ setPage }) => {
       } else if (currentPage === maxPage) {
         setPaginationItems(['...', maxPage - 1, maxPage]);
       }
-      // else {
-      //   setPaginationItems(['...', currentPage, currentPage + 1]); /////////////
-      // }
     } else {
       if (currentPage === 1) {
         setPaginationItems([1, 2, 3, '...']);
       } else if (currentPage === maxPage) {
         setPaginationItems(['...', maxPage - 2, maxPage - 1, maxPage]);
       }
-      // else {
-      //   setPaginationItems(['...', currentPage - 1, currentPage, currentPage + 1, '...']); //////////
-      // }
     }
   }, [currentPage, maxPage, windowWidth]);
 
@@ -60,14 +55,6 @@ export const Pagination = ({ setPage }) => {
     if (value === '...') return;
     setPage(value);
   };
-
-  // const handleDecrease = () => {
-  //   setPage(prev => Math.max(1, prev - 1));
-  // };
-
-  // const handleIncrease = () => {
-  //   setPage(prev => Math.min(maxPage, prev + 1));
-  // };
 
   const handleDecrease = () => {
     setPage(prev => {
@@ -81,6 +68,8 @@ export const Pagination = ({ setPage }) => {
           setPaginationItems(['...', newPage - 1, newPage, newPage + 1]);
         }
       }
+      console.log('newPage: ', newPage);
+
       return newPage;
     });
   };
@@ -93,7 +82,7 @@ export const Pagination = ({ setPage }) => {
       } else {
         if (newPage === 2) {
           setPaginationItems([newPage - 1, newPage, newPage + 1, '...']);
-        } else if (newPage === 31) {
+        } else if (newPage === maxPage - 1) {
           setPaginationItems(['...', newPage - 1, newPage, newPage + 1]);
         } else {
           setPaginationItems([newPage - 1, newPage, newPage + 1, '...']);
