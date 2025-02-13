@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectPage, selectPerPage, selectTotalPages } from '../../redux/news/selectorsNews';
+import { selectPage, selectTotalPages } from '../../redux/news/selectorsNews';
 import css from './Pagination.module.css';
 import { useEffect, useState } from 'react';
 import { selectPetsPage, selectPetsTotalPages } from '../../redux/pets/selectorsPets';
@@ -12,19 +12,19 @@ export const Pagination = ({ setPage }) => {
   const totalNewsPages = useSelector(selectTotalPages);
   const totalPetsPages = useSelector(selectPetsTotalPages);
   const totalPages = isNewsPage ? totalNewsPages : totalPetsPages;
-  // console.log('totalPages: ', totalPages);
-
+  console.log('totalPages: ', totalPages);
   const currentNewsPage = useSelector(selectPage);
   const currentPetsPage = useSelector(selectPetsPage);
   const currentPage = isNewsPage ? currentNewsPage : currentPetsPage;
-  console.log('currentPage: ', currentPage);
+  // console.log('currentPage: ', currentPage);
 
-  // const perPage = useSelector(selectPerPage);
-  // const maxPage = Math.ceil(totalPages / perPage);
   const maxPage = totalPages;
-  const [paginationItems, setPaginationItems] = useState([]);
+  // Since changing a page from local storage, paginationItems returns the previous CurrentPage value,
+  // all CurrentPage values must be either incremented by 1 or decremented by 1, respectively(page numbering is incremented or decremented)!!!!!!
+  const [paginationItems, setPaginationItems] = useState(() => {
+    return JSON.parse(localStorage.getItem('paginationItems')) || [];
+  });
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // console.log('paginationItems: ', paginationItems);
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,13 +37,17 @@ export const Pagination = ({ setPage }) => {
 
   useEffect(() => {
     if (windowWidth < 768) {
-      if (currentPage === 1) {
+      if (totalPages === 2) {
+        setPaginationItems([1, 2]);
+      } else if (currentPage === 1) {
         setPaginationItems([1, 2, '...']);
       } else if (currentPage === maxPage) {
         setPaginationItems(['...', maxPage - 1, maxPage]);
       }
     } else {
-      if (currentPage === 1) {
+      if (totalPages === 2) {
+        setPaginationItems([1, 2]);
+      } else if (currentPage === 1) {
         setPaginationItems([1, 2, 3, '...']);
       } else if (currentPage === maxPage) {
         setPaginationItems(['...', maxPage - 2, maxPage - 1, maxPage]);
@@ -51,46 +55,54 @@ export const Pagination = ({ setPage }) => {
     }
   }, [currentPage, maxPage, windowWidth]);
 
+  const handleDecrease = () => {
+    setPage(prev => Math.max(1, prev - 1));
+    updatePaginationItems('decrease');
+  };
+
+  const handleIncrease = () => {
+    setPage(prev => Math.min(maxPage, prev + 1));
+    updatePaginationItems('increase');
+  };
+
+  const updatePaginationItems = action => {
+    let newItems;
+
+    if (window.innerWidth < 768) {
+      if (action === 'decrease') {
+        newItems = ['...', currentPage - 1, currentPage];
+      } else {
+        newItems = [currentPage, currentPage + 1, '...'];
+      }
+    } else {
+      if (action === 'decrease') {
+        if (currentPage - 1 === 2) {
+          newItems = [currentPage - 2, currentPage - 1, currentPage, '...'];
+        } else {
+          newItems = ['...', currentPage - 2, currentPage - 1, currentPage];
+        }
+      } else {
+        if (currentPage + 1 === 2) {
+          newItems = [currentPage, currentPage + 1, currentPage + 2, '...'];
+        } else if (currentPage + 1 === maxPage - 1) {
+          newItems = ['...', currentPage, currentPage + 1, currentPage + 2];
+        } else {
+          newItems = [currentPage, currentPage + 1, currentPage + 2, '...'];
+        }
+      }
+    }
+    setPaginationItems(newItems);
+  };
+
   const handlePageClick = value => {
     if (value === '...') return;
     setPage(value);
   };
 
-  const handleDecrease = () => {
-    setPage(prev => {
-      const newPage = Math.max(1, prev - 1);
-      if (windowWidth < 768) {
-        setPaginationItems(['...', newPage, newPage + 1]);
-      } else {
-        if (newPage === 2) {
-          setPaginationItems([newPage - 1, newPage, newPage + 1, '...']);
-        } else {
-          setPaginationItems(['...', newPage - 1, newPage, newPage + 1]);
-        }
-      }
-      console.log('newPage: ', newPage);
-
-      return newPage;
-    });
-  };
-
-  const handleIncrease = () => {
-    setPage(prev => {
-      const newPage = Math.min(maxPage, prev + 1);
-      if (windowWidth < 768) {
-        setPaginationItems([newPage - 1, newPage, '...']);
-      } else {
-        if (newPage === 2) {
-          setPaginationItems([newPage - 1, newPage, newPage + 1, '...']);
-        } else if (newPage === maxPage - 1) {
-          setPaginationItems(['...', newPage - 1, newPage, newPage + 1]);
-        } else {
-          setPaginationItems([newPage - 1, newPage, newPage + 1, '...']);
-        }
-      }
-      return newPage;
-    });
-  };
+  // Write paginationItems to localStorage, since the second time the component is mounted, paginationItems is reset to an empty array!!!!!!!!!
+  useEffect(() => {
+    localStorage.setItem('paginationItems', JSON.stringify(paginationItems));
+  }, [paginationItems]);
 
   const handleFirstPageClick = () => setPage(1);
   const handleLastPageClick = () => setPage(maxPage);

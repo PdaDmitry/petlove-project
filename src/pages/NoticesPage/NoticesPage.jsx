@@ -93,18 +93,6 @@ export const NoticesPage = () => {
     dispatch(fetchPetsThunk(query));
   }, [dispatch, query]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const resultAction = await dispatch(fetchPetsThunk(query));
-
-  //     if (fetchPetsThunk.rejected.match(resultAction)) {
-  //       navigate('/*');
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [dispatch, query, navigate]);
-
   if (loader) {
     return <p>Please wait...</p>;
   }
