@@ -20,9 +20,19 @@ export const LocationSelect = ({
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const cities = useSelector(selectCities);
 
-  //   console.log('cities: ', cities);
+  // console.log('city: ', selectedCity);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (selectedCity) {
+      try {
+        localStorage.setItem('selectedCity', JSON.stringify(selectedCity));
+      } catch (error) {
+        console.error('Error saving to localStorage', error);
+      }
+    }
+  }, [selectedCity]);
 
   useEffect(() => {
     if (cities.length === 0) dispatch(fetchCitiesThunk());
@@ -57,7 +67,14 @@ export const LocationSelect = ({
     ),
     ClearIndicator: props => (
       <components.ClearIndicator {...props}>
-        <button className={css.closeBtn} type="button">
+        <button
+          className={css.closeBtn}
+          type="button"
+          onClick={() => {
+            localStorage.removeItem('selectedCity');
+            setSelectedCity(null);
+          }}
+        >
           <IoMdClose style={{ width: '22px', height: '22px' }} />
         </button>
       </components.ClearIndicator>

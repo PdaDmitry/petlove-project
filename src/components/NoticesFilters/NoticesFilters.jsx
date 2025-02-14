@@ -14,7 +14,6 @@ import { IoMdClose } from 'react-icons/io';
 import { LocationSelect } from '../LocationSelect/LocationSelect';
 
 // import { fetchCategoriesThunk } from '../../redux/pets/operationsPets';
-
 // import { selectCategories } from '../../redux/pets/selectorsPets';
 
 export const NoticesFilters = ({
@@ -24,8 +23,30 @@ export const NoticesFilters = ({
   setLogOutFilters,
   setResetInput,
 }) => {
-  const [selectedCity, setSelectedCity] = useState(null);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(() => {
+    try {
+      const savedCity = localStorage.getItem('selectedCity');
+      return savedCity ? JSON.parse(savedCity) : null;
+    } catch (error) {
+      console.error('Error reading from localStorage', error);
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    if (selectedCity) {
+      try {
+        localStorage.setItem('selectedCity', JSON.stringify(selectedCity));
+      } catch (error) {
+        console.error('Error saving to localStorage', error);
+      }
+    } else {
+      // Add localStorage cleaning if the selected city is remote
+      localStorage.removeItem('selectedCity');
+    }
+  }, [selectedCity]);
 
   // const dispatch = useDispatch();
 
@@ -51,6 +72,7 @@ export const NoticesFilters = ({
     }
     setResetInput(true);
     setSelectedCity(null);
+    localStorage.removeItem('selectedCity');
   };
 
   // useEffect(() => {
