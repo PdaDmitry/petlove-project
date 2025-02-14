@@ -12,7 +12,7 @@ export const Pagination = ({ setPage }) => {
   const totalNewsPages = useSelector(selectTotalPages);
   const totalPetsPages = useSelector(selectPetsTotalPages);
   const totalPages = isNewsPage ? totalNewsPages : totalPetsPages;
-  console.log('totalPages: ', totalPages);
+  // console.log('totalPages: ', totalPages);
   const currentNewsPage = useSelector(selectPage);
   const currentPetsPage = useSelector(selectPetsPage);
   const currentPage = isNewsPage ? currentNewsPage : currentPetsPage;
@@ -53,7 +53,7 @@ export const Pagination = ({ setPage }) => {
         setPaginationItems(['...', maxPage - 2, maxPage - 1, maxPage]);
       }
     }
-  }, [currentPage, maxPage, windowWidth]);
+  }, [currentPage, maxPage, windowWidth, totalPages]);
 
   const handleDecrease = () => {
     setPage(prev => Math.max(1, prev - 1));

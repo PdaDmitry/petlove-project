@@ -1,6 +1,8 @@
 .conteinerHeader {
   display: flex;
   width: 375px;
+  justify-content: center;
+  margin: 0 auto;
   align-items: center;
   padding: 28px 20px 0 20px;
 }
@@ -69,6 +71,7 @@
 
 .burgerMenuSvg {
   display: block;
+  cursor: pointer;
 }
 
 .closeButton {
