@@ -1,6 +1,10 @@
+.conteiner {
+  display: flex;
+}
+
 .contNotices {
   padding: 50px 20px 88px;
-
+  margin: 0 auto;
 }
 
 .titleNotices {

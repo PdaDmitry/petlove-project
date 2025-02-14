@@ -99,26 +99,28 @@ export const NoticesPage = () => {
 
   return (
     !error && (
-      <div className={css.contNotices}>
-        <Title className={css.titleNotices}>Find your favorite pet</Title>
-        <div className={css.contFilters}>
-          <SearchField
-            onSubmit={searchPet}
-            className={css.searchPet}
-            inputClassName={css.inputPets}
-            resetInput={resetInput}
-          />
-          <NoticesFilters
-            logInFilters={logInFilters}
-            setLogInFilters={setLogInFilters}
-            logOutFilters={logOutFilters}
-            setLogOutFilters={setLogOutFilters}
-            setResetInput={setResetInput}
-            setKeyword={setKeyword}
-          />
+      <div className={css.conteiner}>
+        <div className={css.contNotices}>
+          <Title className={css.titleNotices}>Find your favorite pet</Title>
+          <div className={css.contFilters}>
+            <SearchField
+              onSubmit={searchPet}
+              className={css.searchPet}
+              inputClassName={css.inputPets}
+              resetInput={resetInput}
+            />
+            <NoticesFilters
+              logInFilters={logInFilters}
+              setLogInFilters={setLogInFilters}
+              logOutFilters={logOutFilters}
+              setLogOutFilters={setLogOutFilters}
+              setResetInput={setResetInput}
+              setKeyword={setKeyword}
+            />
+          </div>
+          <NoticesList />
+          <Pagination setPage={setPage} />
         </div>
-        <NoticesList />
-        <Pagination setPage={setPage} />
       </div>
     )
   );

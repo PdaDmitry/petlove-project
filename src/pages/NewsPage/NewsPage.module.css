@@ -1,5 +1,10 @@
+.conteiner {
+  display: flex;
+}
+
 .contNews {
   padding: 50px 20px 80px;
+  margin: 0 auto;
 }
 
 .customForm {

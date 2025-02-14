@@ -40,11 +40,13 @@ export const NewsPage = () => {
 
   return (
     !errorNews && (
-      <div className={css.contNews}>
-        <Title className={css.titleNews}>News</Title>
-        <SearchField onSubmit={searchWord} className={css.customForm} />
-        <NewsList />
-        <Pagination setPage={setPage} />
+      <div className={css.conteiner}>
+        <div className={css.contNews}>
+          <Title className={css.titleNews}>News</Title>
+          <SearchField onSubmit={searchWord} className={css.customForm} />
+          <NewsList />
+          <Pagination setPage={setPage} />
+        </div>
       </div>
     )
   );
