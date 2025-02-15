@@ -1,0 +1,100 @@
+.conteiner {
+  display: flex;
+  /* justify-content: center; */
+  margin-top: 18px;
+}
+
+.contProfile {
+  border-radius: 30px;
+  width: 335px;
+  height: 864px;
+  padding: 18px 20px 40px;
+  background: #fff;
+  margin: 0 auto;
+}
+
+.contUserUdateBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnUser {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  border-radius: 30px;
+  padding: 10px 14px;
+  width: 80px;
+  height: 38px;
+  border: none;
+  background: #f6b83d;
+  cursor: pointer;
+}
+
+.spanBtnUser {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.userSvg,
+.editSvg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.btnUpdateUser {
+  border-radius: 30px;
+  padding: 10px;
+  width: 38px;
+  height: 38px;
+  background: #fff4df;
+  border: none;
+  cursor: pointer;
+}
+
+/* .editSvg {
+  display: block;
+  width: 18px;
+  height: 18px;
+} */
+
+.contPhoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 10px;
+  width: 94px;
+  height: 94px;
+  background: #fff4df;
+  margin-bottom: 8px;
+}
+
+.userSvgPhoto {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  cursor: pointer;
+}
+
+.contMyInf {
+}
