@@ -1,37 +1,14 @@
-import Title from '../../components/Title/Title';
+import { useSelector } from 'react-redux';
 import css from './ProfilePage.module.css';
+import { selectUser } from '../../redux/auth/selectorsAuth';
+import { UserCard } from '../../components/UserCard/UserCard';
 
 export const ProfilePage = () => {
+  const user = useSelector(selectUser);
+
   return (
     <div className={css.conteiner}>
-      <div className={css.contProfile}>
-        <div className={css.contUserUdateBtns}>
-          <button type="button" className={css.btnUser}>
-            <span className={css.spanBtnUser}>User</span>
-            <svg className={css.userSvg}>
-              <use href="/symbol-defs-mob.svg#icon-user-02-1"></use>
-            </svg>
-          </button>
-          <button type="button" className={css.btnUpdateUser}>
-            <svg className={css.editSvg}>
-              <use href="/symbol-defs-mob.svg#icon-edit-2"></use>
-            </svg>
-          </button>
-        </div>
-        {/* =============================================================== */}
-        <div className={css.contPhoto}>
-          <div className={css.photo}>
-            <svg className={css.userSvgPhoto}>
-              <use href="/symbol-defs-mob.svg#icon-user-02"></use>
-            </svg>
-          </div>
-          <p className={css.text}>Upload photo</p>
-        </div>
-        {/* =============================================================== */}
-        <div className={css.contMyInf}>
-          <h2></h2>
-        </div>
-      </div>
+      <UserCard />
     </div>
   );
 };
