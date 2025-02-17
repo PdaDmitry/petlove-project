@@ -23,18 +23,42 @@ export const loginSchema = Yup.object({
     .required('Password is required'),
 });
 
+// export const userUpdateSchema = Yup.object({
+//   name: Yup.string(),
+
+//   email: Yup.string().matches(
+//     /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+//     'Invalid email format'
+//   ),
+
+//   avatar: Yup.string().matches(
+//     /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
+//     'Invalid avatar URL'
+//   ),
+
+//   phone: Yup.string().matches(/^\+38\d{10}$/, 'Phone must be in format +380XXXXXXXXX'),
+// });
+
 export const userUpdateSchema = Yup.object({
-  name: Yup.string(),
+  name: Yup.string()
+    .test('empty-or-name', 'Name is required', value => !value || value.trim() !== '')
+    .required('Name is required'),
 
-  email: Yup.string().matches(
-    /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-    'Invalid email format'
-  ),
+  email: Yup.string()
+    .test('empty-or-email', 'Invalid email format', value => {
+      return !value || /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
+    })
+    .notRequired(),
 
-  avatar: Yup.string().matches(
-    /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
-    'Invalid avatar URL'
-  ),
+  avatar: Yup.string()
+    .test('empty-or-url', 'Invalid avatar URL', value => {
+      return !value || /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/.test(value);
+    })
+    .notRequired(),
 
-  phone: Yup.string().matches(/^\+38\d{10}$/, 'Phone must be in format +380XXXXXXXXX'),
+  phone: Yup.string()
+    .test('empty-or-phone', 'Phone must be in format +380XXXXXXXXX', value => {
+      return !value || /^\+38\d{10}$/.test(value);
+    })
+    .notRequired(),
 });

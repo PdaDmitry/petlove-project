@@ -86,3 +86,19 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+// =====================================updateUser======================================
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async ({ name, email, phone, avatar }, thunkAPI) => {
+    try {
+      const res = await axios.patch('/users/current/edit', { name, email, phone, avatar });
+
+      setAuthHeader(res.data.token);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

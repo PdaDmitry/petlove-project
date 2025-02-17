@@ -1,20 +1,29 @@
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectorsAuth';
+import { selectToken, selectUser } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState('');
+
   const fileInputRef = useRef(null);
 
   const openModalEditUser = () => setModalEditUserOpen(true);
   const closeModalEditUser = () => setModalEditUserOpen(false);
 
+  const token = useSelector(selectToken);
   const user = useSelector(selectUser);
+
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem(token);
+    if (savedAvatar) {
+      setAvatarPreview(savedAvatar);
+    }
+  }, [token]);
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
@@ -23,8 +32,13 @@ export const UserCard = () => {
   const handleFileChange = event => {
     const file = event.target.files[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setAvatarPreview(imageUrl);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Image = reader.result;
+        setAvatarPreview(base64Image);
+        localStorage.setItem(token, base64Image);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -45,12 +59,16 @@ export const UserCard = () => {
       </div>
       {/* =============================================================== */}
       <div className={css.contPhoto}>
-        <div className={css.photo}>
-          <svg className={css.userSvgPhoto}>
-            <use href="/symbol-defs-mob.svg#icon-user-02"></use>
-          </svg>
-        </div>
-        {/* <p className={css.text}>Upload photo</p> */}
+        {avatarPreview ? (
+          <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
+        ) : (
+          <div className={css.photo}>
+            <svg className={css.userSvgPhoto}>
+              <use href="/symbol-defs-mob.svg#icon-user-02"></use>
+            </svg>
+          </div>
+        )}
+
         <button type="button" onClick={handleUploadClick} className={css.btnUploadPhoto}>
           Upload photo
         </button>
