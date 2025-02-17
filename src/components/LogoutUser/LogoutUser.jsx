@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { LogoutModal } from '../LogoutModal/LogoutModal';
 import ModalWindow from '../ModalWindow/ModalWindow';
 
-export const LogoutUser = ({ isHome, closeBurgerMenu }) => {
+export const LogoutUser = ({ isHome, closeBurgerMenu, customStyle = {} }) => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const openLogoutModal = () => setIsLogoutModalOpen(true);
@@ -14,6 +14,7 @@ export const LogoutUser = ({ isHome, closeBurgerMenu }) => {
       <button
         type="button"
         className={isHome ? css.btnLogoutHome : css.btnLogout}
+        style={customStyle}
         onClick={openLogoutModal}
       >
         LOG OUT

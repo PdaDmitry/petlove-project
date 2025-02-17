@@ -1,9 +1,18 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
+import { LogoutUser } from '../LogoutUser/LogoutUser';
+import { useState } from 'react';
+import ModalWindow from '../ModalWindow/ModalWindow';
+import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 
 export const UserCard = () => {
+  const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
+
+  const openModalEditUser = () => setModalEditUserOpen(true);
+  const closeModalEditUser = () => setModalEditUserOpen(false);
   const user = useSelector(selectUser);
+  // ModalEditUser;
 
   return (
     <div className={css.contProfile}>
@@ -14,7 +23,7 @@ export const UserCard = () => {
             <use href="/symbol-defs-mob.svg#icon-user-02-1"></use>
           </svg>
         </button>
-        <button type="button" className={css.btnUpdateUser}>
+        <button type="button" className={css.btnUpdateUser} onClick={openModalEditUser}>
           <svg className={css.editSvg}>
             <use href="/symbol-defs-mob.svg#icon-edit-2"></use>
           </svg>
@@ -50,6 +59,11 @@ export const UserCard = () => {
           </button>
         </div>
       </div>
+      <LogoutUser customStyle={{ width: '114px' }} />
+
+      <ModalWindow isOpen={modalEditUserOpen} onClose={closeModalEditUser}>
+        <ModalEditUser closeModal={closeModalEditUser} />
+      </ModalWindow>
     </div>
   );
 };

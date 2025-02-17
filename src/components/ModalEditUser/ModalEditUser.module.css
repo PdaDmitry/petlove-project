@@ -1,0 +1,29 @@
+.contUpdateUser {
+    position: relative;
+    border-radius: 30px;
+    width: 335px;
+    /* height: 473px; */
+    background: #fff;
+    padding: 40px 20px;
+}
+
+.closeButton {
+    position: absolute;
+    display: block;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    /* width: 24px;
+  height: 24px; */
+    cursor: pointer;
+    padding: 0;
+}
+
+.titleUpdateUser {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    color: #2b2b2a;
+    margin-bottom: 20px;
+}

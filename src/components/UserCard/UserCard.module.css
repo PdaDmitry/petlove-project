@@ -49,6 +49,7 @@
   background: #fff4df;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 /* .editSvg {
@@ -127,8 +128,7 @@
 
 /* ==========================PetsBlock========================= */
 
-.petsBlock {
-}
+.petsBlock {}
 
 .contTitleAndBtn {
   display: flex;
