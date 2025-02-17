@@ -1,34 +1,29 @@
 import { IoMdClose } from 'react-icons/io';
+import { FiUploadCloud } from 'react-icons/fi';
 import css from './ModalEditUser.module.css';
 import Title from '../Title/Title';
 import { userUpdateSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectorsAuth';
 
-export const ModalEditUser = ({ closeModal }) => {
-  const [avatarPreview, setAvatarPreview] = useState('');
+export const ModalEditUser = ({ handleUploadClick, avatarPreview, closeModal }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const user = useSelector(selectUser);
 
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(userUpdateSchema),
+    defaultValues: {
+      name: user.name || '',
+      email: user.email || '',
+    },
   });
-
-  const handleFileChange = event => {
-    const file = event.target.files[0];
-    if (file) {
-      // Создаём URL для превью изображения
-      const fileUrl = URL.createObjectURL(file);
-      setAvatarPreview(fileUrl);
-
-      // Устанавливаем URL в поле инпута с помощью setValue
-      setValue('avatar', fileUrl);
-    }
-  };
 
   const onSubmit = data => {
     console.log(data);
@@ -40,32 +35,36 @@ export const ModalEditUser = ({ closeModal }) => {
         <IoMdClose style={{ width: '24px', height: '24px' }} />
       </button>
       <Title className={css.titleUpdateUser}>Edit information</Title>
-      <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
-        <div>
-          <input {...register('avatar')} placeholder="Avatar URL" className="input" />
-          {errors.avatar && <p className="textError">{errors.avatar.message}</p>}
+      {avatarPreview ? (
+        <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
+      ) : (
+        <div className={css.photo}>
+          <svg className={css.userSvgPhoto}>
+            <use href="/symbol-defs-mob.svg#icon-user-02"></use>
+          </svg>
         </div>
+      )}
 
-        {/* Кнопка для выбора файла */}
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          //   hidden
-          style={{ marginBottom: '10px' }}
-        />
-        {avatarPreview && (
-          <div>
-            <img src={avatarPreview} alt="Avatar Preview" width="100" />
-          </div>
-        )}
-        {/* <div>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
+        <div className={css.contUrlAvatarPhoto}>
           <div className={css.inputElem}>
-            <input {...register('avatar')} placeholder="Avatar URL" className={css.input} />
+            <input {...register('avatar')} placeholder="Avatar URL" className={css.inputUrl} />
             {errors.avatar && <p className={css.textError}>{errors.avatar.message}</p>}
           </div>
-          <button></button>
-        </div> */}
+          <button
+            type="button"
+            className={css.btnUploadPhoto}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={handleUploadClick}
+          >
+            <span className={css.uploadPhotoSpan}>Upload photo</span>
+            <FiUploadCloud
+              className={css.uploadSvgPhoto}
+              style={{ stroke: isHovered ? '#fff' : '#f6b83d' }}
+            />
+          </button>
+        </div>
 
         <div className={css.inputElem}>
           <input {...register('name')} placeholder="Name" className={css.input} />
@@ -77,12 +76,12 @@ export const ModalEditUser = ({ closeModal }) => {
           {errors.email && <p className={css.textError}>{errors.email.message}</p>}
         </div>
 
-        <div className={css.inputElem}>
+        <div className={css.inputLastElem}>
           <input {...register('phone')} placeholder="Phone (+38XXXXXXXXXX)" className={css.input} />
           {errors.phone && <p className={css.textError}>{errors.phone.message}</p>}
         </div>
 
-        <button type="submit" className={css.btnSubmit}>
+        <button type="submit" className={css.btnUpdateProfile}>
           Go to profile
         </button>
       </form>

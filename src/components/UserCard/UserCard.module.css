@@ -22,7 +22,7 @@
   height: 38px;
   border: none;
   background: #f6b83d;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .spanBtnUser {
@@ -50,6 +50,10 @@
   border: none;
   cursor: pointer;
   outline: none;
+}
+
+.btnUpdateUser:hover {
+  background: #fbe7c1;
 }
 
 /* .editSvg {
@@ -83,13 +87,26 @@
   height: 40px;
 }
 
-.text {
+/* .text {
   font-weight: 500;
   font-size: 12px;
   line-height: 133%;
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-skip-ink: none;
+  cursor: pointer;
+} */
+
+.btnUploadPhoto {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  cursor: pointer;
+  border: none;
+  background: inherit;
   cursor: pointer;
 }
 
@@ -128,7 +145,8 @@
 
 /* ==========================PetsBlock========================= */
 
-.petsBlock {}
+.petsBlock {
+}
 
 .contTitleAndBtn {
   display: flex;

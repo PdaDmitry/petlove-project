@@ -2,17 +2,31 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
+  const [avatarPreview, setAvatarPreview] = useState('');
+  const fileInputRef = useRef(null);
 
   const openModalEditUser = () => setModalEditUserOpen(true);
   const closeModalEditUser = () => setModalEditUserOpen(false);
+
   const user = useSelector(selectUser);
-  // ModalEditUser;
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = event => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setAvatarPreview(imageUrl);
+    }
+  };
 
   return (
     <div className={css.contProfile}>
@@ -36,7 +50,17 @@ export const UserCard = () => {
             <use href="/symbol-defs-mob.svg#icon-user-02"></use>
           </svg>
         </div>
-        <p className={css.text}>Upload photo</p>
+        {/* <p className={css.text}>Upload photo</p> */}
+        <button type="button" onClick={handleUploadClick} className={css.btnUploadPhoto}>
+          Upload photo
+        </button>
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          accept="image/*"
+          onChange={handleFileChange}
+        />
       </div>
       {/* =============================================================== */}
       <div className={css.contMyInf}>
@@ -62,7 +86,11 @@ export const UserCard = () => {
       <LogoutUser customStyle={{ width: '114px' }} />
 
       <ModalWindow isOpen={modalEditUserOpen} onClose={closeModalEditUser}>
-        <ModalEditUser closeModal={closeModalEditUser} />
+        <ModalEditUser
+          handleUploadClick={handleUploadClick}
+          avatarPreview={avatarPreview}
+          closeModal={closeModalEditUser}
+        />
       </ModalWindow>
     </div>
   );
