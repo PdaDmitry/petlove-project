@@ -10,7 +10,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectorsAuth';
 import { updateUser } from '../../redux/auth/operationsAuth';
 
-export const ModalEditUser = ({ handleUploadClick, avatarPreview, closeModal }) => {
+export const ModalEditUser = ({
+  handleUploadClick,
+  avatarPreview,
+  setAvatarPreview,
+  closeModal,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const user = useSelector(selectUser);
 
@@ -36,7 +41,7 @@ export const ModalEditUser = ({ handleUploadClick, avatarPreview, closeModal }) 
   const onSubmit = data => {
     dispatch(updateUser(data));
     closeModal();
-    console.log(data);
+    // console.log(data);
   };
 
   return (
@@ -47,6 +52,8 @@ export const ModalEditUser = ({ handleUploadClick, avatarPreview, closeModal }) 
       <Title className={css.titleUpdateUser}>Edit information</Title>
       {avatarPreview ? (
         <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
+      ) : user.avatar ? (
+        <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
       ) : (
         <div className={css.photo}>
           <svg className={css.userSvgPhoto}>

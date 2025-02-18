@@ -8,7 +8,9 @@ import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
+
   const [avatarPreview, setAvatarPreview] = useState('');
+  const [isHovered, setIsHovered] = useState(false);
 
   const fileInputRef = useRef(null);
 
@@ -17,11 +19,6 @@ export const UserCard = () => {
 
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
-
-  // console.log(user);
-
-  console.log('phone: ', user.phone);
-  console.log('avatar: ', user.avatar);
 
   useEffect(() => {
     const savedAvatar = localStorage.getItem(token);
@@ -50,10 +47,25 @@ export const UserCard = () => {
   return (
     <div className={css.contProfile}>
       <div className={css.contUserUdateBtns}>
-        <button type="button" className={css.btnUser}>
+        <button
+          type="button"
+          className={css.btnUser}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => {
+            localStorage.removeItem(token);
+            setAvatarPreview('');
+          }}
+        >
           <span className={css.spanBtnUser}>User</span>
           <svg className={css.userSvg}>
-            <use href="/symbol-defs-mob.svg#icon-user-02-1"></use>
+            <use
+              href={
+                isHovered
+                  ? '/symbol-defs-mob.svg#icon-user-02-1'
+                  : '/symbol-defs-mob.svg#icon-user-02'
+              }
+            ></use>
           </svg>
         </button>
         <button type="button" className={css.btnUpdateUser} onClick={openModalEditUser}>
@@ -64,16 +76,17 @@ export const UserCard = () => {
       </div>
       {/* =============================================================== */}
       <div className={css.contPhoto}>
-        <img src={user.avatar} alt="Avatar Preview" className={css.avatarImage} />
-        {/* {avatarPreview ? (
+        {avatarPreview ? (
           <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
+        ) : user.avatar ? (
+          <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
         ) : (
           <div className={css.photo}>
             <svg className={css.userSvgPhoto}>
               <use href="/symbol-defs-mob.svg#icon-user-02"></use>
             </svg>
           </div>
-        )} */}
+        )}
 
         <button type="button" onClick={handleUploadClick} className={css.btnUploadPhoto}>
           Upload photo
@@ -113,6 +126,7 @@ export const UserCard = () => {
         <ModalEditUser
           handleUploadClick={handleUploadClick}
           avatarPreview={avatarPreview}
+          setAvatarPreview={setAvatarPreview}
           closeModal={closeModalEditUser}
         />
       </ModalWindow>

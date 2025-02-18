@@ -21,8 +21,14 @@
   width: 80px;
   height: 38px;
   border: none;
+  background: #fff4df;
+  color: #f6b83d;
+  cursor: pointer;
+}
+
+.btnUser:hover {
+  color: #fff;
   background: #f6b83d;
-  /* cursor: pointer; */
 }
 
 .spanBtnUser {
@@ -30,7 +36,7 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.02em;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .userSvg,
