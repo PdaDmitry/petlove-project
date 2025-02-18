@@ -79,7 +79,10 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 
   try {
     setAuthHeader(token);
-    const res = await axios.get('/users/current');
+    const res = await axios.get('/users/current/full');
+
+    // const { name, email, phone, avatar } = res.data;
+    // return { name, email, phone, avatar };
     return res.data;
   } catch (error) {
     clearAuthHeader();
@@ -95,7 +98,7 @@ export const updateUser = createAsyncThunk(
     try {
       const res = await axios.patch('/users/current/edit', { name, email, phone, avatar });
 
-      setAuthHeader(res.data.token);
+      // setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

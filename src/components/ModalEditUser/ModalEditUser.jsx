@@ -5,27 +5,37 @@ import Title from '../Title/Title';
 import { userUpdateSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectorsAuth';
+import { updateUser } from '../../redux/auth/operationsAuth';
 
 export const ModalEditUser = ({ handleUploadClick, avatarPreview, closeModal }) => {
   const [isHovered, setIsHovered] = useState(false);
   const user = useSelector(selectUser);
 
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
+    // watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(userUpdateSchema),
     defaultValues: {
       name: user.name || '',
       email: user.email || '',
+      phone: user.phone || '',
+      avatar: user.avatar || '',
     },
   });
 
+  // const isFormFilled = Object.values(watch()).some(value => value?.trim() !== '');
+
   const onSubmit = data => {
+    dispatch(updateUser(data));
+    closeModal();
     console.log(data);
   };
 
@@ -81,7 +91,12 @@ export const ModalEditUser = ({ handleUploadClick, avatarPreview, closeModal }) 
           {errors.phone && <p className={css.textError}>{errors.phone.message}</p>}
         </div>
 
-        <button type="submit" className={css.btnUpdateProfile}>
+        <button
+          type="submit"
+          className={css.btnUpdateProfile}
+          // disabled={!isFormFilled}
+          // onClick={closeModal}
+        >
           Go to profile
         </button>
       </form>

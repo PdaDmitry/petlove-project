@@ -5,7 +5,7 @@ import { loginSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import toast from 'react-hot-toast';
 import css from './LoginPage.module.css';
-import { loginUser } from '../../redux/auth/operationsAuth';
+import { loginUser, refreshUser } from '../../redux/auth/operationsAuth';
 import { selectUser } from '../../redux/auth/selectorsAuth';
 import { useNavigate } from 'react-router-dom';
 import Title from '../../components/Title/Title';
@@ -51,6 +51,7 @@ export const LoginPage = () => {
   const onSubmit = async data => {
     try {
       const resultAction = await dispatch(loginUser(data)).unwrap();
+      await dispatch(refreshUser()).unwrap();
       navigate('/profile');
       reset();
     } catch (error) {

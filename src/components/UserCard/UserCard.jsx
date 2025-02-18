@@ -18,6 +18,11 @@ export const UserCard = () => {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
 
+  // console.log(user);
+
+  console.log('phone: ', user.phone);
+  console.log('avatar: ', user.avatar);
+
   useEffect(() => {
     const savedAvatar = localStorage.getItem(token);
     if (savedAvatar) {
@@ -59,7 +64,8 @@ export const UserCard = () => {
       </div>
       {/* =============================================================== */}
       <div className={css.contPhoto}>
-        {avatarPreview ? (
+        <img src={user.avatar} alt="Avatar Preview" className={css.avatarImage} />
+        {/* {avatarPreview ? (
           <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
         ) : (
           <div className={css.photo}>
@@ -67,7 +73,7 @@ export const UserCard = () => {
               <use href="/symbol-defs-mob.svg#icon-user-02"></use>
             </svg>
           </div>
-        )}
+        )} */}
 
         <button type="button" onClick={handleUploadClick} className={css.btnUploadPhoto}>
           Upload photo
