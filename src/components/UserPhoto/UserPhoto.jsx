@@ -1,33 +1,11 @@
 import { useSelector } from 'react-redux';
 import css from './UserPhoto.module.css';
-import { selectToken, selectUser } from '../../redux/auth/selectorsAuth';
-import { useEffect, useState } from 'react';
+import { selectAvatarUload, selectToken, selectUser } from '../../redux/auth/selectorsAuth';
 
-export const UserPhoto = ({ fileInputRef, className = '' }) => {
-  const [avatarPreview, setAvatarPreview] = useState('');
-
+export const UserPhoto = ({ className = '' }) => {
   const user = useSelector(selectUser);
   const token = useSelector(selectToken);
-
-  useEffect(() => {
-    const savedAvatar = localStorage.getItem(token);
-    if (savedAvatar) {
-      setAvatarPreview(savedAvatar);
-    }
-  }, [token]);
-
-  const handleFileChange = event => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64Image = reader.result;
-        setAvatarPreview(base64Image);
-        localStorage.setItem(token, base64Image);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  const avatarPreview = useSelector(selectAvatarUload);
 
   return (
     <div>
@@ -42,13 +20,6 @@ export const UserPhoto = ({ fileInputRef, className = '' }) => {
           </svg>
         </div>
       )}
-      <input
-        type="file"
-        ref={fileInputRef}
-        style={{ display: 'none' }}
-        accept="image/*"
-        onChange={handleFileChange}
-      />
     </div>
   );
 };

@@ -1,7 +1,12 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import css from './Header.module.css';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn, selectToken, selectUser } from '../../redux/auth/selectorsAuth';
+import {
+  selectAvatarUload,
+  selectIsLoggedIn,
+  selectToken,
+  selectUser,
+} from '../../redux/auth/selectorsAuth';
 import { useEffect, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
@@ -11,18 +16,12 @@ import { UserPhoto } from '../UserPhoto/UserPhoto';
 
 export const Header = ({ isHome }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [avatarPreview, setAvatarPreview] = useState('');
+  const avatarUpload = useSelector(selectAvatarUload);
+
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectToken);
-  const user = useSelector(selectUser);
 
-  useEffect(() => {
-    const savedAvatar = localStorage.getItem(token);
-    if (savedAvatar) {
-      setAvatarPreview(savedAvatar);
-    }
-  }, [token]);
+  const user = useSelector(selectUser);
 
   const handleClick = () => {
     navigate('/home');
@@ -65,16 +64,16 @@ export const Header = ({ isHome }) => {
           className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
           onClick={handleUserClick}
         >
-          <UserPhoto />
-          {/* {avatarPreview ? (
-            <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
+          {/* <UserPhoto avatarPreview={avatarPreview} /> */}
+          {avatarUpload ? (
+            <img src={avatarUpload} alt="Avatar Preview" className={css.avatarImage} />
           ) : user.avatar ? (
             <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
           ) : (
             <svg className={css.userSvg}>
               <use href="/symbol-defs-mob.svg#icon-user-02"></use>
             </svg>
-          )} */}
+          )}
         </div>
         <FiMenu
           className={css.burgerMenuSvg}

@@ -12,11 +12,17 @@ const initialState = {
   isLoggedIn: false,
   loader: false,
   error: null,
+  avatarUload: null,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setAvatarUpload: (state, action) => {
+      state.avatarUload = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       //registerUser
@@ -121,4 +127,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setAvatarUpload } = authSlice.actions;
 export const authReducer = authSlice.reducer;

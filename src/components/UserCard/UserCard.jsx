@@ -1,23 +1,40 @@
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectorsAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectToken, selectUser } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
+import { setAvatarUpload } from '../../redux/auth/authSlice';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  // const [avatarPreview, setAvatarPreview] = useState(null);
+  const dispatch = useDispatch();
   const fileInputRef = useRef(null);
+
+  const user = useSelector(selectUser);
+  const token = useSelector(selectToken);
+
+  const handleFileChange = event => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Image = reader.result;
+        // setAvatarPreview(base64Image);
+        dispatch(setAvatarUpload(base64Image)); // Сохраняем аватар в Redux
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const openModalEditUser = () => setModalEditUserOpen(true);
   const closeModalEditUser = () => setModalEditUserOpen(false);
 
-  const user = useSelector(selectUser);
-
-  const handleUploadClick = () => {
+  const handleUploadPhoto = () => {
     fileInputRef.current?.click();
   };
 
@@ -49,11 +66,18 @@ export const UserCard = () => {
       </div>
       {/* =============================================================== */}
       <div className={css.contPhoto}>
-        <UserPhoto fileInputRef={fileInputRef} />
+        <UserPhoto />
 
-        <button type="button" className={css.btnUploadPhoto} onClick={handleUploadClick}>
+        <button type="button" className={css.btnUploadPhoto} onClick={handleUploadPhoto}>
           Upload photo
         </button>
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          accept="image/*"
+          onChange={handleFileChange}
+        />
       </div>
       {/* =============================================================== */}
       <div className={css.contMyInf}>
