@@ -1,47 +1,24 @@
 import { useSelector } from 'react-redux';
-import { selectToken, selectUser } from '../../redux/auth/selectorsAuth';
+import { selectUser } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
+import { UserPhoto } from '../UserPhoto/UserPhoto';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
-
-  const [avatarPreview, setAvatarPreview] = useState('');
   const [isHovered, setIsHovered] = useState(false);
-
   const fileInputRef = useRef(null);
 
   const openModalEditUser = () => setModalEditUserOpen(true);
   const closeModalEditUser = () => setModalEditUserOpen(false);
 
-  const token = useSelector(selectToken);
   const user = useSelector(selectUser);
 
-  useEffect(() => {
-    const savedAvatar = localStorage.getItem(token);
-    if (savedAvatar) {
-      setAvatarPreview(savedAvatar);
-    }
-  }, [token]);
-
   const handleUploadClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleFileChange = event => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64Image = reader.result;
-        setAvatarPreview(base64Image);
-        localStorage.setItem(token, base64Image);
-      };
-      reader.readAsDataURL(file);
-    }
+    fileInputRef.current?.click();
   };
 
   return (
@@ -52,10 +29,6 @@ export const UserCard = () => {
           className={css.btnUser}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onClick={() => {
-            localStorage.removeItem(token);
-            setAvatarPreview('');
-          }}
         >
           <span className={css.spanBtnUser}>User</span>
           <svg className={css.userSvg}>
@@ -76,28 +49,11 @@ export const UserCard = () => {
       </div>
       {/* =============================================================== */}
       <div className={css.contPhoto}>
-        {avatarPreview ? (
-          <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
-        ) : user.avatar ? (
-          <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
-        ) : (
-          <div className={css.photo}>
-            <svg className={css.userSvgPhoto}>
-              <use href="/symbol-defs-mob.svg#icon-user-02"></use>
-            </svg>
-          </div>
-        )}
+        <UserPhoto fileInputRef={fileInputRef} />
 
-        <button type="button" onClick={handleUploadClick} className={css.btnUploadPhoto}>
+        <button type="button" className={css.btnUploadPhoto} onClick={handleUploadClick}>
           Upload photo
         </button>
-        <input
-          type="file"
-          ref={fileInputRef}
-          style={{ display: 'none' }}
-          accept="image/*"
-          onChange={handleFileChange}
-        />
       </div>
       {/* =============================================================== */}
       <div className={css.contMyInf}>
@@ -123,12 +79,7 @@ export const UserCard = () => {
       <LogoutUser customStyle={{ width: '114px' }} />
 
       <ModalWindow isOpen={modalEditUserOpen} onClose={closeModalEditUser}>
-        <ModalEditUser
-          handleUploadClick={handleUploadClick}
-          avatarPreview={avatarPreview}
-          setAvatarPreview={setAvatarPreview}
-          closeModal={closeModalEditUser}
-        />
+        <ModalEditUser closeModal={closeModalEditUser} />
       </ModalWindow>
     </div>
   );

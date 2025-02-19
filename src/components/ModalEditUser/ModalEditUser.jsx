@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectorsAuth';
 import { updateUser } from '../../redux/auth/operationsAuth';
+import { UserPhoto } from '../UserPhoto/UserPhoto';
 
 export const ModalEditUser = ({
   handleUploadClick,
@@ -50,7 +51,8 @@ export const ModalEditUser = ({
         <IoMdClose style={{ width: '24px', height: '24px' }} />
       </button>
       <Title className={css.titleUpdateUser}>Edit information</Title>
-      {avatarPreview ? (
+      <UserPhoto />
+      {/* {avatarPreview ? (
         <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
       ) : user.avatar ? (
         <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
@@ -60,7 +62,7 @@ export const ModalEditUser = ({
             <use href="/symbol-defs-mob.svg#icon-user-02"></use>
           </svg>
         </div>
-      )}
+      )} */}
 
       <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
         <div className={css.contUrlAvatarPhoto}>

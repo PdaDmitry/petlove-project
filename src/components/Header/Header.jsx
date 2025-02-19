@@ -7,6 +7,7 @@ import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import { UserNav } from '../UserNav/UserNav';
 import { AuthNav } from '../AuthNav/AuthNav';
+import { UserPhoto } from '../UserPhoto/UserPhoto';
 
 export const Header = ({ isHome }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -64,7 +65,8 @@ export const Header = ({ isHome }) => {
           className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
           onClick={handleUserClick}
         >
-          {avatarPreview ? (
+          <UserPhoto />
+          {/* {avatarPreview ? (
             <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
           ) : user.avatar ? (
             <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
@@ -72,7 +74,7 @@ export const Header = ({ isHome }) => {
             <svg className={css.userSvg}>
               <use href="/symbol-defs-mob.svg#icon-user-02"></use>
             </svg>
-          )}
+          )} */}
         </div>
         <FiMenu
           className={css.burgerMenuSvg}

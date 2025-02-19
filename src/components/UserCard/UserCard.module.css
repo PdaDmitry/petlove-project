@@ -75,17 +75,17 @@
   margin-bottom: 28px;
 }
 
-.avatarImage {
+/* .avatarImage {
   border-radius: 50%;
-  /* padding: 10px; */
+  
   width: 94px;
   height: 94px;
   object-fit: cover;
   margin: 0 auto;
   margin-bottom: 8px;
-}
+} */
 
-.photo {
+/* .photo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,13 +95,13 @@
   height: 94px;
   background: #fff4df;
   margin-bottom: 8px;
-}
+} */
 
-.userSvgPhoto {
+/* .userSvgPhoto {
   display: block;
   width: 40px;
   height: 40px;
-}
+} */
 
 /* .text {
   font-weight: 500;
@@ -161,8 +161,7 @@
 
 /* ==========================PetsBlock========================= */
 
-.petsBlock {
-}
+.petsBlock {}
 
 .contTitleAndBtn {
   display: flex;
