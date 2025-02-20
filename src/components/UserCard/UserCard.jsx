@@ -38,6 +38,10 @@ export const UserCard = () => {
     fileInputRef.current?.click();
   };
 
+  const handleAvatarUploadReset = () => {
+    dispatch(setAvatarUpload(null));
+  };
+
   return (
     <div className={css.contProfile}>
       <div className={css.contUserUdateBtns}>
@@ -46,6 +50,7 @@ export const UserCard = () => {
           className={css.btnUser}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          onClick={handleAvatarUploadReset}
         >
           <span className={css.spanBtnUser}>User</span>
           <svg className={css.userSvg}>
@@ -103,7 +108,7 @@ export const UserCard = () => {
       <LogoutUser customStyle={{ width: '114px' }} />
 
       <ModalWindow isOpen={modalEditUserOpen} onClose={closeModalEditUser}>
-        <ModalEditUser closeModal={closeModalEditUser} />
+        <ModalEditUser closeModal={closeModalEditUser} handleUploadPhoto={handleUploadPhoto} />
       </ModalWindow>
     </div>
   );

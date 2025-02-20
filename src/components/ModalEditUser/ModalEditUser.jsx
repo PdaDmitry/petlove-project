@@ -11,12 +11,7 @@ import { selectUser } from '../../redux/auth/selectorsAuth';
 import { updateUser } from '../../redux/auth/operationsAuth';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
 
-export const ModalEditUser = ({
-  handleUploadClick,
-  avatarPreview,
-  setAvatarPreview,
-  closeModal,
-}) => {
+export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
   const [isHovered, setIsHovered] = useState(false);
   const user = useSelector(selectUser);
 
@@ -75,7 +70,7 @@ export const ModalEditUser = ({
             className={css.btnUploadPhoto}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={handleUploadClick}
+            onClick={handleUploadPhoto}
           >
             <span className={css.uploadPhotoSpan}>Upload photo</span>
             <FiUploadCloud

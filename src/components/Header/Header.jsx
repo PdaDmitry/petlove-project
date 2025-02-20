@@ -64,16 +64,7 @@ export const Header = ({ isHome }) => {
           className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
           onClick={handleUserClick}
         >
-          {/* <UserPhoto avatarPreview={avatarPreview} /> */}
-          {avatarUpload ? (
-            <img src={avatarUpload} alt="Avatar Preview" className={css.avatarImage} />
-          ) : user.avatar ? (
-            <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
-          ) : (
-            <svg className={css.userSvg}>
-              <use href="/symbol-defs-mob.svg#icon-user-02"></use>
-            </svg>
-          )}
+          <UserPhoto className={css.customAvatar} svgClassName={css.customUserSvg} />
         </div>
         <FiMenu
           className={css.burgerMenuSvg}
