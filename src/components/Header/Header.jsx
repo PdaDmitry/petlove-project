@@ -66,7 +66,7 @@ export const Header = ({ isHome }) => {
         >
           <UserPhoto
             className={css.customAvatar}
-            photoHeader={css.customPhoto}
+            contSize={css.customPhoto}
             svgClassName={css.customUserSvg}
           />
         </div>

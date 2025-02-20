@@ -28,37 +28,52 @@
   margin-bottom: 20px;
 }
 
-.avatarImage {
+/* .avatarImage {
   border-radius: 50%;
-  /* padding: 10px; */
   width: 80px;
   height: 80px;
   object-fit: cover;
   margin: 0 auto;
   margin-bottom: 12px;
-}
+} */
 
-.photo {
+/* .photo {
   display: flex;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  /* padding: 10px; */
-  /* width: 94px;
-  height: 94px; */
   width: 80px;
   height: 80px;
   background: #fff4df;
   margin-bottom: 12px;
+} */
+
+/* .userSvgPhoto {
+  display: block;
+  width: 33px;
+  height: 33px;
+} */
+
+/* ====================== */
+.customAvatar {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
 }
 
-.userSvgPhoto {
-  display: block;
+.customPhoto {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
+}
+
+.customUserSvg {
   width: 33px;
   height: 33px;
 }
 
+/* ============================== */
 .contUrlAvatarPhoto {
   display: flex;
   justify-content: space-between;
