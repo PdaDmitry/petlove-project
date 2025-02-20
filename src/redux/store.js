@@ -18,7 +18,7 @@ import { petsReducer } from './pets/petsSlice';
 const persistAuthConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'user', 'avatarUload'],
+  whitelist: ['token', 'user', 'avatarUload', 'deletedUserPhoto'],
 };
 
 const persistFriendsConfig = {

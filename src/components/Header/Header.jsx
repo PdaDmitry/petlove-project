@@ -2,12 +2,12 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import css from './Header.module.css';
 import { useSelector } from 'react-redux';
 import {
-  selectAvatarUload,
+  // selectAvatarUload,
   selectIsLoggedIn,
-  selectToken,
-  selectUser,
+  // selectToken,
+  // selectUser,
 } from '../../redux/auth/selectorsAuth';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import { UserNav } from '../UserNav/UserNav';
@@ -16,12 +16,12 @@ import { UserPhoto } from '../UserPhoto/UserPhoto';
 
 export const Header = ({ isHome }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const avatarUpload = useSelector(selectAvatarUload);
+  // const avatarUpload = useSelector(selectAvatarUload);
 
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
   const handleClick = () => {
     navigate('/home');
@@ -64,7 +64,11 @@ export const Header = ({ isHome }) => {
           className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
           onClick={handleUserClick}
         >
-          <UserPhoto className={css.customAvatar} svgClassName={css.customUserSvg} />
+          <UserPhoto
+            className={css.customAvatar}
+            photoHeader={css.customPhoto}
+            svgClassName={css.customUserSvg}
+          />
         </div>
         <FiMenu
           className={css.burgerMenuSvg}

@@ -14,6 +14,7 @@ const initialState = {
   error: null,
   avatarUload: null,
   uploadedPhoto: false,
+  deletedUserPhoto: false,
 };
 
 const authSlice = createSlice({
@@ -26,6 +27,9 @@ const authSlice = createSlice({
     },
     resetUploadedPhoto: state => {
       state.uploadedPhoto = false;
+    },
+    removeUserPhoto: (state, action) => {
+      state.deletedUserPhoto = action.payload;
     },
   },
   extraReducers: builder => {
@@ -132,5 +136,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAvatarUpload, resetUploadedPhoto } = authSlice.actions;
+export const { setAvatarUpload, resetUploadedPhoto, removeUserPhoto } = authSlice.actions;
 export const authReducer = authSlice.reducer;

@@ -1,24 +1,26 @@
 import { useSelector } from 'react-redux';
 import css from './UserPhoto.module.css';
-import { selectAvatarUload, selectToken, selectUser } from '../../redux/auth/selectorsAuth';
+import {
+  selectAvatarUload,
+  selectDeletedUserPhoto,
+  selectUser,
+} from '../../redux/auth/selectorsAuth';
 
-export const UserPhoto = ({ className = '', svgClassName = '' }) => {
+export const UserPhoto = ({ className = '', photoHeader = '', svgClassName = '' }) => {
   const user = useSelector(selectUser);
-  const token = useSelector(selectToken);
-  const avatarPreview = useSelector(selectAvatarUload);
+  // const token = useSelector(selectToken);
+  const avatarUload = useSelector(selectAvatarUload);
+  const deleteUserPhoto = useSelector(selectDeletedUserPhoto);
+  console.log('deleteUserPhoto: ', deleteUserPhoto);
 
   return (
     <div>
-      {avatarPreview ? (
-        <img
-          src={avatarPreview}
-          alt="Avatar Preview"
-          className={`${css.avatarImage} ${className}`}
-        />
-      ) : user.avatar ? (
+      {avatarUload ? (
+        <img src={avatarUload} alt="Avatar Preview" className={`${css.avatarImage} ${className}`} />
+      ) : !deleteUserPhoto && user.avatar ? (
         <img src={user.avatar} alt="User Avatar" className={`${css.avatarImage} ${className}`} />
       ) : (
-        <div className={css.photo}>
+        <div className={`${css.photo} ${photoHeader}`}>
           <svg className={`${css.userSvgPhoto} ${svgClassName}`}>
             <use href="/symbol-defs-mob.svg#icon-user-02"></use>
           </svg>

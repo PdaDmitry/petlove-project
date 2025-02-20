@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUploadedPhoto, selectUser } from '../../redux/auth/selectorsAuth';
 import { updateUser } from '../../redux/auth/operationsAuth';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
-import { resetUploadedPhoto } from '../../redux/auth/authSlice';
+import { removeUserPhoto, resetUploadedPhoto, setAvatarUpload } from '../../redux/auth/authSlice';
 
 export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -46,8 +46,10 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
 
   const onSubmit = data => {
     dispatch(updateUser(data));
+    dispatch(removeUserPhoto(false));
+    dispatch(setAvatarUpload(null));
+    dispatch(resetUploadedPhoto());
     closeModal();
-    // console.log(data);
   };
 
   const handleClick = () => {

@@ -6,11 +6,12 @@ import { useRef, useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
-import { resetUploadedPhoto, setAvatarUpload } from '../../redux/auth/authSlice';
+import { removeUserPhoto, resetUploadedPhoto, setAvatarUpload } from '../../redux/auth/authSlice';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [deleteUserPhoto, setDeleteUserPhoto] = useState(false);
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
 
@@ -40,6 +41,8 @@ export const UserCard = () => {
   const handleAvatarUploadReset = () => {
     dispatch(setAvatarUpload(null));
     if (!modalEditUserOpen) dispatch(resetUploadedPhoto());
+
+    dispatch(removeUserPhoto(true));
   };
 
   return (
@@ -71,7 +74,7 @@ export const UserCard = () => {
       </div>
       {/* =============================================================== */}
       <div className={css.contPhoto}>
-        <UserPhoto />
+        <UserPhoto deleteUserPhoto={deleteUserPhoto} />
 
         <button type="button" className={css.btnUploadPhoto} onClick={handleUploadPhoto}>
           Upload photo
@@ -108,7 +111,11 @@ export const UserCard = () => {
       <LogoutUser customStyle={{ width: '114px' }} />
 
       <ModalWindow isOpen={modalEditUserOpen} onClose={closeModalEditUser}>
-        <ModalEditUser closeModal={closeModalEditUser} handleUploadPhoto={handleUploadPhoto} />
+        <ModalEditUser
+          closeModal={closeModalEditUser}
+          handleUploadPhoto={handleUploadPhoto}
+          // setDeleteUserPhoto={setDeleteUserPhoto}
+        />
       </ModalWindow>
     </div>
   );
