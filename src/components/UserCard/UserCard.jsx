@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectorsAuth';
+import {
+  selectAvatarUload,
+  selectDeletedUserPhoto,
+  selectUploadedPhoto,
+  selectUser,
+} from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
 import { useRef, useState } from 'react';
@@ -11,12 +16,16 @@ import { removeUserPhoto, resetUploadedPhoto, setAvatarUpload } from '../../redu
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [deleteUserPhoto, setDeleteUserPhoto] = useState(false);
+
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
 
   const user = useSelector(selectUser);
-  // const token = useSelector(selectToken);
+  const avatarUload = useSelector(selectAvatarUload);
+
+  const deleteUserPhoto = useSelector(selectDeletedUserPhoto);
+  // console.log('avatarUload: ', Boolean(avatarUload));
+  // console.log('deleteUserPhoto: ', deleteUserPhoto);
 
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -74,11 +83,18 @@ export const UserCard = () => {
       </div>
       {/* =============================================================== */}
       <div className={css.contPhoto}>
-        <UserPhoto deleteUserPhoto={deleteUserPhoto} />
+        <UserPhoto />
 
-        <button type="button" className={css.btnUploadPhoto} onClick={handleUploadPhoto}>
+        <button
+          type="button"
+          className={`${css.btnUploadPhoto} ${
+            !avatarUload && deleteUserPhoto ? '' : css.notVisible
+          }`}
+          onClick={handleUploadPhoto}
+        >
           Upload photo
         </button>
+
         <input
           type="file"
           ref={fileInputRef}

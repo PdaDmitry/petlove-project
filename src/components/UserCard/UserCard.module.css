@@ -62,56 +62,12 @@
   background: #fbe7c1;
 }
 
-/* .editSvg {
-  display: block;
-  width: 18px;
-  height: 18px;
-} */
-
 .contPhoto {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 28px;
 }
-
-/* .avatarImage {
-  border-radius: 50%;
-  
-  width: 94px;
-  height: 94px;
-  object-fit: cover;
-  margin: 0 auto;
-  margin-bottom: 8px;
-} */
-
-/* .photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  padding: 10px;
-  width: 94px;
-  height: 94px;
-  background: #fff4df;
-  margin-bottom: 8px;
-} */
-
-/* .userSvgPhoto {
-  display: block;
-  width: 40px;
-  height: 40px;
-} */
-
-/* .text {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 133%;
-  letter-spacing: -0.02em;
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  cursor: pointer;
-} */
 
 .btnUploadPhoto {
   font-weight: 500;
@@ -124,6 +80,10 @@
   border: none;
   background: inherit;
   cursor: pointer;
+}
+
+.notVisible {
+  display: none;
 }
 
 .contMyInf {
@@ -161,7 +121,8 @@
 
 /* ==========================PetsBlock========================= */
 
-.petsBlock {}
+.petsBlock {
+}
 
 .contTitleAndBtn {
   display: flex;

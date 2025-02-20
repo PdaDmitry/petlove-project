@@ -28,44 +28,22 @@
   margin-bottom: 20px;
 }
 
-/* .avatarImage {
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin: 0 auto;
-  margin-bottom: 12px;
-} */
-
-/* .photo {
+.contUserPhoto {
   display: flex;
-  margin: 0 auto;
   justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  background: #fff4df;
-  margin-bottom: 12px;
-} */
+}
 
-/* .userSvgPhoto {
-  display: block;
-  width: 33px;
-  height: 33px;
-} */
-
-/* ====================== */
+/* ==========UserPhoto============ */
 .customAvatar {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 12px;
+  width: 80px !important;
+  height: 80px !important;
+  margin-bottom: 12px !important;
 }
 
 .customPhoto {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 12px;
+  width: 80px !important;
+  height: 80px !important;
+  margin-bottom: 12px !important;
 }
 
 .customUserSvg {

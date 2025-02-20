@@ -8,7 +8,6 @@ import {
 
 export const UserPhoto = ({ className = '', contSize = '', svgClassName = '' }) => {
   const user = useSelector(selectUser);
-  // const token = useSelector(selectToken);
   const avatarUload = useSelector(selectAvatarUload);
   const deleteUserPhoto = useSelector(selectDeletedUserPhoto);
   // console.log('deleteUserPhoto: ', deleteUserPhoto);

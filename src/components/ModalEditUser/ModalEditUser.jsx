@@ -16,6 +16,7 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
   const [isHovered, setIsHovered] = useState(false);
   const user = useSelector(selectUser);
   const uploadedPhoto = useSelector(selectUploadedPhoto);
+
   // console.log('uploadedPhoto: ', uploadedPhoto);
 
   const dispatch = useDispatch();
@@ -63,22 +64,13 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
         <IoMdClose style={{ width: '24px', height: '24px' }} />
       </button>
       <Title className={css.titleUpdateUser}>Edit information</Title>
-      <UserPhoto
-        className={css.customAvatar}
-        contSize={css.customPhoto}
-        svgClassName={css.customUserSvg}
-      />
-      {/* {avatarPreview ? (
-        <img src={avatarPreview} alt="Avatar Preview" className={css.avatarImage} />
-      ) : user.avatar ? (
-        <img src={user.avatar} alt="User Avatar" className={css.avatarImage} />
-      ) : (
-        <div className={css.photo}>
-          <svg className={css.userSvgPhoto}>
-            <use href="/symbol-defs-mob.svg#icon-user-02"></use>
-          </svg>
-        </div>
-      )} */}
+      <div className={css.contUserPhoto}>
+        <UserPhoto
+          className={css.customAvatar}
+          contSize={css.customPhoto}
+          svgClassName={css.customUserSvg}
+        />
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
         <div className={css.contUrlAvatarPhoto}>
