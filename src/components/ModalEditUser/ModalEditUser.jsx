@@ -5,15 +5,18 @@ import Title from '../Title/Title';
 import { userUpdateSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectorsAuth';
+import { selectUploadedPhoto, selectUser } from '../../redux/auth/selectorsAuth';
 import { updateUser } from '../../redux/auth/operationsAuth';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
+import { resetUploadedPhoto } from '../../redux/auth/authSlice';
 
 export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
   const [isHovered, setIsHovered] = useState(false);
   const user = useSelector(selectUser);
+  const uploadedPhoto = useSelector(selectUploadedPhoto);
+  console.log('uploadedPhoto: ', uploadedPhoto);
 
   const dispatch = useDispatch();
 
@@ -32,12 +35,24 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
     },
   });
 
+  useEffect(() => {
+    if (uploadedPhoto) {
+      closeModal();
+      dispatch(resetUploadedPhoto());
+    }
+  }, [uploadedPhoto, closeModal, dispatch]);
+
   // const isFormFilled = Object.values(watch()).some(value => value?.trim() !== '');
 
   const onSubmit = data => {
     dispatch(updateUser(data));
     closeModal();
     // console.log(data);
+  };
+
+  const handleClick = () => {
+    handleUploadPhoto();
+    // uploadedPhoto && closeModal();
   };
 
   return (
@@ -70,7 +85,7 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
             className={css.btnUploadPhoto}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={handleUploadPhoto}
+            onClick={handleClick}
           >
             <span className={css.uploadPhotoSpan}>Upload photo</span>
             <FiUploadCloud

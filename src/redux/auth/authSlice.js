@@ -13,6 +13,7 @@ const initialState = {
   loader: false,
   error: null,
   avatarUload: null,
+  uploadedPhoto: false,
 };
 
 const authSlice = createSlice({
@@ -21,6 +22,10 @@ const authSlice = createSlice({
   reducers: {
     setAvatarUpload: (state, action) => {
       state.avatarUload = action.payload;
+      state.uploadedPhoto = true;
+    },
+    resetUploadedPhoto: state => {
+      state.uploadedPhoto = false;
     },
   },
   extraReducers: builder => {
@@ -127,5 +132,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAvatarUpload } = authSlice.actions;
+export const { setAvatarUpload, resetUploadedPhoto } = authSlice.actions;
 export const authReducer = authSlice.reducer;

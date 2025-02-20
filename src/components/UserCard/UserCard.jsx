@@ -1,22 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectToken, selectUser } from '../../redux/auth/selectorsAuth';
+import { selectUser } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
-import { setAvatarUpload } from '../../redux/auth/authSlice';
+import { resetUploadedPhoto, setAvatarUpload } from '../../redux/auth/authSlice';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  // const [avatarPreview, setAvatarPreview] = useState(null);
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
 
   const user = useSelector(selectUser);
-  const token = useSelector(selectToken);
+  // const token = useSelector(selectToken);
 
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -24,8 +23,8 @@ export const UserCard = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64Image = reader.result;
-        // setAvatarPreview(base64Image);
-        dispatch(setAvatarUpload(base64Image)); // Сохраняем аватар в Redux
+        dispatch(setAvatarUpload(base64Image));
+        if (!modalEditUserOpen) dispatch(resetUploadedPhoto());
       };
       reader.readAsDataURL(file);
     }
@@ -40,6 +39,7 @@ export const UserCard = () => {
 
   const handleAvatarUploadReset = () => {
     dispatch(setAvatarUpload(null));
+    if (!modalEditUserOpen) dispatch(resetUploadedPhoto());
   };
 
   return (
