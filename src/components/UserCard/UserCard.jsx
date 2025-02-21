@@ -82,14 +82,14 @@ export const UserCard = () => {
         </button>
       </div>
       {/* =============================================================== */}
-      <div className={css.contPhoto}>
+      <div
+        className={`${css.contPhoto} ${!avatarUload && deleteUserPhoto ? '' : css.uploadedPhoto}`}
+      >
         <UserPhoto />
 
         <button
           type="button"
-          className={`${css.btnUploadPhoto} ${
-            !avatarUload && deleteUserPhoto ? '' : css.notVisible
-          }`}
+          className={!avatarUload && deleteUserPhoto ? css.btnUploadPhoto : css.notVisible}
           onClick={handleUploadPhoto}
         >
           Upload photo

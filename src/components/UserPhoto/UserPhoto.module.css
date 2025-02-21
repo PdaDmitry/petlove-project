@@ -5,7 +5,8 @@
     height: 94px;
     object-fit: cover;
     margin: 0 auto;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
+    /* margin: 20px auto 30px; */
 }
 
 .photo {

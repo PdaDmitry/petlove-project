@@ -69,6 +69,10 @@
   margin-bottom: 28px;
 }
 
+.uploadedPhoto {
+  margin: 20px 0 30px;
+}
+
 .btnUploadPhoto {
   font-weight: 500;
   font-size: 12px;
@@ -121,8 +125,7 @@
 
 /* ==========================PetsBlock========================= */
 
-.petsBlock {
-}
+.petsBlock {}
 
 .contTitleAndBtn {
   display: flex;
