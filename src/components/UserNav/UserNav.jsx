@@ -14,14 +14,16 @@ export const UserNav = ({ isHome, closeBurgerMenu }) => {
   };
   return (
     <div className={css.contUserNav}>
-      <UserPhoto
-        className={css.customAvatar}
-        contSize={css.customPhoto}
-        svgClassName={css.customUserSvg}
-        isHome={isHome}
-        handleClick={handleClick}
-        variant="burgerMenu"
-      />
+      <div className={css.contUserPhoto}>
+        <UserPhoto
+          className={css.customAvatar}
+          contSize={css.customPhoto}
+          svgClassName={css.customUserSvg}
+          isHome={isHome}
+          handleClick={handleClick}
+          variant="burgerMenu"
+        />
+      </div>
 
       {/* <div
         className={isHome ? css.backgrSvgHome : css.backgrSvg}
