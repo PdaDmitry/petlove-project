@@ -12,11 +12,12 @@ import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
 import { removeUserPhoto, resetUploadedPhoto, setAvatarUpload } from '../../redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
 
@@ -52,6 +53,10 @@ export const UserCard = () => {
     if (!modalEditUserOpen) dispatch(resetUploadedPhoto());
 
     dispatch(removeUserPhoto(true));
+  };
+
+  const handleClickAddPet = () => {
+    navigate('/add-pet');
   };
 
   return (
@@ -116,7 +121,7 @@ export const UserCard = () => {
       <div className={css.petsBlock}>
         <div className={css.contTitleAndBtn}>
           <h2 className={css.titleMePets}>My pets</h2>
-          <button type="button" className={css.btnAddPets}>
+          <button type="button" className={css.btnAddPets} onClick={handleClickAddPet}>
             <span className={css.addBtnTexy}>Add pet</span>
             <svg className={css.addPlusSvg}>
               <use href="/symbol-defs-mob.svg#icon-plus"></use>

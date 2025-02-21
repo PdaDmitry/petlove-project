@@ -68,6 +68,7 @@ export const Header = ({ isHome }) => {
             className={css.customAvatar}
             contSize={css.customPhoto}
             svgClassName={css.customUserSvg}
+            variant="header"
           />
         </div>
         <FiMenu

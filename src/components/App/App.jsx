@@ -14,6 +14,7 @@ import { NoticesPage } from '../../pages/NoticesPage/NoticesPage';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../../redux/auth/operationsAuth';
 import { useEffect } from 'react';
+import { AddPetPage } from '../../pages/AddPetPage/AddPetPage';
 
 function App() {
   const location = useLocation();
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/add-pet" element={<AddPetPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

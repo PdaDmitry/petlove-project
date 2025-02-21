@@ -41,10 +41,10 @@ export const UserPhoto = ({
           }`}
           onClick={variant === 'burgerMenu' ? handleClick : undefined}
         />
-      ) : variant === 'burgerMenu' ? (
+      ) : variant === 'header' || variant === 'burgerMenu' ? (
         <div
           className={isHome ? css.backgrSvgHome : css.backgrSvg}
-          onClick={handleClick}
+          onClick={variant === 'burgerMenu' ? handleClick : undefined}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
