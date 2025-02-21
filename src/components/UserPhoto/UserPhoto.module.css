@@ -9,6 +9,11 @@
     /* margin: 20px auto 30px; */
 }
 
+.mgBurgerMenu {
+    cursor: pointer;
+    /* margin-bottom: 8px; */
+}
+
 .photo {
     display: flex;
     justify-content: center;
@@ -25,4 +30,32 @@
     display: block;
     width: 40px;
     height: 40px;
+}
+
+.backgrSvg,
+.backgrSvgHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff4df;
+    /* margin-bottom: 8px; */
+    cursor: pointer;
+}
+
+.backgrSvg:hover {
+    border: 1px solid #fff;
+}
+
+.backgrSvg:hover,
+.backgrSvgHome:hover {
+    background: #f6b83d;
+}
+
+.userSvg {
+    display: block;
+    width: 20px;
+    height: 20px;
 }

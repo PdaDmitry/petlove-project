@@ -2,9 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
 import css from './UserNav.module.css';
 import { useState } from 'react';
+import { UserPhoto } from '../UserPhoto/UserPhoto';
 
 export const UserNav = ({ isHome, closeBurgerMenu }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -13,7 +14,16 @@ export const UserNav = ({ isHome, closeBurgerMenu }) => {
   };
   return (
     <div className={css.contUserNav}>
-      <div
+      <UserPhoto
+        className={css.customAvatar}
+        contSize={css.customPhoto}
+        svgClassName={css.customUserSvg}
+        isHome={isHome}
+        handleClick={handleClick}
+        variant="burgerMenu"
+      />
+
+      {/* <div
         className={isHome ? css.backgrSvgHome : css.backgrSvg}
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
@@ -28,7 +38,7 @@ export const UserNav = ({ isHome, closeBurgerMenu }) => {
             }
           ></use>
         </svg>
-      </div>
+      </div> */}
 
       <LogoutUser isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
     </div>

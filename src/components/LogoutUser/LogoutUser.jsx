@@ -10,7 +10,7 @@ export const LogoutUser = ({ isHome, closeBurgerMenu, customStyle = {} }) => {
   const closeLogoutModal = () => setIsLogoutModalOpen(false);
 
   return (
-    <div>
+    <div className={css.conteiner}>
       <button
         type="button"
         className={isHome ? css.btnLogoutHome : css.btnLogout}
