@@ -40,3 +40,43 @@
   line-height: 129%;
   color: rgba(43, 43, 42, 0.4);
 }
+
+/* =====================radio button sex===================== */
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Отступ между иконкой и текстом */
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #333;
+}
+
+.radioLabel:hover {
+  background-color: #f5f5f5;
+}
+
+.radioInput {
+  display: none; /* Скрываем стандартный input */
+}
+
+.radioInput:checked + .radioIcon {
+  color: #007bff; /* Цвет активной иконки */
+}
+
+.radioInput:checked + .radioLabel {
+  border-color: #007bff; /* Подсветка выбранного варианта */
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.radioIcon {
+  font-size: 20px; /* Размер иконки */
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+/* ========================================================== */
