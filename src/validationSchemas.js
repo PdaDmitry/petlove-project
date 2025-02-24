@@ -44,7 +44,7 @@ export const addPetSchema = Yup.object({
 
   name: Yup.string().required('Name is required'),
 
-  imgUrl: Yup.string()
+  imgURL: Yup.string()
     .matches(/^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/, 'Invalid image URL')
     .required('Image URL is required'),
 

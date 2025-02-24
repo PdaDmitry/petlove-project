@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPet } from '../../redux/auth/operationsAuth';
-import { selectAddedPets } from '../../redux/auth/selectorsAuth';
+// import { selectAddedPets } from '../../redux/auth/selectorsAuth';
 
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
@@ -30,8 +30,8 @@ export const AddPetPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const addedPets = useSelector(selectAddedPets);
-  console.log('addedPets: ', addedPets);
+  // const addedPets = useSelector(selectAddedPets);
+  // console.log('addedPets: ', addedPets);
 
   const handleGoBack = () => {
     navigate('/profile');
@@ -77,8 +77,8 @@ export const AddPetPage = () => {
 
           <div className={css.contUrlAvatarPhoto}>
             <div className={css.inputElem}>
-              <input {...register('imgUrl')} placeholder="Enter URL" className={css.inputUrl} />
-              {errors.imgUrl && <p className={css.textError}>{errors.imgUrl.message}</p>}
+              <input {...register('imgURL')} placeholder="Enter URL" className={css.inputUrl} />
+              {errors.imgURL && <p className={css.textError}>{errors.imgURL.message}</p>}
             </div>
             <button
               type="button"

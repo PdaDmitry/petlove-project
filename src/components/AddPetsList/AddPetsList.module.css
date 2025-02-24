@@ -1,0 +1,7 @@
+.contAddPetsList {
+  margin-bottom: 20px;
+}
+
+.listAddPets .itemLi:not(:last-child) {
+  margin-bottom: 14px;
+}

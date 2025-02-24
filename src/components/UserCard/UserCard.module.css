@@ -125,7 +125,9 @@
 
 /* ==========================PetsBlock========================= */
 
-.petsBlock {}
+.petsBlock {
+  margin-bottom: 20px;
+}
 
 .contTitleAndBtn {
   display: flex;

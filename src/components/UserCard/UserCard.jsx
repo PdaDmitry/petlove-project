@@ -13,6 +13,7 @@ import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
 import { removeUserPhoto, resetUploadedPhoto, setAvatarUpload } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { AddPetsList } from '../AddPetsList/AddPetsList';
 
 export const UserCard = () => {
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
@@ -129,6 +130,8 @@ export const UserCard = () => {
           </button>
         </div>
       </div>
+      <AddPetsList />
+
       <LogoutUser customStyle={{ width: '114px' }} />
 
       <ModalWindow isOpen={modalEditUserOpen} onClose={closeModalEditUser}>
