@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, logoutUser, refreshUser, registerUser, updateUser } from './operationsAuth';
+import {
+  addPet,
+  loginUser,
+  logoutUser,
+  refreshUser,
+  registerUser,
+  updateUser,
+} from './operationsAuth';
 
 const initialState = {
   user: {
@@ -15,6 +22,7 @@ const initialState = {
   avatarUload: null,
   uploadedPhoto: false,
   deletedUserPhoto: false,
+  addedPets: [],
 };
 
 const authSlice = createSlice({
@@ -130,6 +138,20 @@ const authSlice = createSlice({
         state.loader = false;
       })
       .addCase(updateUser.rejected, (state, action) => {
+        state.loader = false;
+        state.error = action.payload || 'Something went wrong...';
+      })
+
+      // addPet
+      .addCase(addPet.pending, state => {
+        state.loader = true;
+        state.error = null;
+      })
+      .addCase(addPet.fulfilled, (state, action) => {
+        state.addedPets.push(action.payload);
+        state.loader = false;
+      })
+      .addCase(addPet.rejected, (state, action) => {
         state.loader = false;
         state.error = action.payload || 'Something went wrong...';
       });

@@ -4,3 +4,5 @@ export const selectToken = state => state.auth.token;
 export const selectAvatarUload = state => state.auth.avatarUload;
 export const selectUploadedPhoto = state => state.auth.uploadedPhoto;
 export const selectDeletedUserPhoto = state => state.auth.deletedUserPhoto;
+
+export const selectAddedPets = state => state.auth.addedPets;

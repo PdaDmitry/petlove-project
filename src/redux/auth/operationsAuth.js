@@ -105,3 +105,14 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+// =====================================Add Pet======================================
+
+export const addPet = createAsyncThunk('auth/addPet', async (petData, thunkAPI) => {
+  try {
+    const res = await axios.post('/users/current/pets/add', petData);
+    return res.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);
+  }
+});
