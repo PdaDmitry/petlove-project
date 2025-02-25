@@ -5,8 +5,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FiUploadCloud } from 'react-icons/fi';
 import Select from 'react-select';
 import css from './AddPetPage.module.css';
+import { TbGenderFemale } from 'react-icons/tb';
+import { TbGenderMale } from 'react-icons/tb';
 
-import { FaMars, FaVenus, FaGenderless } from 'react-icons/fa';
+// import { FaMars, FaVenus, FaGenderless } from 'react-icons/fa';
 import { byTypeOptions } from '../../options';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -52,7 +54,66 @@ export const AddPetPage = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
           {/* =========================radio button sex============================== */}
-          <div className={css.inputLastElem}>
+
+          <ul className={css.inputLastElem}>
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  className={css.radioInputFemale}
+                  value="female"
+                  {...register('sex')}
+                />
+                <div className={css.radioContent}>
+                  <TbGenderFemale />
+                  {/* <FaVenus className={css.radioIcon} /> */}
+                  <p className={css.radioText}>Female</p>
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  className={css.radioInputMale}
+                  value="male"
+                  {...register('sex')}
+                />
+                <div className={css.radioContent}>
+                  {/* <FaMars className={css.radioIcon} /> */}
+                  <TbGenderMale />
+                  <p className={css.radioText}>Male</p>
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  className={css.radioInputUnknown}
+                  value="unknown"
+                  {...register('sex')}
+                />
+                <div className={css.radioContent}>
+                  <svg className={css.svgEquipment}>
+                    <use href="/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health-1"></use>
+                  </svg>
+
+                  <svg className={css.svgEquipment}>
+                    <use href="/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health"></use>
+                  </svg>
+                  {/* <FaGenderless className={css.radioIcon} />
+                  <p className={css.radioText}>Unknown</p> */}
+                </div>
+              </label>
+            </li>
+          </ul>
+
+          {errors.sex && <p className={css.textError}>{errors.sex.message}</p>}
+
+          {/* <div className={css.inputLastElem}>
             <label className={css.radioLabel}>
               <input type="radio" value="female" {...register('sex')} className={css.radioInput} />
               <FaVenus className={css.radioIcon} /> Female
@@ -69,7 +130,7 @@ export const AddPetPage = () => {
             </label>
 
             {errors.sex && <p className={css.textError}>{errors.sex.message}</p>}
-          </div>
+          </div> */}
           {/* ======================================================================= */}
 
           <div className={css.contUrlAvatarPhoto}>

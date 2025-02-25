@@ -31,8 +31,7 @@
   margin-bottom: 24px;
 }
 
-.title {
-}
+.title {}
 
 .subtitle {
   font-weight: 700;
@@ -46,7 +45,8 @@
 .radioLabel {
   display: flex;
   align-items: center;
-  gap: 8px; /* Отступ между иконкой и текстом */
+  gap: 8px;
+  /* Отступ между иконкой и текстом */
   cursor: pointer;
   padding: 8px 12px;
   border: 2px solid transparent;
@@ -61,22 +61,30 @@
 }
 
 .radioInput {
-  display: none; /* Скрываем стандартный input */
+  display: none;
+  /* Скрываем стандартный input */
 }
 
-.radioInput:checked + .radioIcon {
-  color: #007bff; /* Цвет активной иконки */
+.radioInput:checked+.radioIcon {
+  color: #007bff;
+  /* Цвет активной иконки */
 }
 
-.radioInput:checked + .radioLabel {
-  border-color: #007bff; /* Подсветка выбранного варианта */
+.radioInput:checked+.radioLabel {
+  border-color: #007bff;
+  /* Подсветка выбранного варианта */
   background-color: rgba(0, 123, 255, 0.1);
 }
 
 .radioIcon {
-  font-size: 20px; /* Размер иконки */
+  font-size: 20px;
+  /* Размер иконки */
   color: #888;
   transition: color 0.3s ease;
+}
+
+.radioContent {
+  background-color: #888;
 }
 
 /* ========================================================== */
