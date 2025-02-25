@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAvatarUload,
   selectDeletedUserPhoto,
-  selectUploadedPhoto,
   selectUser,
 } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
@@ -130,6 +129,7 @@ export const UserCard = () => {
           </button>
         </div>
       </div>
+
       <AddPetsList />
 
       <LogoutUser customStyle={{ width: '114px' }} />

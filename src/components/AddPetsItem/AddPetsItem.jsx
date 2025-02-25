@@ -1,7 +1,8 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAddPetById } from '../../redux/auth/selectorsAuth';
 import css from './AddPetsItem.module.css';
 import { format } from 'date-fns';
+import { removeAddedPet } from '../../redux/auth/operationsAuth';
 
 export const AddPetsItem = ({ id }) => {
   const addPet = useSelector(selectAddPetById(id));
@@ -13,13 +14,19 @@ export const AddPetsItem = ({ id }) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
+  const dispatch = useDispatch();
+
+  const handleRemoveAddPet = id => {
+    dispatch(removeAddedPet(id));
+  };
+
   if (!addPet) {
     return <p>Pet not found</p>;
   }
 
   return (
     <div className={css.contAddPet}>
-      <button type="button" className={css.deletePetBtn}>
+      <button type="button" className={css.deletePetBtn} onClick={() => handleRemoveAddPet(id)}>
         <svg className={css.trashSvg}>
           <use href={'/symbol-defs-mob.svg#icon-trash-2'}></use>
         </svg>

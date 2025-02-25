@@ -5,6 +5,7 @@ import {
   logoutUser,
   refreshUser,
   registerUser,
+  removeAddedPet,
   updateUser,
 } from './operationsAuth';
 
@@ -148,10 +149,24 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(addPet.fulfilled, (state, action) => {
-        state.addedPets.push(action.payload);
+        state.addedPets = action.payload;
         state.loader = false;
       })
       .addCase(addPet.rejected, (state, action) => {
+        state.loader = false;
+        state.error = action.payload || 'Something went wrong...';
+      })
+
+      // removeAddedPet
+      .addCase(removeAddedPet.pending, state => {
+        state.loader = true;
+        state.error = null;
+      })
+      .addCase(removeAddedPet.fulfilled, (state, action) => {
+        state.loader = false;
+        state.addedPets = state.addedPets.filter(pet => pet._id !== action.payload);
+      })
+      .addCase(removeAddedPet.rejected, (state, action) => {
         state.loader = false;
         state.error = action.payload || 'Something went wrong...';
       });

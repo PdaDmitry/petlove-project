@@ -10,9 +10,8 @@ import { FaMars, FaVenus, FaGenderless } from 'react-icons/fa';
 import { byTypeOptions } from '../../options';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPet } from '../../redux/auth/operationsAuth';
-// import { selectAddedPets } from '../../redux/auth/selectorsAuth';
 
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
@@ -30,18 +29,16 @@ export const AddPetPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const addedPets = useSelector(selectAddedPets);
-  // console.log('addedPets: ', addedPets);
-
   const handleGoBack = () => {
     navigate('/profile');
   };
 
   const onSubmit = petData => {
-    console.log(petData);
+    // console.log(petData);
     dispatch(addPet(petData));
     reset();
     setSpecies('');
+    navigate('/profile');
   };
 
   return (

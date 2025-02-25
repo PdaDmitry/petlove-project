@@ -5,7 +5,8 @@ import css from './AddPetsList.module.css';
 
 export const AddPetsList = () => {
   const addedPets = useSelector(selectAddedPets);
-  console.log('addedPets: ', addedPets);
+  // const addedPets = [];
+  // console.log('addedPets: ', addedPets);
 
   return (
     <div className={css.contAddPetsList}>

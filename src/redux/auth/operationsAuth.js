@@ -111,8 +111,24 @@ export const updateUser = createAsyncThunk(
 export const addPet = createAsyncThunk('auth/addPet', async (petData, thunkAPI) => {
   try {
     const res = await axios.post('/users/current/pets/add', petData);
-    return res.data;
+    // console.log('Add Pet', res.data.pets);
+
+    return res.data.pets;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+// =====================================Remove added pet======================================
+
+export const removeAddedPet = createAsyncThunk('auth/removeAddedPet', async (id, thunkAPI) => {
+  try {
+    const res = await axios.delete(`/users/current/pets/remove/${id}`);
+    // return res.data;
+    // console.log('delete Pet', res);
+    // console.log('id: ', id);
+    return id;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
