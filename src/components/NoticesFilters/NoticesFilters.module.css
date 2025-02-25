@@ -1,5 +1,5 @@
-.contFilter {
-}
+/* .contFilter {
+} */
 
 .contCategoryGender {
   display: flex;
@@ -8,8 +8,8 @@
   margin-bottom: 12px;
 }
 
-.contCategory {
-}
+/* .contCategory {
+} */
 
 .contType {
   margin-bottom: 12px;
@@ -29,9 +29,9 @@
 
 /* ============================================== */
 
-.sortOptions {
-  /* display: flex; */
-}
+/* .sortOptions {
+  display: flex;
+} */
 
 .radioGroupPopular {
   display: flex;
