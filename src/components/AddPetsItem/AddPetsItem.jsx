@@ -33,7 +33,7 @@ export const AddPetsItem = ({ id }) => {
       </button>
       <img src={imgURL} alt={`${title}'s photo`} className={css.petImg} />
       <div>
-        <h2 className={css.title}>{title.length > 19 ? title.slice(0, 19) + '...' : title}</h2>
+        <h2 className={css.title}>{title.length >= 15 ? title.slice(0, 15) + '...' : title}</h2>
         <ul className={css.petInfo}>
           <li className={css.infoItem}>
             <span className={css.categoryName}>Name</span>

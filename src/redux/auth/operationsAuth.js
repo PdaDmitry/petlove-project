@@ -81,8 +81,8 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
     setAuthHeader(token);
     const res = await axios.get('/users/current/full');
 
-    // const { name, email, phone, avatar } = res.data;
-    // return { name, email, phone, avatar };
+    // console.log(res.data);
+
     return res.data;
   } catch (error) {
     clearAuthHeader();
@@ -123,10 +123,8 @@ export const addPet = createAsyncThunk('auth/addPet', async (petData, thunkAPI) 
 
 export const removeAddedPet = createAsyncThunk('auth/removeAddedPet', async (id, thunkAPI) => {
   try {
-    const res = await axios.delete(`/users/current/pets/remove/${id}`);
-    // return res.data;
-    // console.log('delete Pet', res);
-    // console.log('id: ', id);
+    await axios.delete(`/users/current/pets/remove/${id}`);
+
     return id;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

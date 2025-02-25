@@ -15,6 +15,7 @@ const initialState = {
     email: null,
     phone: null,
     avatar: null,
+    addedPets: [],
   },
   token: null,
   isLoggedIn: false,
@@ -23,7 +24,6 @@ const initialState = {
   avatarUload: null,
   uploadedPhoto: false,
   deletedUserPhoto: false,
-  addedPets: [],
 };
 
 const authSlice = createSlice({
@@ -54,8 +54,8 @@ const authSlice = createSlice({
           email: action.payload.email,
           phone: action.payload.phone || null,
           avatar: action.payload.avatar || null,
+          addedPets: action.payload.addedPets || [],
         };
-        // state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.loader = false;
@@ -71,8 +71,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
-        // state.user = { name: null, email: null };
-        state.user = { name: null, email: null, phone: null, avatar: null };
+        state.user = { name: null, email: null, phone: null, avatar: null, addedPets: [] };
         state.token = null;
         state.isLoggedIn = false;
         state.loader = false;
@@ -92,7 +91,7 @@ const authSlice = createSlice({
           name: action.payload.name,
           email: action.payload.email,
         };
-        // state.user = action.payload.user;
+
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.loader = false;
@@ -113,6 +112,7 @@ const authSlice = createSlice({
           email: action.payload.email,
           phone: action.payload.phone,
           avatar: action.payload.avatar,
+          addedPets: action.payload.pets,
         };
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -134,6 +134,8 @@ const authSlice = createSlice({
           email: action.payload.email,
           phone: action.payload.phone,
           avatar: action.payload.avatar,
+          addedPets: action.payload.pets,
+          // addedPets: action.payload.addedPets,
         };
         state.isLoggedIn = true;
         state.loader = false;
@@ -149,7 +151,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(addPet.fulfilled, (state, action) => {
-        state.addedPets = action.payload;
+        state.user.addedPets = action.payload;
         state.loader = false;
       })
       .addCase(addPet.rejected, (state, action) => {
@@ -164,7 +166,7 @@ const authSlice = createSlice({
       })
       .addCase(removeAddedPet.fulfilled, (state, action) => {
         state.loader = false;
-        state.addedPets = state.addedPets.filter(pet => pet._id !== action.payload);
+        state.user.addedPets = state.user.addedPets.filter(pet => pet._id !== action.payload);
       })
       .addCase(removeAddedPet.rejected, (state, action) => {
         state.loader = false;

@@ -5,8 +5,10 @@ import css from './AddPetsList.module.css';
 
 export const AddPetsList = () => {
   const addedPets = useSelector(selectAddedPets);
-  // const addedPets = [];
-  // console.log('addedPets: ', addedPets);
+
+  if (!addedPets) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className={css.contAddPetsList}>
