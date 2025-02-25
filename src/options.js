@@ -32,7 +32,7 @@ export const byTypeOptions = [
   { value: 'scorpion', label: 'Scorpion' },
 ];
 
-export const getCustomStyles = width => ({
+export const getCustomStyles = (width, menuHeight = '') => ({
   control: provided => ({
     ...provided,
     borderRadius: '30px',
@@ -74,7 +74,8 @@ export const getCustomStyles = width => ({
   menu: provided => ({
     ...provided,
     borderRadius: '15px',
-
+    maxHeight: menuHeight,
+    // overflowY: 'auto',
     padding: '4px 0 4px 4px',
     border: 'none',
     boxShadow: 'none',

@@ -9,7 +9,7 @@ import { TbGenderFemale } from 'react-icons/tb';
 import { TbGenderMale } from 'react-icons/tb';
 
 // import { FaMars, FaVenus, FaGenderless } from 'react-icons/fa';
-import { byTypeOptions } from '../../options';
+import { byTypeOptions, getCustomStyles } from '../../options';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -17,15 +17,18 @@ import { addPet } from '../../redux/auth/operationsAuth';
 
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
+  const [selectedSex, setSelectedSex] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
     reset,
-    // getValues,
   } = useForm({
     resolver: yupResolver(addPetSchema),
+    defaultValues: {
+      sex: '', // Устанавливает пустое значение по умолчанию
+    },
   });
 
   const navigate = useNavigate();
@@ -55,19 +58,21 @@ export const AddPetPage = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
           {/* =========================radio button sex============================== */}
 
-          <ul className={css.inputLastElem}>
+          <ul className={css.contRadioBtn}>
             <li>
               <label>
                 <input
                   type="radio"
-                  className={css.radioInputFemale}
+                  className={`${css.radioInput} ${css.radioInputFemale}`}
                   value="female"
                   {...register('sex')}
+                  onChange={() => {
+                    setSelectedSex('female');
+                    setValue('sex', 'female', { shouldValidate: true });
+                  }}
                 />
-                <div className={css.radioContent}>
-                  <TbGenderFemale />
-                  {/* <FaVenus className={css.radioIcon} /> */}
-                  <p className={css.radioText}>Female</p>
+                <div className={`${css.radioContent} ${css.backGrFemale}`}>
+                  <TbGenderFemale className={css.svgFemale} />
                 </div>
               </label>
             </li>
@@ -76,14 +81,16 @@ export const AddPetPage = () => {
               <label>
                 <input
                   type="radio"
-                  className={css.radioInputMale}
+                  className={`${css.radioInput} ${css.radioInputMale}`}
                   value="male"
                   {...register('sex')}
+                  onChange={() => {
+                    setSelectedSex('male');
+                    setValue('sex', 'male', { shouldValidate: true });
+                  }}
                 />
-                <div className={css.radioContent}>
-                  {/* <FaMars className={css.radioIcon} /> */}
-                  <TbGenderMale />
-                  <p className={css.radioText}>Male</p>
+                <div className={`${css.radioContent} ${css.backGrMale}`}>
+                  <TbGenderMale className={css.svgMale} style={{ transform: 'rotate(-45deg)' }} />
                 </div>
               </label>
             </li>
@@ -92,20 +99,24 @@ export const AddPetPage = () => {
               <label>
                 <input
                   type="radio"
-                  className={css.radioInputUnknown}
+                  className={`${css.radioInput} ${css.radioInputUnknown}`}
                   value="unknown"
                   {...register('sex')}
+                  onChange={() => {
+                    setSelectedSex('unknown');
+                    setValue('sex', 'unknown', { shouldValidate: true });
+                  }}
                 />
-                <div className={css.radioContent}>
-                  <svg className={css.svgEquipment}>
-                    <use href="/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health-1"></use>
+                <div className={`${css.radioContent} ${css.backGrUnknown}`}>
+                  <svg className={css.svgUnknown}>
+                    <use
+                      href={
+                        selectedSex === 'unknown'
+                          ? '/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health-1'
+                          : '/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health'
+                      }
+                    ></use>
                   </svg>
-
-                  <svg className={css.svgEquipment}>
-                    <use href="/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health"></use>
-                  </svg>
-                  {/* <FaGenderless className={css.radioIcon} />
-                  <p className={css.radioText}>Unknown</p> */}
                 </div>
               </label>
             </li>
@@ -113,24 +124,14 @@ export const AddPetPage = () => {
 
           {errors.sex && <p className={css.textError}>{errors.sex.message}</p>}
 
-          {/* <div className={css.inputLastElem}>
-            <label className={css.radioLabel}>
-              <input type="radio" value="female" {...register('sex')} className={css.radioInput} />
-              <FaVenus className={css.radioIcon} /> Female
-            </label>
+          {/* ===============================petPhoto================================ */}
 
-            <label className={css.radioLabel}>
-              <input type="radio" value="male" {...register('sex')} className={css.radioInput} />
-              <FaMars className={css.radioIcon} /> Male
-            </label>
+          <div className={css.petPhoto}>
+            <svg className={css.svgPaw}>
+              <use href={'/symbol-defs-mob.svg#icon-icons8_cat-footprint'}></use>
+            </svg>
+          </div>
 
-            <label className={css.radioLabel}>
-              <input type="radio" value="unknown" {...register('sex')} className={css.radioInput} />
-              <FaGenderless className={css.radioIcon} /> Unknown
-            </label>
-
-            {errors.sex && <p className={css.textError}>{errors.sex.message}</p>}
-          </div> */}
           {/* ======================================================================= */}
 
           <div className={css.contUrlAvatarPhoto}>
@@ -138,6 +139,7 @@ export const AddPetPage = () => {
               <input {...register('imgURL')} placeholder="Enter URL" className={css.inputUrl} />
               {errors.imgURL && <p className={css.textError}>{errors.imgURL.message}</p>}
             </div>
+
             <button
               type="button"
               className={css.btnUploadPhoto}
@@ -146,10 +148,7 @@ export const AddPetPage = () => {
               // onClick={handleClick}
             >
               <span className={css.uploadPhotoSpan}>Upload photo</span>
-              <FiUploadCloud
-                className={css.uploadSvgPhoto}
-                // style={{ stroke: isHovered ? '#fff' : '#f6b83d' }}
-              />
+              <FiUploadCloud className={css.uploadSvgPhoto} />
             </button>
           </div>
 
@@ -163,24 +162,27 @@ export const AddPetPage = () => {
             {errors.name && <p className={css.textError}>{errors.name.message}</p>}
           </div>
 
-          <div className={css.inputElem}>
-            <Select
-              value={species}
-              options={byTypeOptions.filter(option => option.value !== 'show all')}
-              placeholder="Type of pet"
-              onChange={selectedOption => {
-                setSpecies(selectedOption);
-                setValue('species', selectedOption?.value);
-              }}
-              className={css.typeField}
-              isSearchable={false}
-            />
-            {errors.species && <p className={css.textError}>{errors.species.message}</p>}
-          </div>
+          <div className={css.contDateType}>
+            <div className={css.inputElem}>
+              <input {...register('birthday')} type="date" className={css.inputDate} />
+              {errors.birthday && <p className={css.textError}>{errors.birthday.message}</p>}
+            </div>
 
-          <div className={css.inputElem}>
-            <input {...register('birthday')} type="date" className={css.input} />
-            {errors.birthday && <p className={css.textError}>{errors.birthday.message}</p>}
+            <div className={css.contType}>
+              <Select
+                value={species}
+                options={byTypeOptions.filter(option => option.value !== 'show all')}
+                placeholder="Type of pet"
+                onChange={selectedOption => {
+                  setSpecies(selectedOption);
+                  setValue('species', selectedOption?.value);
+                }}
+                styles={getCustomStyles('141px', '78px')}
+                className={css.typeField}
+                isSearchable={false}
+              />
+              {errors.species && <p className={css.textError}>{errors.species.message}</p>}
+            </div>
           </div>
 
           <div>
