@@ -45,7 +45,7 @@ export const fetchPetsThunk = createAsyncThunk(
   }
 );
 
-// ======================================Categories=========================================
+// ======================================Categories=======================================
 
 export const fetchCategoriesThunk = createAsyncThunk(
   'fetchCategories',
@@ -72,3 +72,35 @@ export const fetchCitiesThunk = createAsyncThunk('fetchCities', async (_, { reje
     return rejectWithValue(error.response?.data?.message || error.message);
   }
 });
+
+// ======================================add favorites pets==================================
+
+export const addFavoritesThunk = createAsyncThunk(
+  'addFavorites',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`/notices/favorites/add/${id}`);
+      // console.log('Favorites Pets: ', response);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
+
+// ======================================remove favorite pet==================================
+
+export const removeFavoriteThunk = createAsyncThunk(
+  'removeFavorite',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(`/notices/favorites/remove/${id}`);
+      // console.log('Removed from Favorites: ', response.data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
+
+// ======================================/notices/{id}=======================================

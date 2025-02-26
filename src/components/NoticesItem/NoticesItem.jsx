@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
@@ -8,12 +8,17 @@ import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
 import { useState } from 'react';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
+import { addFavoritesThunk, removeFavoriteThunk } from '../../redux/pets/operationsPets';
 
 export const NoticesItem = ({ id }) => {
   const [attentionModalOpen, setAttentionModalOpen] = useState(false);
   const [noticeModalOpen, setNoticeModalOpen] = useState(false);
+  const dispatch = useDispatch();
   const pet = useSelector(selectPetById(id));
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const favoritePet = useSelector(selectFavoriteById);
+
+  // console.log('favoritePet: ', favoritePet);
 
   const openAttentionModal = () => setAttentionModalOpen(true);
   const closeAttentionModal = () => setAttentionModalOpen(false);
@@ -38,7 +43,7 @@ export const NoticesItem = ({ id }) => {
     price,
   } = pet;
 
-  // console.log('location: ', location);
+  // console.log('pet: ', pet);
 
   const cost = price ? price : 'Uncertain';
   const formattedDate = format(new Date(birthday), 'dd.MM.yyyy');
@@ -50,6 +55,11 @@ export const NoticesItem = ({ id }) => {
 
   const handleModalOpen = () => {
     isLoggedIn ? openNoticeModal() : openAttentionModal();
+  };
+
+  const handleFavoriteAdd = () => {
+    // dispatch(addFavoritesThunk(id));
+    dispatch(removeFavoriteThunk(id));
   };
 
   return (
@@ -90,7 +100,7 @@ export const NoticesItem = ({ id }) => {
         <button className={css.btnLearn} type="button" onClick={handleModalOpen}>
           Learn more
         </button>
-        <div className={css.btnHeart} onClick={handleModalOpen}>
+        <div className={css.btnHeart} onClick={handleFavoriteAdd}>
           <svg className={css.iconHeart}>
             <use href="/symbol-defs-mob.svg#icon-heart-2"></use>
           </svg>

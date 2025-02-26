@@ -1,0 +1,37 @@
+.contFavoriteViewed {
+  /* display: flex; */
+  width: 335px;
+}
+
+.contBtns {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btnFavorite,
+.btnViewed {
+  display: block;
+  border-radius: 30px;
+  /* padding: 12px 39px; */
+  width: 123px;
+  height: 42px;
+  background: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  border: none;
+  cursor: pointer;
+}
+
+.btnFavorite:not(.active):hover,
+.btnViewed:not(.active):hover {
+  color: #262626;
+  background: rgba(38, 38, 38, 0.05);
+}
+
+.active {
+  color: #fff;
+  background: #f6b83d;
+}

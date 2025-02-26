@@ -8,6 +8,7 @@ import {
   removeAddedPet,
   updateUser,
 } from './operationsAuth';
+import { addFavoritesThunk, removeFavoriteThunk } from '../pets/operationsPets';
 
 const initialState = {
   user: {
@@ -16,6 +17,7 @@ const initialState = {
     phone: null,
     avatar: null,
     addedPets: [],
+    noticesFavorites: [],
   },
   token: null,
   isLoggedIn: false,
@@ -55,6 +57,7 @@ const authSlice = createSlice({
           phone: action.payload.phone || null,
           avatar: action.payload.avatar || null,
           addedPets: action.payload.addedPets || [],
+          noticesFavorites: action.payload.noticesFavorites || [],
         };
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -71,7 +74,14 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
-        state.user = { name: null, email: null, phone: null, avatar: null, addedPets: [] };
+        state.user = {
+          name: null,
+          email: null,
+          phone: null,
+          avatar: null,
+          addedPets: [],
+          noticesFavorites: [],
+        };
         state.token = null;
         state.isLoggedIn = false;
         state.loader = false;
@@ -113,6 +123,8 @@ const authSlice = createSlice({
           phone: action.payload.phone,
           avatar: action.payload.avatar,
           addedPets: action.payload.pets,
+          // noticesFavorites: action.payload.noticesFavorites.map(notice => notice._id),
+          noticesFavorites: action.payload.noticesFavorites,
         };
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -135,7 +147,8 @@ const authSlice = createSlice({
           phone: action.payload.phone,
           avatar: action.payload.avatar,
           addedPets: action.payload.pets,
-          // addedPets: action.payload.addedPets,
+          // noticesFavorites: action.payload.noticesFavorites.map(notice => notice._id),
+          noticesFavorites: action.payload.noticesFavorites,
         };
         state.isLoggedIn = true;
         state.loader = false;
@@ -172,6 +185,35 @@ const authSlice = createSlice({
         state.loader = false;
         state.error = action.payload || 'Something went wrong...';
       });
+
+    // =========================================================================
+    //addFavoritesThunk
+    // .addCase(addFavoritesThunk.pending, state => {
+    //   state.loader = true;
+    //   state.error = null;
+    // })
+    // .addCase(addFavoritesThunk.fulfilled, (state, action) => {
+    //   state.user.noticesFavorites = action.payload;
+    //   state.loader = false;
+    // })
+    // .addCase(addFavoritesThunk.rejected, (state, action) => {
+    //   state.loader = false;
+    //   state.error = action.payload || 'Something went wrong...';
+    // })
+
+    // //removeFavoriteThunk
+    // .addCase(removeFavoriteThunk.pending, state => {
+    //   state.loader = true;
+    //   state.error = null;
+    // })
+    // .addCase(removeFavoriteThunk.fulfilled, (state, action) => {
+    //   state.user.noticesFavorites = action.payload;
+    //   state.loader = false;
+    // })
+    // .addCase(removeFavoriteThunk.rejected, (state, action) => {
+    //   state.loader = false;
+    //   state.error = action.payload || 'Something went wrong...';
+    // });
   },
 });
 
