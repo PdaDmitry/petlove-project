@@ -18,12 +18,14 @@ import { addPet } from '../../redux/auth/operationsAuth';
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
   const [selectedSex, setSelectedSex] = useState('');
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
     reset,
+    watch,
   } = useForm({
     resolver: yupResolver(addPetSchema),
     defaultValues: {
@@ -33,6 +35,18 @@ export const AddPetPage = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const imgURL = watch('imgURL');
+  const title = watch('title');
+  const name = watch('name');
+  const date = watch('birthday');
+  const type = watch('species');
+
+  if (type) {
+    console.log('Выполняем логику, так как что-то выбрано');
+  } else {
+    console.log('Ничего не выбрано');
+  }
 
   const handleGoBack = () => {
     navigate('/profile');
@@ -136,7 +150,11 @@ export const AddPetPage = () => {
 
           <div className={css.contUrlAvatarPhoto}>
             <div className={css.inputElem}>
-              <input {...register('imgURL')} placeholder="Enter URL" className={css.inputUrl} />
+              <input
+                {...register('imgURL')}
+                placeholder="Enter URL"
+                className={`${css.inputUrl} ${imgURL ? css.fieldIsFilled : ''}`}
+              />
               {errors.imgURL && <p className={css.textError}>{errors.imgURL.message}</p>}
             </div>
 
@@ -153,18 +171,32 @@ export const AddPetPage = () => {
           </div>
 
           <div className={css.inputElem}>
-            <input {...register('title')} placeholder="Title" className={css.input} />
+            <input
+              {...register('title')}
+              placeholder="Title"
+              className={`${css.input} ${title ? css.fieldIsFilled : ''}`}
+            />
             {errors.title && <p className={css.textError}>{errors.title.message}</p>}
           </div>
 
           <div className={css.inputElem}>
-            <input {...register('name')} placeholder="Pet's Name" className={css.input} />
+            <input
+              {...register('name')}
+              placeholder="Pet's Name"
+              className={`${css.input} ${name ? css.fieldIsFilled : ''}`}
+            />
             {errors.name && <p className={css.textError}>{errors.name.message}</p>}
           </div>
 
           <div className={css.contDateType}>
             <div className={css.inputElem}>
-              <input {...register('birthday')} type="date" className={css.inputDate} />
+              <input
+                {...register('birthday')}
+                type="date"
+                placeholder="00.00.0000"
+                // className={css.inputDate}
+                className={`${css.inputDate} ${date ? css.fieldIsFilled : ''}`}
+              />
               {errors.birthday && <p className={css.textError}>{errors.birthday.message}</p>}
             </div>
 
@@ -175,21 +207,21 @@ export const AddPetPage = () => {
                 placeholder="Type of pet"
                 onChange={selectedOption => {
                   setSpecies(selectedOption);
-                  setValue('species', selectedOption?.value);
+                  setValue('species', selectedOption?.value, { shouldValidate: true });
                 }}
                 styles={getCustomStyles('141px', '78px')}
-                className={css.typeField}
+                className={`${css.typeField} ${type ? css.fieldIsFilled : ''}`}
                 isSearchable={false}
               />
               {errors.species && <p className={css.textError}>{errors.species.message}</p>}
             </div>
           </div>
 
-          <div>
-            <button type="button" className={css.btnUpdateProfile} onClick={handleGoBack}>
+          <div className={css.btnsBlock}>
+            <button type="button" className={css.btnGoToProfile} onClick={handleGoBack}>
               Back
             </button>
-            <button type="submit" className={css.btnUpdateProfile}>
+            <button type="submit" className={css.btnSubmitPet}>
               Submit
             </button>
           </div>

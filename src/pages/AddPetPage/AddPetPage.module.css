@@ -19,7 +19,7 @@
 .contTitleForm {
   border-radius: 30px;
   width: 335px;
-  height: 489px;
+  /* height: 489px; */
   padding: 28px 20px 20px;
   background: #fff;
 }
@@ -84,33 +84,45 @@
   height: 20px;
   stroke: #f43f5e;
 }
+
 .svgMale {
   display: block;
   width: 20px;
   height: 20px;
   stroke: #54adff;
 }
+
 .svgUnknown {
   display: block;
   width: 20px;
   height: 20px;
 }
 
-.radioInput:checked + .radioContent .svgFemale,
-.radioInput:checked + .radioContent .svgMale {
+.radioInput:checked+.radioContent .svgFemale,
+.radioInput:checked+.radioContent .svgMale {
   stroke: #fff;
 }
 
-.radioInput:checked + .backGrFemale {
+.radioInput:checked+.backGrFemale {
   background: #f43f5e;
 }
 
-.radioInput:checked + .backGrMale {
+.radioInput:checked+.backGrMale {
   background: #54adff;
 }
 
-.radioInput:checked + .backGrUnknown {
+.radioInput:checked+.backGrUnknown {
   background: #f6b83d;
+}
+
+.textError {
+  padding-left: 12px;
+  padding-top: 2px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
 }
 
 /* ===============================petPhoto================================ */
@@ -127,6 +139,7 @@
   margin: 0 auto;
   margin-bottom: 16px;
 }
+
 .svgPaw {
   display: block;
   width: 34px;
@@ -159,9 +172,13 @@
   margin-bottom: 10px;
 }
 
+
+
 .inputDate {
   width: 143px;
   margin-bottom: 0;
+  padding-right: 12px;
+  /* border: 1px solid #f6b83d; */
 }
 
 .btnUploadPhoto {
@@ -205,7 +222,8 @@
 }
 
 .inputUrl:focus,
-.input:focus {
+.input:focus,
+.inputDate:focus {
   outline: none;
   background-color: inherit;
   border: 1px solid #f6b83d;
@@ -225,6 +243,62 @@
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   width: 144px;
+}
+
+.fieldIsFilled {
+  border: 1px solid #f6b83d;
+}
+
+
+.btnsBlock {
+  display: flex;
+  gap: 8px;
+  padding-left: 107px;
+}
+
+.btnGoToProfile {
+  display: block;
+  border-radius: 30px;
+  /* padding: 12px 34px; */
+  border: none;
+  width: 100px;
+  height: 42px;
+  background: rgba(38, 38, 38, 0.05);
+
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+
+}
+
+.btnGoToProfile:hover {
+  background: rgba(38, 38, 38, 0.1);
+}
+
+.btnSubmitPet {
+  display: block;
+  border-radius: 30px;
+  /* padding: 12px 26px; */
+
+  border: none;
+  width: 100px;
+  height: 42px;
+  background: #fff4df;
+  color: #f6b83d;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+
+}
+
+.btnSubmitPet:hover {
+  color: #fff;
+  background: #f6b83d;
 }
 
 /* ================================reset browser settings==================================== */
