@@ -42,12 +42,6 @@ export const AddPetPage = () => {
   const date = watch('birthday');
   const type = watch('species');
 
-  if (type) {
-    console.log('Выполняем логику, так как что-то выбрано');
-  } else {
-    console.log('Ничего не выбрано');
-  }
-
   const handleGoBack = () => {
     navigate('/profile');
   };
@@ -141,9 +135,13 @@ export const AddPetPage = () => {
           {/* ===============================petPhoto================================ */}
 
           <div className={css.petPhoto}>
-            <svg className={css.svgPaw}>
-              <use href={'/symbol-defs-mob.svg#icon-icons8_cat-footprint'}></use>
-            </svg>
+            {imgURL ? (
+              <img src={imgURL} alt="Pet Avatar" className={css.avatarImage} />
+            ) : (
+              <svg className={css.svgPaw}>
+                <use href={'/symbol-defs-mob.svg#icon-icons8_cat-footprint'}></use>
+              </svg>
+            )}
           </div>
 
           {/* ======================================================================= */}
