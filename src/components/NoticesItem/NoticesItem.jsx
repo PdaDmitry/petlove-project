@@ -8,7 +8,11 @@ import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
 import { useState } from 'react';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
-import { addFavoritesThunk, removeFavoriteThunk } from '../../redux/pets/operationsPets';
+import {
+  addFavoritesThunk,
+  fetchPetByIdThunk,
+  removeFavoriteThunk,
+} from '../../redux/pets/operationsPets';
 
 export const NoticesItem = ({ id }) => {
   const [attentionModalOpen, setAttentionModalOpen] = useState(false);
@@ -59,7 +63,8 @@ export const NoticesItem = ({ id }) => {
 
   const handleFavoriteAdd = () => {
     // dispatch(addFavoritesThunk(id));
-    dispatch(removeFavoriteThunk(id));
+    // dispatch(removeFavoriteThunk(id));
+    dispatch(fetchPetByIdThunk(id));
   };
 
   return (

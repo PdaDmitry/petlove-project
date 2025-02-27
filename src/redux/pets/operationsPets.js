@@ -104,3 +104,16 @@ export const removeFavoriteThunk = createAsyncThunk(
 );
 
 // ======================================/notices/{id}=======================================
+
+export const fetchPetByIdThunk = createAsyncThunk(
+  'fetchPetById',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/notices/${id}`);
+      // console.log('fetchPetById: ', response.data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
