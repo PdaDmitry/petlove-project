@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import Title from '../../components/Title/Title';
 import { IoMdClose } from 'react-icons/io';
 import { BsCheck2 } from 'react-icons/bs';
+// import { selectNoticesFavorites } from '../../redux/pets/selectorsPets';
+import { fetchPetByIdThunk } from '../../redux/pets/operationsPets';
 
 export const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +20,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
   // console.log('user befor: ', user);
+  // const noticesFavorites = useSelector(selectNoticesFavorites);
 
   const dispatch = useDispatch();
 
@@ -52,6 +55,11 @@ export const LoginPage = () => {
     try {
       const resultAction = await dispatch(loginUser(data)).unwrap();
       await dispatch(refreshUser()).unwrap();
+
+      // if (noticesFavorites?.length) {
+      //   noticesFavorites.map(id => dispatch(fetchPetByIdThunk(id)));
+      // }
+
       navigate('/profile');
       reset();
     } catch (error) {

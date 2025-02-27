@@ -15,7 +15,8 @@ const initialState = {
   totalPages: 0,
   categories: [],
   cities: [],
-  petById: [],
+  petsForFavorite: [],
+  // petById: {},
 };
 
 const petsSlice = createSlice({
@@ -74,7 +75,7 @@ const petsSlice = createSlice({
         state.isError = action.payload || 'Something went wrong';
       })
 
-      //petById
+      //petsForFavorite
       .addCase(fetchPetByIdThunk.pending, (state, action) => {
         state.isLoading = true;
         state.isError = null;
@@ -83,7 +84,13 @@ const petsSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
 
-        state.petById = action.payload;
+        const existingIndex = state.petsForFavorite.findIndex(pet => pet.id === action.payload.id);
+
+        if (existingIndex !== -1) {
+          state.petsForFavorite.splice(existingIndex, 1);
+        } else {
+          state.petsForFavorite.push(action.payload);
+        }
       })
       .addCase(fetchPetByIdThunk.rejected, (state, action) => {
         state.isLoading = false;

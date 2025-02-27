@@ -187,7 +187,7 @@ const authSlice = createSlice({
       });
 
     // =========================================================================
-    //addFavoritesThunk
+    // addFavoritesThunk
     // .addCase(addFavoritesThunk.pending, state => {
     //   state.loader = true;
     //   state.error = null;
