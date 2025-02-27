@@ -84,12 +84,12 @@ const petsSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
 
-        const existingIndex = state.petsForFavorite.findIndex(pet => pet.id === action.payload.id);
+        const existingPet = state.petsForFavorite.find(pet => pet.id === action.payload.id);
 
-        if (existingIndex !== -1) {
-          state.petsForFavorite.splice(existingIndex, 1);
-        } else {
+        if (!existingPet) {
           state.petsForFavorite.push(action.payload);
+        } else {
+          state.petsForFavorite = state.petsForFavorite.filter(pet => pet.id !== action.payload.id);
         }
       })
       .addCase(fetchPetByIdThunk.rejected, (state, action) => {
