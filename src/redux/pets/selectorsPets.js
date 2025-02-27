@@ -22,5 +22,5 @@ export const selectError = state => state.pets.isError;
 
 export const selectNoticesFavorites = state => state.auth.user.noticesFavorites;
 
-// export const selectFavoriteById = id =>
-//   createSelector([selectFavorites], pets => pets.find(pet => pet._id === id));
+export const selectNoticesFavoriteById = id =>
+  createSelector([selectNoticesFavorites], pets => pets.find(pet => pet._id === id));

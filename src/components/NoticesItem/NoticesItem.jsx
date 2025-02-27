@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  selectNoticesFavoriteById,
   selectPetById,
-  selectPetsForFavorite,
   selectPetsForFavoriteById,
 } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
@@ -10,7 +10,7 @@ import css from './NoticesItem.module.css';
 import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import {
   addFavoritesThunk,
@@ -25,18 +25,34 @@ export const NoticesItem = ({ id, page }) => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  // const selectCurrentPetById = useMemo(() => selectPetById(id), [id]);
+  // const selectCurrentPetForFavoriteById = useMemo(() => selectPetsForFavoriteById(id), [id]);
+
+  // const pet = useSelector(selectCurrentPetById);
+  // const petForFavorite = useSelector(selectCurrentPetForFavoriteById);
+
+  // const petsForFavorite = useSelector(selectPetsForFavorite);
+  // console.log('petsForFavorite: ', petsForFavorite);
+
   const pet = useSelector(selectPetById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
-
-  const petsForFavorite = useSelector(selectPetsForFavorite);
-  console.log('petsForFavorite: ', petsForFavorite);
+  const noticesFavoriteById = useSelector(selectNoticesFavoriteById(id));
 
   const openAttentionModal = () => setAttentionModalOpen(true);
   const closeAttentionModal = () => setAttentionModalOpen(false);
   const openNoticeModal = () => setNoticeModalOpen(true);
   const closeNoticeModal = () => setNoticeModalOpen(false);
 
-  const elem = page === 'profile' ? petForFavorite : pet;
+  // const elem = page === 'profile' ? petForFavorite : pet;
+  // console.log('petForFavorite: ', petForFavorite);
+
+  let elem;
+
+  if (page !== 'profile') {
+    elem = pet;
+  } else {
+    petForFavorite ? (elem = petForFavorite) : (elem = noticesFavoriteById);
+  }
 
   if (!elem) {
     return <p>Pet not found</p>;
@@ -68,14 +84,14 @@ export const NoticesItem = ({ id, page }) => {
     isLoggedIn ? openNoticeModal() : openAttentionModal();
   };
 
-  const handleFavoriteAdd = () => {
-    dispatch(addFavoritesThunk(id));
-    dispatch(fetchPetByIdThunk(id));
-  };
-
-  const handleRemoveFavoritePet = () => {
-    dispatch(removeFavoriteThunk(id));
-    dispatch(fetchPetByIdThunk(id));
+  const handleToggleFavorite = () => {
+    if (petForFavorite || noticesFavoriteById) {
+      dispatch(removeFavoriteThunk(id));
+      dispatch(fetchPetByIdThunk(id));
+    } else {
+      dispatch(addFavoritesThunk(id));
+      dispatch(fetchPetByIdThunk(id));
+    }
   };
 
   return (
@@ -116,15 +132,12 @@ export const NoticesItem = ({ id, page }) => {
         <button className={css.btnLearn} type="button" onClick={handleModalOpen}>
           Learn more
         </button>
-        <div
-          className={css.btnHeart}
-          onClick={page === 'profile' ? handleRemoveFavoritePet : handleFavoriteAdd}
-        >
+        <div className={css.btnHeart} onClick={handleToggleFavorite}>
           {page === 'profile' ? (
             <svg className={css.iconHeart}>
               <use href="/symbol-defs-mob.svg#icon-trash-2"></use>
             </svg>
-          ) : petForFavorite ? (
+          ) : petForFavorite || noticesFavoriteById ? (
             <FiHeart style={{ width: '18px', height: '18px', color: '#f6b83d', fill: '#f6b83d' }} />
           ) : (
             <svg className={css.iconHeart}>

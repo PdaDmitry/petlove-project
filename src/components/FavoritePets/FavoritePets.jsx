@@ -7,9 +7,9 @@ export const FavoritePets = () => {
   const petsForFavorite = useSelector(selectPetsForFavorite);
   const noticesFavorites = useSelector(selectNoticesFavorites);
 
-  const arrFavoritPets = petsForFavorite ? petsForFavorite : noticesFavorites;
+  const arrFavoritPets = petsForFavorite?.length ? petsForFavorite : noticesFavorites;
 
-  if (arrFavoritPets.length === 0 || null) {
+  if (!arrFavoritPets || arrFavoritPets.length === 0) {
     return <p>No favorite pets selected!</p>;
   }
 
