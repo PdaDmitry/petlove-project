@@ -27,7 +27,6 @@ const initialState = {
   avatarUload: null,
   uploadedPhoto: false,
   deletedUserPhoto: false,
-  addedFevoritePet: false,
 };
 
 const authSlice = createSlice({
@@ -131,7 +130,7 @@ const authSlice = createSlice({
           // noticesFavorites: action.payload.noticesFavorites.map(notice => notice._id),
           // noticesFavorites: action.payload.noticesFavorites,
         };
-        console.log('petsForFavorite Slice: ', action.payload.noticesFavorites);
+        // console.log('petsForFavorite Slice: ', action.payload.noticesFavorites);
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.loader = false;
@@ -158,7 +157,7 @@ const authSlice = createSlice({
           // noticesFavorites: action.payload.noticesFavorites,
           petsForFavorite: action.payload.noticesFavorites,
         };
-        console.log('petsForFavorite Slice: ', state.user.petsForFavorite);
+
         state.isLoggedIn = true;
         state.loader = false;
       })
@@ -195,7 +194,7 @@ const authSlice = createSlice({
         state.error = action.payload || 'Something went wrong...';
       })
 
-      //petsForFavorite
+      // petsForFavorite
       .addCase(fetchPetByIdThunk.pending, (state, action) => {
         state.loader = true;
         state.error = null;
@@ -204,16 +203,14 @@ const authSlice = createSlice({
         state.loader = false;
         state.error = null;
 
-        const existingPet = state.petsForFavorite.find(pet => pet._id === action.payload._id);
+        const existingPet = state.user.petsForFavorite.find(pet => pet._id === action.payload._id);
 
         if (!existingPet) {
           state.user.petsForFavorite.unshift(action.payload);
-          state.addedFevoritePet = true;
         } else {
           state.user.petsForFavorite = state.petsForFavorite.filter(
             pet => pet._id !== action.payload._id
           );
-          state.addedFevoritePet = false;
         }
       })
       .addCase(fetchPetByIdThunk.rejected, (state, action) => {
@@ -228,7 +225,7 @@ const authSlice = createSlice({
     //   state.error = null;
     // })
     // .addCase(addFavoritesThunk.fulfilled, (state, action) => {
-    //   state.user.noticesFavorites = action.payload;
+    //   state.user.petsForFavorite = action.payload;
     //   state.loader = false;
     // })
     // .addCase(addFavoritesThunk.rejected, (state, action) => {
@@ -242,7 +239,7 @@ const authSlice = createSlice({
     //   state.error = null;
     // })
     // .addCase(removeFavoriteThunk.fulfilled, (state, action) => {
-    //   state.user.noticesFavorites = action.payload;
+    //   state.user.petsForFavorite = action.payload;
     //   state.loader = false;
     // })
     // .addCase(removeFavoriteThunk.rejected, (state, action) => {

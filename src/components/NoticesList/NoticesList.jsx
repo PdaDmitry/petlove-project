@@ -7,8 +7,8 @@ import { selectPetsForFavorite } from '../../redux/auth/selectorsAuth';
 export const NoticesList = () => {
   const pets = useSelector(selectPets);
 
-  const petsForFavorite = useSelector(selectPetsForFavorite);
-  console.log('petsForFavorite Notice: ', petsForFavorite);
+  // const petsForFavorite = useSelector(selectPetsForFavorite);
+  // console.log('petsForFavorite Notice: ', petsForFavorite);
 
   return (
     <div className={css.contPetsList}>

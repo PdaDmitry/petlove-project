@@ -7,14 +7,14 @@ export const selectAvatarUload = state => state.auth.avatarUload;
 export const selectUploadedPhoto = state => state.auth.uploadedPhoto;
 export const selectDeletedUserPhoto = state => state.auth.deletedUserPhoto;
 
+// ===============================================================================
 export const selectAddedPets = state => state.auth.user.addedPets;
 
 export const selectAddPetById = id =>
   createSelector([selectAddedPets], pets => pets.find(pet => pet._id === id));
 
+// ===============================================================================
 export const selectPetsForFavorite = state => state.auth.user.petsForFavorite;
 
 export const selectPetsForFavoriteById = id =>
   createSelector([selectPetsForFavorite], pets => pets.find(pet => pet._id === id));
-
-export const selectAddedFevoritePet = state => state.auth.addedFevoritePet;

@@ -1,17 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  // selectNoticesFavoriteById,
-  selectPetById,
-  // selectPetsForFavoriteById,
-} from '../../redux/pets/selectorsPets';
+import { selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
 import css from './NoticesItem.module.css';
-import {
-  selectAddedFevoritePet,
-  selectIsLoggedIn,
-  selectPetsForFavoriteById,
-} from '../../redux/auth/selectorsAuth';
+import { selectIsLoggedIn, selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
 import { useState } from 'react';
@@ -31,7 +23,6 @@ export const NoticesItem = ({ id, page }) => {
 
   const pet = useSelector(selectPetById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
-  const addedFevoritePet = useSelector(selectAddedFevoritePet);
 
   const openAttentionModal = () => setAttentionModalOpen(true);
   const closeAttentionModal = () => setAttentionModalOpen(false);
@@ -43,7 +34,6 @@ export const NoticesItem = ({ id, page }) => {
   if (page !== 'profile') {
     elem = pet;
   } else {
-    // petForFavorite ? (elem = petForFavorite) : (elem = noticesFavoriteById);
     elem = petForFavorite;
   }
 
@@ -77,13 +67,14 @@ export const NoticesItem = ({ id, page }) => {
     isLoggedIn ? openNoticeModal() : openAttentionModal();
   };
 
-  const handleToggleFavorite = () => {
+  const handleAddFavoritePet = () => {
+    dispatch(addFavoritesThunk(id));
     dispatch(fetchPetByIdThunk(id));
-    if (!addedFevoritePet) {
-      dispatch(addFavoritesThunk(id));
-    } else {
-      dispatch(removeFavoriteThunk(id));
-    }
+  };
+
+  const handleRemoveFavoritePet = () => {
+    dispatch(removeFavoriteThunk(id));
+    dispatch(fetchPetByIdThunk(id));
   };
 
   return (
@@ -124,7 +115,10 @@ export const NoticesItem = ({ id, page }) => {
         <button className={css.btnLearn} type="button" onClick={handleModalOpen}>
           Learn more
         </button>
-        <div className={css.btnHeart} onClick={handleToggleFavorite}>
+        <div
+          className={css.btnHeart}
+          onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
+        >
           {page === 'profile' ? (
             <svg className={css.iconHeart}>
               <use href="/symbol-defs-mob.svg#icon-trash-2"></use>
