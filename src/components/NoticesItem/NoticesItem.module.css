@@ -123,6 +123,7 @@
   padding: 14px;
   width: 46px;
   height: 46px;
+  border: none;
   background: #fff4df;
   cursor: pointer;
 }

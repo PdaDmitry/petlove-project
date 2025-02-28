@@ -208,7 +208,7 @@ const authSlice = createSlice({
         if (!existingPet) {
           state.user.petsForFavorite.unshift(action.payload);
         } else {
-          state.user.petsForFavorite = state.petsForFavorite.filter(
+          state.user.petsForFavorite = state.user.petsForFavorite.filter(
             pet => pet._id !== action.payload._id
           );
         }

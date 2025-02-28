@@ -115,9 +115,10 @@ export const NoticesItem = ({ id, page }) => {
         <button className={css.btnLearn} type="button" onClick={handleModalOpen}>
           Learn more
         </button>
-        <div
+        <button
           className={css.btnHeart}
           onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
+          disabled={page !== 'profile' && petForFavorite}
         >
           {page === 'profile' ? (
             <svg className={css.iconHeart}>
@@ -130,7 +131,7 @@ export const NoticesItem = ({ id, page }) => {
               <use href="/symbol-defs-mob.svg#icon-heart-2"></use>
             </svg>
           )}
-        </div>
+        </button>
       </div>
 
       <ModalWindow isOpen={attentionModalOpen} onClose={closeAttentionModal}>
