@@ -80,7 +80,7 @@ export const addFavoritesThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await axios.post(`/notices/favorites/add/${id}`);
-      // console.log('Favorites Pets: ', response);
+      // console.log('Favorites Pets: ', response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);

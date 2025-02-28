@@ -8,7 +8,7 @@ import {
   removeAddedPet,
   updateUser,
 } from './operationsAuth';
-import { addFavoritesThunk, removeFavoriteThunk } from '../pets/operationsPets';
+import { addFavoritesThunk, fetchPetByIdThunk, removeFavoriteThunk } from '../pets/operationsPets';
 
 const initialState = {
   user: {
@@ -17,7 +17,8 @@ const initialState = {
     phone: null,
     avatar: null,
     addedPets: [],
-    noticesFavorites: [],
+    // noticesFavorites: [],
+    petsForFavorite: [],
   },
   token: null,
   isLoggedIn: false,
@@ -26,6 +27,7 @@ const initialState = {
   avatarUload: null,
   uploadedPhoto: false,
   deletedUserPhoto: false,
+  addedFevoritePet: false,
 };
 
 const authSlice = createSlice({
@@ -57,7 +59,8 @@ const authSlice = createSlice({
           phone: action.payload.phone || null,
           avatar: action.payload.avatar || null,
           addedPets: action.payload.addedPets || [],
-          noticesFavorites: action.payload.noticesFavorites || [],
+          petsForFavorite: action.payload.petsForFavorite || [],
+          // noticesFavorites: action.payload.noticesFavorites || [],
         };
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -80,7 +83,8 @@ const authSlice = createSlice({
           phone: null,
           avatar: null,
           addedPets: [],
-          noticesFavorites: [],
+          petsForFavorite: [],
+          // noticesFavorites: [],
         };
         state.token = null;
         state.isLoggedIn = false;
@@ -123,12 +127,15 @@ const authSlice = createSlice({
           phone: action.payload.phone,
           avatar: action.payload.avatar,
           addedPets: action.payload.pets,
+          petsForFavorite: action.payload.noticesFavorites,
           // noticesFavorites: action.payload.noticesFavorites.map(notice => notice._id),
-          noticesFavorites: action.payload.noticesFavorites,
+          // noticesFavorites: action.payload.noticesFavorites,
         };
+        console.log('petsForFavorite Slice: ', action.payload.noticesFavorites);
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.loader = false;
+        state.petsForFavorite = action.payload.noticesFavorites;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.loader = false;
@@ -148,8 +155,10 @@ const authSlice = createSlice({
           avatar: action.payload.avatar,
           addedPets: action.payload.pets,
           // noticesFavorites: action.payload.noticesFavorites.map(notice => notice._id),
-          noticesFavorites: action.payload.noticesFavorites,
+          // noticesFavorites: action.payload.noticesFavorites,
+          petsForFavorite: action.payload.noticesFavorites,
         };
+        console.log('petsForFavorite Slice: ', state.user.petsForFavorite);
         state.isLoggedIn = true;
         state.loader = false;
       })
@@ -184,6 +193,32 @@ const authSlice = createSlice({
       .addCase(removeAddedPet.rejected, (state, action) => {
         state.loader = false;
         state.error = action.payload || 'Something went wrong...';
+      })
+
+      //petsForFavorite
+      .addCase(fetchPetByIdThunk.pending, (state, action) => {
+        state.loader = true;
+        state.error = null;
+      })
+      .addCase(fetchPetByIdThunk.fulfilled, (state, action) => {
+        state.loader = false;
+        state.error = null;
+
+        const existingPet = state.petsForFavorite.find(pet => pet._id === action.payload._id);
+
+        if (!existingPet) {
+          state.user.petsForFavorite.unshift(action.payload);
+          state.addedFevoritePet = true;
+        } else {
+          state.user.petsForFavorite = state.petsForFavorite.filter(
+            pet => pet._id !== action.payload._id
+          );
+          state.addedFevoritePet = false;
+        }
+      })
+      .addCase(fetchPetByIdThunk.rejected, (state, action) => {
+        state.loader = false;
+        state.error = action.payload || 'Something went wrong';
       });
 
     // =========================================================================

@@ -6,7 +6,7 @@ import { CongratsModalWindow } from '../../components/CongratsModalWindow/Congra
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAddedPets } from '../../redux/auth/selectorsAuth';
 import { MyNotices } from '../../components/MyNotices/MyNotices';
-import { selectNoticesFavorites, selectPetsForFavorite } from '../../redux/pets/selectorsPets';
+// import { selectNoticesFavorites, selectPetsForFavorite } from '../../redux/pets/selectorsPets';
 // import { selectNoticesFavorites } from '../../redux/pets/selectorsPets';
 // import { fetchPetByIdThunk } from '../../redux/pets/operationsPets';
 

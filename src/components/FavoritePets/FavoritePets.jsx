@@ -1,22 +1,21 @@
 import { useSelector } from 'react-redux';
-import { selectNoticesFavorites, selectPetsForFavorite } from '../../redux/pets/selectorsPets';
+
 import css from './FavoritePets.module.css';
 import { NoticesItem } from '../NoticesItem/NoticesItem';
+import { selectPetsForFavorite } from '../../redux/auth/selectorsAuth';
 
 export const FavoritePets = () => {
   const petsForFavorite = useSelector(selectPetsForFavorite);
-  const noticesFavorites = useSelector(selectNoticesFavorites);
+  console.log('petsForFavorite: ', petsForFavorite);
 
-  const arrFavoritPets = petsForFavorite?.length ? petsForFavorite : noticesFavorites;
-
-  if (!arrFavoritPets || arrFavoritPets.length === 0) {
+  if (!petsForFavorite || petsForFavorite.length === 0) {
     return <p>No favorite pets selected!</p>;
   }
 
   return (
     <div className={css.contPetsList}>
       <ul className={css.listPets}>
-        {arrFavoritPets.map(pet => (
+        {petsForFavorite.map(pet => (
           <li key={pet._id} className={css.itemLi}>
             <NoticesItem id={pet._id} page="profile" />
           </li>

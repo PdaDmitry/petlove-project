@@ -9,9 +9,9 @@ export const selectPetById = id =>
 
 // =====================================================================
 
-export const selectPetsForFavorite = state => state.pets.petsForFavorite;
-export const selectPetsForFavoriteById = id =>
-  createSelector([selectPetsForFavorite], pets => pets.find(pet => pet._id === id));
+// export const selectPetsForFavorite = state => state.pets.petsForFavorite;
+// export const selectPetsForFavoriteById = id =>
+//   createSelector([selectPetsForFavorite], pets => pets.find(pet => pet._id === id));
 
 // =====================================================================
 
@@ -20,7 +20,7 @@ export const selectCities = state => state.pets.cities;
 export const selectLoader = state => state.pets.isLoading;
 export const selectError = state => state.pets.isError;
 
-export const selectNoticesFavorites = state => state.auth.user.noticesFavorites;
+// export const selectNoticesFavorites = state => state.auth.user.noticesFavorites;
 
-export const selectNoticesFavoriteById = id =>
-  createSelector([selectNoticesFavorites], pets => pets.find(pet => pet._id === id));
+// export const selectNoticesFavoriteById = id =>
+//   createSelector([selectNoticesFavorites], pets => pets.find(pet => pet._id === id));
