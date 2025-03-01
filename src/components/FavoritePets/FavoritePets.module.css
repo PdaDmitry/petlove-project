@@ -5,3 +5,19 @@
 .listPets .itemLi:not(:last-child) {
   margin-bottom: 20px;
 }
+
+.text {
+  display: block;
+  width: 335px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin: 80px 0 140px;
+}
+
+.textSpan {
+  font-weight: 700;
+  color: #f6b83d;
+}

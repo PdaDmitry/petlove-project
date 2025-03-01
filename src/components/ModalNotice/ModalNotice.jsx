@@ -1,9 +1,11 @@
 import { IoMdClose } from 'react-icons/io';
 import css from './ModalNotice.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
+import { addFavoritesThunk, fetchPetByIdThunk } from '../../redux/pets/operationsPets';
+import { selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
 
 export const ModalNotice = ({ closeModal, id }) => {
   const pet = useSelector(selectPetById(id));
@@ -20,8 +22,9 @@ export const ModalNotice = ({ closeModal, id }) => {
     popularity,
     price,
   } = pet;
-
-  // const popularity = 3;
+  const page = 'modalNotice';
+  const petForFavorite = useSelector(selectPetsForFavoriteById(id));
+  const dispatch = useDispatch();
 
   const cost = price ? price : 'Uncertain';
   const formattedDate = format(new Date(birthday), 'dd.MM.yyyy');
@@ -30,6 +33,13 @@ export const ModalNotice = ({ closeModal, id }) => {
   const capitalizeFirstLetter = str => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
+
+  const handleAddFavoritePet = () => {
+    dispatch(addFavoritesThunk(id));
+    dispatch(fetchPetByIdThunk(id));
+    closeModal();
+  };
+
   return (
     <div className={css.contModalNotice}>
       <button type="button" className={css.closeButton} onClick={closeModal} aria-label="Close">
@@ -77,7 +87,12 @@ export const ModalNotice = ({ closeModal, id }) => {
       <p className={css.text}>{comment}</p>
       <p className={css.price}>$ {cost}</p>
       <div className={css.conButtons}>
-        <button type="button" className={css.btnAdd}>
+        <button
+          type="button"
+          className={css.btnAdd}
+          onClick={handleAddFavoritePet}
+          disabled={page !== 'profile' && petForFavorite}
+        >
           <p className={css.textAdd}>Add to</p>
           <svg className={css.iconHeart}>
             <use href="/symbol-defs-mob.svg#icon-heart-2"></use>

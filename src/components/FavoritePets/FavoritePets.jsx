@@ -9,7 +9,14 @@ export const FavoritePets = () => {
   console.log('petsForFavorite: ', petsForFavorite);
 
   if (!petsForFavorite || petsForFavorite.length === 0) {
-    return <p>No favorite pets selected!</p>;
+    return (
+      <p className={css.text}>
+        Oops, <span className={css.textSpan}>looks like there aren't any furries</span> on our
+        adorable page yet. Do not worry! View your pets on the "find your favorite pet" page and add
+        them to
+        <br /> your favorites.
+      </p>
+    );
   }
 
   return (
