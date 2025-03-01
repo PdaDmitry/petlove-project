@@ -13,6 +13,7 @@ import { IoMdClose } from 'react-icons/io';
 import { BsCheck2 } from 'react-icons/bs';
 // import { selectNoticesFavorites } from '../../redux/pets/selectorsPets';
 import { fetchPetByIdThunk } from '../../redux/pets/operationsPets';
+import { PetBlock } from '../../components/PetBlock/PetBlock';
 
 export const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -75,7 +76,9 @@ export const LoginPage = () => {
 
   return (
     <div className={css.contLogin}>
-      <div className={css.imgDog}></div>
+      {/* <div className={css.imgDog}></div> */}
+
+      <PetBlock src="/images/dog-login/login-dog-mob-1x.jpg" alt="Dog" />
       <div className={css.contForm}>
         <Title className={css.title}>Log in</Title>
         <p className={css.text}>Welcome! Please enter your credentials to login to the platform:</p>

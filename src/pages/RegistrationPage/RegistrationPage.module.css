@@ -5,14 +5,14 @@
   padding: 20px;
 }
 
-.imgCat {
+/* .imgCat {
   width: 335px;
   height: 280px;
   border-radius: 30px;
   background: url('../../../public/images/cat-register/registr-cat-mob-1x.jpg');
   background-size: cover;
   margin-bottom: 10px;
-}
+} */
 
 .contForm {
   border-radius: 30px;

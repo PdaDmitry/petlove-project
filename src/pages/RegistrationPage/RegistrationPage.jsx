@@ -10,6 +10,7 @@ import Title from '../../components/Title/Title';
 import { IoMdClose } from 'react-icons/io';
 import { BsCheck2 } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { PetBlock } from '../../components/PetBlock/PetBlock';
 
 export const RegistrationPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -88,7 +89,9 @@ export const RegistrationPage = () => {
 
   return (
     <div className={css.contRegistration}>
-      <div className={css.imgCat}></div>
+      {/* <div className={css.imgCat}></div> */}
+      <PetBlock src="/images/cat-register/registr-cat-mob-1x.jpg" alt="Cat" />
+
       <div className={css.contForm}>
         <Title className={css.title}>Registration</Title>
         <p className={css.text}>Thank you for your interest in our platform.</p>

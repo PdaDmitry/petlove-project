@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPet } from '../../redux/auth/operationsAuth';
+import { PetBlock } from '../../components/PetBlock/PetBlock';
 
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
@@ -56,7 +57,12 @@ export const AddPetPage = () => {
 
   return (
     <div className={css.contAddPet}>
-      <div className={css.imgDogAddPet}></div>
+      {/* <div className={css.imgDogAddPet}></div> */}
+      <PetBlock
+        src="/images/add-my-pet/add-pet-mob-1x.jpg"
+        alt="dog with glasses"
+        className={css.imgDogAddPet}
+      />
       <div className={css.contTitleForm}>
         <div className={css.contTitleSubtitle}>
           <Title className={css.title}>Add my pet /</Title>
