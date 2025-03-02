@@ -111,7 +111,7 @@ export const updateUser = createAsyncThunk(
 export const addPet = createAsyncThunk('auth/addPet', async (petData, thunkAPI) => {
   try {
     const res = await axios.post('/users/current/pets/add', petData);
-    console.log('Add Pet', res.data);
+    console.log('Add My Pet', res.data);
 
     return res.data.pets;
   } catch (error) {

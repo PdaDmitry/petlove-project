@@ -18,3 +18,9 @@ export const selectPetsForFavorite = state => state.auth.user.petsForFavorite;
 
 export const selectPetsForFavoriteById = id =>
   createSelector([selectPetsForFavorite], pets => pets.find(pet => pet._id === id));
+
+// ===============================================================================
+export const selectNoticesViewed = state => state.auth.user.noticesViewed;
+
+export const selectNoticesViewedById = id =>
+  createSelector([selectNoticesViewed], pets => pets.find(pet => pet._id === id));

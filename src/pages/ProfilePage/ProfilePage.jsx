@@ -6,30 +6,12 @@ import { CongratsModalWindow } from '../../components/CongratsModalWindow/Congra
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAddedPets } from '../../redux/auth/selectorsAuth';
 import { MyNotices } from '../../components/MyNotices/MyNotices';
-// import { selectNoticesFavorites, selectPetsForFavorite } from '../../redux/pets/selectorsPets';
-// import { selectNoticesFavorites } from '../../redux/pets/selectorsPets';
-// import { fetchPetByIdThunk } from '../../redux/pets/operationsPets';
 
 export const ProfilePage = () => {
   const [congratsModalIsOpen, setCongratsModalIsOpen] = useState(false);
   const dispatch = useDispatch();
   const addedPets = useSelector(selectAddedPets);
   const prevPetsLength = useRef(addedPets.length);
-
-  // const petsForFavorite = useSelector(selectPetsForFavorite);
-  // const noticesFavorites = useSelector(selectNoticesFavorites);
-
-  // const arrFavoritPets = petsForFavorite ? petsForFavorite : noticesFavorites;
-
-  // const noticesFavorites = useSelector(selectNoticesFavorites);
-
-  // useEffect(() => {
-  //   if (noticesFavorites?.length) {
-  //     noticesFavorites.map(id => dispatch(fetchPetByIdThunk(id)));
-  //   }
-  // }, [dispatch, noticesFavorites]);
-
-  // console.log('addedPets: ', addedPets.length);
 
   const openCongratsModal = () => setCongratsModalIsOpen(true);
   const closeCongratsModal = () => setCongratsModalIsOpen(false);

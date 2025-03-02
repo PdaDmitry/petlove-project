@@ -17,7 +17,7 @@ const initialState = {
     phone: null,
     avatar: null,
     addedPets: [],
-    // noticesFavorites: [],
+    noticesViewed: [],
     petsForFavorite: [],
   },
   token: null,
@@ -58,8 +58,9 @@ const authSlice = createSlice({
           phone: action.payload.phone || null,
           avatar: action.payload.avatar || null,
           addedPets: action.payload.addedPets || [],
-          petsForFavorite: action.payload.petsForFavorite || [],
-          // noticesFavorites: action.payload.noticesFavorites || [],
+          // petsForFavorite: action.payload.petsForFavorite || [],
+          petsForFavorite: action.payload.noticesFavorites || [],
+          noticesViewed: action.payload.noticesViewed || [],
         };
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -83,7 +84,7 @@ const authSlice = createSlice({
           avatar: null,
           addedPets: [],
           petsForFavorite: [],
-          // noticesFavorites: [],
+          noticesViewed: [],
         };
         state.token = null;
         state.isLoggedIn = false;
@@ -127,8 +128,7 @@ const authSlice = createSlice({
           avatar: action.payload.avatar,
           addedPets: action.payload.pets,
           petsForFavorite: action.payload.noticesFavorites,
-          // noticesFavorites: action.payload.noticesFavorites.map(notice => notice._id),
-          // noticesFavorites: action.payload.noticesFavorites,
+          noticesViewed: action.payload.noticesViewed,
         };
         // console.log('petsForFavorite Slice: ', action.payload.noticesFavorites);
         state.token = action.payload.token;
@@ -153,9 +153,8 @@ const authSlice = createSlice({
           phone: action.payload.phone,
           avatar: action.payload.avatar,
           addedPets: action.payload.pets,
-          // noticesFavorites: action.payload.noticesFavorites.map(notice => notice._id),
-          // noticesFavorites: action.payload.noticesFavorites,
           petsForFavorite: action.payload.noticesFavorites,
+          noticesViewed: action.payload.noticesViewed,
         };
 
         state.isLoggedIn = true;

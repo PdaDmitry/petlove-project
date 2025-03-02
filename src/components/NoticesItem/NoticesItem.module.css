@@ -101,7 +101,8 @@
 .btnLearn {
   border-radius: 30px;
   /* padding: 14px 80px; */
-  width: 231px;
+  /* width: 231px; */
+  width: 100%;
   height: 46px;
   background: #f6b83d;
   border: none;
@@ -122,6 +123,7 @@
   border-radius: 30px;
   padding: 14px;
   width: 46px;
+
   height: 46px;
   border: none;
   background: #fff4df;
@@ -130,6 +132,10 @@
 
 .btnHeart:hover {
   background: #fbe7c1;
+}
+
+.btnHeartNotVisible {
+  display: none;
 }
 
 .iconHeart {

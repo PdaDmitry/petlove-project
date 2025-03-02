@@ -3,7 +3,11 @@ import { selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
 import css from './NoticesItem.module.css';
-import { selectIsLoggedIn, selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
+import {
+  selectIsLoggedIn,
+  selectNoticesViewedById,
+  selectPetsForFavoriteById,
+} from '../../redux/auth/selectorsAuth';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
 import { useState } from 'react';
@@ -23,6 +27,7 @@ export const NoticesItem = ({ id, page }) => {
 
   const pet = useSelector(selectPetById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
+  const viewedPets = useSelector(selectNoticesViewedById(id));
 
   const openAttentionModal = () => setAttentionModalOpen(true);
   const closeAttentionModal = () => setAttentionModalOpen(false);
@@ -31,10 +36,18 @@ export const NoticesItem = ({ id, page }) => {
 
   let elem;
 
-  if (page !== 'profile') {
-    elem = pet;
-  } else {
+  // if (page !== 'profile') {
+  //   elem = pet;
+  // } else {
+  //   elem = petForFavorite;
+  // }
+
+  if (page === 'profile') {
     elem = petForFavorite;
+  } else if (page === 'viewed') {
+    elem = viewedPets;
+  } else {
+    elem = pet;
   }
 
   if (!elem) {
@@ -116,7 +129,7 @@ export const NoticesItem = ({ id, page }) => {
           Learn more
         </button>
         <button
-          className={css.btnHeart}
+          className={page === 'viewed' ? css.btnHeartNotVisible : css.btnHeart}
           onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
           disabled={page !== 'profile' && petForFavorite}
         >
