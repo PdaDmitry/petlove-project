@@ -5,7 +5,6 @@ import { NoticesItem } from '../NoticesItem/NoticesItem';
 
 export const Viewed = () => {
   const noticesViewed = useSelector(selectNoticesViewed);
-  console.log('noticesViewed: ', noticesViewed);
 
   if (!noticesViewed || noticesViewed.length === 0) {
     return <p className={css.text}>You don't have any animals viewed yet...</p>;

@@ -89,7 +89,7 @@ export const ModalNotice = ({ closeModal, id }) => {
       <div className={css.conButtons}>
         <button
           type="button"
-          className={css.btnAdd}
+          className={petForFavorite ? css.btnAddNoVisible : css.btnAdd}
           onClick={handleAddFavoritePet}
           disabled={page !== 'profile' && petForFavorite}
         >

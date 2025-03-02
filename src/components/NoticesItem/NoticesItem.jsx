@@ -36,12 +36,6 @@ export const NoticesItem = ({ id, page }) => {
 
   let elem;
 
-  // if (page !== 'profile') {
-  //   elem = pet;
-  // } else {
-  //   elem = petForFavorite;
-  // }
-
   if (page === 'profile') {
     elem = petForFavorite;
   } else if (page === 'viewed') {

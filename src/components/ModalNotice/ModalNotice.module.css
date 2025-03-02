@@ -132,6 +132,10 @@
   /* justify-content: space-between; */
 }
 
+.btnAddNoVisible {
+  display: none;
+}
+
 .btnAdd {
   display: flex;
   gap: 8px;
@@ -180,7 +184,6 @@
 .btnContact {
   display: block;
   border-radius: 30px;
-  /* padding: 12px 37px; */
   width: 134px;
   height: 44px;
   background: #fff4df;

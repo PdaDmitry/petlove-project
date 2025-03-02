@@ -6,7 +6,6 @@ import { selectPetsForFavorite } from '../../redux/auth/selectorsAuth';
 
 export const FavoritePets = () => {
   const petsForFavorite = useSelector(selectPetsForFavorite);
-  // console.log('petsForFavorite: ', petsForFavorite);
 
   if (!petsForFavorite || petsForFavorite.length === 0) {
     return (
