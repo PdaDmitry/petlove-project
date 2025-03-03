@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchCategoriesThunk,
-  fetchCitiesThunk,
-  // fetchPetByIdThunk,
-  fetchPetsThunk,
-} from './operationsPets';
+import { fetchCategoriesThunk, fetchCitiesThunk, fetchPetsThunk } from './operationsPets';
 
 const initialState = {
   items: [],
@@ -15,8 +10,6 @@ const initialState = {
   totalPages: 0,
   categories: [],
   cities: [],
-  // petsForFavorite: [],
-  // petById: {},
 };
 
 const petsSlice = createSlice({
@@ -39,7 +32,6 @@ const petsSlice = createSlice({
       })
       .addCase(fetchPetsThunk.rejected, (state, action) => {
         state.isLoading = false;
-        // state.isError = action.payload || 'Something went wrong';
         state.isError = action.error.message;
       })
 
@@ -52,7 +44,6 @@ const petsSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
         state.categories = action.payload.results;
-        // state.categories = action.payload;
       })
       .addCase(fetchCategoriesThunk.rejected, (state, action) => {
         state.isLoading = false;
@@ -67,38 +58,12 @@ const petsSlice = createSlice({
       .addCase(fetchCitiesThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = null;
-        // state.cities = action.payload.results;
         state.cities = action.payload;
       })
       .addCase(fetchCitiesThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = action.payload || 'Something went wrong';
       });
-
-    // //petsForFavorite
-    // .addCase(fetchPetByIdThunk.pending, (state, action) => {
-    //   state.isLoading = true;
-    //   state.isError = null;
-    // })
-    // .addCase(fetchPetByIdThunk.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.isError = null;
-
-    //   const existingPet = state.petsForFavorite.find(pet => pet._id === action.payload._id);
-    //   // console.log(action.payload._id);
-
-    //   if (!existingPet) {
-    //     state.petsForFavorite.unshift(action.payload);
-    //   } else {
-    //     state.petsForFavorite = state.petsForFavorite.filter(
-    //       pet => pet._id !== action.payload._id
-    //     );
-    //   }
-    // })
-    // .addCase(fetchPetByIdThunk.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.isError = action.payload || 'Something went wrong';
-    // });
   },
 });
 

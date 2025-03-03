@@ -95,7 +95,6 @@ export const NoticesPage = () => {
   }, [dispatch, query]);
 
   if (loader) {
-    // return <p>Please wait...</p>;
     return <CircularLoader />;
   }
 

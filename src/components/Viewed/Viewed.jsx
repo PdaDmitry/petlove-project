@@ -9,18 +9,6 @@ export const Viewed = () => {
   const dispatch = useDispatch();
   const noticesViewed = useSelector(selectNoticesViewed);
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       await dispatch(refreshUser()).unwrap();
-  //     } catch (error) {
-  //       console.error('Failed to refresh user:', error);
-  //     }
-  //   };
-
-  //   fetchUser();
-  // }, [dispatch]);
-
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

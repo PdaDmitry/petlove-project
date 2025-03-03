@@ -1,0 +1,16 @@
+.loaderWrapper {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+
+  background-image: url(../../../public/images/main-image-mob-1x.jpg);
+  z-index: 9999;
+}

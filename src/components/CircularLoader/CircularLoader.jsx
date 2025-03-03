@@ -1,6 +1,7 @@
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useEffect, useState } from 'react';
+import css from './CircularLoader.module.css';
 
 export const CircularLoader = () => {
   const [progress, setProgress] = useState(0);
@@ -9,25 +10,34 @@ export const CircularLoader = () => {
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
-          return 0; // чтобы заново крутился, можно просто оставить 100 если не нужно сбрасывать
+          return 0;
         }
-        return prev + 1; // скорость можно менять, например +2 для быстрого
+        return prev + 1;
       });
-    }, 35); // скорость обновления, можно 100 мс, можно быстрее
+    }, 35);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div style={{ width: 292, height: 292, margin: '100px auto' }}>
+    <div className={css.loaderWrapper} style={{ width: 310, height: 310 }}>
       <CircularProgressbar
         value={progress}
         text={`${progress}%`}
-        styles={buildStyles({
-          textColor: '#555',
-          pathColor: '#ff6b08',
-          trailColor: '#f0f0f0',
-        })}
+        styles={{
+          trail: {
+            stroke: '#fff',
+            strokeWidth: 1,
+          },
+          path: {
+            stroke: 'rgb(130, 130, 130, 0.9)',
+            strokeWidth: 1,
+          },
+          text: {
+            fill: '#fff',
+            fontSize: '15px',
+          },
+        }}
       />
     </div>
   );

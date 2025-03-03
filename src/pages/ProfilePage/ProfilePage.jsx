@@ -6,6 +6,7 @@ import { CongratsModalWindow } from '../../components/CongratsModalWindow/Congra
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAddedPets } from '../../redux/auth/selectorsAuth';
 import { MyNotices } from '../../components/MyNotices/MyNotices';
+import { refreshUser } from '../../redux/auth/operationsAuth';
 
 export const ProfilePage = () => {
   const [congratsModalIsOpen, setCongratsModalIsOpen] = useState(false);
@@ -15,6 +16,10 @@ export const ProfilePage = () => {
 
   const openCongratsModal = () => setCongratsModalIsOpen(true);
   const closeCongratsModal = () => setCongratsModalIsOpen(false);
+
+  useEffect(() => {
+    dispatch(refreshUser()); // Запрашиваем данные пользователя при загрузке
+  }, [dispatch]);
 
   useEffect(() => {
     if (prevPetsLength.current === 0 && addedPets.length === 1) {

@@ -34,9 +34,9 @@ export const NewsPage = () => {
     dispatch(fetchNewsThunk(query));
   }, [dispatch, query]);
 
-  if (loaderNews) {
-    return <p>Please wait...</p>;
-  }
+  // if (loaderNews) {
+  //   return <p>Please wait...</p>;
+  // }
 
   return (
     !errorNews && (
