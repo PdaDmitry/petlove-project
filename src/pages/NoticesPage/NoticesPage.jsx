@@ -10,6 +10,7 @@ import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
 import { useNavigate } from 'react-router-dom';
 import { selectError, selectLoader } from '../../redux/pets/selectorsPets';
+import { CircularLoader } from '../../components/CircularLoader/CircularLoader';
 
 export const NoticesPage = () => {
   const [page, setPage] = useState(1);
@@ -94,7 +95,8 @@ export const NoticesPage = () => {
   }, [dispatch, query]);
 
   if (loader) {
-    return <p>Please wait...</p>;
+    // return <p>Please wait...</p>;
+    return <CircularLoader />;
   }
 
   return (
