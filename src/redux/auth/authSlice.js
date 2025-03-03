@@ -58,7 +58,6 @@ const authSlice = createSlice({
           phone: action.payload.phone || null,
           avatar: action.payload.avatar || null,
           addedPets: action.payload.addedPets || [],
-          // petsForFavorite: action.payload.petsForFavorite || [],
           petsForFavorite: action.payload.noticesFavorites || [],
           noticesViewed: action.payload.noticesViewed || [],
         };
