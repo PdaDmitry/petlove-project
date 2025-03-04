@@ -40,6 +40,7 @@ export const NoticesPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const error = useSelector(selectError);
   const loader = useSelector(selectLoader);
+  // const loader = true;
 
   const query = useMemo(
     () => ({

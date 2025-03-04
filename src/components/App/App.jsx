@@ -26,8 +26,8 @@ function App() {
 
   const error = useSelector(selectError);
   const loader = useSelector(selectLoader);
+  // const loader = true;
   const loaderNews = useSelector(selectNewsLoader);
-  console.log('loader: ', loader);
 
   // const dispatch = useDispatch();
 
@@ -46,7 +46,9 @@ function App() {
   return (
     !error && (
       <div className={css.contApp}>
-        {!isMainPage && <Header isHome={isHomePage} />}
+        {/* {!isMainPage && <Header isHome={isHomePage} />} */}
+        {!isMainPage && !loader && !loaderNews && <Header isHome={isHomePage} />}
+
         <Toaster />
         <Routes>
           <Route path="/" element={<MainPage />} />

@@ -12,14 +12,14 @@ import Title from '../../components/Title/Title';
 import { IoMdClose } from 'react-icons/io';
 import { BsCheck2 } from 'react-icons/bs';
 // import { selectNoticesFavorites } from '../../redux/pets/selectorsPets';
-import { fetchPetByIdThunk } from '../../redux/pets/operationsPets';
+// import { fetchPetByIdThunk } from '../../redux/pets/operationsPets';
 import { PetBlock } from '../../components/PetBlock/PetBlock';
 
 export const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const navigate = useNavigate();
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
   // console.log('user befor: ', user);
   // const noticesFavorites = useSelector(selectNoticesFavorites);
 

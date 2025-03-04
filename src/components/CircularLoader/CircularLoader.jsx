@@ -1,4 +1,4 @@
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useEffect, useState } from 'react';
 import css from './CircularLoader.module.css';
@@ -20,25 +20,30 @@ export const CircularLoader = () => {
   }, []);
 
   return (
-    <div className={css.loaderWrapper} style={{ width: 310, height: 310 }}>
-      <CircularProgressbar
-        value={progress}
-        text={`${progress}%`}
-        styles={{
-          trail: {
-            stroke: '#fff',
-            strokeWidth: 1,
-          },
-          path: {
-            stroke: 'rgb(130, 130, 130, 0.9)',
-            strokeWidth: 1,
-          },
-          text: {
-            fill: '#fff',
-            fontSize: '15px',
-          },
-        }}
-      />
+    <div className={css.loaderWrapper}>
+      <div className={css.progress}>
+        <CircularProgressbar
+          value={progress}
+          text={`${progress}%`}
+          styles={{
+            trail: {
+              stroke: '#fff',
+              strokeWidth: 1,
+              circleRatio: 0.5,
+            },
+            path: {
+              stroke: 'rgb(130, 130, 130, 0.9)',
+              strokeWidth: 1,
+            },
+            text: {
+              fill: '#fff',
+              fontSize: '15px',
+            },
+          }}
+        />
+      </div>
     </div>
   );
 };
+
+//style={{ width: 310, height: 310, margin: 'auto' }}
