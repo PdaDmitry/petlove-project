@@ -5,10 +5,23 @@ import { selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
 import { addFavoritesThunk, fetchPetByIdThunk } from '../../redux/pets/operationsPets';
-import { selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
+import { selectNoticesViewedById, selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
 
-export const ModalNotice = ({ closeModal, id }) => {
+export const ModalNotice = ({ closeModal, id, page }) => {
   const pet = useSelector(selectPetById(id));
+  const viewedPets = useSelector(selectNoticesViewedById(id));
+  const petForFavorite = useSelector(selectPetsForFavoriteById(id));
+
+  let elem;
+
+  if (page === 'profile') {
+    elem = petForFavorite;
+  } else if (page === 'viewed') {
+    elem = viewedPets;
+  } else {
+    elem = pet;
+  }
+
   const {
     imgURL,
     title,
@@ -21,9 +34,8 @@ export const ModalNotice = ({ closeModal, id }) => {
     location,
     popularity,
     price,
-  } = pet;
-  const page = 'modalNotice';
-  const petForFavorite = useSelector(selectPetsForFavoriteById(id));
+  } = elem;
+
   const dispatch = useDispatch();
 
   const cost = price ? price : 'Uncertain';

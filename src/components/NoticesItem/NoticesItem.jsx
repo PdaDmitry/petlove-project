@@ -146,7 +146,7 @@ export const NoticesItem = ({ id, page }) => {
       </ModalWindow>
 
       <ModalWindow isOpen={noticeModalOpen} onClose={closeNoticeModal}>
-        <ModalNotice closeModal={closeNoticeModal} id={id} />
+        <ModalNotice closeModal={closeNoticeModal} id={id} page={page} />
       </ModalWindow>
     </div>
   );

@@ -110,7 +110,7 @@ export const fetchPetByIdThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await axios.get(`/notices/${id}`);
-      // console.log('fetchPetById: ', response.data);
+      console.log('fetchPetById: ', response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);

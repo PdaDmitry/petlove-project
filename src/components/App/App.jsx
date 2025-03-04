@@ -29,11 +29,11 @@ function App() {
   // const loader = true;
   const loaderNews = useSelector(selectNewsLoader);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(refreshUser()); // изменил обновление пользователя на стр ProfilePage
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser()); // изменил обновление пользователя на стр ProfilePage
+  }, [dispatch]);
 
   // if (loader) {
   //   return (
