@@ -8,6 +8,7 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { SearchField } from '../../components/SearchField/SearchField';
 import { selectNewsError, selectNewsLoader } from '../../redux/news/selectorsNews';
 import { useNavigate } from 'react-router-dom';
+import { CircularLoader } from '../../components/CircularLoader/CircularLoader';
 
 export const NewsPage = () => {
   const [page, setPage] = useState(1);
@@ -34,9 +35,9 @@ export const NewsPage = () => {
     dispatch(fetchNewsThunk(query));
   }, [dispatch, query]);
 
-  // if (loaderNews) {
-  //   return <p>Please wait...</p>;
-  // }
+  if (loaderNews) {
+    return <CircularLoader />;
+  }
 
   return (
     !errorNews && (
