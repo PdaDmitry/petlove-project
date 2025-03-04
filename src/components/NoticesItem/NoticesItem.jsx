@@ -15,6 +15,7 @@ import { ModalNotice } from '../ModalNotice/ModalNotice';
 import {
   addFavoritesThunk,
   fetchPetByIdThunk,
+  fetchPetForContact,
   removeFavoriteThunk,
 } from '../../redux/pets/operationsPets';
 import { FiHeart } from 'react-icons/fi';
@@ -72,6 +73,7 @@ export const NoticesItem = ({ id, page }) => {
 
   const handleModalOpen = () => {
     isLoggedIn ? openNoticeModal() : openAttentionModal();
+    dispatch(fetchPetForContact(id));
   };
 
   const handleAddFavoritePet = () => {

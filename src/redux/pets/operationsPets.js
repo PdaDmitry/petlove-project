@@ -117,3 +117,18 @@ export const fetchPetByIdThunk = createAsyncThunk(
     }
   }
 );
+
+// ======================================/notices/{id} for Contact=======================================
+
+export const fetchPetForContact = createAsyncThunk(
+  'fetchPetForContact',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/notices/${id}`);
+      console.log('fetchPetById for contact: ', response.data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
