@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCategoriesThunk, fetchCitiesThunk, fetchPetsThunk } from './operationsPets';
+import {
+  fetchCategoriesThunk,
+  fetchCitiesThunk,
+  fetchPetForContact,
+  fetchPetsThunk,
+} from './operationsPets';
 
 const initialState = {
   items: [],
@@ -10,6 +15,7 @@ const initialState = {
   totalPages: 0,
   categories: [],
   cities: [],
+  petContacts: {},
 };
 
 const petsSlice = createSlice({
@@ -61,6 +67,21 @@ const petsSlice = createSlice({
         state.cities = action.payload;
       })
       .addCase(fetchCitiesThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = action.payload || 'Something went wrong';
+      })
+
+      //fetchPetForContact
+      .addCase(fetchPetForContact.pending, (state, action) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(fetchPetForContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = null;
+        state.petContacts = action.payload;
+      })
+      .addCase(fetchPetForContact.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = action.payload || 'Something went wrong';
       });

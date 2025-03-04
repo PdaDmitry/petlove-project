@@ -1,16 +1,23 @@
 import { IoMdClose } from 'react-icons/io';
 import css from './ModalNotice.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPetById } from '../../redux/pets/selectorsPets';
+import { selecPetContacts, selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
-import { addFavoritesThunk, fetchPetByIdThunk } from '../../redux/pets/operationsPets';
+import {
+  addFavoritesThunk,
+  fetchPetByIdThunk,
+  fetchPetForContact,
+} from '../../redux/pets/operationsPets';
 import { selectNoticesViewedById, selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
+import { useEffect } from 'react';
 
 export const ModalNotice = ({ closeModal, id, page }) => {
   const pet = useSelector(selectPetById(id));
   const viewedPets = useSelector(selectNoticesViewedById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
+  const petContacts = useSelector(selecPetContacts);
+  // console.log('petContacts: ', petContacts);
 
   let elem;
 
@@ -51,6 +58,26 @@ export const ModalNotice = ({ closeModal, id, page }) => {
     dispatch(fetchPetByIdThunk(id));
     closeModal();
   };
+
+  const handleContacts = () => {
+    dispatch(fetchPetForContact(id));
+    closeModal();
+    // handleOpenContact();
+  };
+
+  // const handleOpenContact = () => {
+  //   console.log('petContacts:', petContacts);
+  //   if (petContacts) {
+  //     const { phone, email } = petContacts;
+  //     if (phone) {
+  //       window.location.href = `tel:${phone}`;
+  //     } else if (email) {
+  //       window.location.href = `mailto:${email}`;
+  //     } else {
+  //       alert('Contact information is not available.');
+  //     }
+  //   }
+  // };
 
   return (
     <div className={css.contModalNotice}>
@@ -113,7 +140,7 @@ export const ModalNotice = ({ closeModal, id, page }) => {
             <use href="/symbol-defs-mob.svg#icon-heart-1"></use>
           </svg>
         </button>
-        <button type="button" className={css.btnContact}>
+        <button type="button" className={css.btnContact} onClick={handleContacts}>
           Contact
         </button>
       </div>
