@@ -1,9 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selecPetContacts,
-  selectPetById,
-  selectPetContactsLoaded,
-} from '../../redux/pets/selectorsPets';
+import { selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
 import css from './NoticesItem.module.css';
@@ -14,12 +10,11 @@ import {
 } from '../../redux/auth/selectorsAuth';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import {
   addFavoritesThunk,
   fetchPetByIdThunk,
-  fetchPetForContact,
   fetchPetForViewed,
   removeFavoriteThunk,
 } from '../../redux/pets/operationsPets';
@@ -28,8 +23,7 @@ import { FiHeart } from 'react-icons/fi';
 export const NoticesItem = ({ id, page }) => {
   const [attentionModalOpen, setAttentionModalOpen] = useState(false);
   const [noticeModalOpen, setNoticeModalOpen] = useState(false);
-
-  const [selectedPetId, setSelectedPetId] = useState(null);
+  const [petContacts, setPetContacts] = useState(null);
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -37,10 +31,6 @@ export const NoticesItem = ({ id, page }) => {
   const pet = useSelector(selectPetById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
   const viewedPets = useSelector(selectNoticesViewedById(id));
-
-  const petContacts = useSelector(selecPetContacts);
-  const petContactsLoaded = useSelector(selectPetContactsLoaded);
-  // console.log('petContacts: ', petContacts);
 
   const openAttentionModal = () => setAttentionModalOpen(true);
   const closeAttentionModal = () => setAttentionModalOpen(false);
@@ -57,19 +47,8 @@ export const NoticesItem = ({ id, page }) => {
     elem = pet;
   }
 
-  const {
-    imgURL,
-    title,
-    name,
-    birthday,
-    sex,
-    species,
-    category,
-    comment,
-    // location,
-    popularity,
-    price,
-  } = elem;
+  const { imgURL, title, name, birthday, sex, species, category, comment, popularity, price } =
+    elem;
 
   const cost = price ? price : 'Uncertain';
   const formattedDate = format(new Date(birthday), 'dd.MM.yyyy');
@@ -79,10 +58,15 @@ export const NoticesItem = ({ id, page }) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  const handleModalOpen = () => {
-    // setSelectedPetId(id); ////////////
-    dispatch(fetchPetForViewed(id));
-    // dispatch(fetchPetForContact(id));
+  const handleModalOpen = async () => {
+    try {
+      const data = await dispatch(fetchPetForViewed(id)).unwrap();
+      setPetContacts(data.user);
+      // console.log(data.user);
+    } catch (error) {
+      console.error('Failed to fetch pet:', error);
+    }
+
     isLoggedIn ? openNoticeModal() : openAttentionModal();
   };
 
@@ -94,6 +78,19 @@ export const NoticesItem = ({ id, page }) => {
   const handleRemoveFavoritePet = () => {
     dispatch(removeFavoriteThunk(id));
     dispatch(fetchPetByIdThunk(id));
+  };
+
+  const handleOpenContact = () => {
+    const { phone, email } = petContacts;
+    // const phone = '+380954473219';
+    // console.log(phone, email);
+    if (phone) {
+      window.location.href = `tel:${phone}`;
+    } else if (email) {
+      window.location.href = `mailto:${email}`;
+    } else {
+      alert('Contact information is not available.');
+    }
   };
 
   if (!elem) {
@@ -155,7 +152,6 @@ export const NoticesItem = ({ id, page }) => {
             </svg>
           )}
         </button>
-        {/* <button type="button">Click</button> */}
       </div>
 
       <ModalWindow isOpen={attentionModalOpen} onClose={closeAttentionModal}>
@@ -163,7 +159,12 @@ export const NoticesItem = ({ id, page }) => {
       </ModalWindow>
 
       <ModalWindow isOpen={noticeModalOpen} onClose={closeNoticeModal}>
-        <ModalNotice closeModal={closeNoticeModal} id={id} page={page} />
+        <ModalNotice
+          closeModal={closeNoticeModal}
+          id={id}
+          page={page}
+          handleOpenContact={handleOpenContact}
+        />
       </ModalWindow>
     </div>
   );

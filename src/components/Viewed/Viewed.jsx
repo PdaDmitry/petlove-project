@@ -10,7 +10,7 @@ export const Viewed = () => {
   const noticesViewed = useSelector(selectNoticesViewed);
   // console.log('first: ', noticesViewed[0]);
   // console.log('last: ', noticesViewed[noticesViewed.length - 1]);
-  console.log('noticesViewed: ', noticesViewed);
+  // console.log('noticesViewed: ', noticesViewed);
 
   useEffect(() => {
     dispatch(refreshUser());

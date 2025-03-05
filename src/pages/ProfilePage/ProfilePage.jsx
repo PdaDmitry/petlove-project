@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAddedPets } from '../../redux/auth/selectorsAuth';
 import { MyNotices } from '../../components/MyNotices/MyNotices';
 import { refreshUser } from '../../redux/auth/operationsAuth';
-import { selecPetContacts } from '../../redux/pets/selectorsPets';
+// import { selecPetContacts } from '../../redux/pets/selectorsPets';
 
 export const ProfilePage = () => {
   const [congratsModalIsOpen, setCongratsModalIsOpen] = useState(false);

@@ -1,23 +1,16 @@
 import { IoMdClose } from 'react-icons/io';
 import css from './ModalNotice.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selecPetContacts, selectPetById } from '../../redux/pets/selectorsPets';
+import { selectPetById } from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
-import {
-  addFavoritesThunk,
-  fetchPetByIdThunk,
-  fetchPetForContact,
-} from '../../redux/pets/operationsPets';
+import { addFavoritesThunk, fetchPetByIdThunk } from '../../redux/pets/operationsPets';
 import { selectNoticesViewedById, selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
-// import { useEffect } from 'react';
 
-export const ModalNotice = ({ closeModal, id, page }) => {
+export const ModalNotice = ({ closeModal, id, page, handleOpenContact }) => {
   const pet = useSelector(selectPetById(id));
   const viewedPets = useSelector(selectNoticesViewedById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
-  const petContacts = useSelector(selecPetContacts);
-  console.log('petContacts: ', petContacts);
 
   let elem;
 
@@ -29,19 +22,8 @@ export const ModalNotice = ({ closeModal, id, page }) => {
     elem = pet;
   }
 
-  const {
-    imgURL,
-    title,
-    name,
-    birthday,
-    sex,
-    species,
-    category,
-    comment,
-    // location,
-    popularity,
-    price,
-  } = elem;
+  const { imgURL, title, name, birthday, sex, species, category, comment, popularity, price } =
+    elem;
 
   const dispatch = useDispatch();
 
@@ -60,22 +42,9 @@ export const ModalNotice = ({ closeModal, id, page }) => {
   };
 
   const handleContacts = () => {
-    dispatch(fetchPetForContact(id));
-    // handleOpenContact();
+    handleOpenContact();
     closeModal();
   };
-
-  // const handleOpenContact = () => {
-  //   const { phone, email } = petContacts; // Берём актуальные данные
-
-  //   if (phone) {
-  //     window.location.href = `tel:${phone}`;
-  //   } else if (email) {
-  //     window.location.href = `mailto:${email}`;
-  //   } else {
-  //     alert('Contact information is not available.');
-  //   }
-  // };
 
   return (
     <div className={css.contModalNotice}>
