@@ -18,15 +18,22 @@ export const Viewed = () => {
   }
 
   const firstSixNotices = noticesViewed.slice(0, 6);
+  const addedIds = new Set();
 
   return (
     <div className={css.contPetsList}>
       <ul className={css.listPets}>
-        {firstSixNotices.map(pet => (
-          <li key={pet._id} className={css.itemLi}>
-            <NoticesItem id={pet._id} page="viewed" />
-          </li>
-        ))}
+        {firstSixNotices.map(pet => {
+          if (addedIds.has(pet._id)) {
+            return null;
+          }
+          addedIds.add(pet._id);
+          return (
+            <li key={pet._id} className={css.itemLi}>
+              <NoticesItem id={pet._id} page="viewed" />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

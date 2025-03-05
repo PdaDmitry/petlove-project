@@ -16,6 +16,7 @@ const initialState = {
   categories: [],
   cities: [],
   petContacts: {},
+  petContactsLoaded: false,
 };
 
 const petsSlice = createSlice({
@@ -75,15 +76,18 @@ const petsSlice = createSlice({
       .addCase(fetchPetForContact.pending, (state, action) => {
         state.isLoading = true;
         state.isError = null;
+        state.petContactsLoaded = true;
       })
       .addCase(fetchPetForContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = null;
         state.petContacts = action.payload;
+        state.petContactsLoaded = false;
       })
       .addCase(fetchPetForContact.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = action.payload || 'Something went wrong';
+        state.petContactsLoaded = false;
       });
   },
 });

@@ -15,8 +15,8 @@ export const ProfilePage = () => {
   const addedPets = useSelector(selectAddedPets);
   const prevPetsLength = useRef(addedPets.length);
 
-  const petContacts = useSelector(selecPetContacts);
-  console.log('petContacts: ', petContacts);
+  // const petContacts = useSelector(selecPetContacts);
+  // console.log('petContacts: ', petContacts);
 
   const openCongratsModal = () => setCongratsModalIsOpen(true);
   const closeCongratsModal = () => setCongratsModalIsOpen(false);

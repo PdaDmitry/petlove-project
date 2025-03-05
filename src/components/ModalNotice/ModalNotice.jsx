@@ -17,7 +17,7 @@ export const ModalNotice = ({ closeModal, id, page }) => {
   const viewedPets = useSelector(selectNoticesViewedById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
   const petContacts = useSelector(selecPetContacts);
-  // console.log('petContacts: ', petContacts);
+  console.log('petContacts: ', petContacts);
 
   let elem;
 
@@ -38,7 +38,7 @@ export const ModalNotice = ({ closeModal, id, page }) => {
     species,
     category,
     comment,
-    location,
+    // location,
     popularity,
     price,
   } = elem;
@@ -61,21 +61,19 @@ export const ModalNotice = ({ closeModal, id, page }) => {
 
   const handleContacts = () => {
     dispatch(fetchPetForContact(id));
-    closeModal();
     // handleOpenContact();
+    closeModal();
   };
 
   // const handleOpenContact = () => {
-  //   console.log('petContacts:', petContacts);
-  //   if (petContacts) {
-  //     const { phone, email } = petContacts;
-  //     if (phone) {
-  //       window.location.href = `tel:${phone}`;
-  //     } else if (email) {
-  //       window.location.href = `mailto:${email}`;
-  //     } else {
-  //       alert('Contact information is not available.');
-  //     }
+  //   const { phone, email } = petContacts; // Берём актуальные данные
+
+  //   if (phone) {
+  //     window.location.href = `tel:${phone}`;
+  //   } else if (email) {
+  //     window.location.href = `mailto:${email}`;
+  //   } else {
+  //     alert('Contact information is not available.');
   //   }
   // };
 

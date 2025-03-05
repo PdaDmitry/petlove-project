@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPetById } from '../../redux/pets/selectorsPets';
+import {
+  selecPetContacts,
+  selectPetById,
+  selectPetContactsLoaded,
+} from '../../redux/pets/selectorsPets';
 import { GoStarFill } from 'react-icons/go';
 import { format } from 'date-fns';
 import css from './NoticesItem.module.css';
@@ -10,11 +14,12 @@ import {
 } from '../../redux/auth/selectorsAuth';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import {
   addFavoritesThunk,
   fetchPetByIdThunk,
+  fetchPetForContact,
   fetchPetForViewed,
   removeFavoriteThunk,
 } from '../../redux/pets/operationsPets';
@@ -23,12 +28,19 @@ import { FiHeart } from 'react-icons/fi';
 export const NoticesItem = ({ id, page }) => {
   const [attentionModalOpen, setAttentionModalOpen] = useState(false);
   const [noticeModalOpen, setNoticeModalOpen] = useState(false);
+
+  const [selectedPetId, setSelectedPetId] = useState(null);
+
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const pet = useSelector(selectPetById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
   const viewedPets = useSelector(selectNoticesViewedById(id));
+
+  const petContacts = useSelector(selecPetContacts);
+  const petContactsLoaded = useSelector(selectPetContactsLoaded);
+  // console.log('petContacts: ', petContacts);
 
   const openAttentionModal = () => setAttentionModalOpen(true);
   const closeAttentionModal = () => setAttentionModalOpen(false);
@@ -43,10 +55,6 @@ export const NoticesItem = ({ id, page }) => {
     elem = viewedPets;
   } else {
     elem = pet;
-  }
-
-  if (!elem) {
-    return <p>Pet not found</p>;
   }
 
   const {
@@ -72,9 +80,19 @@ export const NoticesItem = ({ id, page }) => {
   };
 
   const handleModalOpen = () => {
+    // setSelectedPetId(id); ////////////
     dispatch(fetchPetForViewed(id));
+    // dispatch(fetchPetForContact(id));
     isLoggedIn ? openNoticeModal() : openAttentionModal();
   };
+  // ====================================================
+  // useEffect(() => {
+  //   if (selectedPetId === id && !petContactsLoaded && petContacts) {
+  //     isLoggedIn ? openNoticeModal() : openAttentionModal();
+  //     setSelectedPetId(null); // Сброс
+  //   }
+  // }, [id, selectedPetId, petContactsLoaded, petContacts, isLoggedIn]);
+  // ========================================================
 
   const handleAddFavoritePet = () => {
     dispatch(addFavoritesThunk(id));
@@ -85,6 +103,10 @@ export const NoticesItem = ({ id, page }) => {
     dispatch(removeFavoriteThunk(id));
     dispatch(fetchPetByIdThunk(id));
   };
+
+  if (!elem) {
+    return <p>Pet not found</p>;
+  }
 
   return (
     <div className={css.contPet}>
@@ -141,6 +163,7 @@ export const NoticesItem = ({ id, page }) => {
             </svg>
           )}
         </button>
+        {/* <button type="button">Click</button> */}
       </div>
 
       <ModalWindow isOpen={attentionModalOpen} onClose={closeAttentionModal}>

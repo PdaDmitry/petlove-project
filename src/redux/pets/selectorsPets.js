@@ -12,3 +12,5 @@ export const selectCities = state => state.pets.cities;
 export const selectLoader = state => state.pets.isLoading;
 export const selectError = state => state.pets.isError;
 export const selecPetContacts = state => state.pets.petContacts;
+
+export const selectPetContactsLoaded = state => state.pets.petContactsLoaded;
