@@ -85,14 +85,6 @@ export const NoticesItem = ({ id, page }) => {
     // dispatch(fetchPetForContact(id));
     isLoggedIn ? openNoticeModal() : openAttentionModal();
   };
-  // ====================================================
-  // useEffect(() => {
-  //   if (selectedPetId === id && !petContactsLoaded && petContacts) {
-  //     isLoggedIn ? openNoticeModal() : openAttentionModal();
-  //     setSelectedPetId(null); // Сброс
-  //   }
-  // }, [id, selectedPetId, petContactsLoaded, petContacts, isLoggedIn]);
-  // ========================================================
 
   const handleAddFavoritePet = () => {
     dispatch(addFavoritesThunk(id));

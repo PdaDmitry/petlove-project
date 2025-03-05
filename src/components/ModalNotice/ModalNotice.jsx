@@ -10,7 +10,7 @@ import {
   fetchPetForContact,
 } from '../../redux/pets/operationsPets';
 import { selectNoticesViewedById, selectPetsForFavoriteById } from '../../redux/auth/selectorsAuth';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 export const ModalNotice = ({ closeModal, id, page }) => {
   const pet = useSelector(selectPetById(id));
