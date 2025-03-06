@@ -2,24 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 375px; */
-  /* height: 812px; */
   padding: 16px 20px 20px;
 }
 
 .imgDogAddPet {
-  /* width: 335px; */
   height: 213px;
-  /* border-radius: 30px;
-  background: url('../../../public/images/add-my-pet/add-pet-mob-1x.jpg');
-  background-size: cover;
-  margin-bottom: 10px; */
 }
 
 .contTitleForm {
   border-radius: 30px;
   width: 335px;
-  /* height: 489px; */
   padding: 28px 20px 20px;
   background: #fff;
 }
@@ -27,13 +19,9 @@
 .contTitleSubtitle {
   display: flex;
   align-items: self-end;
-  /* align-items: baseline; */
   gap: 8px;
   margin-bottom: 24px;
 }
-
-/* .title {
-} */
 
 .subtitle {
   font-weight: 700;
@@ -62,7 +50,6 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  /* background: #fff4df; */
   cursor: pointer;
 }
 
@@ -98,20 +85,20 @@
   height: 20px;
 }
 
-.radioInput:checked+.radioContent .svgFemale,
-.radioInput:checked+.radioContent .svgMale {
+.radioInput:checked + .radioContent .svgFemale,
+.radioInput:checked + .radioContent .svgMale {
   stroke: #fff;
 }
 
-.radioInput:checked+.backGrFemale {
+.radioInput:checked + .backGrFemale {
   background: #f43f5e;
 }
 
-.radioInput:checked+.backGrMale {
+.radioInput:checked + .backGrMale {
   background: #54adff;
 }
 
-.radioInput:checked+.backGrUnknown {
+.radioInput:checked + .backGrUnknown {
   background: #f6b83d;
 }
 
@@ -132,7 +119,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  /* padding: 10px; */
   width: 68px;
   height: 68px;
   background: #fff4df;
@@ -179,12 +165,16 @@
   margin-bottom: 10px;
 }
 
+/* ===================================Date==================================== */
+
 .inputDate {
   width: 143px;
   margin-bottom: 0;
   padding-right: 12px;
-  /* border: 1px solid #f6b83d; */
+  cursor: pointer;
 }
+
+/* =========================================================================== */
 
 .btnUploadPhoto {
   display: flex;
@@ -236,10 +226,6 @@
   border: 1px solid #f6b83d;
 }
 
-/* .contType {
-  overflow: auto;
-} */
-
 .contDateType {
   display: flex;
   gap: 8px;
@@ -265,7 +251,6 @@
 .btnGoToProfile {
   display: block;
   border-radius: 30px;
-  /* padding: 12px 34px; */
   border: none;
   width: 100px;
   height: 42px;
@@ -285,7 +270,6 @@
 .btnSubmitPet {
   display: block;
   border-radius: 30px;
-  /* padding: 12px 26px; */
 
   border: none;
   width: 100px;

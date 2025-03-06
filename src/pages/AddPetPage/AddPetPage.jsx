@@ -7,11 +7,9 @@ import Select from 'react-select';
 import css from './AddPetPage.module.css';
 import { TbGenderFemale } from 'react-icons/tb';
 import { TbGenderMale } from 'react-icons/tb';
-
-// import { FaMars, FaVenus, FaGenderless } from 'react-icons/fa';
 import { byTypeOptions, getCustomStyles } from '../../options';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPet } from '../../redux/auth/operationsAuth';
 import { PetBlock } from '../../components/PetBlock/PetBlock';
@@ -22,6 +20,9 @@ export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
   const [selectedSex, setSelectedSex] = useState('');
   const [modalFormatPhoto, setModalFormatPhoto] = useState(false);
+
+  const inputRef = useRef(null);
+  const [dat, setDat] = useState('');
 
   const openModalFormatPhoto = () => setModalFormatPhoto(true);
   const closeModalFormatPhoto = () => setModalFormatPhoto(false);
@@ -36,7 +37,7 @@ export const AddPetPage = () => {
   } = useForm({
     resolver: yupResolver(addPetSchema),
     defaultValues: {
-      sex: '', // Устанавливает пустое значение по умолчанию
+      sex: '',
     },
   });
 
@@ -54,7 +55,6 @@ export const AddPetPage = () => {
   };
 
   const onSubmit = petData => {
-    // console.log(petData);
     dispatch(addPet(petData));
     reset();
     setSpecies('');
@@ -63,7 +63,6 @@ export const AddPetPage = () => {
 
   return (
     <div className={css.contAddPet}>
-      {/* <div className={css.imgDogAddPet}></div> */}
       <PetBlock
         src="/images/add-my-pet/add-pet-mob-1x.jpg"
         alt="dog with glasses"
@@ -77,7 +76,6 @@ export const AddPetPage = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
           {/* =========================radio button sex============================== */}
-
           <ul className={css.contRadioBtn}>
             <li>
               <label>
@@ -168,13 +166,7 @@ export const AddPetPage = () => {
               {errors.imgURL && <p className={css.textError}>{errors.imgURL.message}</p>}
             </div>
 
-            <button
-              type="button"
-              className={css.btnUploadPhoto}
-              // onMouseEnter={() => setIsHovered(true)}
-              // onMouseLeave={() => setIsHovered(false)}
-              onClick={openModalFormatPhoto}
-            >
+            <button type="button" className={css.btnUploadPhoto} onClick={openModalFormatPhoto}>
               <span className={css.uploadPhotoSpan}>Upload photo</span>
               <FiUploadCloud className={css.uploadSvgPhoto} />
             </button>
@@ -199,16 +191,22 @@ export const AddPetPage = () => {
           </div>
 
           <div className={css.contDateType}>
-            <div className={css.inputElem}>
+            {/* =======================================Date============================================= */}
+            <div className={css.inputElem} onClick={() => inputRef.current?.focus()}>
               <input
+                ref={inputRef}
                 {...register('birthday')}
                 type="date"
-                placeholder="00.00.0000"
-                // className={css.inputDate}
-                className={`${css.inputDate} ${date ? css.fieldIsFilled : ''}`}
+                // placeholder="00.00.0000"
+                max={new Date().toISOString().split('T')[0]}
+                className={`${css.inputDate} ${date ? css.fieldIsFilled : ''} ${
+                  date ? 'filled' : ''
+                }`}
               />
               {errors.birthday && <p className={css.textError}>{errors.birthday.message}</p>}
             </div>
+
+            {/* ======================================================================================== */}
 
             <div className={css.contType}>
               <Select
