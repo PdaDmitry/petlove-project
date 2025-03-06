@@ -1,0 +1,21 @@
+.contModalAttention {
+    position: relative;
+    border-radius: 30px;
+    width: 335px;
+    /* height: 394px; */
+    background: #fff;
+    padding: 40px 20px;
+}
+
+.closeButton {
+    position: absolute;
+    display: block;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    /* width: 24px;
+  height: 24px; */
+    cursor: pointer;
+    padding: 0;
+}

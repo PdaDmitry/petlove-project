@@ -15,10 +15,16 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPet } from '../../redux/auth/operationsAuth';
 import { PetBlock } from '../../components/PetBlock/PetBlock';
+import ModalWindow from '../../components/ModalWindow/ModalWindow';
+import { ModalPhotoFormat } from '../../components/ModalPhotoFormat/ModalPhotoFormat';
 
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
   const [selectedSex, setSelectedSex] = useState('');
+  const [modalFormatPhoto, setModalFormatPhoto] = useState(false);
+
+  const openModalFormatPhoto = () => setModalFormatPhoto(true);
+  const closeModalFormatPhoto = () => setModalFormatPhoto(false);
 
   const {
     register,
@@ -167,7 +173,7 @@ export const AddPetPage = () => {
               className={css.btnUploadPhoto}
               // onMouseEnter={() => setIsHovered(true)}
               // onMouseLeave={() => setIsHovered(false)}
-              // onClick={handleClick}
+              onClick={openModalFormatPhoto}
             >
               <span className={css.uploadPhotoSpan}>Upload photo</span>
               <FiUploadCloud className={css.uploadSvgPhoto} />
@@ -231,6 +237,9 @@ export const AddPetPage = () => {
           </div>
         </form>
       </div>
+      <ModalWindow isOpen={modalFormatPhoto} onClose={closeModalFormatPhoto}>
+        <ModalPhotoFormat closeModal={closeModalFormatPhoto} />
+      </ModalWindow>
     </div>
   );
 };

@@ -98,20 +98,20 @@
   height: 20px;
 }
 
-.radioInput:checked + .radioContent .svgFemale,
-.radioInput:checked + .radioContent .svgMale {
+.radioInput:checked+.radioContent .svgFemale,
+.radioInput:checked+.radioContent .svgMale {
   stroke: #fff;
 }
 
-.radioInput:checked + .backGrFemale {
+.radioInput:checked+.backGrFemale {
   background: #f43f5e;
 }
 
-.radioInput:checked + .backGrMale {
+.radioInput:checked+.backGrMale {
   background: #54adff;
 }
 
-.radioInput:checked + .backGrUnknown {
+.radioInput:checked+.backGrUnknown {
   background: #f6b83d;
 }
 
@@ -197,6 +197,8 @@
   background: #fff4df;
   border: none;
   cursor: pointer;
+
+  outline: none;
 }
 
 .btnUploadPhoto:hover {
