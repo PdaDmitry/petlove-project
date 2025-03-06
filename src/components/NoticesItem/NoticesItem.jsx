@@ -82,12 +82,12 @@ export const NoticesItem = ({ id, page }) => {
 
   const handleOpenContact = () => {
     const { phone, email } = petContacts;
-    // const phone = '+380954473219';
     // console.log(phone, email);
-    if (phone) {
-      window.location.href = `tel:${phone}`;
-    } else if (email) {
+
+    if (email) {
       window.location.href = `mailto:${email}`;
+    } else if (phone) {
+      window.location.href = `tel:${phone}`;
     } else {
       alert('Contact information is not available.');
     }
