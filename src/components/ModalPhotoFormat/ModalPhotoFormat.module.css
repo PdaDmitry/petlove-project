@@ -1,21 +1,78 @@
 .contModalAttention {
-    position: relative;
-    border-radius: 30px;
-    width: 335px;
-    /* height: 394px; */
-    background: #fff;
-    padding: 40px 20px;
+  position: relative;
+  border-radius: 30px;
+  width: 335px;
+  /* height: 394px; */
+  background: #fff;
+  padding: 40px 20px;
 }
 
 .closeButton {
-    position: absolute;
-    display: block;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    /* width: 24px;
+  position: absolute;
+  display: block;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  /* width: 24px;
   height: 24px; */
-    cursor: pointer;
-    padding: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.backgrImeg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #fff4df;
+  margin-bottom: 20px;
+}
+
+.imageDog {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.btnBack {
+  display: block;
+  border-radius: 30px;
+  margin: 0 auto;
+  border: none;
+  width: 100px;
+  height: 42px;
+  background: rgba(38, 38, 38, 0.05);
+
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+}
+
+.btnBack:hover {
+  background: rgba(38, 38, 38, 0.1);
 }
