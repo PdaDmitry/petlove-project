@@ -22,7 +22,7 @@ export const AddPetPage = () => {
   const [selectedSex, setSelectedSex] = useState('');
   const [modalFormatPhoto, setModalFormatPhoto] = useState(false);
 
-  const inputRef = useRef(null);
+  // const inputRef = useRef(null);
 
   const openModalFormatPhoto = () => setModalFormatPhoto(true);
   const closeModalFormatPhoto = () => setModalFormatPhoto(false);
@@ -202,7 +202,7 @@ export const AddPetPage = () => {
 
             <div className={css.inputDateElem}>
               <input
-                ref={inputRef}
+                // ref={inputRef}
                 {...register('birthday')}
                 type="date"
                 max={new Date().toISOString().split('T')[0]}
