@@ -9,26 +9,28 @@ import { TbGenderFemale } from 'react-icons/tb';
 import { TbGenderMale } from 'react-icons/tb';
 import { byTypeOptions, getCustomStyles } from '../../options';
 import { useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPet } from '../../redux/auth/operationsAuth';
 import { PetBlock } from '../../components/PetBlock/PetBlock';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import { ModalPhotoFormat } from '../../components/ModalPhotoFormat/ModalPhotoFormat';
-// import { LuCalendar } from 'react-icons/lu';
+import 'react-datepicker/dist/react-datepicker.css';
+import { LuCalendar } from 'react-icons/lu';
+
+import { CustomDatePicker } from '../../components/CustomDatePicker/CustomDatePicker';
 
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
   const [selectedSex, setSelectedSex] = useState('');
   const [modalFormatPhoto, setModalFormatPhoto] = useState(false);
 
-  // const inputRef = useRef(null);
-
   const openModalFormatPhoto = () => setModalFormatPhoto(true);
   const closeModalFormatPhoto = () => setModalFormatPhoto(false);
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
     setValue,
@@ -38,6 +40,9 @@ export const AddPetPage = () => {
     resolver: yupResolver(addPetSchema),
     defaultValues: {
       sex: '',
+      name: '',
+      species: '',
+      birthday: null,
     },
   });
 
@@ -53,13 +58,6 @@ export const AddPetPage = () => {
   const handleGoBack = () => {
     navigate('/profile');
   };
-
-  // const openDatePicker = () => {
-  //   inputRef.current?.showPicker?.(); // Метод showPicker поддерживается не везде
-  //   if (!inputRef.current?.showPicker) {
-  //     inputRef.current?.focus(); // fallback на фокус, если showPicker нет
-  //   }
-  // };
 
   const onSubmit = petData => {
     dispatch(addPet(petData));
@@ -202,14 +200,13 @@ export const AddPetPage = () => {
 
             <div className={css.inputDateElem}>
               <input
-                // ref={inputRef}
                 {...register('birthday')}
                 type="date"
                 max={new Date().toISOString().split('T')[0]}
                 className={`${date ? css.inputDateAater : css.inputDate}`}
                 onClick={e => e.stopPropagation()}
               />
-              {/* <LuCalendar className={css.customCalendarIcon} onClick={openDatePicker} /> */}
+
               {errors.birthday && <p className={css.textError}>{errors.birthday.message}</p>}
             </div>
 

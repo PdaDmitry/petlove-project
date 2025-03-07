@@ -166,17 +166,12 @@
 }
 
 /* ===================================Date==================================== */
-.inputDateElem {
-  position: relative;
-}
-
 
 .inputDate {
   width: 143px;
   margin-bottom: 0;
   padding-right: 12px;
-  /* cursor: pointer; */
-
+  cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -186,17 +181,9 @@
   user-select: none;
 }
 
-.inputDate::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  /* Сделать иконку календаря кликабельной */
-  pointer-events: auto;
-
-}
-
 .inputDate::before {
   content: '00.00.0000';
   color: rgba(38, 38, 38, 0.45);
-
   position: absolute;
   left: 12px;
   top: 50%;
@@ -212,17 +199,26 @@
   margin-bottom: 0;
   border-radius: 30px;
   border: 1px solid #f6b83d;
-  /* cursor: pointer; */
-  pointer-events: none;
+  cursor: pointer;
 }
 
-/* .customCalendarIcon {
+.inputDateElem {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.customCalendarIcon {
   position: absolute;
-  top: 12px;
   right: 12px;
   cursor: pointer;
-  pointer-events: none;
-} */
+}
+
+.textError {
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
+}
 
 /* =========================================================================== */
 
