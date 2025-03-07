@@ -15,6 +15,7 @@ import { addPet } from '../../redux/auth/operationsAuth';
 import { PetBlock } from '../../components/PetBlock/PetBlock';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import { ModalPhotoFormat } from '../../components/ModalPhotoFormat/ModalPhotoFormat';
+// import { LuCalendar } from 'react-icons/lu';
 
 export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
@@ -22,7 +23,6 @@ export const AddPetPage = () => {
   const [modalFormatPhoto, setModalFormatPhoto] = useState(false);
 
   const inputRef = useRef(null);
-  const [dat, setDat] = useState('');
 
   const openModalFormatPhoto = () => setModalFormatPhoto(true);
   const closeModalFormatPhoto = () => setModalFormatPhoto(false);
@@ -53,6 +53,13 @@ export const AddPetPage = () => {
   const handleGoBack = () => {
     navigate('/profile');
   };
+
+  // const openDatePicker = () => {
+  //   inputRef.current?.showPicker?.(); // Метод showPicker поддерживается не везде
+  //   if (!inputRef.current?.showPicker) {
+  //     inputRef.current?.focus(); // fallback на фокус, если showPicker нет
+  //   }
+  // };
 
   const onSubmit = petData => {
     dispatch(addPet(petData));
@@ -192,17 +199,17 @@ export const AddPetPage = () => {
 
           <div className={css.contDateType}>
             {/* =======================================Date============================================= */}
-            <div className={css.inputElem} onClick={() => inputRef.current?.focus()}>
+
+            <div className={css.inputDateElem}>
               <input
                 ref={inputRef}
                 {...register('birthday')}
                 type="date"
-                // placeholder="00.00.0000"
                 max={new Date().toISOString().split('T')[0]}
-                className={`${css.inputDate} ${date ? css.fieldIsFilled : ''} ${
-                  date ? 'filled' : ''
-                }`}
+                className={`${date ? css.inputDateAater : css.inputDate}`}
+                onClick={e => e.stopPropagation()}
               />
+              {/* <LuCalendar className={css.customCalendarIcon} onClick={openDatePicker} /> */}
               {errors.birthday && <p className={css.textError}>{errors.birthday.message}</p>}
             </div>
 

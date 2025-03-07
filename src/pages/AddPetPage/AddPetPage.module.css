@@ -85,20 +85,20 @@
   height: 20px;
 }
 
-.radioInput:checked + .radioContent .svgFemale,
-.radioInput:checked + .radioContent .svgMale {
+.radioInput:checked+.radioContent .svgFemale,
+.radioInput:checked+.radioContent .svgMale {
   stroke: #fff;
 }
 
-.radioInput:checked + .backGrFemale {
+.radioInput:checked+.backGrFemale {
   background: #f43f5e;
 }
 
-.radioInput:checked + .backGrMale {
+.radioInput:checked+.backGrMale {
   background: #54adff;
 }
 
-.radioInput:checked + .backGrUnknown {
+.radioInput:checked+.backGrUnknown {
   background: #f6b83d;
 }
 
@@ -166,12 +166,59 @@
 }
 
 /* ===================================Date==================================== */
+.inputDateElem {
+  position: relative;
+}
+
 
 .inputDate {
   width: 143px;
   margin-bottom: 0;
   padding-right: 12px;
   cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  color: transparent;
+  position: relative;
+  user-select: none;
+}
+
+/* .inputDate::-webkit-calendar-picker-indicator {
+  display: none;
+  
+} */
+
+.inputDate::before {
+  content: '00.00.0000';
+  color: rgba(38, 38, 38, 0.45);
+
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.inputDateAater {
+  width: 143px;
+  height: 42px;
+  padding: 0 12px;
+  margin-bottom: 0;
+  border-radius: 30px;
+  border: 1px solid #f6b83d;
+  cursor: pointer;
+}
+
+.customCalendarIcon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  pointer-events: none;
 }
 
 /* =========================================================================== */
