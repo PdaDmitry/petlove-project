@@ -30,6 +30,7 @@ export const NoticesItem = ({ id, page }) => {
 
   const pet = useSelector(selectPetById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
+  // console.log('petForFavorite: ', petForFavorite);
   const viewedPets = useSelector(selectNoticesViewedById(id));
 
   const openAttentionModal = () => setAttentionModalOpen(true);
@@ -78,6 +79,18 @@ export const NoticesItem = ({ id, page }) => {
   const handleRemoveFavoritePet = () => {
     dispatch(removeFavoriteThunk(id));
     dispatch(fetchPetByIdThunk(id));
+  };
+
+  const handleStatusFavorites = () => {
+    if (page === 'profile') {
+      handleRemoveFavoritePet();
+    } else {
+      if (petForFavorite) {
+        handleRemoveFavoritePet();
+      } else {
+        handleAddFavoritePet();
+      }
+    }
   };
 
   const handleOpenContact = () => {
@@ -137,8 +150,9 @@ export const NoticesItem = ({ id, page }) => {
         </button>
         <button
           className={page === 'viewed' ? css.btnHeartNotVisible : css.btnHeart}
-          onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
-          disabled={page !== 'profile' && petForFavorite}
+          // onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
+          onClick={handleStatusFavorites}
+          // disabled={page !== 'profile' && petForFavorite}
         >
           {page === 'profile' ? (
             <svg className={css.iconHeart}>
