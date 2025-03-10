@@ -3,25 +3,19 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import css from './LoginPage.module.css';
 import { loginUser, refreshUser } from '../../redux/auth/operationsAuth';
-import { selectUser } from '../../redux/auth/selectorsAuth';
 import { useNavigate } from 'react-router-dom';
 import Title from '../../components/Title/Title';
 import { IoMdClose } from 'react-icons/io';
 import { BsCheck2 } from 'react-icons/bs';
-// import { selectNoticesFavorites } from '../../redux/pets/selectorsPets';
-// import { fetchPetByIdThunk } from '../../redux/pets/operationsPets';
 import { PetBlock } from '../../components/PetBlock/PetBlock';
 
 export const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const navigate = useNavigate();
-  // const user = useSelector(selectUser);
-  // console.log('user befor: ', user);
-  // const noticesFavorites = useSelector(selectNoticesFavorites);
 
   const dispatch = useDispatch();
 
@@ -65,7 +59,6 @@ export const LoginPage = () => {
       reset();
     } catch (error) {
       return;
-      // console.error('Error logging in:', error);
     }
   };
 
@@ -78,7 +71,7 @@ export const LoginPage = () => {
     <div className={css.contLogin}>
       {/* <div className={css.imgDog}></div> */}
 
-      <PetBlock src="/images/dog-login/login-dog-mob-1x.jpg" alt="Dog" />
+      <PetBlock src="/images/dog-login/login-dog-mob-2x.jpg" alt="Dog" />
       <div className={css.contForm}>
         <Title className={css.title}>Log in</Title>
         <p className={css.text}>Welcome! Please enter your credentials to login to the platform:</p>

@@ -6,7 +6,6 @@
 
 .homeDescription {
   width: 335px;
-  /* height: 390px; */
   padding: 118px 20px 50px;
   background: #f6b83d;
   border-radius: 30px;
@@ -38,4 +37,72 @@
   width: 335px;
   height: 402px;
   background: url('../../../public/images/imagesHome/image-home-mob-1x.jpg');
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contHome {
+    width: 768px;
+    padding: 16px 32px;
+  }
+
+  .homeDescription {
+    width: 704px;
+    padding: 178px 32px 44px;
+    border-radius: 60px;
+  }
+
+  .titleHome {
+    font-size: 80px;
+    margin-bottom: 32px;
+  }
+
+  .text {
+    font-size: 18px;
+    padding-left: 385px;
+  }
+
+  .imgHome {
+    border-radius: 60px;
+    width: 704px;
+    height: 496px;
+    background: url('../../../public/images/imagesHome/image-home-tab-1x.jpg');
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .contHome {
+    width: 1280px;
+  }
+
+  .homeDescription {
+    width: 1216px;
+    display: flex;
+    gap: 73px;
+    align-items: flex-end;
+    padding: 178px 64px 32px;
+  }
+
+  .titleHome {
+    width: 760px;
+    font-size: 90px;
+    line-height: 97%;
+    margin-bottom: 0;
+  }
+
+  .text {
+    width: 255px;
+    height: 88px;
+    line-height: 122%;
+    padding-left: 0;
+  }
+
+  .imgHome {
+    width: 1216px;
+    height: 384px;
+    background: url('../../../public/images/imagesHome/image-home-desk-1x.jpg');
+  }
 }
