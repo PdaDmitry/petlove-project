@@ -5,7 +5,7 @@ export const fetchNewsThunk = createAsyncThunk(
   'fetchNews',
   async ({ page, keyword }, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/news?page=${page}&keyword=${keyword}`);
+      const response = await axios.get(`/news1?page=${page}&keyword=${keyword}`);
       // console.log('news: ', response.data);
       return response.data;
     } catch (error) {

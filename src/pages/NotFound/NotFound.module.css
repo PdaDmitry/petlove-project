@@ -1,13 +1,14 @@
 .conteiner {
   display: flex;
   justify-content: center;
-  margin-top: 16px;
+  /* width: 375px; */
+  margin: 16px 20px 20px;
 }
 
 .contNotFound {
   border-radius: 30px;
   width: 335px;
-  height: 712px;
+  /* height: 712px; */
   background: #f6b83d;
   padding: 245px 33px;
 }
@@ -27,13 +28,14 @@
 }
 
 .notFoundSpan {
+  display: block;
   width: 109px;
   height: 109px;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: contain;
-  background: rgba(255, 255, 255, 0.1);
+  /* border-radius: 50%; */
+  /* background-repeat: no-repeat; */
+  /* background-position: top center; */
+  /* background-size: contain; */
+  /* background: rgba(255, 255, 255, 0.1); */
   /* background-image: url(../../../public/images/not-found/IMG_5099\ 1.png); */
 }
 
@@ -70,3 +72,51 @@
   background: #f6b83d;
   color: #fff;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+
+  .conteiner {
+    margin: 32px;
+  }
+
+  .contNotFound {
+    width: 704px;
+    border-radius: 60px;
+    padding: 221px 32px;
+  }
+
+  .title {
+    gap: 0;
+    margin-bottom: 40px;
+  }
+
+  .numberFor {
+    font-size: 300px;
+    line-height: 1;
+  }
+
+  .notFoundSpan {
+    width: 280px;
+    height: 280px;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 1.16667;
+  }
+
+  .btnGoHome {
+    width: 162px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {}
