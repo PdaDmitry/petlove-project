@@ -9,5 +9,30 @@
 
 .titleFriends {
   margin-bottom: 40px;
+}
 
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contFriends {
+    padding: 85px 32px 80px;
+  }
+
+  .titleFriends {
+    font-size: 54px;
+    line-height: 1;
+    margin-bottom: 44px;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .contFriends {
+    padding: 96px 63px 80px 64px;
+  }
+
+  .titleFriends {
+    margin-bottom: 60px;
+  }
 }
