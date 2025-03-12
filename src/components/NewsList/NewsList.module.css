@@ -1,7 +1,41 @@
 .contNewsList {
-    margin-bottom: 44px;
+  margin-bottom: 44px;
 }
 
 .listNews .itemLi:not(:last-child) {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contNewsList {
+    margin-bottom: 60px;
+  }
+
+  .listNews .itemLi:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .listNews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 24px;
+  }
+
+  .itemLi {
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .listNews {
+    gap: 40px 35px;
+  }
+
+  .itemLi {
+    width: calc((100% - 70px) / 3);
+  }
 }

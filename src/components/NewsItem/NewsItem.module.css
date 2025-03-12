@@ -1,50 +1,60 @@
 .contNewItem {
-    width: 335px;
+  width: 335px;
 }
 
 .newImg {
-    border-radius: 15px;
-    width: 335px;
-    height: 190px;
-    margin-bottom: 20px;
+  border-radius: 15px;
+  width: 335px;
+  height: 190px;
+  margin-bottom: 20px;
 }
 
 .titleNew {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.25;
-    letter-spacing: -0.03em;
-    margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
 }
 
 .text {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.28571;
-    letter-spacing: -0.02em;
-    margin-bottom: 19px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  margin-bottom: 19px;
 }
 
 .contDateRead {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .date {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.28571;
-    letter-spacing: -0.02em;
-    color: rgba(38, 38, 38, 0.5);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
 }
 
 .btnLink {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.28571;
-    letter-spacing: -0.02em;
-    text-decoration: underline;
-    text-decoration-skip-ink: none;
-    color: #f6b83d;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #f6b83d;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
 }

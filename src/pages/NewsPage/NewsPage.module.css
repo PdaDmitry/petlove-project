@@ -1,20 +1,23 @@
 .conteiner {
   display: flex;
+  padding: 50px 20px 80px;
 }
 
 .contNews {
-  padding: 50px 20px 80px;
   margin: 0 auto;
 }
 
-.customForm {
-  width: 335px;
-  height: 42px;
+.contTitleSearch {
   margin-bottom: 24px;
 }
 
 .titleNews {
   margin-bottom: 20px;
+}
+
+.customForm {
+  width: 335px;
+  height: 42px;
 }
 
 .contForm {
@@ -78,4 +81,44 @@
   display: block;
   width: 18px;
   height: 18px;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .conteiner {
+    padding: 85px 32px 80px;
+  }
+
+  .contNews {
+    width: 704px;
+  }
+
+  .contTitleSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 44px;
+  }
+
+  .titleNews {
+    font-size: 54px;
+    margin-bottom: 0;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .conteiner {
+    padding: 85px 32px 80px;
+  }
+
+  .contNews {
+    width: 1153px;
+  }
+
+  .contTitleSearch {
+    margin-bottom: 60px;
+  }
 }
