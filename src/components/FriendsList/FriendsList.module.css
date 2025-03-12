@@ -1,3 +1,33 @@
 .listFriends .itemLi:not(:last-child) {
   margin-bottom: 20px;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .listFriends .itemLi:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .listFriends {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .itemLi {
+    width: calc((100% - 20px) / 2);
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .listFriends {
+    gap: 28px 20px;
+  }
+
+  .itemLi {
+    width: calc((100% - 40px) / 3);
+  }
+}

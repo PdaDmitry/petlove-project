@@ -13,11 +13,10 @@ import { useNavigate } from 'react-router-dom';
 
 export const OurFriends = () => {
   const friends = useSelector(selectFriends);
-  // console.log('friends: ', friends);
 
   const loaderFriends = useSelector(selectFriendsLoader);
   const errorFriends = useSelector(selectFriendsError);
-  // const errorFriends = true;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

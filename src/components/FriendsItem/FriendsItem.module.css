@@ -6,7 +6,7 @@
   padding: 40px 0 40px 20px;
   border-radius: 15px;
   width: 335px;
-  height: 184px;
+  /* height: 184px; */
   background: #fff;
 }
 
@@ -66,4 +66,43 @@
 
 .menuText {
   color: rgba(38, 38, 38, 0.5);
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contFriend {
+    gap: 16px;
+    width: 342px;
+    height: 196px;
+  }
+
+  .workDays {
+    width: 100px;
+    /* height: 34px; */
+    padding-right: 0;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .logoFriend {
+    width: 90px;
+    height: 90px;
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 130%;
+    margin-bottom: 20px;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .contFriend {
+    gap: 20px;
+    width: 371px;
+    height: 196px;
+  }
 }
