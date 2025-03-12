@@ -12,6 +12,7 @@ export const NewsItem = ({ id }) => {
 
   const { date, imgUrl, text, title, url } = newItem;
   const formattedDate = format(new Date(date), 'dd/MM/yyyy');
+  console.log(title.length);
 
   return (
     <div className={css.contNewItem}>

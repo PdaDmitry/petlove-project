@@ -52,9 +52,53 @@
 /* =================================Tab============================= */
 
 @media screen and (min-width: 768px) {
+  .contNewItem {
+    width: 340px;
+  }
+
+  .newImg {
+    width: 340px;
+    height: 226px;
+    margin-bottom: 28px;
+  }
+
+  .titleNew {
+    font-size: 20px;
+    line-height: 130%;
+    margin-bottom: 14px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 125%;
+    margin-bottom: 28px;
+  }
+
+  .contDateRead {
+    padding-bottom: 28px;
+  }
+
+  .date {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .btnLink {
+    font-size: 16px;
+    line-height: 125%;
+  }
 }
 
 /* =================================Desk============================= */
 
 @media screen and (min-width: 1280px) {
+  .contNewItem {
+    width: 361px;
+  }
+
+  .newImg {
+    width: 361px;
+    height: 226px;
+    margin-bottom: 28px;
+  }
 }
