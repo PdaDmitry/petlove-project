@@ -70,3 +70,31 @@
   width: 18px;
   height: 18px;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .input {
+    padding: 14px;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .closeBtn {
+    top: 13px;
+    right: 34px;
+  }
+
+  .btnSearch {
+    top: 15px;
+    right: 14px;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+}

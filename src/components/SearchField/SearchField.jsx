@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export const SearchField = ({ onSubmit, className = '', inputClassName = '', resetInput }) => {
-  const location = useLocation(); // Получаем текущий URL
+  const location = useLocation();
   const SEARCH_KEY = location.pathname.includes('/notices')
     ? 'SEARCH_PET_KEY'
     : location.pathname.includes('/news')
@@ -14,9 +14,6 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
 
   const inputRef = useRef(null);
   const [query, setQuery] = useState(() => localStorage.getItem(SEARCH_KEY) || '');
-  // const [hasText, setHasText] = useState(false);
-  // console.log('hasText: ', hasText);
-  // console.log('query: ', query);
 
   useEffect(() => {
     localStorage.setItem(SEARCH_KEY, query);
@@ -27,13 +24,12 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
     const entryField = e.target.elements.query.value.trim();
 
     onSubmit(entryField);
-    // setHasText(true); /////////////////
   };
 
   const handleResetAndSubmit = useCallback(() => {
     if (inputRef.current) {
       inputRef.current.value = '';
-      // setHasText(false);
+
       setQuery('');
       localStorage.removeItem(SEARCH_KEY);
     }
@@ -46,16 +42,9 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
     }
   }, [handleResetAndSubmit, resetInput]);
 
-  // const handleChange = e => {
-  //   setQuery(e.target.value); //////////////////////////////
-  //   setHasText(inputRef.current?.value.length > 0);
-  // };
-
   const handleChange = e => {
     const value = e.target.value;
     setQuery(value);
-    // setHasText(value.length > 0);
-    // setHasText(true);
   };
 
   return (
@@ -67,7 +56,7 @@ export const SearchField = ({ onSubmit, className = '', inputClassName = '', res
           type="text"
           name="query"
           placeholder="Search"
-          value={query} ///////////////////////////
+          value={query}
           onChange={handleChange}
         />
         {query && (

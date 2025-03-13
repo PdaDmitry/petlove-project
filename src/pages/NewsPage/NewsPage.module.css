@@ -15,74 +15,6 @@
   margin-bottom: 20px;
 }
 
-.customForm {
-  width: 335px;
-  height: 42px;
-}
-
-.contForm {
-  margin-bottom: 24px;
-}
-
-.contSearch {
-  position: relative;
-  align-items: center;
-  width: 335px;
-  height: 42px;
-}
-
-.input {
-  border: 1px solid rgba(38, 38, 38, 0.15);
-  border-radius: 30px;
-  background-color: transparent;
-  padding: 12px;
-  width: 335px;
-  height: 42px;
-}
-
-.input::placeholder {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 129%;
-  letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.5);
-}
-
-.input:focus {
-  outline: none;
-}
-
-/* ================================reset browser settings==================================== */
-
-.input:-webkit-autofill {
-  background-color: white !important;
-  box-shadow: 0 0 0px 1000px white inset !important;
-  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-  transition: background-color 0s;
-}
-
-.input:-webkit-autofill:focus {
-  background-color: white !important;
-}
-
-/* ========================================================================================= */
-
-.btnSearch {
-  position: absolute;
-  background: none;
-  border: none;
-  cursor: pointer;
-  top: 12px;
-  right: 12px;
-  padding: 0;
-}
-
-.iconSearch {
-  display: block;
-  width: 18px;
-  height: 18px;
-}
-
 /* =================================Tab============================= */
 
 @media screen and (min-width: 768px) {
@@ -105,13 +37,18 @@
     font-size: 54px;
     margin-bottom: 0;
   }
+
+  .customForm {
+    width: 230px !important;
+    height: 48px !important;
+  }
 }
 
 /* =================================Desk============================= */
 
 @media screen and (min-width: 1280px) {
   .conteiner {
-    padding: 85px 32px 80px;
+    padding: 96px 63px 80px 64px;
   }
 
   .contNews {
