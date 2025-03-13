@@ -12,13 +12,34 @@ export const NewsItem = ({ id }) => {
 
   const { date, imgUrl, text, title, url } = newItem;
   const formattedDate = format(new Date(date), 'dd/MM/yyyy');
-  console.log(title.length);
+  let newTitle = title;
 
+  if (typeof title === 'string' && title.length < 40) {
+    let insertPosition = 25;
+
+    if (title[insertPosition] !== ' ') {
+      let nearestSpace = title.lastIndexOf(' ', insertPosition);
+      if (nearestSpace !== -1) {
+        insertPosition = nearestSpace;
+      }
+    }
+
+    newTitle = title.slice(0, insertPosition) + '\n' + title.slice(insertPosition + 1);
+  } else if (typeof title === 'string' && title.length > 70) {
+    newTitle = title.slice(0, 60) + '...';
+  }
+
+  let newText = text;
+  if (typeof text === 'string' && text.length > 240) {
+    newText = text.slice(0, 225) + '...';
+  }
   return (
     <div className={css.contNewItem}>
-      <img src={imgUrl} alt={`${title}'s photo`} className={css.newImg} />
-      <h2 className={css.titleNew}>{title}</h2>
-      <p className={css.text}>{text}</p>
+      <div className={css.contImgTitleText}>
+        <img src={imgUrl} alt={`${title}'s photo`} className={css.newImg} />
+        <h2 className={css.titleNew}>{newTitle}</h2>
+        <p className={css.text}>{newText}</p>
+      </div>
       <div className={css.contDateRead}>
         <p className={css.date}>{formattedDate}</p>
         <a className={css.btnLink} href={url} target="_blank" rel="noopener noreferrer">
