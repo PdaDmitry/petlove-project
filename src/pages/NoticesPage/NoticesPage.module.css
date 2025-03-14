@@ -1,9 +1,9 @@
 .conteiner {
   display: flex;
+  padding: 50px 20px 88px;
 }
 
 .contNotices {
-  padding: 50px 20px 88px;
   margin: 0 auto;
 }
 
@@ -39,4 +39,37 @@
   line-height: 129%;
   letter-spacing: -0.03em;
   color: #262626;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .conteiner {
+    padding: 85px 32px 88px;
+  }
+
+  .contNotices {
+    width: 704px;
+  }
+
+  .titleNotices {
+    font-size: 54px;
+    margin-bottom: 44px;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .conteiner {
+    padding: 96px 32px 80px;
+  }
+
+  .contNotices {
+    width: 1216px;
+  }
+
+  .titleNotices {
+    margin-bottom: 40px;
+  }
 }

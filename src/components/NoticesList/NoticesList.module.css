@@ -5,3 +5,42 @@
 .listPets .itemLi:not(:last-child) {
   margin-bottom: 20px;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contPetsList {
+    margin-bottom: 60px;
+  }
+
+  .listPets .itemLi:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .listPets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .itemLi {
+    width: calc((100% - 20px) / 2);
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .contPetsList {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .listPets {
+    gap: 40px 32px;
+  }
+
+  .itemLi {
+    width: calc((100% - 64px) / 3);
+  }
+}
