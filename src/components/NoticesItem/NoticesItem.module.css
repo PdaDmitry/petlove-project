@@ -25,6 +25,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
+  color: #2b2b2a;
 }
 
 .contStar {
@@ -79,6 +80,7 @@
   line-height: 129%;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
+  color: #2b2b2a;
 }
 
 .price {
@@ -177,6 +179,7 @@
   .btnLearn {
     height: 48px;
     font-size: 16px;
+    line-height: 125%;
   }
 
   .btnHeart {
@@ -189,4 +192,16 @@
 /* =================================Desk============================= */
 
 @media screen and (min-width: 1280px) {
+  .contPet {
+    width: 363px;
+    height: 472px;
+  }
+
+  .petImg {
+    width: 315px;
+  }
+
+  .petInfo {
+    gap: 20px;
+  }
 }
