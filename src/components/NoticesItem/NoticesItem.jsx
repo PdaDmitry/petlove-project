@@ -30,7 +30,6 @@ export const NoticesItem = ({ id, page }) => {
 
   const pet = useSelector(selectPetById(id));
   const petForFavorite = useSelector(selectPetsForFavoriteById(id));
-  // console.log('petForFavorite: ', petForFavorite);
   const viewedPets = useSelector(selectNoticesViewedById(id));
 
   const openAttentionModal = () => setAttentionModalOpen(true);
@@ -112,60 +111,68 @@ export const NoticesItem = ({ id, page }) => {
 
   return (
     <div className={css.contPet}>
-      <img src={imgURL} alt={`${title}'s photo`} className={css.petImg} />
-      <div className={css.contTitleStar}>
-        <h2 className={css.title}>{title}</h2>
-        <div className={css.contStar}>
-          <GoStarFill className={css.iconStarYellow} />
-          <p className={css.popularity}>{popularity}</p>
+      <div className={css.contImgInfo}>
+        <img src={imgURL} alt={`${title}'s photo`} className={css.petImg} />
+        <div className={css.contTitleStar}>
+          <h2 className={css.title}>{title}</h2>
+          <div className={css.contStar}>
+            <GoStarFill className={css.iconStarYellow} />
+            <p className={css.popularity}>{popularity}</p>
+          </div>
         </div>
+
+        <ul className={css.petInfo}>
+          <li className={css.infoItem}>
+            <span className={css.categoryName}>Name</span>
+            <span className={css.categoryValue}>{name}</span>
+          </li>
+          <li className={css.infoItem}>
+            <span className={css.categoryName}>Birthday</span>
+            <span className={css.categoryValue}>{born}</span>
+          </li>
+          <li className={css.infoItem}>
+            <span className={css.categoryName}>Sex</span>
+            <span className={css.categoryValue}>{capitalizeFirstLetter(sex)}</span>
+          </li>
+          <li className={css.infoItem}>
+            <span className={css.categoryName}>Species</span>
+            <span className={css.categoryValue}>{capitalizeFirstLetter(species)}</span>
+          </li>
+          <li className={css.infoItem}>
+            <span className={css.categoryName}>Category</span>
+            <span className={css.categoryValue}>{capitalizeFirstLetter(category)}</span>
+          </li>
+        </ul>
+        <p className={css.text}>{comment}</p>
       </div>
-      <ul className={css.petInfo}>
-        <li className={css.infoItem}>
-          <span className={css.categoryName}>Name</span>
-          <span className={css.categoryValue}>{name}</span>
-        </li>
-        <li className={css.infoItem}>
-          <span className={css.categoryName}>Birthday</span>
-          <span className={css.categoryValue}>{born}</span>
-        </li>
-        <li className={css.infoItem}>
-          <span className={css.categoryName}>Sex</span>
-          <span className={css.categoryValue}>{capitalizeFirstLetter(sex)}</span>
-        </li>
-        <li className={css.infoItem}>
-          <span className={css.categoryName}>Species</span>
-          <span className={css.categoryValue}>{capitalizeFirstLetter(species)}</span>
-        </li>
-        <li className={css.infoItem}>
-          <span className={css.categoryName}>Category</span>
-          <span className={css.categoryValue}>{capitalizeFirstLetter(category)}</span>
-        </li>
-      </ul>
-      <p className={css.text}>{comment}</p>
-      <p className={css.price}>$ {cost}</p>
-      <div className={css.contBtns}>
-        <button className={css.btnLearn} type="button" onClick={handleModalOpen}>
-          Learn more
-        </button>
-        <button
-          className={page === 'viewed' ? css.btnHeartNotVisible : css.btnHeart}
-          // onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
-          onClick={handleStatusFavorites}
-          // disabled={page !== 'profile' && petForFavorite}
-        >
-          {page === 'profile' ? (
-            <svg className={css.iconHeart}>
-              <use href="/symbol-defs-mob.svg#icon-trash-2"></use>
-            </svg>
-          ) : petForFavorite ? (
-            <FiHeart style={{ width: '18px', height: '18px', color: '#f6b83d', fill: '#f6b83d' }} />
-          ) : (
-            <svg className={css.iconHeart}>
-              <use href="/symbol-defs-mob.svg#icon-heart-2"></use>
-            </svg>
-          )}
-        </button>
+
+      <div className={css.contPriceBtns}>
+        <p className={css.price}>$ {cost}</p>
+        <div className={css.contBtns}>
+          <button className={css.btnLearn} type="button" onClick={handleModalOpen}>
+            Learn more
+          </button>
+          <button
+            className={page === 'viewed' ? css.btnHeartNotVisible : css.btnHeart}
+            // onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
+            onClick={handleStatusFavorites}
+            // disabled={page !== 'profile' && petForFavorite}
+          >
+            {page === 'profile' ? (
+              <svg className={css.iconHeart}>
+                <use href="/symbol-defs-mob.svg#icon-trash-2"></use>
+              </svg>
+            ) : petForFavorite ? (
+              <FiHeart
+                style={{ width: '18px', height: '18px', color: '#f6b83d', fill: '#f6b83d' }}
+              />
+            ) : (
+              <svg className={css.iconHeart}>
+                <use href="/symbol-defs-mob.svg#icon-heart-2"></use>
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       <ModalWindow isOpen={attentionModalOpen} onClose={closeAttentionModal}>
