@@ -56,6 +56,11 @@
     font-size: 54px;
     margin-bottom: 44px;
   }
+
+  .contFilters {
+    width: 704px;
+    padding: 40px 35px;
+  }
 }
 
 /* =================================Desk============================= */
@@ -71,5 +76,10 @@
 
   .titleNotices {
     margin-bottom: 40px;
+  }
+
+  .contFilters {
+    width: 1216px;
+    padding: 40px;
   }
 }
