@@ -31,3 +31,18 @@
   background: #f6b83d;
   color: #fff;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+
+  .btnLogout,
+  .btnLogoutHome {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {}

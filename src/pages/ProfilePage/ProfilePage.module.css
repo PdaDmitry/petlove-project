@@ -1,9 +1,23 @@
 .conteiner {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  /* width: 375px; */
-  /* height: 2506px; */
-  margin-top: 18px;
+  padding: 18px 20px 56px;
 }
+
+.contElements {
+  margin: 0 auto;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .conteiner {
+    padding: 32px 32px 60px;
+  }
+
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {}

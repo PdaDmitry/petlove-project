@@ -6,7 +6,7 @@ import {
 } from '../../redux/auth/selectorsAuth';
 import css from './UserCard.module.css';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalEditUser } from '../ModalEditUser/ModalEditUser';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { AddPetsList } from '../AddPetsList/AddPetsList';
 
 export const UserCard = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
@@ -25,6 +26,15 @@ export const UserCard = () => {
   const avatarUload = useSelector(selectAvatarUload);
 
   const deleteUserPhoto = useSelector(selectDeletedUserPhoto);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -137,14 +147,15 @@ export const UserCard = () => {
 
       <AddPetsList />
 
-      <LogoutUser customStyle={{ width: '114px' }} />
+      <LogoutUser
+        customStyle={{
+          width: windowWidth < 768 ? '114px' : '136px',
+          height: windowWidth < 768 ? '42px' : '50px',
+        }}
+      />
 
       <ModalWindow isOpen={modalEditUserOpen} onClose={closeModalEditUser}>
-        <ModalEditUser
-          closeModal={closeModalEditUser}
-          handleUploadPhoto={handleUploadPhoto}
-          // setDeleteUserPhoto={setDeleteUserPhoto}
-        />
+        <ModalEditUser closeModal={closeModalEditUser} handleUploadPhoto={handleUploadPhoto} />
       </ModalWindow>
     </div>
   );

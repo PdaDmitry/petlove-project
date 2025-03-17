@@ -31,8 +31,10 @@ export const ProfilePage = () => {
 
   return (
     <div className={css.conteiner}>
-      <UserCard />
-      <MyNotices />
+      <div className={css.contElements}>
+        <UserCard />
+        <MyNotices />
+      </div>
 
       <ModalWindow isOpen={congratsModalIsOpen} onClose={closeCongratsModal}>
         <CongratsModalWindow closeModal={closeCongratsModal} />

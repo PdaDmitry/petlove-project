@@ -1,5 +1,4 @@
 .contFavoriteViewed {
-  /* display: flex; */
   width: 335px;
 }
 
@@ -13,7 +12,6 @@
 .btnViewed {
   display: block;
   border-radius: 30px;
-  /* padding: 12px 39px; */
   width: 123px;
   height: 42px;
   background: #fff;
@@ -35,3 +33,27 @@
   color: #fff;
   background: #f6b83d;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contFavoriteViewed {
+    width: 707px;
+  }
+
+  .contBtns {
+    gap: 8px;
+  }
+
+  .btnFavorite,
+  .btnViewed {
+    width: 142px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {}
