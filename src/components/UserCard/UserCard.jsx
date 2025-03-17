@@ -113,8 +113,11 @@ export const UserCard = () => {
       {/* ====================================================================== */}
       <div className={css.contMyInf}>
         <h2 className={css.titleInf}>My information</h2>
-        <div className={css.userName}>{user.name}</div>
-        <div className={css.userEmail}>{user.email}</div>
+        <div className={css.contNameEmail}>
+          <div className={css.userName}>{user.name}</div>
+          <div className={css.userEmail}>{user.email}</div>
+        </div>
+
         <div className={css.userNumber} style={user.phone ? { border: '1px solid #f6b83d' } : {}}>
           {user.phone ? user.phone : '+380'}
         </div>
@@ -122,9 +125,9 @@ export const UserCard = () => {
       {/* =============================PetsBlock================================== */}
       <div className={css.petsBlock}>
         <div className={css.contTitleAndBtn}>
-          <h2 className={css.titleMePets}>My pets</h2>
+          <h2 className={css.titleMyPets}>My pets</h2>
           <button type="button" className={css.btnAddPets} onClick={handleClickAddPet}>
-            <span className={css.addBtnTexy}>Add pet</span>
+            <span className={css.addBtnText}>Add pet</span>
             <svg className={css.addPlusSvg}>
               <use href="/symbol-defs-mob.svg#icon-plus"></use>
             </svg>

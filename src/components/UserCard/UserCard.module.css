@@ -100,12 +100,16 @@
   margin-bottom: 20px;
 }
 
+.contNameEmail {
+  margin-bottom: 10px;
+}
+
 .userName,
 .userEmail,
 .userNumber {
   border: 1px solid #f6b83d;
   border-radius: 30px;
-  padding: 12px 0 12px 12px;
+  padding: 12px;
   width: 295px;
   height: 42px;
   margin-bottom: 10px;
@@ -114,6 +118,10 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
+}
+
+.userEmail {
+  margin-bottom: 0;
 }
 
 .userNumber {
@@ -133,7 +141,7 @@
   align-items: center;
 }
 
-.titleMePets {
+.titleMyPets {
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
@@ -153,7 +161,7 @@
   cursor: pointer;
 }
 
-.addBtnTexy {
+.addBtnText {
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
@@ -195,6 +203,44 @@
     font-size: 14px;
     line-height: 1.28571;
 
+  }
+
+  .titleInf {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
+
+  .contNameEmail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .userName,
+  .userEmail,
+  .userNumber {
+    padding: 16px;
+    width: 305px;
+    height: 52px;
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .titleMyPets {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
+
+  .btnAddPets {
+    padding: 10px 20px;
+    width: 118px;
+    height: 40px;
+  }
+
+  .addBtnText {
+    font-size: 16px;
+    line-height: 1.25;
   }
 }
 

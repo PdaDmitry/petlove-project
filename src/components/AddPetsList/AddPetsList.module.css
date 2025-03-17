@@ -5,3 +5,25 @@
 .listAddPets .itemLi:not(:last-child) {
   margin-bottom: 14px;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .listAddPets .itemLi:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .listAddPets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .itemLi {
+    width: calc((100% - 14px) / 2);
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {}

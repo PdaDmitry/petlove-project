@@ -6,7 +6,6 @@ import { removeAddedPet } from '../../redux/auth/operationsAuth';
 
 export const AddPetsItem = ({ id }) => {
   const addPet = useSelector(selectAddPetById(id));
-  //   console.log('addPet: ', addPet);
 
   const { imgURL, title, name, birthday, sex, species } = addPet;
   const formattedDate = format(new Date(birthday), 'dd.MM.yyyy');

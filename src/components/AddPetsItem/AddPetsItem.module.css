@@ -6,7 +6,7 @@
   border-radius: 20px;
   width: 295px;
   height: 132px;
-  /* padding: 16px 0 16px 16px; */
+
   padding: 16px;
 }
 
@@ -77,3 +77,11 @@
   line-height: 117%;
   letter-spacing: -0.02em;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {}
