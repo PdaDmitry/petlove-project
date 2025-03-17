@@ -39,7 +39,7 @@
   width: 66px;
   height: 66px;
   object-fit: cover;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 }
 
 .title {
@@ -80,7 +80,34 @@
 
 /* =================================Tab============================= */
 
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+  .contAddPet {
+    width: 305px;
+    height: 149px;
+    padding: 22px 27px 23px 16px;
+  }
+
+  .deletePetBtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .trashSvg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .petImg {
+    width: 75px;
+    height: 75px;
+  }
+
+  .title {
+    margin-bottom: 12px;
+  }
+
+
+}
 
 /* =================================Desk============================= */
 
