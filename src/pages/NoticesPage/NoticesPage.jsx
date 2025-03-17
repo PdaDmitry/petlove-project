@@ -33,7 +33,6 @@ export const NoticesPage = () => {
     price: '',
   });
 
-  // console.log('logOutFilters: ', logOutFilters);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -77,7 +76,6 @@ export const NoticesPage = () => {
   useEffect(() => {
     if (logOutFilters.byType || logInFilters.byType) {
       setKeyword('');
-      // setResetInput(false); /////////////////////////
     }
   }, [logOutFilters.byType, logInFilters.byType]);
 

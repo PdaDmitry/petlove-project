@@ -19,7 +19,6 @@ export const UserPhoto = ({
   const user = useSelector(selectUser);
   const avatarUload = useSelector(selectAvatarUload);
   const deleteUserPhoto = useSelector(selectDeletedUserPhoto);
-  // console.log('deleteUserPhoto: ', deleteUserPhoto);
 
   return (
     <>

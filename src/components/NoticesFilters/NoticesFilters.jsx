@@ -1,20 +1,11 @@
 import { useEffect, useState } from 'react';
 import css from './NoticesFilters.module.css';
 import Select from 'react-select';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
-import {
-  byGenderOptions,
-  byTypeOptions,
-  categoryOptions,
-  // customStyles,
-  getCustomStyles,
-} from '../../options';
+import { byGenderOptions, byTypeOptions, categoryOptions, getCustomStyles } from '../../options';
 import { IoMdClose } from 'react-icons/io';
 import { LocationSelect } from '../LocationSelect/LocationSelect';
-
-// import { fetchCategoriesThunk } from '../../redux/pets/operationsPets';
-// import { selectCategories } from '../../redux/pets/selectorsPets';
 
 export const NoticesFilters = ({
   logInFilters,
@@ -24,7 +15,7 @@ export const NoticesFilters = ({
   setResetInput,
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const [selectedCity, setSelectedCity] = useState(null);
+
   const [selectedCity, setSelectedCity] = useState(() => {
     try {
       const savedCity = localStorage.getItem('selectedCity');
@@ -43,12 +34,9 @@ export const NoticesFilters = ({
         console.error('Error saving to localStorage', error);
       }
     } else {
-      // Add localStorage cleaning if the selected city is remote
       localStorage.removeItem('selectedCity');
     }
   }, [selectedCity]);
-
-  // const dispatch = useDispatch();
 
   const resetFilters = () => {
     if (isLoggedIn) {
@@ -74,11 +62,6 @@ export const NoticesFilters = ({
     setSelectedCity(null);
     localStorage.removeItem('selectedCity');
   };
-
-  // useEffect(() => {
-  //   // dispatch(fetchCategoriesThunk());
-  //
-  // }, [dispatch, category]);
 
   return (
     <form className={css.contFilter}>

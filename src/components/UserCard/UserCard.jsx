@@ -25,8 +25,6 @@ export const UserCard = () => {
   const avatarUload = useSelector(selectAvatarUload);
 
   const deleteUserPhoto = useSelector(selectDeletedUserPhoto);
-  // console.log('avatarUload: ', Boolean(avatarUload));
-  // console.log('deleteUserPhoto: ', deleteUserPhoto);
 
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -61,7 +59,11 @@ export const UserCard = () => {
 
   return (
     <div className={css.contProfile}>
-      <div className={css.contUserUdateBtns}>
+      <div
+        className={`${css.contUserUdateBtns} ${
+          !avatarUload && deleteUserPhoto ? '' : css.mgBottom
+        }`}
+      >
         <button
           type="button"
           className={css.btnUser}
@@ -86,7 +88,7 @@ export const UserCard = () => {
           </svg>
         </button>
       </div>
-      {/* =============================================================== */}
+      {/* ==============================contPhoto================================= */}
       <div
         className={`${css.contPhoto} ${!avatarUload && deleteUserPhoto ? '' : css.uploadedPhoto}`}
       >
@@ -108,7 +110,7 @@ export const UserCard = () => {
           onChange={handleFileChange}
         />
       </div>
-      {/* =============================================================== */}
+      {/* ====================================================================== */}
       <div className={css.contMyInf}>
         <h2 className={css.titleInf}>My information</h2>
         <div className={css.userName}>{user.name}</div>
