@@ -133,17 +133,17 @@ export const UserCard = () => {
         </div>
       </div>
       {/* =============================PetsBlock================================== */}
-      <div className={css.petsBlock}>
-        <div className={css.contTitleAndBtn}>
-          <h2 className={css.titleMyPets}>My pets</h2>
-          <button type="button" className={css.btnAddPets} onClick={handleClickAddPet}>
-            <span className={css.addBtnText}>Add pet</span>
-            <svg className={css.addPlusSvg}>
-              <use href="/symbol-defs-mob.svg#icon-plus"></use>
-            </svg>
-          </button>
-        </div>
+      {/* <div className={css.petsBlock}> */}
+      <div className={css.contTitleAndBtn}>
+        <h2 className={css.titleMyPets}>My pets</h2>
+        <button type="button" className={css.btnAddPets} onClick={handleClickAddPet}>
+          <span className={css.addBtnText}>Add pet</span>
+          <svg className={css.addPlusSvg}>
+            <use href="/symbol-defs-mob.svg#icon-plus"></use>
+          </svg>
+        </button>
       </div>
+      {/* </div> */}
 
       <AddPetsList />
 

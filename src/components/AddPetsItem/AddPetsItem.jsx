@@ -31,7 +31,7 @@ export const AddPetsItem = ({ id }) => {
         </svg>
       </button>
       <img src={imgURL} alt={`${title}'s photo`} className={css.petImg} />
-      <div>
+      <div className={css.contInfoPet}>
         <h2 className={css.title}>{title.length >= 15 ? title.slice(0, 15) + '...' : title}</h2>
         <ul className={css.petInfo}>
           <li className={css.infoItem}>

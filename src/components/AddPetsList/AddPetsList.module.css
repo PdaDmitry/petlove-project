@@ -26,4 +26,12 @@
 
 /* =================================Desk============================= */
 
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: 1280px) {
+  .contAddPetsList {
+    margin-bottom: 40px;
+  }
+
+  .listAddPets {
+    flex-direction: column;
+  }
+}

@@ -131,14 +131,15 @@
 
 /* ==========================PetsBlock========================= */
 
-.petsBlock {
+/* .petsBlock {
   margin-bottom: 20px;
-}
+} */
 
 .contTitleAndBtn {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .titleMyPets {
@@ -246,4 +247,20 @@
 
 /* =================================Desk============================= */
 
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: 1280px) {
+  .contProfile {
+    width: 520px;
+    margin-bottom: 0;
+  }
+
+  .contNameEmail {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .userName,
+  .userEmail,
+  .userNumber {
+    width: 440px;
+  }
+}
