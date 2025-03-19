@@ -56,4 +56,8 @@
 
 /* =================================Desk============================= */
 
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: 1280px) {
+  .contFavoriteViewed {
+    width: 664px;
+  }
+}

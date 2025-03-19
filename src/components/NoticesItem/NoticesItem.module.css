@@ -204,4 +204,18 @@
   .petInfo {
     gap: 20px;
   }
+
+  /* ================Favorite=================== */
+
+  .contPetFavorite {
+    width: 320px;
+    height: 422px;
+    padding: 14px 14px 24px;
+  }
+
+  .petImgFavorite {
+    width: 292px;
+    height: 162px;
+    margin-bottom: 14px;
+  }
 }

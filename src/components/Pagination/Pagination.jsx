@@ -6,6 +6,7 @@ import { selectPetsPage, selectPetsTotalPages } from '../../redux/pets/selectors
 import { useLocation } from 'react-router-dom';
 
 export const Pagination = ({ setPage }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
   const isNewsPage = location.pathname.includes('/news');
 
@@ -24,7 +25,6 @@ export const Pagination = ({ setPage }) => {
   const [paginationItems, setPaginationItems] = useState(() => {
     return JSON.parse(localStorage.getItem('paginationItems')) || [];
   });
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {

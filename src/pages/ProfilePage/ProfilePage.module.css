@@ -24,4 +24,9 @@
   .conteiner {
     padding: 32px;
   }
+
+  .contElements {
+    display: flex;
+    gap: 32px;
+  }
 }

@@ -10,7 +10,7 @@ import {
 } from '../../redux/auth/selectorsAuth';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { ModalAttention } from '../ModalAttention/ModalAttention';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import {
   addFavoritesThunk,
@@ -24,6 +24,7 @@ export const NoticesItem = ({ id, page }) => {
   const [attentionModalOpen, setAttentionModalOpen] = useState(false);
   const [noticeModalOpen, setNoticeModalOpen] = useState(false);
   const [petContacts, setPetContacts] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -36,6 +37,15 @@ export const NoticesItem = ({ id, page }) => {
   const closeAttentionModal = () => setAttentionModalOpen(false);
   const openNoticeModal = () => setNoticeModalOpen(true);
   const closeNoticeModal = () => setNoticeModalOpen(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   let elem;
 
@@ -110,9 +120,20 @@ export const NoticesItem = ({ id, page }) => {
   }
 
   return (
-    <div className={css.contPet}>
+    <div
+      className={`${css.contPet} ${
+        page === 'profile' && windowWidth >= 1280 ? css.contPetFavorite : ''
+      }`}
+    >
+      {/* // <div className={css.contPet}> */}
       <div className={css.contImgInfo}>
-        <img src={imgURL} alt={`${title}'s photo`} className={css.petImg} />
+        <img
+          src={imgURL}
+          alt={`${title}'s photo`}
+          className={`${css.petImg} ${
+            page === 'profile' && windowWidth >= 1280 ? css.petImgFavorite : ''
+          }`}
+        />
         <div className={css.contTitleStar}>
           <h2 className={css.title}>{title}</h2>
           <div className={css.contStar}>
