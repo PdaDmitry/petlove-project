@@ -208,8 +208,8 @@
   /* ================Favorite=================== */
 
   .contPetFavorite {
-    width: 320px;
-    height: 422px;
+    width: 320px !important;
+    height: 422px !important;
     padding: 14px 14px 24px;
   }
 

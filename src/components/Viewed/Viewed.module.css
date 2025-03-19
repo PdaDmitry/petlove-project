@@ -21,3 +21,45 @@
   font-weight: 700;
   color: #f6b83d;
 }
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .listPets .itemLi:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .contText {
+    display: flex;
+    justify-content: center;
+  }
+
+  .text {
+    width: 458px;
+    font-size: 16px;
+    line-height: 1.25;
+    padding: 180px 0 122px;
+  }
+
+  .listPets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .itemLi {
+    width: calc((100% - 20px) / 2);
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+  .listPets {
+    gap: 24px;
+  }
+
+  .itemLi {
+    width: calc((100% - 24px) / 2);
+  }
+}

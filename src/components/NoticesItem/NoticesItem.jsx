@@ -122,7 +122,7 @@ export const NoticesItem = ({ id, page }) => {
   return (
     <div
       className={`${css.contPet} ${
-        page === 'profile' && windowWidth >= 1280 ? css.contPetFavorite : ''
+        (page === 'profile' || page === 'viewed') && windowWidth >= 1280 ? css.contPetFavorite : ''
       }`}
     >
       {/* // <div className={css.contPet}> */}
@@ -131,7 +131,9 @@ export const NoticesItem = ({ id, page }) => {
           src={imgURL}
           alt={`${title}'s photo`}
           className={`${css.petImg} ${
-            page === 'profile' && windowWidth >= 1280 ? css.petImgFavorite : ''
+            (page === 'profile' || page === 'viewed') && windowWidth >= 1280
+              ? css.petImgFavorite
+              : ''
           }`}
         />
         <div className={css.contTitleStar}>
@@ -175,9 +177,7 @@ export const NoticesItem = ({ id, page }) => {
           </button>
           <button
             className={page === 'viewed' ? css.btnHeartNotVisible : css.btnHeart}
-            // onClick={page === 'profile' ? handleRemoveFavoritePet : handleAddFavoritePet}
             onClick={handleStatusFavorites}
-            // disabled={page !== 'profile' && petForFavorite}
           >
             {page === 'profile' ? (
               <svg className={css.iconHeart}>
