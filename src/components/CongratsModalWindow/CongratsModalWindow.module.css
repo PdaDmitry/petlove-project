@@ -1,78 +1,109 @@
 .contLogoutModal {
-    position: relative;
-    width: 335px;
-    /* height: 270px; */
-    padding: 40px 25px;
-    border-radius: 30px;
-    background-color: #fff;
-    text-align: center;
+  position: relative;
+  width: 335px;
+  /* height: 270px; */
+  padding: 40px 25px;
+  border-radius: 30px;
+  background-color: #fff;
+  text-align: center;
 }
 
 .closeButton {
-    position: absolute;
-    display: block;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+  position: absolute;
+  display: block;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .backgrImeg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #fff4df;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #fff4df;
+  margin-bottom: 20px;
 }
 
 .imageCat {
-    display: block;
-    width: 44px;
-    height: 44px;
+  display: block;
+  width: 44px;
+  height: 44px;
 }
 
 .title {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: #f6b83d;
-    margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+  margin-bottom: 20px;
 }
 
 .text {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.28571;
-    letter-spacing: -0.02em;
-    text-align: center;
-    color: #2b2b2a;
-    margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #2b2b2a;
+  margin-bottom: 24px;
 }
 
 .btnGoToProfile {
-    display: block;
-    border-radius: 30px;
-    padding: 12px 103px;
-    width: 285px;
-    height: 42px;
-    background: #fff4df;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.28571;
-    letter-spacing: -0.03em;
-    color: #f6b83d;
+  display: block;
+  border-radius: 30px;
+  width: 285px;
+  height: 42px;
+  background: #fff4df;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
 }
 
 .btnGoToProfile:hover {
-    color: #fff;
-    background: #f6b83d;
+  color: #fff;
+  background: #f6b83d;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contLogoutModal {
+    width: 410px;
+    padding: 55px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 117%;
+    margin-bottom: 14px;
+  }
+
+  .text {
+    margin-bottom: 28px;
+  }
+
+  .btnGoToProfile {
+    width: 250px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 125%;
+    margin: 0 auto;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
 }
