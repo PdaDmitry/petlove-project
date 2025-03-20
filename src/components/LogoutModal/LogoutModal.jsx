@@ -11,7 +11,7 @@ export const LogoutModal = ({ closeModal, closeBurgerMenu }) => {
   const handleLogout = () => {
     dispatch(logoutUser());
     if (closeBurgerMenu) closeBurgerMenu();
-    // closeBurgerMenu();
+
     navigate('/home');
   };
 

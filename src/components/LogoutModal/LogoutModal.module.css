@@ -65,14 +65,44 @@
   border: none;
   border-radius: 30px;
   /* padding: 12px 44px; */
-  width: 134px;
+
   height: 42px;
   background: rgba(38, 38, 38, 0.05);
   cursor: pointer;
+}
+
+.btnCancel {
+  width: 134px;
 }
 
 .btnYes:hover,
 .btnCancel:hover {
   color: #fff;
   background: #f6b83d;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contLogoutModal {
+    width: 448px;
+    padding: 80px;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 117%;
+  }
+
+  .btnYes,
+  .btnCancel {
+    width: 140px;
+    height: 48px;
+    font-size: 16px;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
 }
