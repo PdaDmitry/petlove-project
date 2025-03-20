@@ -2,7 +2,6 @@
   position: relative;
   border-radius: 30px;
   width: 335px;
-  /* height: 394px; */
   background: #fff;
   padding: 40px 20px;
 }
@@ -14,8 +13,6 @@
   right: 20px;
   background: none;
   border: none;
-  /* width: 24px;
-  height: 24px; */
   cursor: pointer;
   padding: 0;
 }
@@ -67,7 +64,6 @@
 .btnRegister {
   border-radius: 30px;
   border: none;
-  /* padding: 12px 24px; */
   width: 129px;
   height: 42px;
   background: #fff4df;
@@ -83,4 +79,35 @@
 .btnRegister:hover {
   color: #fff;
   background: #f6b83d;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contModalAttention {
+    width: 466px;
+    padding: 60px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 117%;
+  }
+
+  .text {
+    margin-bottom: 28px;
+  }
+
+  .btnLogIn,
+  .btnRegister {
+    width: 140px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
 }
