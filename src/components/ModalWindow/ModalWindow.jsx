@@ -15,6 +15,7 @@ const modalStyles = {
     backgroundColor: 'transparent',
     border: 'none',
     zIndex: 2001,
+    padding: '0',
   },
 };
 

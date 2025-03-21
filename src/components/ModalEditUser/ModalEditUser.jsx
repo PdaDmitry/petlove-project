@@ -17,14 +17,11 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
   const user = useSelector(selectUser);
   const uploadedPhoto = useSelector(selectUploadedPhoto);
 
-  // console.log('uploadedPhoto: ', uploadedPhoto);
-
   const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(userUpdateSchema),
@@ -55,7 +52,6 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
 
   const handleClick = () => {
     handleUploadPhoto();
-    // uploadedPhoto && closeModal();
   };
 
   return (
@@ -74,7 +70,7 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
 
       <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
         <div className={css.contUrlAvatarPhoto}>
-          <div className={css.inputElem}>
+          <div className={css.inputElemImg}>
             <input {...register('avatar')} placeholder="Avatar URL" className={css.inputUrl} />
             {errors.avatar && <p className={css.textError}>{errors.avatar.message}</p>}
           </div>
@@ -108,12 +104,7 @@ export const ModalEditUser = ({ handleUploadPhoto, closeModal }) => {
           {errors.phone && <p className={css.textError}>{errors.phone.message}</p>}
         </div>
 
-        <button
-          type="submit"
-          className={css.btnUpdateProfile}
-          // disabled={!isFormFilled}
-          // onClick={closeModal}
-        >
+        <button type="submit" className={css.btnUpdateProfile}>
           Go to profile
         </button>
       </form>

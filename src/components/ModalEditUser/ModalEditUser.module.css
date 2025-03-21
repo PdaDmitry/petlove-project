@@ -14,8 +14,6 @@
   right: 20px;
   background: none;
   border: none;
-  /* width: 24px;
-  height: 24px; */
   cursor: pointer;
   padding: 0;
 }
@@ -47,14 +45,15 @@
 }
 
 .customUserSvg {
-  width: 33px;
-  height: 33px;
+  width: 33px !important;
+  height: 33px !important;
 }
 
 /* ============================== */
 .contUrlAvatarPhoto {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .inputElem {
@@ -69,7 +68,8 @@
 .inputUrl {
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-  padding: 12px 0 12px 12px;
+  /* padding: 12px 0 12px 12px; */
+  padding: 12px;
   width: 295px;
   height: 42px;
 
@@ -177,3 +177,89 @@
 }
 
 /* ========================================================================================= */
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contUpdateUser {
+    width: 480px;
+    padding: 50px;
+  }
+
+  .titleUpdateUser {
+    /* font-size: 18px; */
+    line-height: 133%;
+  }
+
+  /* ==========UserPhoto============ */
+  .customAvatar {
+    width: 86px !important;
+    height: 86px !important;
+  }
+
+  .customPhoto {
+    width: 86px !important;
+    height: 86px !important;
+  }
+
+  .customUserSvg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  /* ============================== */
+  .contUrlAvatarPhoto {
+    margin-bottom: 20px;
+  }
+
+  .inputElem {
+    margin-bottom: 14px;
+  }
+
+  .inputLastElem {
+    margin-bottom: 40px;
+  }
+
+  .input,
+  .inputUrl {
+    padding: 16px;
+    width: 380px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .inputUrl {
+    width: 226px;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .btnUploadPhoto {
+    width: 146px;
+    padding: 12px 16px;
+  }
+
+  .uploadPhotoSpan {
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .textError {
+    font-size: 12px;
+    line-height: 117%;
+  }
+
+  .btnUpdateProfile {
+    width: 380px;
+    height: 52px;
+
+    font-size: 16px;
+    line-height: 125%;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
+}
