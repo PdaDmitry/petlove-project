@@ -60,72 +60,75 @@ export const Header = ({ isHome }) => {
           </p>
         </div>
 
-        <div
-          className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
-          onClick={handleUserClick}
-        >
-          <UserPhoto
-            className={css.customAvatar}
-            contSize={css.customPhoto}
-            svgClassName={css.customUserSvg}
-            variant="header"
+        <div className={css.contUserBrgMenu}>
+          <div
+            className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
+            onClick={handleUserClick}
+          >
+            <UserPhoto
+              className={css.customAvatar}
+              contSize={css.customPhoto}
+              svgClassName={css.customUserSvg}
+              variant="header"
+            />
+          </div>
+          <FiMenu
+            className={css.burgerMenuSvg}
+            style={{
+              width: '32px',
+              height: '32px',
+              color: isHome ? '#fff' : '',
+            }}
+            onClick={openBurgerMenu}
           />
         </div>
-        <FiMenu
-          className={css.burgerMenuSvg}
-          style={{
-            width: '32px',
-            height: '32px',
-            color: isHome ? '#fff' : '',
-          }}
-          onClick={openBurgerMenu}
-        />
-
-        <nav
-          className={`${css.burgerMenu}  ${menuOpen ? css.open : ''}`}
-          style={isHome ? { background: '#fff' } : { background: '#f6b83d' }}
-        >
-          <button type="button" className={css.closeButton} onClick={closeBurgerMenu}>
-            <IoMdClose
-              style={{
-                width: '32px',
-                height: '32px',
-                fill: isHome ? '' : '#fff',
-              }}
-            />
-          </button>
-
-          <ul className={css.burgerMenuUl}>
-            <li className={css.liItem}>
-              <NavLink to="/news" onClick={closeBurgerMenu}>
-                <div className={isHome ? css.burgerNavHome : css.burgerNav}>
-                  <p className={isHome ? css.linkHome : css.link}>News</p>
-                </div>
-              </NavLink>
-            </li>
-            <li className={css.liItem}>
-              <NavLink to="/notices" onClick={closeBurgerMenu}>
-                <div className={isHome ? css.burgerNavHome : css.burgerNav}>
-                  <p className={isHome ? css.linkHome : css.link}>Find pet</p>
-                </div>
-              </NavLink>
-            </li>
-            <li className={css.liItemLast}>
-              <NavLink to="/friends" onClick={closeBurgerMenu}>
-                <div className={isHome ? css.burgerNavHomeLast : css.burgerNavLast}>
-                  <p className={isHome ? css.linkHome : css.link}>Our friends</p>
-                </div>
-              </NavLink>
-            </li>
-          </ul>
-
-          {isLoggedIn ? (
-            <UserNav isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
-          ) : (
-            <AuthNav isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
-          )}
-        </nav>
       </div>
+
+      <nav
+        className={`${css.burgerMenu}  ${menuOpen ? css.open : ''}`}
+        style={isHome ? { background: '#fff' } : { background: '#f6b83d' }}
+      >
+        <button type="button" className={css.closeButton} onClick={closeBurgerMenu}>
+          <IoMdClose
+            style={{
+              width: '32px',
+              height: '32px',
+              fill: isHome ? '' : '#fff',
+            }}
+          />
+        </button>
+
+        <ul className={css.burgerMenuUl}>
+          <li className={css.liItem}>
+            <NavLink to="/news" onClick={closeBurgerMenu}>
+              <div className={isHome ? css.burgerNavHome : css.burgerNav}>
+                <p className={isHome ? css.linkHome : css.link}>News</p>
+              </div>
+            </NavLink>
+          </li>
+          <li className={css.liItem}>
+            <NavLink to="/notices" onClick={closeBurgerMenu}>
+              <div className={isHome ? css.burgerNavHome : css.burgerNav}>
+                <p className={isHome ? css.linkHome : css.link}>Find pet</p>
+              </div>
+            </NavLink>
+          </li>
+          <li className={css.liItemLast}>
+            <NavLink to="/friends" onClick={closeBurgerMenu}>
+              <div className={isHome ? css.burgerNavHomeLast : css.burgerNavLast}>
+                <p className={isHome ? css.linkHome : css.link}>Our friends</p>
+              </div>
+            </NavLink>
+          </li>
+        </ul>
+
+        {isLoggedIn ? (
+          <UserNav isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
+        ) : (
+          <AuthNav isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
+        )}
+      </nav>
+      {/* </div> */}
     </div>
   );
 };

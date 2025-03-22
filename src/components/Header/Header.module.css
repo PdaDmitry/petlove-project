@@ -1,21 +1,16 @@
 .conteiner {
   position: relative;
-  width: 100%;
-  max-width: 375px;
-
   display: flex;
+  width: 375px;
   margin: 0 auto;
 }
 
 .conteinerHeader {
   display: flex;
-  /* width: 100%; */
-  /* max-width: 375px; */
-  /* width: 375px; */
-  /* justify-content: center; */
   justify-content: space-between;
-  /* margin: 0 auto; */
   align-items: center;
+  width: 100%;
+
   padding: 28px 20px 0 20px;
 }
 
@@ -26,7 +21,6 @@
 
   z-index: 10;
   padding: 28px 40px 0 40px;
-  /* width: 100%; */
 }
 
 .contLogoHome,
@@ -35,11 +29,17 @@
   align-items: end;
   width: 76px;
   cursor: pointer;
-  margin-right: 175px;
+  /* margin-right: 175px; */
 }
 
 .contLogoHome {
-  margin-right: 135px;
+  /* margin-right: 135px; */
+}
+
+.contUserBrgMenu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .logoText {
@@ -70,7 +70,7 @@
   height: 40px;
   border-radius: 50%;
   background: #fff4df;
-  margin-right: 12px;
+  /* margin-right: 12px; */
   cursor: pointer;
 }
 
@@ -200,18 +200,24 @@
   }
 
   .conteinerHeader {
-    width: 768px;
     padding: 32px 32px 0 32px;
+  }
+
+  .homeHeader {
+    padding: 32px 64px 0 64px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .conteiner {
-    max-width: 1280px;
+    width: 1280px;
   }
 
   .conteinerHeader {
-    max-width: 1280px;
-    /* padding: 40px 40px 0 40px; */
+    padding: 32px 64px 0 64px;
+  }
+
+  .homeHeader {
+    padding: 32px 96px 0 96px;
   }
 }
