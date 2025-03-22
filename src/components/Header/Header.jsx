@@ -75,8 +75,8 @@ export const Header = ({ isHome }) => {
           <FiMenu
             className={css.burgerMenuSvg}
             style={{
-              width: '32px',
-              height: '32px',
+              // width: '32px',
+              // height: '32px',
               color: isHome ? '#fff' : '',
             }}
             onClick={openBurgerMenu}
