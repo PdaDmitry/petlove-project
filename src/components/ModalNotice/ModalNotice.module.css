@@ -5,7 +5,6 @@
   align-items: center;
   border-radius: 30px;
   width: 335px;
-  /* height: 476px; */
   background: #fff;
   padding: 40px 28px;
 }
@@ -17,8 +16,6 @@
   right: 20px;
   background: none;
   border: none;
-  /* width: 24px;
-  height: 24px; */
   cursor: pointer;
   padding: 0;
 }
@@ -32,7 +29,6 @@
   position: absolute;
   border-radius: 30px;
   padding: 8px 14px;
-  /* width: 48px; */
   height: 32px;
   background: #fff4df;
   font-weight: 500;
@@ -54,6 +50,7 @@
   font-size: 16px;
   line-height: 125%;
   margin-bottom: 10px;
+  color: #2b2b2a;
 }
 
 .contReting {
@@ -81,6 +78,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 143%;
+  color: #2b2b2a;
 }
 
 .petInfo {
@@ -112,10 +110,12 @@
 }
 
 .text {
+  text-align: center;
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.02em;
+  color: #2b2b2a;
   margin-bottom: 32px;
 }
 
@@ -124,12 +124,12 @@
   font-size: 16px;
   line-height: 125%;
   margin-bottom: 20px;
+  color: #2b2b2a;
 }
 
 .conButtons {
   display: flex;
   gap: 10px;
-  /* justify-content: space-between; */
 }
 
 .btnAddNoVisible {
@@ -156,11 +156,11 @@
 }
 
 .btnAdd:hover .iconHeart {
-  display: none; /* Скрываем обычную иконку */
+  display: none;
 }
 
 .btnAdd:hover .iconHeartHover {
-  display: block; /* Показываем иконку для ховера */
+  display: block;
 }
 
 .textAdd {
@@ -199,4 +199,65 @@
 .btnContact:hover {
   color: #fff;
   background: #f6b83d;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contModalNotice {
+    width: 473px;
+    padding: 40px 72px 40px 71px;
+  }
+
+  .contImg {
+    margin-bottom: 16px;
+  }
+
+  .spanCategory {
+    font-size: 14px;
+    line-height: 129%;
+    height: 34px;
+  }
+
+  .petImg {
+    width: 150px;
+    height: 150px;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .contReting {
+    margin-bottom: 20px;
+  }
+
+  .price {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .btnAdd {
+    padding: 14px 42px;
+    width: 160px;
+    height: 48px;
+  }
+
+  .iconHeartHover,
+  .iconHeart {
+    width: 18px;
+    height: 18px;
+  }
+
+  .btnContact {
+    padding: 14px 50px;
+    width: 160px;
+    height: 48px;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
 }
