@@ -69,19 +69,21 @@
     margin-bottom: 0;
   }
 
+  .burgerLiNav,
   .burgerLiNavlog,
-  .burgerLiNav {
-    padding: 15px 35px;
+  .burgerLiNavHome,
+  .burgerLiNavlogHome {
+    padding: 17px 35px;
     width: 119px;
     height: 50px;
     font-size: 16px;
     line-height: 125%;
   }
 
-  .burgerLiNav {
-    padding: 15px 20px;
+  .burgerLiNav,
+  .burgerLiNavHome {
+    padding: 17px 20px;
     width: 149px;
-    height: 50px;
   }
 }
 

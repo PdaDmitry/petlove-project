@@ -120,8 +120,8 @@ export const Header = ({ isHome }) => {
         <button type="button" className={css.closeButton} onClick={closeBurgerMenu}>
           <IoMdClose
             style={{
-              width: '32px',
-              height: '32px',
+              width: windowWidth < 768 ? '32px' : '36px',
+              height: windowWidth < 768 ? '32px' : '36px',
               fill: isHome ? '' : '#fff',
             }}
           />
