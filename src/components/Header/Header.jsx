@@ -2,26 +2,36 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import css from './Header.module.css';
 import { useSelector } from 'react-redux';
 import {
-  // selectAvatarUload,
+  selectDeletedUserPhoto,
   selectIsLoggedIn,
-  // selectToken,
-  // selectUser,
+  selectUser,
 } from '../../redux/auth/selectorsAuth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import { UserNav } from '../UserNav/UserNav';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { UserPhoto } from '../UserPhoto/UserPhoto';
+import { LogoutUser } from '../LogoutUser/LogoutUser';
 
 export const Header = ({ isHome }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  // const avatarUpload = useSelector(selectAvatarUload);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const user = useSelector(selectUser);
+  const deleteUserPhoto = useSelector(selectDeletedUserPhoto);
+  // console.log('user: ', user);
 
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  // const user = useSelector(selectUser);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleClick = () => {
     navigate('/home');
@@ -61,22 +71,35 @@ export const Header = ({ isHome }) => {
         </div>
 
         <div className={css.contUserBrgMenu}>
-          <div
-            className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
-            onClick={handleUserClick}
-          >
-            <UserPhoto
-              className={css.customAvatar}
-              contSize={css.customPhoto}
-              svgClassName={css.customUserSvg}
-              variant="header"
-            />
+          <div className={css.contBtnLogOutPhotoName}>
+            {windowWidth >= 768 && !deleteUserPhoto && user.avatar && (
+              <LogoutUser
+                customStyle={{
+                  width: '136px',
+                  height: '50px',
+                }}
+              />
+            )}
+
+            <div
+              className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
+              onClick={handleUserClick}
+            >
+              <UserPhoto
+                className={css.customAvatar}
+                contSize={css.customPhoto}
+                svgClassName={css.customUserSvg}
+                variant="header"
+              />
+            </div>
+            {windowWidth >= 768 && !deleteUserPhoto && user.avatar && (
+              <p className={css.userName}>{user.name.split(' ')[0]}</p>
+            )}
           </div>
+
           <FiMenu
             className={css.burgerMenuSvg}
             style={{
-              // width: '32px',
-              // height: '32px',
               color: isHome ? '#fff' : '',
             }}
             onClick={openBurgerMenu}
@@ -128,7 +151,6 @@ export const Header = ({ isHome }) => {
           <AuthNav isHome={isHome} closeBurgerMenu={closeBurgerMenu} />
         )}
       </nav>
-      {/* </div> */}
     </div>
   );
 };

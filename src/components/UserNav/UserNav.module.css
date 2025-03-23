@@ -26,30 +26,16 @@
   height: 20px;
 }
 
-/* .backgrSvg,
-.backgrSvgHome {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #fff4df;
-  margin-bottom: 8px;
-  cursor: pointer;
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .customAvatar {
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.backgrSvg:hover {
-  border: 1px solid #fff;
-}
+/* =================================Desk============================= */
 
-.backgrSvg:hover,
-.backgrSvgHome:hover {
-  background: #f6b83d;
+@media screen and (min-width: 1280px) {
 }
-
-.userSvg {
-  display: block;
-  width: 20px;
-  height: 20px;
-} */
