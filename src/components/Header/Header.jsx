@@ -71,30 +71,36 @@ export const Header = ({ isHome }) => {
         </div>
 
         <div className={css.contUserBrgMenu}>
-          <div className={css.contBtnLogOutPhotoName}>
-            {windowWidth >= 768 && !deleteUserPhoto && user.avatar && (
-              <LogoutUser
-                customStyle={{
-                  width: '136px',
-                  height: '50px',
-                }}
-              />
-            )}
-
-            <div
-              className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
-              onClick={handleUserClick}
-            >
-              <UserPhoto
-                className={css.customAvatar}
-                contSize={css.customPhoto}
-                svgClassName={css.customUserSvg}
-                variant="header"
-              />
-            </div>
-            {windowWidth >= 768 && !deleteUserPhoto && user.avatar && (
-              <p className={css.userName}>{user.name.split(' ')[0]}</p>
-            )}
+          <div className={css.contUserIsRegisteredOrNot}>
+            {windowWidth >= 768 &&
+              (user.email ? (
+                <>
+                  {!isHome && (
+                    <LogoutUser
+                      customStyle={{
+                        width: '136px',
+                        height: '50px',
+                      }}
+                    />
+                  )}
+                  <div
+                    className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
+                    onClick={handleUserClick}
+                  >
+                    <UserPhoto
+                      className={css.customAvatar}
+                      contSize={css.customPhoto}
+                      svgClassName={css.customUserSvg}
+                      variant="header"
+                    />
+                  </div>
+                  <p className={isHome ? css.userNameHome : css.userName}>
+                    {user.name.split(' ')[0]}
+                  </p>
+                </>
+              ) : (
+                <AuthNav />
+              ))}
           </div>
 
           <FiMenu

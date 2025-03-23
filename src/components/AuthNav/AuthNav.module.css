@@ -1,5 +1,5 @@
 .authNavBurger {
-  padding: 0 20px 40px;
+  /* padding: 0 20px 40px; */
   text-align: center;
 }
 
@@ -54,4 +54,38 @@
 .burgerLiNavlogHome:hover .linkAuth,
 .burgerLiNavHome:hover .linkAuth {
   color: #fff;
+}
+
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .authNavBurger {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .liItemLog {
+    margin-bottom: 0;
+  }
+
+  .burgerLiNavlog,
+  .burgerLiNav {
+    padding: 15px 35px;
+    width: 119px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .burgerLiNav {
+    padding: 15px 20px;
+    width: 149px;
+    height: 50px;
+  }
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
 }

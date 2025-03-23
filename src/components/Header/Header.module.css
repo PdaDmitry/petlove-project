@@ -70,7 +70,6 @@
   height: 40px;
   border-radius: 50%;
   background: #fff4df;
-  /* margin-right: 12px; */
   cursor: pointer;
 }
 
@@ -121,7 +120,9 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  padding: 236px 20px 40px;
 }
 
 .burgerMenu.open {
@@ -130,10 +131,8 @@
 
 .burgerMenuUl {
   list-style: none;
-  padding: 230px 49px 0 50px;
   text-align: center;
   margin: 0;
-  /* margin-bottom: 286px; */
   margin-bottom: 20px;
 }
 
@@ -157,6 +156,8 @@
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   padding: 15px 31px;
+  width: 119px;
+  height: 48px;
 }
 
 .burgerNavLast,
@@ -227,17 +228,22 @@
     gap: 16px;
   }
 
-  .contBtnLogOutPhotoName {
+  .contUserIsRegisteredOrNot {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
+  .userNameHome,
   .userName {
     font-weight: 700;
     font-size: 20px;
     line-height: 100%;
     letter-spacing: -0.03em;
+  }
+
+  .userNameHome {
+    color: #fff;
   }
 
   .backgrSvg {
