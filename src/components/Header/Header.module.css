@@ -149,8 +149,8 @@
 .burgerNavHome,
 .burgerNavHomeLast {
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 600;
+  /* font-size: 18px;
+  font-weight: 600; */
   cursor: pointer;
   transition: color 0.3s ease;
   border: 1px solid rgba(38, 38, 38, 0.15);
@@ -278,6 +278,21 @@
     width: 374px;
     padding: 369px 49px 40px;
   }
+
+  .burgerNav,
+  .burgerNavLast,
+  .burgerNavHome,
+  .burgerNavHomeLast {
+    width: 120px;
+    height: 50px;
+    padding: 15px 20px;
+  }
+
+  .link,
+  .linkHome {
+    font-size: 16px;
+    line-height: 125%;
+  }
 }
 
 /* =================================Desk============================= */
@@ -293,5 +308,91 @@
 
   .homeHeader {
     padding: 32px 96px 0 96px;
+  }
+
+  .logoText {
+  }
+
+  .contLogoMenu {
+    display: flex;
+    align-items: center;
+  }
+
+  .contMenuUlDesk,
+  .contMenuUlDeskHome {
+    display: flex;
+    gap: 10px;
+    margin-left: 280px;
+  }
+
+  .contMenuUlDesk {
+    margin-left: 313px;
+  }
+
+  /* .liItemDesk {
+  }
+
+  .liItemLastDesk {
+  } */
+
+  .navNewsHomeDesk,
+  .navNewsDesk,
+  .navHomeDesk,
+  .navDesk,
+  .navHomeLastDesk,
+  .navLastDesk {
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    border: 1px solid rgba(38, 38, 38, 0.15);
+    border-radius: 30px;
+    padding: 15px 20px;
+    width: 80px;
+    height: 50px;
+  }
+
+  .navHomeDesk,
+  .navDesk {
+    width: 97px;
+    height: 50px;
+    padding: 15px 18px;
+  }
+
+  .navHomeLastDesk,
+  .navLastDesk {
+    width: 119px;
+    height: 50px;
+    padding: 15px 18px;
+  }
+
+  .navNewsHomeDesk,
+  .navHomeDesk,
+  .navHomeLastDesk {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .navNewsHomeDesk:hover,
+  .navHomeDesk:hover,
+  .navHomeLastDesk:hover {
+    border: 1px solid #fff;
+  }
+
+  .navNewsDesk:hover,
+  .navDesk:hover,
+  .navLastDesk:hover {
+    border: 1px solid#f6b83d;
+  }
+
+  .linkDesk,
+  .linkHomeDesk {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.03em;
+    color: #262626;
+  }
+
+  .linkHomeDesk {
+    color: #fff;
   }
 }

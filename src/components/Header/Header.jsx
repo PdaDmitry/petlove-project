@@ -52,22 +52,50 @@ export const Header = ({ isHome }) => {
   return (
     <div className={css.conteiner}>
       <div className={`${css.conteinerHeader} ${isHome ? css.homeHeader : ''}`}>
-        <div className={isHome ? css.contLogoHome : css.contLogo} onClick={handleClick}>
-          <p className={css.logoText} style={isHome ? { color: '#fff' } : {}}>
-            petl
-          </p>
-          <svg className={css.logoSvg}>
-            <use
-              href={
-                isHome
-                  ? '/symbol-defs-mob.svg#icon-heart-circle-1'
-                  : '/symbol-defs-mob.svg#icon-heart-circle'
-              }
-            ></use>
-          </svg>
-          <p className={css.logoText} style={isHome ? { color: '#fff' } : {}}>
-            ve
-          </p>
+        <div className={css.contLogoMenu}>
+          <div className={isHome ? css.contLogoHome : css.contLogo} onClick={handleClick}>
+            <p className={css.logoText} style={isHome ? { color: '#fff' } : {}}>
+              petl
+            </p>
+            <svg className={css.logoSvg}>
+              <use
+                href={
+                  isHome
+                    ? '/symbol-defs-mob.svg#icon-heart-circle-1'
+                    : '/symbol-defs-mob.svg#icon-heart-circle'
+                }
+              ></use>
+            </svg>
+            <p className={css.logoText} style={isHome ? { color: '#fff' } : {}}>
+              ve
+            </p>
+          </div>
+
+          {windowWidth >= 1280 && (
+            <ul className={isHome ? css.contMenuUlDeskHome : css.contMenuUlDesk}>
+              <li className={css.liItemDesk}>
+                <NavLink to="/news">
+                  <div className={isHome ? css.navNewsHomeDesk : css.navNewsDesk}>
+                    <p className={isHome ? css.linkHomeDesk : css.linkDesk}>News</p>
+                  </div>
+                </NavLink>
+              </li>
+              <li className={css.liItemDesk}>
+                <NavLink to="/notices">
+                  <div className={isHome ? css.navHomeDesk : css.navDesk}>
+                    <p className={isHome ? css.linkHomeDesk : css.linkDesk}>Find pet</p>
+                  </div>
+                </NavLink>
+              </li>
+              <li className={css.liItemLastDesk}>
+                <NavLink to="/friends">
+                  <div className={isHome ? css.navHomeLastDesk : css.navLastDesk}>
+                    <p className={isHome ? css.linkHomeDesk : css.linkDesk}>Our friends</p>
+                  </div>
+                </NavLink>
+              </li>
+            </ul>
+          )}
         </div>
 
         <div className={css.contUserBrgMenu}>
@@ -103,13 +131,15 @@ export const Header = ({ isHome }) => {
               ))}
           </div>
 
-          <FiMenu
-            className={css.burgerMenuSvg}
-            style={{
-              color: isHome ? '#fff' : '',
-            }}
-            onClick={openBurgerMenu}
-          />
+          {windowWidth < 1280 && (
+            <FiMenu
+              className={css.burgerMenuSvg}
+              style={{
+                color: isHome ? '#fff' : '',
+              }}
+              onClick={openBurgerMenu}
+            />
+          )}
         </div>
       </div>
 
