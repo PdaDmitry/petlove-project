@@ -33,6 +33,15 @@ export const Header = ({ isHome }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // ====================================================
+  // useEffect(() => {
+  //   if (windowWidth === 768) {
+  //     setMenuOpen(false);
+  //   }
+  // }, [windowWidth]);
+
+  // ====================================================
+
   const handleClick = () => {
     navigate('/home');
   };
@@ -72,29 +81,31 @@ export const Header = ({ isHome }) => {
           </div>
 
           {windowWidth >= 1280 && (
-            <ul className={isHome ? css.contMenuUlDeskHome : css.contMenuUlDesk}>
-              <li className={css.liItemDesk}>
-                <NavLink to="/news">
-                  <div className={isHome ? css.navNewsHomeDesk : css.navNewsDesk}>
-                    <p className={isHome ? css.linkHomeDesk : css.linkDesk}>News</p>
-                  </div>
-                </NavLink>
-              </li>
-              <li className={css.liItemDesk}>
-                <NavLink to="/notices">
-                  <div className={isHome ? css.navHomeDesk : css.navDesk}>
-                    <p className={isHome ? css.linkHomeDesk : css.linkDesk}>Find pet</p>
-                  </div>
-                </NavLink>
-              </li>
-              <li className={css.liItemLastDesk}>
-                <NavLink to="/friends">
-                  <div className={isHome ? css.navHomeLastDesk : css.navLastDesk}>
-                    <p className={isHome ? css.linkHomeDesk : css.linkDesk}>Our friends</p>
-                  </div>
-                </NavLink>
-              </li>
-            </ul>
+            <nav>
+              <ul className={isHome ? css.contMenuUlDeskHome : css.contMenuUlDesk}>
+                <li className={css.liItemDesk}>
+                  <NavLink to="/news">
+                    <div className={isHome ? css.navNewsHomeDesk : css.navNewsDesk}>
+                      <p className={isHome ? css.linkHomeDesk : css.linkDesk}>News</p>
+                    </div>
+                  </NavLink>
+                </li>
+                <li className={css.liItemDesk}>
+                  <NavLink to="/notices">
+                    <div className={isHome ? css.navHomeDesk : css.navDesk}>
+                      <p className={isHome ? css.linkHomeDesk : css.linkDesk}>Find pet</p>
+                    </div>
+                  </NavLink>
+                </li>
+                <li className={css.liItemLastDesk}>
+                  <NavLink to="/friends">
+                    <div className={isHome ? css.navHomeLastDesk : css.navLastDesk}>
+                      <p className={isHome ? css.linkHomeDesk : css.linkDesk}>Our friends</p>
+                    </div>
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
           )}
         </div>
 
