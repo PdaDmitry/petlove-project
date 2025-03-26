@@ -34,11 +34,11 @@ export const Header = ({ isHome }) => {
   }, []);
 
   // ====================================================
-  // useEffect(() => {
-  //   if (windowWidth === 768) {
-  //     setMenuOpen(false);
-  //   }
-  // }, [windowWidth]);
+  useEffect(() => {
+    if (windowWidth > 768) {
+      setMenuOpen(false);
+    }
+  }, [windowWidth]);
 
   // ====================================================
 
