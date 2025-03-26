@@ -11,3 +11,24 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* =========================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .imageContainer {
+    width: 704px;
+    height: 302px;
+    border-radius: 60px;
+    margin-bottom: 16px;
+  }
+}
+
+/* =========================Desk============================ */
+
+@media screen and (min-width: 1280px) {
+  .imageContainer {
+    width: 592px;
+    height: 654px;
+    margin-bottom: 0;
+  }
+}

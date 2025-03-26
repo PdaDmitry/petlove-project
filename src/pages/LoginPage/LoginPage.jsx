@@ -15,9 +15,18 @@ import { PetBlock } from '../../components/PetBlock/PetBlock';
 export const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
@@ -67,11 +76,19 @@ export const LoginPage = () => {
     clearErrors('email');
   };
 
+  const getImageSrc = () => {
+    if (windowWidth >= 1280) {
+      return '/images/dog-login/login-dog-desk-2x.jpg';
+    } else if (windowWidth >= 768) {
+      return '/images/dog-login/login-dog-tab-2x.jpg';
+    }
+    return '/images/dog-login/login-dog-mob-2x.jpg';
+  };
+
   return (
     <div className={css.contLogin}>
-      {/* <div className={css.imgDog}></div> */}
+      <PetBlock src={getImageSrc()} alt="Dog" />
 
-      <PetBlock src="/images/dog-login/login-dog-mob-2x.jpg" alt="Dog" />
       <div className={css.contForm}>
         <Title className={css.title}>Log in</Title>
         <p className={css.text}>Welcome! Please enter your credentials to login to the platform:</p>
@@ -90,8 +107,8 @@ export const LoginPage = () => {
                 onClick={handleClearEmail}
                 className={css.btnRedEmail}
                 style={{
-                  width: '18px',
-                  height: '18px',
+                  // width: '18px',
+                  // height: '18px',
                   fill: '#ef2447',
                 }}
               />
@@ -100,8 +117,8 @@ export const LoginPage = () => {
               <BsCheck2
                 className={css.btnShapeEmail}
                 style={{
-                  width: '22px',
-                  height: '22px',
+                  // width: '22px',
+                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
@@ -143,8 +160,8 @@ export const LoginPage = () => {
               <BsCheck2
                 className={css.btnShapePwd}
                 style={{
-                  width: '22px',
-                  height: '22px',
+                  // width: '22px',
+                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
