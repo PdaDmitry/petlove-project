@@ -1,10 +1,7 @@
 .contLogin {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  /* width: 375px; */
+  width: 375px;
   padding: 20px;
+  margin: 0 auto;
 }
 
 .contForm {
@@ -192,6 +189,7 @@
 
 @media screen and (min-width: 768px) {
   .contLogin {
+    width: 768px;
     padding: 32px;
   }
 
@@ -288,12 +286,29 @@
     font-size: 14px;
     line-height: 143%;
   }
-
-  .lastTexSpan {
-  }
 }
 
 /* =========================Desk============================ */
 
 @media screen and (min-width: 1280px) {
+  .contLogin {
+    width: 1280px;
+    display: flex;
+    gap: 32px;
+    position: relative;
+  }
+
+  .imageRich {
+    position: absolute;
+    top: 468px;
+    left: 93px;
+    border-radius: 20px;
+    width: 294px;
+    height: 121px;
+  }
+
+  .contForm {
+    width: 592px;
+    padding: 118px 84px;
+  }
 }

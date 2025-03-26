@@ -89,6 +89,14 @@ export const LoginPage = () => {
     <div className={css.contLogin}>
       <PetBlock src={getImageSrc()} alt="Dog" />
 
+      {windowWidth >= 1280 && (
+        <img
+          className={css.imageRich}
+          src={'/images/dog-login/img-Rich-desk-2x.jpg'}
+          alt={'Description of the dog'}
+        />
+      )}
+
       <div className={css.contForm}>
         <Title className={css.title}>Log in</Title>
         <p className={css.text}>Welcome! Please enter your credentials to login to the platform:</p>
