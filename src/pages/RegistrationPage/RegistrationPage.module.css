@@ -102,6 +102,7 @@
   cursor: pointer;
 }
 
+.btnShapeConfPwd,
 .btnShapeEmail,
 .btnShapePwd {
   width: 18px;
@@ -251,6 +252,7 @@
     top: 15px;
   }
 
+  .btnShapeConfPwd,
   .btnShapeName,
   .btnRedEmail,
   .btnShapeEmail,
@@ -289,4 +291,24 @@
 /* =========================Desk============================ */
 
 @media screen and (min-width: 1280px) {
+  .contRegistration {
+    width: 1280px;
+    display: flex;
+    gap: 32px;
+    position: relative;
+  }
+
+  .imageJack {
+    position: absolute;
+    top: 468px;
+    left: 93px;
+    border-radius: 20px;
+    width: 294px;
+    height: 121px;
+  }
+
+  .contForm {
+    width: 592px;
+    padding: 77px 84px;
+  }
 }

@@ -74,7 +74,7 @@ export const RegistrationPage = () => {
 
     try {
       const resultAction = await dispatch(registerUser(data)).unwrap();
-      // console.log('resultAction: ', resultAction);
+
       navigate('/profile');
       reset();
       toast.success(`User ${data.name} successfully registered!`, {
@@ -134,8 +134,6 @@ export const RegistrationPage = () => {
               <BsCheck2
                 className={css.btnShapeName}
                 style={{
-                  // width: '22px',
-                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
@@ -157,8 +155,6 @@ export const RegistrationPage = () => {
                 onClick={handleClearEmail}
                 className={css.btnRedEmail}
                 style={{
-                  // width: '18px',
-                  // height: '18px',
                   fill: '#ef2447',
                 }}
               />
@@ -167,8 +163,6 @@ export const RegistrationPage = () => {
               <BsCheck2
                 className={css.btnShapeEmail}
                 style={{
-                  // width: '22px',
-                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
@@ -211,8 +205,6 @@ export const RegistrationPage = () => {
               <BsCheck2
                 className={css.btnShapePwd}
                 style={{
-                  // width: '22px',
-                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
@@ -256,8 +248,6 @@ export const RegistrationPage = () => {
               <BsCheck2
                 className={css.btnShapeConfPwd}
                 style={{
-                  width: '22px',
-                  height: '22px',
                   fill: '#08aa83',
                 }}
               />
