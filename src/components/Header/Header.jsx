@@ -111,35 +111,34 @@ export const Header = ({ isHome }) => {
 
         <div className={css.contUserBrgMenu}>
           <div className={css.contUserIsRegisteredOrNot}>
-            {windowWidth >= 768 &&
-              (user.email ? (
-                <>
-                  {!isHome && (
-                    <LogoutUser
-                      customStyle={{
-                        width: '136px',
-                        height: '50px',
-                      }}
-                    />
-                  )}
-                  <div
-                    className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
-                    onClick={handleUserClick}
-                  >
-                    <UserPhoto
-                      className={css.customAvatar}
-                      contSize={css.customPhoto}
-                      svgClassName={css.customUserSvg}
-                      variant="header"
-                    />
-                  </div>
-                  <p className={isHome ? css.userNameHome : css.userName}>
-                    {user.name.split(' ')[0]}
-                  </p>
-                </>
-              ) : (
-                <AuthNav />
-              ))}
+            {user.email ? (
+              <>
+                {windowWidth >= 768 && !isHome && (
+                  <LogoutUser
+                    customStyle={{
+                      width: '136px',
+                      height: '50px',
+                    }}
+                  />
+                )}
+                <div
+                  className={`${css.backgrSvg} ${isLoggedIn ? '' : css.hidden}`}
+                  onClick={handleUserClick}
+                >
+                  <UserPhoto
+                    className={css.customAvatar}
+                    contSize={css.customPhoto}
+                    svgClassName={css.customUserSvg}
+                    variant="header"
+                  />
+                </div>
+                <p className={isHome ? css.userNameHome : css.userName}>
+                  {windowWidth >= 768 && user.name.split(' ')[0]}
+                </p>
+              </>
+            ) : (
+              windowWidth >= 768 && <AuthNav />
+            )}
           </div>
 
           {windowWidth < 1280 && (

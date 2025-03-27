@@ -24,6 +24,16 @@ export const AddPetPage = () => {
   const [species, setSpecies] = useState('');
   const [selectedSex, setSelectedSex] = useState('');
   const [modalFormatPhoto, setModalFormatPhoto] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const openModalFormatPhoto = () => setModalFormatPhoto(true);
   const closeModalFormatPhoto = () => setModalFormatPhoto(false);
@@ -66,13 +76,18 @@ export const AddPetPage = () => {
     navigate('/profile');
   };
 
+  const getImageSrc = () => {
+    if (windowWidth >= 1280) {
+      return '/images/add-my-pet/add-pet-desk-2x.jpg';
+    } else if (windowWidth >= 768) {
+      return '/images/add-my-pet/add-pet-tab-2x.jpg';
+    }
+    return '/images/add-my-pet/add-pet-mob-2x.jpg';
+  };
+
   return (
     <div className={css.contAddPet}>
-      <PetBlock
-        src="/images/add-my-pet/add-pet-mob-1x.jpg"
-        alt="dog with glasses"
-        className={css.imgDogAddPet}
-      />
+      <PetBlock src={getImageSrc()} alt="dog with glasses" className={css.imgDogAddPet} />
       <div className={css.contTitleForm}>
         <div className={css.contTitleSubtitle}>
           <Title className={css.title}>Add my pet /</Title>

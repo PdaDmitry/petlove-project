@@ -85,20 +85,20 @@
   height: 20px;
 }
 
-.radioInput:checked+.radioContent .svgFemale,
-.radioInput:checked+.radioContent .svgMale {
+.radioInput:checked + .radioContent .svgFemale,
+.radioInput:checked + .radioContent .svgMale {
   stroke: #fff;
 }
 
-.radioInput:checked+.backGrFemale {
+.radioInput:checked + .backGrFemale {
   background: #f43f5e;
 }
 
-.radioInput:checked+.backGrMale {
+.radioInput:checked + .backGrMale {
   background: #54adff;
 }
 
-.radioInput:checked+.backGrUnknown {
+.radioInput:checked + .backGrUnknown {
   background: #f6b83d;
 }
 
@@ -350,4 +350,12 @@
   background-color: white !important;
 }
 
-/* ========================================================================================= */
+/* =========================Tab============================= */
+
+@media screen and (min-width: 768px) {
+}
+
+/* =========================Desk============================ */
+
+@media screen and (min-width: 1280px) {
+}
