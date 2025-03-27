@@ -1,8 +1,7 @@
 .contAddPet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 375px;
   padding: 16px 20px 20px;
+  margin: 0 auto;
 }
 
 .imgDogAddPet {
@@ -353,6 +352,52 @@
 /* =========================Tab============================= */
 
 @media screen and (min-width: 768px) {
+  .contAddPet {
+    width: 768px;
+    padding: 32px;
+  }
+
+  .imgDogAddPet {
+    height: 248px;
+  }
+
+  .contTitleForm {
+    border-radius: 60px;
+    width: 704px;
+    padding: 40px 136px;
+  }
+
+  .contTitleSubtitle {
+    margin-bottom: 40px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 125%;
+    color: rgba(43, 43, 42, 0.4);
+  }
+
+  /* =========================radio button sex============================== */
+
+  .contRadioBtn {
+    /* margin-bottom: 8px; */
+  }
+
+  .radioContent {
+    width: 40px;
+    height: 40px;
+  }
+
+  .svgFemale,
+  .svgMale,
+  .svgUnknown {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 /* =========================Desk============================ */
