@@ -250,11 +250,7 @@
     top: 15px;
   }
 
-  .btnRedEmail {
-    width: 22px;
-    height: 22px;
-  }
-
+  .btnRedEmail,
   .btnShapeEmail,
   .btnShapePwd {
     width: 22px;

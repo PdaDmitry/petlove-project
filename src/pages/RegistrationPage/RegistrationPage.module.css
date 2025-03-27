@@ -1,18 +1,8 @@
 .contRegistration {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 375px;
   padding: 20px;
+  margin: 0 auto;
 }
-
-/* .imgCat {
-  width: 335px;
-  height: 280px;
-  border-radius: 30px;
-  background: url('../../../public/images/cat-register/registr-cat-mob-1x.jpg');
-  background-size: cover;
-  margin-bottom: 10px;
-} */
 
 .contForm {
   border-radius: 30px;
@@ -107,7 +97,15 @@
 }
 
 .btnRedEmail {
+  width: 18px;
+  height: 18px;
   cursor: pointer;
+}
+
+.btnShapeEmail,
+.btnShapePwd {
+  width: 18px;
+  height: 18px;
 }
 
 .btnShapeConfPwd,
@@ -185,4 +183,110 @@
   text-decoration-skip-ink: none;
   cursor: pointer;
   color: #f6b83d;
+}
+
+/* =========================Tab============================= */
+
+@media screen and (min-width: 768px) {
+  .contRegistration {
+    width: 768px;
+    padding: 32px;
+  }
+
+  .contForm {
+    border-radius: 60px;
+    width: 704px;
+    padding: 30px 140px;
+  }
+
+  .title {
+    font-size: 54px;
+    line-height: 100%;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+
+  .text {
+    font-size: 18px;
+    line-height: 122%;
+    margin-bottom: 32px;
+  }
+
+  .contRegistrationForm {
+    margin-bottom: 16px;
+  }
+
+  .inputElem {
+    margin-bottom: 16px;
+  }
+
+  .textSuccess,
+  .textError {
+    padding-left: 16px;
+    padding-top: 4px;
+    font-size: 12px;
+    line-height: 117%;
+  }
+
+  .inputLastElem {
+    margin-bottom: 32px;
+  }
+
+  .input {
+    padding: 16px 0 16px 16px;
+    width: 424px;
+    height: 52px;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .btnShapeConfPwd,
+  .btnShapePwd,
+  .btnShapeName,
+  .btnShapeEmail,
+  .btnRedEmail {
+    top: 15px;
+  }
+
+  .btnShapeName,
+  .btnRedEmail,
+  .btnShapeEmail,
+  .btnShapePwd {
+    width: 22px;
+    height: 22px;
+  }
+
+  .btnShapeConfPwd,
+  .btnShapePwd {
+    right: 48px;
+  }
+
+  .passwordToggle {
+    top: 15px;
+  }
+
+  .eyeSvg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .btnRegistrationForm {
+    font-size: 16px;
+    line-height: 125%;
+    width: 424px;
+    height: 52px;
+  }
+
+  .lastText {
+    font-size: 14px;
+    line-height: 143%;
+  }
+}
+
+/* =========================Desk============================ */
+
+@media screen and (min-width: 1280px) {
 }

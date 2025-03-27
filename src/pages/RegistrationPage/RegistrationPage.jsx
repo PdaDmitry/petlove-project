@@ -17,9 +17,18 @@ export const RegistrationPage = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
@@ -87,10 +96,26 @@ export const RegistrationPage = () => {
     clearErrors('email');
   };
 
+  const getImageSrc = () => {
+    if (windowWidth >= 1280) {
+      return '/images/cat-register/registr-cat-desk-2x.jpg';
+    } else if (windowWidth >= 768) {
+      return '/images/cat-register/registr-cat-tab-2x.jpg';
+    }
+    return '/images/cat-register/registr-cat-mob-2x.jpg';
+  };
+
   return (
     <div className={css.contRegistration}>
-      {/* <div className={css.imgCat}></div> */}
-      <PetBlock src="/images/cat-register/registr-cat-mob-1x.jpg" alt="Cat" />
+      <PetBlock src={getImageSrc()} alt="Cat" />
+
+      {windowWidth >= 1280 && (
+        <img
+          className={css.imageJack}
+          src={'/images/cat-register/img-Jack-desk-2x.jpg'}
+          alt={'Description of the dog'}
+        />
+      )}
 
       <div className={css.contForm}>
         <Title className={css.title}>Registration</Title>
@@ -109,8 +134,8 @@ export const RegistrationPage = () => {
               <BsCheck2
                 className={css.btnShapeName}
                 style={{
-                  width: '22px',
-                  height: '22px',
+                  // width: '22px',
+                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
@@ -132,8 +157,8 @@ export const RegistrationPage = () => {
                 onClick={handleClearEmail}
                 className={css.btnRedEmail}
                 style={{
-                  width: '18px',
-                  height: '18px',
+                  // width: '18px',
+                  // height: '18px',
                   fill: '#ef2447',
                 }}
               />
@@ -142,8 +167,8 @@ export const RegistrationPage = () => {
               <BsCheck2
                 className={css.btnShapeEmail}
                 style={{
-                  width: '22px',
-                  height: '22px',
+                  // width: '22px',
+                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
@@ -186,8 +211,8 @@ export const RegistrationPage = () => {
               <BsCheck2
                 className={css.btnShapePwd}
                 style={{
-                  width: '22px',
-                  height: '22px',
+                  // width: '22px',
+                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
