@@ -184,14 +184,14 @@
   content: '00.00.0000';
   color: rgba(38, 38, 38, 0.45);
   position: absolute;
-  left: 12px;
+  /* left: 12px; */
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
   user-select: none;
 }
 
-.inputDateAater {
+.inputDateAfter {
   width: 143px;
   height: 42px;
   padding: 0 12px;
@@ -215,7 +215,7 @@
 
 .textError {
   color: red;
-  font-size: 12px;
+  font-size: 10px;
   /* margin-top: 8px; */
 }
 
@@ -239,6 +239,7 @@
 .btnUploadPhoto:hover {
   color: #fff;
   background: #f6b83d;
+  /* stroke: #fff; */
 }
 
 .uploadPhotoSpan {
@@ -290,7 +291,7 @@
 .btnsBlock {
   display: flex;
   gap: 8px;
-  padding-left: 107px;
+  padding-left: 87px;
 }
 
 .btnGoToProfile {
@@ -384,7 +385,7 @@
   /* =========================radio button sex============================== */
 
   .contRadioBtn {
-    /* margin-bottom: 8px; */
+    margin-bottom: 76px;
   }
 
   .radioContent {
@@ -404,6 +405,117 @@
     padding-top: 4px;
     font-size: 12px;
     line-height: 117%;
+  }
+
+  /* ===============================petPhoto================================ */
+
+  .formContainer {
+    position: relative;
+  }
+
+  .petPhoto {
+    position: absolute;
+    top: 18px;
+    right: 173px;
+    width: 86px;
+    height: 86px;
+  }
+
+  .avatarImage {
+    width: 86px;
+    height: 86px;
+  }
+
+  .svgPaw {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* ======================================================================= */
+
+  .contUrlAvatarPhoto {
+    margin-bottom: 18px;
+  }
+
+  .inputUrl {
+    padding: 12px;
+    width: 278px;
+    height: 42px;
+  }
+
+  .btnUploadPhoto {
+    gap: 8px;
+    padding: 12px 16px;
+    width: 146px;
+    height: 42px;
+  }
+
+  .uploadPhotoSpan {
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .uploadSvgPhoto {
+    width: 18px;
+    height: 18px;
+  }
+
+  .inputUrl::placeholder {
+    letter-spacing: -0.02em;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .contDateType {
+    gap: 12px;
+    margin-bottom: 46px;
+  }
+
+  .typeField {
+    width: 210px;
+    height: 52px;
+  }
+
+  .input,
+  .inputDate {
+    padding: 16px;
+    width: 432px;
+    height: 52px;
+    margin-bottom: 18px;
+  }
+
+  .inputDate {
+    width: 210px;
+    padding-right: 14px;
+    margin-bottom: 0;
+  }
+
+  .inputDateAfter {
+    width: 210px;
+    height: 52px;
+    padding: 0 16px;
+  }
+
+  .btnsBlock {
+    padding-left: 84px;
+  }
+
+  .btnGoToProfile {
+    width: 170px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .btnSubmitPet {
+    width: 170px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 125%;
   }
 }
 

@@ -21,6 +21,7 @@ import { LuCalendar } from 'react-icons/lu';
 import { CustomDatePicker } from '../../components/CustomDatePicker/CustomDatePicker';
 
 export const AddPetPage = () => {
+  const [isHovered, setIsHovered] = useState(false);
   const [species, setSpecies] = useState('');
   const [selectedSex, setSelectedSex] = useState('');
   const [modalFormatPhoto, setModalFormatPhoto] = useState(false);
@@ -186,9 +187,18 @@ export const AddPetPage = () => {
               {errors.imgURL && <p className={css.textError}>{errors.imgURL.message}</p>}
             </div>
 
-            <button type="button" className={css.btnUploadPhoto} onClick={openModalFormatPhoto}>
+            <button
+              type="button"
+              className={css.btnUploadPhoto}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onClick={openModalFormatPhoto}
+            >
               <span className={css.uploadPhotoSpan}>Upload photo</span>
-              <FiUploadCloud className={css.uploadSvgPhoto} />
+              <FiUploadCloud
+                className={css.uploadSvgPhoto}
+                style={{ stroke: isHovered ? '#fff' : '#f6b83d' }}
+              />
             </button>
           </div>
 
@@ -218,7 +228,7 @@ export const AddPetPage = () => {
                 {...register('birthday')}
                 type="date"
                 max={new Date().toISOString().split('T')[0]}
-                className={`${date ? css.inputDateAater : css.inputDate}`}
+                className={`${date ? css.inputDateAfter : css.inputDate}`}
                 onClick={e => e.stopPropagation()}
               />
 
