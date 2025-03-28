@@ -31,11 +31,18 @@
 
 /* =====================radio button sex===================== */
 
+.contRadioBtnsAndError {
+  margin-bottom: 14px;
+}
+
+.errorMg {
+  margin-bottom: 0;
+}
+
 .contRadioBtn {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
 }
 
 .radioInput {
@@ -154,6 +161,10 @@
   height: 36px;
 }
 
+.inputElem {
+  margin-bottom: 10px;
+}
+
 .input,
 .inputDate {
   border: 1px solid rgba(38, 38, 38, 0.15);
@@ -161,7 +172,6 @@
   padding: 12px 0 12px 12px;
   width: 295px;
   height: 42px;
-  margin-bottom: 10px;
 }
 
 /* ===================================Date==================================== */
@@ -172,8 +182,8 @@
   padding-right: 12px;
   cursor: pointer;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  /* -webkit-appearance: none; */
+  /* -moz-appearance: none; */
   background: transparent;
   color: transparent;
   position: relative;
@@ -384,8 +394,12 @@
 
   /* =========================radio button sex============================== */
 
-  .contRadioBtn {
+  .contRadioBtnsAndError {
     margin-bottom: 76px;
+  }
+
+  .errorMg {
+    margin-bottom: 58px;
   }
 
   .radioContent {
@@ -419,6 +433,7 @@
     right: 173px;
     width: 86px;
     height: 86px;
+    margin-bottom: 0;
   }
 
   .avatarImage {
@@ -479,12 +494,15 @@
     height: 52px;
   }
 
+  .inputElem {
+    margin-bottom: 18px;
+  }
+
   .input,
   .inputDate {
     padding: 16px;
     width: 432px;
     height: 52px;
-    margin-bottom: 18px;
   }
 
   .inputDate {

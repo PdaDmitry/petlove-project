@@ -97,71 +97,73 @@ export const AddPetPage = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className={css.formContainer}>
           {/* =========================radio button sex============================== */}
-          <ul className={css.contRadioBtn}>
-            <li>
-              <label>
-                <input
-                  type="radio"
-                  className={`${css.radioInput} ${css.radioInputFemale}`}
-                  value="female"
-                  {...register('sex')}
-                  onChange={() => {
-                    setSelectedSex('female');
-                    setValue('sex', 'female', { shouldValidate: true });
-                  }}
-                />
-                <div className={`${css.radioContent} ${css.backGrFemale}`}>
-                  <TbGenderFemale className={css.svgFemale} />
-                </div>
-              </label>
-            </li>
+          <div className={`${css.contRadioBtnsAndError} ${errors.sex ? css.errorMg : ''} `}>
+            <ul className={css.contRadioBtn}>
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    className={`${css.radioInput} ${css.radioInputFemale}`}
+                    value="female"
+                    {...register('sex')}
+                    onChange={() => {
+                      setSelectedSex('female');
+                      setValue('sex', 'female', { shouldValidate: true });
+                    }}
+                  />
+                  <div className={`${css.radioContent} ${css.backGrFemale}`}>
+                    <TbGenderFemale className={css.svgFemale} />
+                  </div>
+                </label>
+              </li>
 
-            <li>
-              <label>
-                <input
-                  type="radio"
-                  className={`${css.radioInput} ${css.radioInputMale}`}
-                  value="male"
-                  {...register('sex')}
-                  onChange={() => {
-                    setSelectedSex('male');
-                    setValue('sex', 'male', { shouldValidate: true });
-                  }}
-                />
-                <div className={`${css.radioContent} ${css.backGrMale}`}>
-                  <TbGenderMale className={css.svgMale} style={{ transform: 'rotate(-45deg)' }} />
-                </div>
-              </label>
-            </li>
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    className={`${css.radioInput} ${css.radioInputMale}`}
+                    value="male"
+                    {...register('sex')}
+                    onChange={() => {
+                      setSelectedSex('male');
+                      setValue('sex', 'male', { shouldValidate: true });
+                    }}
+                  />
+                  <div className={`${css.radioContent} ${css.backGrMale}`}>
+                    <TbGenderMale className={css.svgMale} style={{ transform: 'rotate(-45deg)' }} />
+                  </div>
+                </label>
+              </li>
 
-            <li>
-              <label>
-                <input
-                  type="radio"
-                  className={`${css.radioInput} ${css.radioInputUnknown}`}
-                  value="unknown"
-                  {...register('sex')}
-                  onChange={() => {
-                    setSelectedSex('unknown');
-                    setValue('sex', 'unknown', { shouldValidate: true });
-                  }}
-                />
-                <div className={`${css.radioContent} ${css.backGrUnknown}`}>
-                  <svg className={css.svgUnknown}>
-                    <use
-                      href={
-                        selectedSex === 'unknown'
-                          ? '/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health-1'
-                          : '/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health'
-                      }
-                    ></use>
-                  </svg>
-                </div>
-              </label>
-            </li>
-          </ul>
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    className={`${css.radioInput} ${css.radioInputUnknown}`}
+                    value="unknown"
+                    {...register('sex')}
+                    onChange={() => {
+                      setSelectedSex('unknown');
+                      setValue('sex', 'unknown', { shouldValidate: true });
+                    }}
+                  />
+                  <div className={`${css.radioContent} ${css.backGrUnknown}`}>
+                    <svg className={css.svgUnknown}>
+                      <use
+                        href={
+                          selectedSex === 'unknown'
+                            ? '/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health-1'
+                            : '/symbol-defs-mob.svg#icon-healthicons_sexual-reproductive-health'
+                        }
+                      ></use>
+                    </svg>
+                  </div>
+                </label>
+              </li>
+            </ul>
 
-          {errors.sex && <p className={css.textError}>{errors.sex.message}</p>}
+            {errors.sex && <p className={css.textError}>{errors.sex.message}</p>}
+          </div>
 
           {/* ===============================petPhoto================================ */}
 
@@ -178,7 +180,7 @@ export const AddPetPage = () => {
           {/* ======================================================================= */}
 
           <div className={css.contUrlAvatarPhoto}>
-            <div className={css.inputElem}>
+            <div className={css.inputElemUrl}>
               <input
                 {...register('imgURL')}
                 placeholder="Enter URL"
