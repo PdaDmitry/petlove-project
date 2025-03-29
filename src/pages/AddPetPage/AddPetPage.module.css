@@ -539,4 +539,19 @@
 /* =========================Desk============================ */
 
 @media screen and (min-width: 1280px) {
+  .contAddPet {
+    width: 1280px;
+    display: flex;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .imgDogAddPet {
+    height: 654px;
+  }
+
+  .contTitleForm {
+    width: 592px;
+    padding: 60px 80px;
+  }
 }
