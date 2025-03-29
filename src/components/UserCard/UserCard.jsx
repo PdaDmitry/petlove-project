@@ -13,11 +13,13 @@ import { UserPhoto } from '../UserPhoto/UserPhoto';
 import { removeUserPhoto, resetUploadedPhoto, setAvatarUpload } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { AddPetsList } from '../AddPetsList/AddPetsList';
+import { FiPlus } from 'react-icons/fi';
 
 export const UserCard = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalEditUserOpen, setModalEditUserOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isHoveredAddBtn, setIsHoveredAddBtn] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
@@ -136,11 +138,21 @@ export const UserCard = () => {
       {/* <div className={css.petsBlock}> */}
       <div className={css.contTitleAndBtn}>
         <h2 className={css.titleMyPets}>My pets</h2>
-        <button type="button" className={css.btnAddPets} onClick={handleClickAddPet}>
+        <button
+          type="button"
+          className={css.btnAddPets}
+          onClick={handleClickAddPet}
+          onMouseEnter={() => setIsHoveredAddBtn(true)}
+          onMouseLeave={() => setIsHoveredAddBtn(false)}
+        >
           <span className={css.addBtnText}>Add pet</span>
-          <svg className={css.addPlusSvg}>
-            <use href="/symbol-defs-mob.svg#icon-plus"></use>
-          </svg>
+          {isHoveredAddBtn ? (
+            <svg className={css.addPlusSvg}>
+              <use href="/symbol-defs-mob.svg#icon-plus"></use>
+            </svg>
+          ) : (
+            <FiPlus color="#f6b83d" className={css.svgPlus} />
+          )}
         </button>
       </div>
       {/* </div> */}

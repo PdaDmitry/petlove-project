@@ -39,7 +39,8 @@
 
 .userSvg,
 .editSvg,
-.addPlusSvg {
+.addPlusSvg,
+.svgPlus {
   display: block;
   width: 18px;
   height: 18px;
@@ -157,7 +158,8 @@
   padding: 10px 16px;
   width: 103px;
   height: 38px;
-  background: #f6b83d;
+  background: #fff4df;
+  color: #f6b83d;
   border: none;
   cursor: pointer;
 }
@@ -167,6 +169,10 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
+}
+
+.btnAddPets:hover {
+  background: #f6b83d;
   color: #fff;
 }
 
@@ -203,7 +209,6 @@
   .btnUploadPhoto {
     font-size: 14px;
     line-height: 1.28571;
-
   }
 
   .titleInf {
