@@ -1,9 +1,6 @@
-.cont {
-  display: flex;
-  padding: 50px 20px 80px;
-}
-
 .contFriends {
+  width: 375px;
+  padding: 50px 20px 80px;
   margin: 0 auto;
 }
 
@@ -14,12 +11,9 @@
 /* =================================Tab============================= */
 
 @media screen and (min-width: 768px) {
-  .cont {
-    padding: 85px 32px 80px;
-  }
-
   .contFriends {
-    width: 704px;
+    width: 768px;
+    padding: 85px 32px 80px;
   }
 
   .titleFriends {
@@ -32,12 +26,9 @@
 /* =================================Desk============================= */
 
 @media screen and (min-width: 1280px) {
-  .cont {
-    padding: 96px 63px 80px 64px;
-  }
-
   .contFriends {
-    width: 1153px;
+    width: 1280px;
+    padding: 96px 63px 80px 64px;
   }
 
   .titleFriends {

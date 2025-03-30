@@ -38,11 +38,9 @@ export const OurFriends = () => {
 
   return (
     !errorFriends && (
-      <div className={css.cont}>
-        <div className={css.contFriends}>
-          <Title className={css.titleFriends}>Our friends</Title>
-          <FriendsList />
-        </div>
+      <div className={css.contFriends}>
+        <Title className={css.titleFriends}>Our friends</Title>
+        <FriendsList />
       </div>
     )
   );
