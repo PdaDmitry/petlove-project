@@ -1,14 +1,12 @@
 .conteiner {
-  display: flex;
-  justify-content: center;
-  /* width: 375px; */
-  margin: 16px 20px 20px;
+  width: 375px;
+  padding: 16px 20px 20px;
+  margin: 0 auto;
 }
 
 .contNotFound {
   border-radius: 30px;
   width: 335px;
-  /* height: 712px; */
   background: #f6b83d;
   padding: 245px 33px;
 }
@@ -78,7 +76,8 @@
 @media screen and (min-width: 768px) {
 
   .conteiner {
-    margin: 32px;
+    width: 768px;
+    padding: 32px;
   }
 
   .contNotFound {
@@ -120,8 +119,11 @@
 /* =================================Desk============================= */
 
 @media screen and (min-width: 1280px) {
+  .conteiner {
+    width: 1280px;
+  }
+
   .contNotFound {
-    border-radius: 60px;
     width: 1216px;
     padding: 109px 283px;
   }
