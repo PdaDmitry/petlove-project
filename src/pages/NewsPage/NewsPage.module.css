@@ -1,13 +1,11 @@
-.conteiner {
-  display: flex;
-  padding: 50px 20px 80px;
-}
-
 .contNews {
+  width: 375px;
+  padding: 50px 20px 80px;
   margin: 0 auto;
 }
 
 .contTitleSearch {
+  width: 335px;
   margin-bottom: 24px;
 }
 
@@ -18,18 +16,17 @@
 /* =================================Tab============================= */
 
 @media screen and (min-width: 768px) {
-  .conteiner {
-    padding: 85px 32px 80px;
-  }
-
   .contNews {
-    width: 704px;
+    width: 768px;
+    padding: 85px 32px 80px;
+
   }
 
   .contTitleSearch {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 704px;
     margin-bottom: 44px;
   }
 
@@ -47,15 +44,13 @@
 /* =================================Desk============================= */
 
 @media screen and (min-width: 1280px) {
-  .conteiner {
+  .contNews {
+    width: 1280px;
     padding: 96px 63px 80px 64px;
   }
 
-  .contNews {
-    width: 1153px;
-  }
-
   .contTitleSearch {
+    width: 1153px;
     margin-bottom: 60px;
   }
 }
