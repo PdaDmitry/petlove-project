@@ -16,10 +16,7 @@ export const NewsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const errorNews = useSelector(selectNewsError);
-
-  // const loaderNews = useSelector(selectNewsLoader);
-
-  const loaderNews = true;
+  const loaderNews = useSelector(selectNewsLoader);
 
   const query = useMemo(() => ({ page, keyword }), [page, keyword]);
 

@@ -25,8 +25,7 @@ function App() {
   const isHomePage = location.pathname === '/home';
 
   const error = useSelector(selectError);
-  // const loader = useSelector(selectLoader);
-  const loader = true;
+  const loader = useSelector(selectLoader);
   const loaderNews = useSelector(selectNewsLoader);
 
   const dispatch = useDispatch();
