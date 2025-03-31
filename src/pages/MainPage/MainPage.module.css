@@ -1,26 +1,22 @@
 .mainCont {
-  max-width: 100%;
-
-  min-width: 320px;
-  max-height: 812px;
+  position: relative;
+  width: 375px;
+  height: 812px;
   margin: 0 auto;
-  padding: 381px 92px 381px 93px;
-  text-align: center;
-  justify-content: center;
+}
 
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: contain;
-
-  background-image: url(../../../public/images/main-image-mob-1x.jpg);
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .contLogo {
+  position: absolute;
+  top: 381px;
+  left: 93px;
   display: flex;
   align-items: end;
-  justify-content: center;
-  width: 100%;
-  cursor: pointer;
 }
 
 .logoText {
@@ -29,33 +25,25 @@
   line-height: 100%;
   letter-spacing: -0.04em;
   color: #fff;
-  margin: 0;
 }
 
 .logoSvg {
   display: block;
-  min-width: 43px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
 }
 
-@media (min-width: 375px) {
+/* =========================Tab============================= */
+
+@media screen and (min-width: 768px) {
   .mainCont {
-    max-width: 375px;
+    width: 768px;
+    height: 1024px;
   }
-}
 
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .mainCont {
-    background-image: url(../../../public/images/main-image-mob-2x.jpg);
-  }
-}
-
-@media (min-width: 768px) {
-  .mainCont {
-    max-width: 768px;
-    max-height: 1024px;
-    padding: 462px 197px;
-    background-image: url(../../../public/images/main-image-tab-1x.jpg);
+  .contLogo {
+    top: 462px;
+    left: 197px;
   }
 
   .logoText {
@@ -63,43 +51,21 @@
   }
 
   .logoSvg {
-    display: block;
     width: 82px;
     height: 82px;
   }
 }
 
-@media (min-width: 768px) and (min-device-pixel-ratio: 2),
-  (min-width: 768px) and (min-resolution: 192dpi),
-  (min-width: 768px) and (min-resolution: 2dppx) {
+/* =========================Desk============================ */
+
+@media screen and (min-width: 1280px) {
   .mainCont {
-    background-image: url(../../../public/images/main-image-tab-2x.jpg);
-  }
-}
-
-@media (min-width: 1280px) {
-  .mainCont {
-    max-width: 1280px;
-    max-height: 800px;
-    padding: 350px 453px;
-    background-image: url(../../../public/images/main-image-desk-1x.jpg);
+    width: 1280px;
+    height: 800px;
   }
 
-  .logoText {
-    font-size: 100px;
-  }
-
-  .logoSvg {
-    display: block;
-    width: 82px;
-    height: 82px;
-  }
-}
-
-@media (min-width: 1280px) and (min-device-pixel-ratio: 2),
-  (min-width: 1280px) and (min-resolution: 192dpi),
-  (min-width: 1280px) and (min-resolution: 2dppx) {
-  .mainCont {
-    background-image: url(../../../public/images/main-image-desk-2x.jpg);
+  .contLogo {
+    top: 350px;
+    left: 453px;
   }
 }

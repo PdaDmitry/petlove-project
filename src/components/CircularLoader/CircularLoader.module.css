@@ -25,5 +25,14 @@
   transform: translate(-50%, -50%);
   width: 273px;
   height: 273px;
+}
 
+/* =================================Tab============================= */
+
+@media screen and (min-width: 768px) {
+}
+
+/* =================================Desk============================= */
+
+@media screen and (min-width: 1280px) {
 }

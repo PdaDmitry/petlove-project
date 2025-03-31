@@ -60,10 +60,6 @@ export const LoginPage = () => {
       const resultAction = await dispatch(loginUser(data)).unwrap();
       await dispatch(refreshUser()).unwrap();
 
-      // if (noticesFavorites?.length) {
-      //   noticesFavorites.map(id => dispatch(fetchPetByIdThunk(id)));
-      // }
-
       navigate('/profile');
       reset();
     } catch (error) {
@@ -115,8 +111,6 @@ export const LoginPage = () => {
                 onClick={handleClearEmail}
                 className={css.btnRedEmail}
                 style={{
-                  // width: '18px',
-                  // height: '18px',
                   fill: '#ef2447',
                 }}
               />
@@ -125,8 +119,6 @@ export const LoginPage = () => {
               <BsCheck2
                 className={css.btnShapeEmail}
                 style={{
-                  // width: '22px',
-                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />
@@ -168,8 +160,6 @@ export const LoginPage = () => {
               <BsCheck2
                 className={css.btnShapePwd}
                 style={{
-                  // width: '22px',
-                  // height: '22px',
                   fill: '#08aa83',
                 }}
               />

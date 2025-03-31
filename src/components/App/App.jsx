@@ -32,21 +32,12 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshUser()); // изменил обновление пользователя на стр ProfilePage
+    dispatch(refreshUser());
   }, [dispatch]);
-
-  // if (loader) {
-  //   return (
-  //     <div className={css.loaderWrapper}>
-  //       <CircularLoader />
-  //     </div>
-  //   );
-  // }
 
   return (
     !error && (
       <div className={css.contApp}>
-        {/* {!isMainPage && <Header isHome={isHomePage} />} */}
         {!isMainPage && !loader && !loaderNews && <Header isHome={isHomePage} />}
 
         <Toaster />
