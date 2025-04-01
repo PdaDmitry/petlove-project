@@ -32,23 +32,29 @@ export const byTypeOptions = [
   { value: 'scorpion', label: 'Scorpion' },
 ];
 
-export const getCustomStyles = (width, menuHeight = '') => ({
+export const getCustomStyles = (
+  width,
+  menuHeight = '',
+  fontSize = '',
+  paddingLeft = '',
+  paddingTop = '',
+  marginLeft = '',
+  fontSizeMenu = ''
+) => ({
   control: provided => ({
     ...provided,
     borderRadius: '30px',
     height: '42px',
     width,
-    // width: '143px',
-    paddingLeft: '4px',
+    paddingLeft,
     paddingRight: '4px',
-
+    paddingTop,
     fontWeight: '500',
-    fontSize: '14px',
+    fontSize,
     lineHeight: '129%',
     letterSpacing: '-0.03em',
-
-    // padding: '4px',
     margin: '0',
+    marginLeft,
     color: '#262626',
     backgroundColor: '#fff',
     border: 'none',
@@ -75,7 +81,6 @@ export const getCustomStyles = (width, menuHeight = '') => ({
     ...provided,
     borderRadius: '15px',
     maxHeight: menuHeight,
-    // overflowY: 'auto',
     padding: '4px 0 4px 4px',
     border: 'none',
     boxShadow: 'none',
@@ -91,7 +96,7 @@ export const getCustomStyles = (width, menuHeight = '') => ({
       backgroundColor: 'transparent',
     },
     fontWeight: '500',
-    fontSize: '14px',
+    fontSize: fontSizeMenu,
     lineHeight: '129%',
     letterSpacing: '-0.03em',
     backgroundColor: '#ffffff',
@@ -101,67 +106,3 @@ export const getCustomStyles = (width, menuHeight = '') => ({
     display: 'none',
   }),
 });
-
-// export const customStyles = {
-//   control: provided => ({
-//     ...provided,
-//     borderRadius: '30px',
-//     height: '42px',
-//     width: '143px',
-//     paddingLeft: '4px',
-//     paddingRight: '4px',
-
-//     fontWeight: '500',
-//     fontSize: '14px',
-//     lineHeight: '129%',
-//     letterSpacing: '-0.03em',
-
-//     // padding: '4px',
-//     margin: '0',
-//     color: '#262626',
-//     backgroundColor: '#fff',
-//     border: 'none',
-//     outline: 'none',
-//     boxShadow: 'none',
-//     cursor: 'pointer',
-//     ':focus': {
-//       border: 'none',
-//       outline: 'none',
-//       boxShadow: 'none',
-//       color: '#121417',
-//     },
-//     ':active': {
-//       border: 'none',
-//       boxShadow: 'none',
-//       color: '#121417',
-//     },
-//   }),
-//   menu: provided => ({
-//     ...provided,
-//     borderRadius: '15px',
-
-//     padding: '4px 0 4px 4px',
-//     border: 'none',
-//     boxShadow: 'none',
-//     zIndex: '1900',
-//   }),
-//   option: (provided, state) => ({
-//     ...provided,
-//     color: state.isSelected ? '#f6b83d' : 'rgba(38, 38, 38, 0.6)',
-//     ':active': {
-//       backgroundColor: 'transparent',
-//     },
-//     ':focus': {
-//       backgroundColor: 'transparent',
-//     },
-//     fontWeight: '500',
-//     fontSize: '14px',
-//     lineHeight: '129%',
-//     letterSpacing: '-0.03em',
-//     backgroundColor: '#ffffff',
-//     cursor: 'pointer',
-//   }),
-//   indicatorSeparator: () => ({
-//     display: 'none',
-//   }),
-// };
