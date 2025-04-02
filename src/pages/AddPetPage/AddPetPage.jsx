@@ -9,16 +9,16 @@ import { TbGenderFemale } from 'react-icons/tb';
 import { TbGenderMale } from 'react-icons/tb';
 import { byTypeOptions, getCustomStyles } from '../../options';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPet } from '../../redux/auth/operationsAuth';
 import { PetBlock } from '../../components/PetBlock/PetBlock';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import { ModalPhotoFormat } from '../../components/ModalPhotoFormat/ModalPhotoFormat';
 import 'react-datepicker/dist/react-datepicker.css';
-import { LuCalendar } from 'react-icons/lu';
+// import { LuCalendar } from 'react-icons/lu';
 
-import { CustomDatePicker } from '../../components/CustomDatePicker/CustomDatePicker';
+// import { CustomDatePicker } from '../../components/CustomDatePicker/CustomDatePicker';
 
 export const AddPetPage = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -41,7 +41,7 @@ export const AddPetPage = () => {
 
   const {
     register,
-    control,
+    // control,
     handleSubmit,
     formState: { errors },
     setValue,
@@ -248,7 +248,11 @@ export const AddPetPage = () => {
                   setSpecies(selectedOption);
                   setValue('species', selectedOption?.value, { shouldValidate: true });
                 }}
-                styles={getCustomStyles('141px', '78px')}
+                styles={
+                  windowWidth >= 768
+                    ? getCustomStyles('200px', '78px', '16px', '3px', '6px', '4px', '16px')
+                    : getCustomStyles('141px', '78px', '14px', '4px')
+                }
                 className={`${css.typeField} ${type ? css.fieldIsFilled : ''}`}
                 isSearchable={false}
               />
