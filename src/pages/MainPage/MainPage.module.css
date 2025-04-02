@@ -17,6 +17,7 @@
   left: 93px;
   display: flex;
   align-items: end;
+  cursor: pointer;
 }
 
 .logoText {
