@@ -41,7 +41,6 @@
   width: 66px;
   height: 66px;
   object-fit: cover;
-  /* margin-bottom: 24px; */
 }
 
 .title {
@@ -107,8 +106,6 @@
   .title {
     margin-bottom: 12px;
   }
-
-
 }
 
 /* =================================Desk============================= */

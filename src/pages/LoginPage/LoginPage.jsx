@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginSchema } from '../../validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
-// import toast from 'react-hot-toast';
 import css from './LoginPage.module.css';
 import { loginUser, refreshUser } from '../../redux/auth/operationsAuth';
 import { useNavigate } from 'react-router-dom';
